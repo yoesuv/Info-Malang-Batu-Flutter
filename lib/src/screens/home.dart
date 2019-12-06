@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+import 'list_place.dart';
+import 'gallery.dart';
+import 'maps_place.dart';
+import 'about.dart';
+
+class Home extends StatefulWidget {
+    Home({Key key}) : super(key: key);
+    HomeState createState() => HomeState();
+}
+
+class HomeState extends State<Home> {
+
+    int _selectedIndex = 0;
+    final List<Widget> menu = <Widget>[
+        ListPlace(),
+        Gallery(),
+        MapsPlace(),
+        About()
+    ];
 
     void _onItemTapped(int index){
-        print('Home # index $index');
+        setState(() {
+            _selectedIndex = index;
+        });
     }
 
     Widget build(BuildContext context) {
@@ -12,7 +32,7 @@ class Home extends StatelessWidget {
                 title: Text('Home'),
             ),
             body: Center(
-                child: Text('Info Malang Batu'),
+                child: menu.elementAt(_selectedIndex),
             ),
             bottomNavigationBar: buildBottomNavigationBar()
         );
@@ -41,8 +61,9 @@ class Home extends StatelessWidget {
             type: BottomNavigationBarType.fixed,
             unselectedItemColor: Colors.grey,
             selectedItemColor: Colors.blueAccent,
-            elevation: 8.0,
+            currentIndex: _selectedIndex,
             onTap: _onItemTapped,
         );
     }
+
 }

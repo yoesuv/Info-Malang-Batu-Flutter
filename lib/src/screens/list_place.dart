@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class List extends StatelessWidget {
+class ListPlace extends StatelessWidget {
 
     Widget build(BuildContext context) {
         return Scaffold(
             body: Center(
-                child: Text('Maps'),
+                child: Text('List Place'),
             ),
         );
     }
 
 }
+
+var listPlace = ListPlace();
