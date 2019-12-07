@@ -21,7 +21,50 @@ class ItemPlace extends StatelessWidget {
                         errorWidget: (context, url, error) => Icon(Icons.error)
                     )
                 ),
-            ],
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                        textTitle(),
+                        textSubTitle()
+                    ]
+                )
+
+            ]
+        );
+    }
+
+    Widget textTitle() {
+        return Text(
+            itemPlaceModel.nama,
+            style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+                shadows: [
+                    Shadow(
+                        color: Colors.black,
+                        offset: Offset(1.0, 1.0),
+                        blurRadius: 2.0
+                    )
+                ]
+            )
+        );
+    }
+
+    Widget textSubTitle() {
+        return Text(
+            itemPlaceModel.lokasi,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 16.0,
+                shadows: [
+                    Shadow(
+                        color: Colors.black,
+                        offset: Offset(1.0, 1.0),
+                        blurRadius: 2.0
+                    )
+                ]
+            )
         );
     }
 
