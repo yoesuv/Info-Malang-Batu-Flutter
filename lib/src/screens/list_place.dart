@@ -10,6 +10,9 @@ class ListPlace extends StatelessWidget {
         bloc.getListPlace();
 
         return Scaffold(
+            appBar: AppBar(
+                title: Text('List Place'),
+            ),
             body: buildBody(bloc)
         );
     }
