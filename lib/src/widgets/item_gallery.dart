@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../data/constants.dart';
 
 class ItemGallery extends StatelessWidget {
 
@@ -10,7 +11,7 @@ class ItemGallery extends StatelessWidget {
     Widget build(BuildContext context) {
         return CachedNetworkImage(
             imageUrl: imageUrl,
-            placeholder: (context, url) => Image.asset('assets/images/placeholder_image.png', fit: BoxFit.cover),
+            placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
             errorWidget: (context, url, error) => Icon(Icons.error)
         );
     }

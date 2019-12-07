@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/item_place_model.dart';
+import '../data/dimens.dart';
+import '../data/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ItemPlace extends StatelessWidget {
@@ -13,22 +15,27 @@ class ItemPlace extends StatelessWidget {
             children: <Widget>[
                 SizedBox(
                     width: double.infinity,
-                    height: 180.0,
+                    height: Dimens.itemListPlaceHeight,
                     child: CachedNetworkImage(
                         imageUrl: itemPlaceModel.gambar,
                         fit: BoxFit.cover,
-                        placeholder: (context, url) => Image.asset('assets/images/placeholder_image.png', fit: BoxFit.cover),
+                        placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
                         errorWidget: (context, url, error) => Icon(Icons.error)
                     )
                 ),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                        textTitle(),
-                        textSubTitle()
-                    ]
+                Container(
+                    width: double.infinity,
+                    height: Dimens.itemListPlaceHeight,
+                    padding: EdgeInsets.only(left: Dimens.itemListPlaceTextPadding, bottom: Dimens.itemListPlaceTextPadding),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                            textTitle(),
+                            textSubTitle()
+                        ]
+                    )
                 )
-
             ]
         );
     }
