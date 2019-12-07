@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../blocs/list_place_provider.dart';
 import '../models/list_item_place_model.dart';
+import '../models/item_place_model.dart';
+import '../widgets/item_place.dart';
 
 class ListPlace extends StatelessWidget {
 
@@ -29,7 +31,8 @@ class ListPlace extends StatelessWidget {
                 return ListView.builder(
                     itemCount: snapshot.data.listItemPlaceModel.length,
                     itemBuilder: (context, index) {
-                        return Text(snapshot.data.listItemPlaceModel[index].nama);
+                        ItemPlaceModel itemPlaceModel = snapshot.data.listItemPlaceModel[index];
+                        return ItemPlace(itemPlaceModel: itemPlaceModel);
                     }
                 );
             }
