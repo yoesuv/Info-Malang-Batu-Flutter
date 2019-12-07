@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../blocs/list_gallery_provider.dart';
 import '../models/list_item_gallery_model.dart';
+import '../widgets/item_gallery.dart';
 
 class Gallery extends StatelessWidget {
 
@@ -30,7 +31,8 @@ class Gallery extends StatelessWidget {
                     itemCount: snapshot.data.listItemGalleryModel.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                     itemBuilder: (context, index) {
-                        return Text('item gallery');
+                        String imageUrl = snapshot.data.listItemGalleryModel[index].thumbnail;
+                        return ItemGallery(imageUrl: imageUrl);
                     }
                 );
             },
