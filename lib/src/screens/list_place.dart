@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/list_place_provider.dart';
-import '../models/item_place_model.dart';
+import '../models/list_item_place_model.dart';
 
 class ListPlace extends StatelessWidget {
 
@@ -17,16 +17,16 @@ class ListPlace extends StatelessWidget {
     Widget buildBody(ListPlaceBloc bloc) {
         return StreamBuilder(
             stream: bloc.listPlace,
-            builder: (BuildContext context, AsyncSnapshot<List<ItemPlaceModel>> snapshot){
+            builder: (BuildContext context, AsyncSnapshot<ListItemPlaceModel> snapshot){
                 if (!snapshot.hasData) {
                     return Center(
                         child: CircularProgressIndicator()
                     );
                 }
                 return ListView.builder(
-                    itemCount: snapshot.data.length,
+                    itemCount: snapshot.data.listItemPlaceModel.length,
                     itemBuilder: (context, index) {
-                        return Text(snapshot.data[index].nama);
+                        return Text(snapshot.data.listItemPlaceModel[index].nama);
                     }
                 );
             }
