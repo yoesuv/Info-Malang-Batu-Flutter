@@ -10,7 +10,7 @@ class ItemGallery extends StatelessWidget {
     Widget build(BuildContext context) {
         return CachedNetworkImage(
             imageUrl: imageUrl,
-            placeholder: (context, url) => CircularProgressIndicator(),
+            placeholder: (context, url) => Image.asset('assets/images/placeholder_image.png', fit: BoxFit.cover),
             errorWidget: (context, url, error) => Icon(Icons.error)
         );
     }
