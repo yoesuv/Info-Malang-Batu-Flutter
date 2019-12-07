@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'list_gallery_bloc.dart';
+export 'list_gallery_bloc.dart';
 
 class ListGalleryProvider extends InheritedWidget {
 

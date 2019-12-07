@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'list_place_bloc.dart';
+export 'list_place_bloc.dart';
 
 class ListPlaceProvider extends InheritedWidget {
 
