@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:map_view/map_view.dart';
 
 class MapsPlace extends StatelessWidget {
 
