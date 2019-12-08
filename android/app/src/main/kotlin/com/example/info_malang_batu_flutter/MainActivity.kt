@@ -1,4 +1,4 @@
-package com.example.info_malang_batu_flutter
+package com.yoesuv.infomalangbatuflutter
 
 import android.os.Bundle
 
