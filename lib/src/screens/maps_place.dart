@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class MapsPlace extends StatefulWidget {
-
-    State<MapsPlace> createState() => MapState();
-
-}
-
-class MapState extends State<MapsPlace> {
+class MapsPlace extends StatelessWidget {
 
     Widget build(BuildContext context) {
         return Scaffold(
@@ -19,8 +13,11 @@ class MapState extends State<MapsPlace> {
                     target: LatLng(-7.982914, 112.630875),
                     zoom: 9.0
                 ),
-                compassEnabled: true
+                compassEnabled: true,
+                myLocationEnabled: true,
+                myLocationButtonEnabled: true,
             )
         );
     }
+
 }
