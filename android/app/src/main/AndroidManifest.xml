@@ -12,6 +12,10 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="Info Malang Batu Flutter"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyB21TKg6wQRlNtu3b4-Y1XS9k_LmdJ7Kog"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
