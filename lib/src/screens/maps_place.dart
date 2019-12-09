@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../blocs/maps_provider.dart';
 import '../models/list_item_maps_pin_model.dart';
+import '../models/item_place_model.dart';
 
 class MapsPlace extends StatelessWidget {
 
@@ -58,7 +59,16 @@ class MapsPlace extends StatelessWidget {
             stream: bloc.listItemMapsPins,
             builder: (BuildContext context, AsyncSnapshot<ListItemMapsPinModel> snapshot) {
                 if (snapshot.hasData) {
-                    print('MapsPlace # jumlah pin ${snapshot.data.listItemGalleryModel.length}');
+                    //generate marker
+                    List<Marker> listMarker = [];
+                    snapshot.data.listItemGalleryModel.forEach((pin) {
+                        print(pin.name);
+                        listMarker.add(Marker(
+                            markerId: MarkerId(pin.name),
+                            position: LatLng(pin.latitude, pin.longitude),
+                        ));
+                    });
+
                     return GoogleMap (
                         initialCameraPosition: CameraPosition(
                             target: LatLng(-7.982914, 112.630875),
@@ -67,6 +77,7 @@ class MapsPlace extends StatelessWidget {
                         compassEnabled: true,
                         myLocationEnabled: true,
                         myLocationButtonEnabled: true,
+                        markers: Set<Marker>.of(listMarker)
                     );
                 } else {
                     return Center(
