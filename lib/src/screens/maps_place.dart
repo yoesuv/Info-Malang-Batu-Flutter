@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../blocs/maps_provider.dart';
+import '../models/list_item_maps_pin_model.dart';
 
 class MapsPlace extends StatelessWidget {
 
@@ -22,7 +23,8 @@ class MapsPlace extends StatelessWidget {
                             bloc.requestLocationPermission();
                             return requestLocationPermission(bloc);
                         } else {
-                            return buildMaps();
+                            bloc.getListMapsPin();
+                            return buildMaps(bloc);
                         }
                     } else {
                         return Center (
@@ -44,21 +46,35 @@ class MapsPlace extends StatelessWidget {
                         child: Text('Checking Location Permission')
                     );
                 }
-                return buildMaps();
+                bloc.getListMapsPin();
+                return buildMaps(bloc);
             }
         );
     }
 
-    Widget buildMaps() {
-        return GoogleMap (
-            initialCameraPosition: CameraPosition(
-                target: LatLng(-7.982914, 112.630875),
-                zoom: 9.0
-            ),
-            compassEnabled: true,
-            myLocationEnabled: true,
-            myLocationButtonEnabled: true,
+    Widget buildMaps(MapsBloc bloc) {
+        return StreamBuilder(
+            stream: bloc.listItemMapsPins,
+            builder: (BuildContext context, AsyncSnapshot<ListItemMapsPinModel> snapshot) {
+                if (!snapshot.hasData) {
+                    return Center(
+                        child: CircularProgressIndicator()
+                    );
+                } else {
+                    print('MapsPlace # jumlah pin ${snapshot.data.listItemGalleryModel.length}');
+                    return GoogleMap (
+                        initialCameraPosition: CameraPosition(
+                            target: LatLng(-7.982914, 112.630875),
+                            zoom: 9.0
+                        ),
+                        compassEnabled: true,
+                        myLocationEnabled: true,
+                        myLocationButtonEnabled: true,
+                    );
+                }
+            }
         );
+
     }
 
 }

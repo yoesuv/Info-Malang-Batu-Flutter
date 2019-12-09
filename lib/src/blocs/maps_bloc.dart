@@ -1,17 +1,18 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../resources/maps_provider.dart';
-import '../models/list_item_maps_pin.dart';
+import '../models/list_item_maps_pin_model.dart';
 
 class MapsBloc {
 
     final _mapsProvider = MapsProvider();
     final _locationPermission = PublishSubject<PermissionStatus>();
     final _requestLocationResult = PublishSubject<PermissionStatus>();
-    final _listItemMapsPin = PublishSubject<ListItemMapsPin>();
+    final _listItemMapsPin = PublishSubject<ListItemMapsPinModel>();
 
     Observable<PermissionStatus> get permissionStatus => _locationPermission.stream;
     Observable<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
+    Observable<ListItemMapsPinModel> get listItemMapsPins => _listItemMapsPin.stream;
 
     checkLocationPermission() async {
         final permissionStatus = await PermissionHandler().checkPermissionStatus(PermissionGroup.location);
