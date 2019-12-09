@@ -10,29 +10,44 @@ class MapsPlace extends StatelessWidget {
         final MapsBloc bloc = MapsProvider.of(context);
         bloc.checkLocationPermission();
 
-        return Scaffold(
-            appBar: AppBar(
+        return Scaffold (
+            appBar: AppBar (
                 title: Text('Maps')
             ),
             body: StreamBuilder(
                 stream: bloc.permissionStatus,
                 builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
                     if (snapshot.hasData) {
-                        print('MapsPlace # snapshot : ${snapshot.data}');
                         if (snapshot.data != PermissionStatus.granted) {
-                            print('MapsPlace # NEED PERMISSION');
+                            bloc.requestLocationPermission();
+                            return requestLocationPermission(bloc);
                         } else {
-                            print('MapsPlace # PERMISSION GRANTED');
+                            return buildMaps();
                         }
                     } else {
-                        print('MapsPlace # WAIT FOR SNAPSHOT');
+                        return Center (
+                            child: Text('Loading Maps...')
+                        );
                     }
-                    return buildMaps();
                 }
             )
         );
     }
 
+
+    Widget requestLocationPermission(MapsBloc bloc) {
+        return StreamBuilder(
+            stream: bloc.requestLocationPermissionResult,
+            builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
+                if (!snapshot.hasData) {
+                    return Center(
+                        child: Text('Checking Location Permission')
+                    );
+                }
+                return buildMaps();
+            }
+        );
+    }
 
     Widget buildMaps() {
         return GoogleMap (
