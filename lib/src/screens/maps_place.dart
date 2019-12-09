@@ -22,10 +22,9 @@ class MapsPlace extends StatelessWidget {
                     if (snapshot.hasData) {
                         if (snapshot.data != PermissionStatus.granted) {
                             bloc.requestLocationPermission();
-                            return requestLocationPermission(bloc);
+                            return requestLocationPermission(context, bloc);
                         } else {
-                            bloc.getListMapsPin();
-                            return buildMaps(bloc);
+                            return createMarker(context, bloc);
                         }
                     } else {
                         return Center (
@@ -38,13 +37,12 @@ class MapsPlace extends StatelessWidget {
     }
 
 
-    Widget requestLocationPermission(MapsBloc bloc) {
+    Widget requestLocationPermission(BuildContext context, MapsBloc bloc) {
         return StreamBuilder(
             stream: bloc.requestLocationPermissionResult,
             builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
                 if (snapshot.hasData) {
-                    bloc.getListMapsPin();
-                    return buildMaps(bloc);
+                    return createMarker(context, bloc);
                 } else {
                     return Center(
                         child: Text('Checking Location Permission')
@@ -54,7 +52,26 @@ class MapsPlace extends StatelessWidget {
         );
     }
 
-    Widget buildMaps(MapsBloc bloc) {
+    // create custom marker icon
+    Widget createMarker(BuildContext context, MapsBloc bloc) {
+        return FutureBuilder(
+            future: createIcons(context),
+            builder: (context, AsyncSnapshot<BitmapDescriptor> snapshot) {
+                if (snapshot.hasData) {
+                    BitmapDescriptor ico = snapshot.data;
+                    bloc.getListMapsPin();
+                    return buildMaps(bloc, ico);
+                } else {
+                    return Center(
+                        child: Text('Loading Markers...')
+                    );
+                }
+
+            }
+        );
+    }
+
+    Widget buildMaps(MapsBloc bloc, BitmapDescriptor iconMarker) {
         return StreamBuilder (
             stream: bloc.listItemMapsPins,
             builder: (BuildContext context, AsyncSnapshot<ListItemMapsPinModel> snapshot) {
@@ -64,7 +81,8 @@ class MapsPlace extends StatelessWidget {
                     snapshot.data.listItemGalleryModel.forEach((pin) {
                         listMarker.add(Marker(
                             markerId: MarkerId(pin.name),
-                            position: LatLng(pin.latitude, pin.longitude)
+                            position: LatLng(pin.latitude, pin.longitude),
+                            icon: iconMarker
                         ));
                     });
 
@@ -88,7 +106,7 @@ class MapsPlace extends StatelessWidget {
     }
 
     Future<BitmapDescriptor> createIcons(BuildContext context) {
-        return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context), Constants.iconMarker);
+        return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: Size(64.0, 64.0)) , Constants.iconMarker);
     }
 
 }
