@@ -3,7 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../blocs/maps_provider.dart';
 import '../models/list_item_maps_pin_model.dart';
-import '../models/item_place_model.dart';
+import '../data/constants.dart';
 
 class MapsPlace extends StatelessWidget {
 
@@ -62,10 +62,9 @@ class MapsPlace extends StatelessWidget {
                     //generate marker
                     List<Marker> listMarker = [];
                     snapshot.data.listItemGalleryModel.forEach((pin) {
-                        print(pin.name);
                         listMarker.add(Marker(
                             markerId: MarkerId(pin.name),
-                            position: LatLng(pin.latitude, pin.longitude),
+                            position: LatLng(pin.latitude, pin.longitude)
                         ));
                     });
 
@@ -86,7 +85,10 @@ class MapsPlace extends StatelessWidget {
                 }
             }
         );
+    }
 
+    Future<BitmapDescriptor> createIcons(BuildContext context) {
+        return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context), Constants.iconMarker);
     }
 
 }
