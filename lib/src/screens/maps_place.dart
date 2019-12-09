@@ -82,6 +82,7 @@ class MapsPlace extends StatelessWidget {
                         listMarker.add(Marker(
                             markerId: MarkerId(pin.name),
                             position: LatLng(pin.latitude, pin.longitude),
+                            infoWindow: InfoWindow(title: pin.name),
                             icon: iconMarker
                         ));
                     });
