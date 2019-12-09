@@ -1,11 +1,11 @@
-class ItemMapsPin {
+class ItemMapsPinModel {
 
     final String name;
-    final String lokasi;
-    final String latitude;
-    final String longitude;
+    final int lokasi;
+    final double latitude;
+    final double longitude;
 
-    ItemMapsPin.fromJson(Map<String, dynamic> parsedJson):
+    ItemMapsPinModel.fromJson(Map<String, dynamic> parsedJson):
         name = parsedJson['name'],
         lokasi = parsedJson['lokasi'],
         latitude = parsedJson['latitude'],
