@@ -41,26 +41,23 @@ class MapsPlace extends StatelessWidget {
         return StreamBuilder(
             stream: bloc.requestLocationPermissionResult,
             builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
-                if (!snapshot.hasData) {
+                if (snapshot.hasData) {
+                    bloc.getListMapsPin();
+                    return buildMaps(bloc);
+                } else {
                     return Center(
                         child: Text('Checking Location Permission')
                     );
                 }
-                bloc.getListMapsPin();
-                return buildMaps(bloc);
             }
         );
     }
 
     Widget buildMaps(MapsBloc bloc) {
-        return StreamBuilder(
+        return StreamBuilder (
             stream: bloc.listItemMapsPins,
             builder: (BuildContext context, AsyncSnapshot<ListItemMapsPinModel> snapshot) {
-                if (!snapshot.hasData) {
-                    return Center(
-                        child: CircularProgressIndicator()
-                    );
-                } else {
+                if (snapshot.hasData) {
                     print('MapsPlace # jumlah pin ${snapshot.data.listItemGalleryModel.length}');
                     return GoogleMap (
                         initialCameraPosition: CameraPosition(
@@ -70,6 +67,10 @@ class MapsPlace extends StatelessWidget {
                         compassEnabled: true,
                         myLocationEnabled: true,
                         myLocationButtonEnabled: true,
+                    );
+                } else {
+                    return Center(
+                        child: CircularProgressIndicator()
                     );
                 }
             }
