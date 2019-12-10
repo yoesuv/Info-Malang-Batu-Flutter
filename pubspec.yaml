@@ -28,6 +28,7 @@ dependencies:
   cached_network_image: ^1.1.3
   google_maps_flutter: ^0.5.21+13
   permission_handler: ^4.0.0
+  flutter_html: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -61,10 +62,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+     - family: Consola
+       fonts:
+         - asset: assets/fonts/consola.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
