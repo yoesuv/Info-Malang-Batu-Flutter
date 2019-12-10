@@ -34,7 +34,7 @@ class ItemLibrary extends StatelessWidget {
                     child: Html(
                         data: itemLibraryModel.license,
                         defaultTextStyle: TextStyle(
-                            fontSize: 11.0,
+                            fontSize: 12.0,
                             fontFamily: 'Consola'
                         ),
                     )
