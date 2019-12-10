@@ -51,13 +51,13 @@ class HomeState extends State<Home> {
                     title: Text('Peta')
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.info_outline),
+                    icon: Icon(Icons.info),
                     title: Text('Tentang')
                 )
             ],
             type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Colors.grey,
-            selectedItemColor: Colors.blueAccent,
+            unselectedItemColor: Colors.grey[700],
+            selectedItemColor: Colors.teal,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
         );
