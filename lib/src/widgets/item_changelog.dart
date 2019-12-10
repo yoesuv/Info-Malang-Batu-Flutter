@@ -10,6 +10,7 @@ class ItemChangelog extends StatelessWidget {
 
     Widget build(context) {
         return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
                 Container(
                     padding: EdgeInsets.only(left: Dimens.itemChangelogPadding, right: Dimens.itemChangelogPadding, top: Dimens.itemChangelogPadding),
@@ -20,7 +21,7 @@ class ItemChangelog extends StatelessWidget {
                 ),
                 Container(
                     padding: EdgeInsets.all(Dimens.itemChangelogPadding),
-                    child: Text(itemChangelogModel.version, style: TextStyle(
+                    child: Text(itemChangelogModel.changelog, style: TextStyle(
                         fontSize: 14.0
                     )),
                 ),
