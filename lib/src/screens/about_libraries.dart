@@ -8,12 +8,9 @@ class AboutLibraries extends StatelessWidget {
     Widget build(BuildContext context) {
 
         final AboutBloc bloc = AboutProvider.of(context);
-        bloc.createListLibrary();
 
         return Scaffold(
-            body: Center(
-                child: buildListLibrary(bloc)
-            ),
+            body: buildListLibrary(bloc)
         );
     }
 
