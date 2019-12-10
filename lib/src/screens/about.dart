@@ -31,7 +31,9 @@ class AboutState extends State<About> with TickerProviderStateMixin {
             length: 4,
             child: Scaffold(
                 appBar: AppBar(
-                        title: Text('Tentang'),
+                        title: Text('Tentang', style: TextStyle(
+                            fontFamily: 'Pacifico'
+                        )),
                     bottom: tabBarItem,
                 ),
                 body: TabBarView(
