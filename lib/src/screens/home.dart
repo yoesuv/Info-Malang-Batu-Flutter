@@ -40,24 +40,24 @@ class HomeState extends State<Home> {
             items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    title: Text('List')
+                    title: Text('Lokasi')
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.image),
-                    title: Text('Gallery')
+                    title: Text('Galeri')
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.map),
-                    title: Text('Maps')
+                    title: Text('Peta')
                 ),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.info_outline),
-                    title: Text('About')
+                    icon: Icon(Icons.info),
+                    title: Text('Tentang')
                 )
             ],
             type: BottomNavigationBarType.fixed,
-            unselectedItemColor: Colors.grey,
-            selectedItemColor: Colors.blueAccent,
+            unselectedItemColor: Colors.grey[700],
+            selectedItemColor: Colors.teal,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
         );

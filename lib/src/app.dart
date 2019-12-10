@@ -14,6 +14,10 @@ class App extends StatelessWidget {
                     child: AboutProvider (
                         child: MaterialApp (
                             title: 'Info Malang Batu',
+                            theme: ThemeData(
+                                primaryColor: Colors.teal,
+                                accentColor: Colors.white
+                            ),
                             home: Home()
                         )
                     )
