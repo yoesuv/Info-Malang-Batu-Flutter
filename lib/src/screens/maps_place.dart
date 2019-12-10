@@ -14,7 +14,7 @@ class MapsPlace extends StatelessWidget {
 
         return Scaffold (
             appBar: AppBar (
-                title: Text('Maps')
+                title: Text('Peta')
             ),
             body: StreamBuilder(
                 stream: bloc.permissionStatus,

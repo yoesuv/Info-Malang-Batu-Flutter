@@ -18,10 +18,10 @@ class AboutState extends State<About> with TickerProviderStateMixin {
         tabController = TabController(length: 4, vsync: this);
         var tabBarItem = TabBar(
             tabs: <Widget>[
-                Tab(text: 'Information'),
-                Tab(text: 'Changelog'),
-                Tab(text: 'Thanks'),
-                Tab(text: 'Libraries')
+                Tab(text: 'Informasi'),
+                Tab(text: 'Versi Rilis'),
+                Tab(text: 'Terima Kasih'),
+                Tab(text: 'Pustaka')
             ],
             isScrollable: true,
             controller: tabController,
@@ -31,7 +31,7 @@ class AboutState extends State<About> with TickerProviderStateMixin {
             length: 4,
             child: Scaffold(
                 appBar: AppBar(
-                    title: Text('About'),
+                        title: Text('Tentang'),
                     bottom: tabBarItem,
                 ),
                 body: TabBarView(

@@ -12,7 +12,7 @@ class Gallery extends StatelessWidget {
 
         return Scaffold(
             appBar: AppBar(
-                title: Text('Gallery'),
+                title: Text('Galeri'),
             ),
             body: buildBody(bloc)
         );

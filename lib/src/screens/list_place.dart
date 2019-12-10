@@ -13,7 +13,7 @@ class ListPlace extends StatelessWidget {
 
         return Scaffold(
             appBar: AppBar(
-                title: Text('List Place'),
+                title: Text('Lokasi'),
             ),
             body: buildBody(bloc)
         );
