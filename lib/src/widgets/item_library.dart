@@ -9,10 +9,20 @@ class ItemLibrary extends StatelessWidget {
 
     Widget build(BuildContext context) {
         return Column (
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-                Text('${itemLibraryModel.name}'),
-                Text('${itemLibraryModel.url}'),
-                Text('${itemLibraryModel.license}'),
+                Text('${itemLibraryModel.name}', style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold
+                )),
+                Text('${itemLibraryModel.url}', style: TextStyle(
+                    color: Colors.teal,
+                    fontSize: 14.0,
+                )),
+                Text('${itemLibraryModel.license}', style: TextStyle(
+                    fontSize: 12.0,
+                )),
                 Divider()
             ]
         );
