@@ -9,10 +9,16 @@ class ItemGallery extends StatelessWidget {
     ItemGallery({this.imageUrl});
 
     Widget build(BuildContext context) {
-        return CachedNetworkImage(
-            imageUrl: imageUrl,
-            placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
-            errorWidget: (context, url, error) => Icon(Icons.error)
+        return InkWell (
+            onTap: () {
+                print('go to detail gallery');
+                Navigator.pushNamed(context, '/detailGallery');
+            },
+            child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
+                errorWidget: (context, url, error) => Icon(Icons.error)
+            )
         );
     }
 
