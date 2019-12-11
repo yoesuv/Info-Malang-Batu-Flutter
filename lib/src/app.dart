@@ -6,6 +6,7 @@ import 'blocs/list_place_provider.dart';
 import 'blocs/list_gallery_provider.dart';
 import 'blocs/maps_provider.dart';
 import 'blocs/about_provider.dart';
+import 'models/item_place_model.dart';
 
 class App extends StatelessWidget {
 
@@ -36,10 +37,11 @@ class App extends StatelessWidget {
                     return Home();
                 }
             );
-        } else if (settings.name == '/detailPlace') {
+        } else if (settings.name == ListPlaceDetail.routeListPlaceDetail) {
+            final ItemPlaceModel model = settings.arguments;
             return MaterialPageRoute(
                 builder: (context) {
-                    return ListPlaceDetail();
+                    return ListPlaceDetail(itemPlaceModel: model);
                 }
             );
         } else {
