@@ -33,8 +33,7 @@ class Gallery extends StatelessWidget {
                     itemCount: snapshot.data.listItemGalleryModel.length,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                     itemBuilder: (context, index) {
-                        String imageUrl = snapshot.data.listItemGalleryModel[index].thumbnail;
-                        return ItemGallery(imageUrl: imageUrl);
+                        return ItemGallery(itemGalleryModel: snapshot.data.listItemGalleryModel[index]);
                     }
                 );
             },

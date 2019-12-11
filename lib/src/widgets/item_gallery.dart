@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../data/constants.dart';
+import '../models/item_gallery_model.dart';
 
 class ItemGallery extends StatelessWidget {
 
-    final String imageUrl;
+    final ItemGalleryModel itemGalleryModel;
 
-    ItemGallery({this.imageUrl});
+    ItemGallery({this.itemGalleryModel});
 
     Widget build(BuildContext context) {
         return InkWell (
@@ -15,7 +16,7 @@ class ItemGallery extends StatelessWidget {
                 Navigator.pushNamed(context, '/detailGallery');
             },
             child: CachedNetworkImage(
-                imageUrl: imageUrl,
+                imageUrl: itemGalleryModel.thumbnail,
                 placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
                 errorWidget: (context, url, error) => Icon(Icons.error)
             )
