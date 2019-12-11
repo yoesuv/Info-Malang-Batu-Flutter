@@ -13,6 +13,11 @@ class AboutBloc {
     List<ItemLibraryModel> createListLibrary() {
         List<ItemLibraryModel> listLib = [];
         listLib.add(ItemLibraryModel(name: Libraries.flutter, url: Libraries.flutterUrl, license: Libraries.flutterLicense));
+        listLib.add(ItemLibraryModel(name: Libraries.cachedNetworkImage, url: Libraries.cachedNetworkImageUrl, license: Libraries.cachedNetworkImageLicense));
+        listLib.add(ItemLibraryModel(name: Libraries.flutterHtml, url: Libraries.flutterHtmlUrl, license: Libraries.flutterHtmlLicense));
+        listLib.add(ItemLibraryModel(name: Libraries.googleMapsFlutter, url: Libraries.googleMapsFlutterUrl, license: Libraries.googleMapsFlutterLicense));
+        listLib.add(ItemLibraryModel(name: Libraries.http, url: Libraries.httpUrl, license: Libraries.httpLicense));
+        listLib.add(ItemLibraryModel(name: Libraries.permissionHandler, url: Libraries.permissionHandlerUrl, license: Libraries.permissionHandlerLicense));
         return listLib;
     }
 
