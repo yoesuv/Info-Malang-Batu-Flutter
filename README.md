@@ -1,16 +1,20 @@
-# info_malang_batu_flutter
+## Info Malang Batu Flutter 1.0.0 ##
 
-A new Flutter project.
+#### Whats new? #####
+- :tada: initial release
 
-## Getting Started
+Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
+download APK File [here](https://www.dropbox.com/s/idegnciwgh3dtfa)
 
-This project is a starting point for a Flutter application.
+:sparkles: tested on Android only
+### Screenshot Android ###
+| - | - | - | - |
+| :---: | :---: | :---: | :---: |
+| - | - | - | - |
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### List Libraries used in this Project ####
+- [Cached Network Image](https://pub.dev/packages/cached_network_image)
+- [Flutter Html](https://pub.dev/packages/flutter_html)
+- [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
+- [Http](https://pub.dev/packages/http)
+- [Permission Handler](https://pub.dev/packages/permission_handler)
