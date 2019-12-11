@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import '../models/item_gallery_model.dart';
 
 class GalleryDetail extends StatelessWidget {
+
+    final ItemGalleryModel itemGalleryModel;
+
+    const GalleryDetail({Key key, @required this.itemGalleryModel}): super(key: key);
 
     Widget build(BuildContext context) {
         return Scaffold(
@@ -10,7 +15,7 @@ class GalleryDetail extends StatelessWidget {
                 )),
             ),
             body: Center(
-                child: Text('Detail Galeri')
+                child: Text(itemGalleryModel.caption)
             ),
         );
     }

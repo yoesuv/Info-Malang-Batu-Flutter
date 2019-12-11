@@ -13,7 +13,7 @@ class ItemGallery extends StatelessWidget {
         return InkWell (
             onTap: () {
                 print('go to detail gallery');
-                Navigator.pushNamed(context, '/detailGallery');
+                Navigator.pushNamed(context, '/detailGallery', arguments: itemGalleryModel);
             },
             child: CachedNetworkImage(
                 imageUrl: itemGalleryModel.thumbnail,

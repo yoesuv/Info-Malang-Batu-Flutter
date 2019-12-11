@@ -7,6 +7,7 @@ import 'blocs/list_gallery_provider.dart';
 import 'blocs/maps_provider.dart';
 import 'blocs/about_provider.dart';
 import 'models/item_place_model.dart';
+import 'models/item_gallery_model.dart';
 
 class App extends StatelessWidget {
 
@@ -45,9 +46,10 @@ class App extends StatelessWidget {
                 }
             );
         } else {
+            final ItemGalleryModel model = settings.arguments;
             return MaterialPageRoute(
                 builder: (context) {
-                    return GalleryDetail();
+                    return GalleryDetail(itemGalleryModel: model);
                 }
             );
         }
