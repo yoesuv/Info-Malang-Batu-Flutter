@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../data/constants.dart';
 import 'home.dart';
 
 class Splash extends StatelessWidget {
@@ -25,7 +26,7 @@ class Splash extends StatelessWidget {
                             alignment: Alignment.bottomCenter,
                             child: Container(
                                 padding: EdgeInsets.only(bottom: 8.0),
-                                child: Text('versi 1.0.1', style: TextStyle(
+                                child: Text('versi ${Constants.appVersion}', style: TextStyle(
                                     fontSize: 14.0,
                                     color: Colors.white
                                 ))

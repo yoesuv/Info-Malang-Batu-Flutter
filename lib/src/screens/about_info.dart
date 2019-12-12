@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/dimens.dart';
+import '../data/constants.dart';
 
 class AboutInfo extends StatelessWidget {
 
@@ -15,7 +16,7 @@ class AboutInfo extends StatelessWidget {
                             fontFamily: 'Pacifico'
                         ))
                     ),
-                    Text('1.0.0', style: TextStyle(
+                    Text('Versi ${Constants.appVersion}', style: TextStyle(
                         fontSize: 14.0
                     )),
                     Container(
