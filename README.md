@@ -1,7 +1,7 @@
-## Info Malang Batu Flutter 1.0.0 ##
+## Info Malang Batu Flutter 1.0.1 ##
 
 #### Whats new? #####
-- :tada: initial release
+- :sparkles: add splash screen
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
 download APK File [here](https://www.dropbox.com/s/idegnciwgh3dtfa)
