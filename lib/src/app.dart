@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/splash.dart';
 import 'screens/home.dart';
 import 'screens/list_place_detail.dart';
 import 'screens/gallery_detail.dart';
@@ -31,8 +32,14 @@ class App extends StatelessWidget {
     }
 
     Route routes(RouteSettings settings) {
-        print(settings.name);
+        print('App # ${settings.name}');
         if (settings.name == '/') {
+            return MaterialPageRoute(
+                builder: (context) {
+                    return Splash();
+                }
+            );
+        } else if (settings.name == Home.routeHome) {
             return MaterialPageRoute(
                 builder: (context) {
                     return Home();
