@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/about_provider.dart';
-import '../models/item_changelog_model.dart';
+import '../models/about/item_changelog_model.dart';
 import '../widgets/item_changelog.dart';
 
 class AboutChangelog extends StatelessWidget {

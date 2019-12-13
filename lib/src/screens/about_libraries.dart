@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/about_provider.dart';
-import '../models/item_library_model.dart';
+import '../models/about/item_library_model.dart';
 import '../widgets/item_library.dart';
 
 class AboutLibraries extends StatelessWidget {

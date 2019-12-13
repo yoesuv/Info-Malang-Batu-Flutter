@@ -1,5 +1,5 @@
-import '../models/item_library_model.dart';
-import '../models/item_changelog_model.dart';
+import '../models/about/item_library_model.dart';
+import '../models/about/item_changelog_model.dart';
 import '../data/libraries.dart';
 
 class AboutBloc {
