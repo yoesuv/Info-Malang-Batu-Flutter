@@ -1,7 +1,7 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../resources/maps_provider.dart';
-import '../models/list_item_maps_pin_model.dart';
+import '../models/maps/list_item_maps_pin_model.dart';
 
 class MapsBloc {
 

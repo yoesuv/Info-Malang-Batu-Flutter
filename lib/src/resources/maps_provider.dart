@@ -1,7 +1,7 @@
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
 import '../data/constants.dart';
-import '../models/list_item_maps_pin_model.dart';
+import '../models/maps/list_item_maps_pin_model.dart';
 
 class MapsProvider {
 
