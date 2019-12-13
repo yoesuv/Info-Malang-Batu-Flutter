@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../blocs/list_gallery_provider.dart';
-import '../models/list_item_gallery_model.dart';
+import '../models/gallery/list_item_gallery_model.dart';
 import '../widgets/item_gallery.dart';
 
 class Gallery extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:http/http.dart' show Client;
 import 'dart:convert';
 import '../data/constants.dart';
-import '../models/list_item_gallery_model.dart';
+import '../models/gallery/list_item_gallery_model.dart';
 
 class ListGalleryProvider {
 
