@@ -11,7 +11,7 @@ class AboutProvider extends InheritedWidget {
     bool updateShouldNotify(_) => true;
 
     static AboutBloc of(BuildContext context) {
-        return (context.inheritFromWidgetOfExactType(AboutProvider) as AboutProvider).bloc;
+        return context.dependOnInheritedWidgetOfExactType<AboutProvider>().bloc;
     }
 
 }

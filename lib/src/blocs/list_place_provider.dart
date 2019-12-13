@@ -11,7 +11,7 @@ class ListPlaceProvider extends InheritedWidget {
     bool updateShouldNotify(_) => true;
 
     static ListPlaceBloc of(BuildContext context) {
-        return (context.inheritFromWidgetOfExactType(ListPlaceProvider) as ListPlaceProvider).bloc;
+        return context.dependOnInheritedWidgetOfExactType<ListPlaceProvider>().bloc;
     }
 
 }

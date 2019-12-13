@@ -11,7 +11,7 @@ class MapsProvider extends InheritedWidget {
     bool updateShouldNotify(_) => true;
 
     static MapsBloc of(BuildContext context) {
-        return (context.inheritFromWidgetOfExactType(MapsProvider) as MapsProvider).bloc;
+        return context.dependOnInheritedWidgetOfExactType<MapsProvider>().bloc;
     }
 
 }

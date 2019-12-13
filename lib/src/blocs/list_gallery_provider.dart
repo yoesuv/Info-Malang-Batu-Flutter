@@ -11,7 +11,7 @@ class ListGalleryProvider extends InheritedWidget {
     bool updateShouldNotify(_) => true;
 
     static ListGalleryBloc of(BuildContext context) {
-        return (context.inheritFromWidgetOfExactType(ListGalleryProvider) as ListGalleryProvider).bloc;
+        return context.dependOnInheritedWidgetOfExactType<ListGalleryProvider>().bloc;
     }
 
 }
