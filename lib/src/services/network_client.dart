@@ -3,7 +3,7 @@ import '../data/constants.dart';
 
 class NetworkClient {
 
-    Dio dio;
+    static Dio dio;
 
     NetworkClient(){
         dio = Dio(options);
