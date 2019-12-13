@@ -7,7 +7,7 @@ import 'blocs/list_place_provider.dart';
 import 'blocs/list_gallery_provider.dart';
 import 'blocs/maps_provider.dart';
 import 'blocs/about_provider.dart';
-import 'models/item_place_model.dart';
+import 'models/list_place/item_place_model.dart';
 import 'models/item_gallery_model.dart';
 
 class App extends StatelessWidget {

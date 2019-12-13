@@ -1,5 +1,5 @@
 import '../services/network_client.dart';
-import '../models/list_item_place_model.dart';
+import '../models/list_place/list_item_place_model.dart';
 import '../models/service_model.dart';
 import 'package:dio/dio.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/item_place_model.dart';
+import '../models/list_place/item_place_model.dart';
 import '../data/dimens.dart';
 import '../data/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';

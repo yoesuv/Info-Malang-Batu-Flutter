@@ -1,6 +1,6 @@
 import 'package:rxdart/rxdart.dart';
 import '../resources/list_place_provider.dart';
-import '../models/list_item_place_model.dart';
+import '../models/list_place/list_item_place_model.dart';
 
 class ListPlaceBloc {
 
