@@ -1,11 +1,11 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:permission_handler/permission_handler.dart';
-import '../resources/maps_provider.dart';
+import '../repositories/maps_repository.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
 
 class MapsBloc {
 
-    final _mapsProvider = MapsProvider();
+    final _mapsProvider = MapsRepository();
     final _locationPermission = PublishSubject<PermissionStatus>();
     final _requestLocationResult = PublishSubject<PermissionStatus>();
     final _listItemMapsPin = PublishSubject<ListItemMapsPinModel>();

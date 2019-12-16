@@ -1,10 +1,10 @@
 import 'package:rxdart/rxdart.dart';
-import '../resources/list_place_provider.dart';
+import '../repositories/list_place_repository.dart';
 import '../models/list_place/list_item_place_model.dart';
 
 class ListPlaceBloc {
 
-    final _listPlaceProvider = ListPlaceProvider();
+    final _listPlaceProvider = ListPlaceRepository();
     final _listPlace = PublishSubject<ListItemPlaceModel>();
 
     Observable<ListItemPlaceModel> get listPlace => _listPlace.stream;

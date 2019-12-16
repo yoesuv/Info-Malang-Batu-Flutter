@@ -3,7 +3,7 @@ import 'dart:convert';
 import '../data/constants.dart';
 import '../models/gallery/list_item_gallery_model.dart';
 
-class ListGalleryProvider {
+class ListGalleryRepository {
 
     Client client = Client();
 
