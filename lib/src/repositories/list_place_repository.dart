@@ -1,16 +1,18 @@
-import 'package:http/http.dart' show Client;
-import 'dart:convert';
-import '../data/constants.dart';
+import 'package:dio/dio.dart';
 import '../models/list_place/list_item_place_model.dart';
+import '../services/network_client.dart';
 
 class ListPlaceRepository {
 
-    Client client = Client();
+    Dio dio;
+
+    ListPlaceRepository() {
+        dio = NetworkClient().dio;
+    }
 
     Future<ListItemPlaceModel> getListPlace() async {
-        final response = await client.get('${Constants.baseUrl}/List_place_malang_batu.json');
-        final parsedJson = json.decode(response.body);
-        return ListItemPlaceModel.fromJson(parsedJson);
+        final Response response = await dio.get('/List_place_malang_batu.json');
+        return ListItemPlaceModel.fromJson(response.data);
     }
 
 }

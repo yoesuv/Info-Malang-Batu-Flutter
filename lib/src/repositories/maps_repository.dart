@@ -1,16 +1,18 @@
-import 'package:http/http.dart' show Client;
-import 'dart:convert';
-import '../data/constants.dart';
+import 'package:dio/dio.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
+import '../services/network_client.dart';
 
 class MapsRepository {
 
-    Client client = Client();
+    Dio dio;
+
+    MapsRepository() {
+        dio = NetworkClient().dio;
+    }
 
     Future<ListItemMapsPinModel> getMapsPin() async {
-        final response = await client.get('${Constants.baseUrl}/Maps_Malang_Batu.json');
-        final parsedJson = json.decode(response.body);
-        return ListItemMapsPinModel.fromJson(parsedJson);
+        final Response response = await dio.get('/Maps_Malang_Batu.json');
+        return ListItemMapsPinModel.fromJson(response.data);
     }
 
 }
