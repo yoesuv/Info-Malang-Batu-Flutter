@@ -27,7 +27,9 @@ class ListPlace extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<ListItemPlaceModel> snapshot){
                 if (!snapshot.hasData) {
                     return Center(
-                        child: CircularProgressIndicator()
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
+                        )
                     );
                 }
                 return ListView.builder(

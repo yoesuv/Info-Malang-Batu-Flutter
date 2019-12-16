@@ -101,7 +101,9 @@ class MapsPlace extends StatelessWidget {
                     );
                 } else {
                     return Center(
-                        child: CircularProgressIndicator()
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
+                        )
                     );
                 }
             }

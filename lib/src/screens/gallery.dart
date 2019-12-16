@@ -26,7 +26,9 @@ class Gallery extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<ListItemGalleryModel> snapshot) {
                 if (!snapshot.hasData) {
                     return Center(
-                        child: CircularProgressIndicator()
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
+                        )
                     );
                 }
                 return GridView.builder(
