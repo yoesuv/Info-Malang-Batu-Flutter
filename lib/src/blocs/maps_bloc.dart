@@ -5,7 +5,7 @@ import '../models/maps/list_item_maps_pin_model.dart';
 
 class MapsBloc {
 
-    final _mapsProvider = MapsRepository();
+    final _mapsRepository = MapsRepository();
     final _locationPermission = PublishSubject<PermissionStatus>();
     final _requestLocationResult = PublishSubject<PermissionStatus>();
     final _listItemMapsPin = PublishSubject<ListItemMapsPinModel>();
@@ -26,7 +26,7 @@ class MapsBloc {
     }
 
     getListMapsPin() async {
-        final listMapsPin = await _mapsProvider.getMapsPin();
+        final listMapsPin = await _mapsRepository.getMapsPin();
         _listItemMapsPin.sink.add(listMapsPin);
     }
 
