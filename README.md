@@ -22,7 +22,7 @@ download APK File [here](https://www.dropbox.com/s/idegnciwgh3dtfa)
 
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
+- [Dio](https://pub.dev/packages/dio)
 - [Flutter Html](https://pub.dev/packages/flutter_html)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
-- [Http](https://pub.dev/packages/http)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
