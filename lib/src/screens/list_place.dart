@@ -29,13 +29,7 @@ class ListPlace extends StatelessWidget {
                 if (snapshot.hasData) {
                     switch (snapshot.data.status) {
                         case Status.COMPLETED:
-                            return ListView.builder(
-                                itemCount: snapshot.data.data.listItemPlaceModel.length,
-                                itemBuilder: (context, index) {
-                                    ItemPlaceModel itemPlaceModel = snapshot.data.data.listItemPlaceModel[index];
-                                    return ItemPlace(itemPlaceModel: itemPlaceModel);
-                                }
-                            );
+                            return buildList(snapshot.data.data);
                         break;
                         case Status.ERROR:
                             return Center(
@@ -54,6 +48,16 @@ class ListPlace extends StatelessWidget {
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
                     )
                 );
+            }
+        );
+    }
+
+    Widget buildList(ListItemPlaceModel model) {
+        return ListView.builder(
+            itemCount: model.listItemPlaceModel.length,
+            itemBuilder: (context, index) {
+                ItemPlaceModel itemPlaceModel = model.listItemPlaceModel[index];
+                return ItemPlace(itemPlaceModel: itemPlaceModel);
             }
         );
     }
