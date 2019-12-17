@@ -10,8 +10,13 @@ class ListPlaceBloc {
     Observable<ListItemPlaceModel> get listPlace => _listPlace.stream;
 
     getListPlace() async {
-        final listPlace = await _listPlaceRepository.getListPlace();
-        _listPlace.sink.add(listPlace);
+        try {
+            final listPlace = await _listPlaceRepository.getListPlace();
+            _listPlace.sink.add(listPlace);
+        } catch (e) {
+            print('ListPlaceBloc # $e');
+        }
+
     }
 
     dispose() {
