@@ -115,7 +115,7 @@ packages:
       name: google_maps_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.21+13"
+    version: "0.5.21+15"
   html:
     dependency: transitive
     description:
