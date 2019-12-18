@@ -1,11 +1,12 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:permission_handler/permission_handler.dart';
+import '../blocs/bloc.dart';
 import '../repositories/maps_repository.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
 import '../models/service_model.dart';
 import '../services/app_exceptions.dart';
 
-class MapsBloc {
+class MapsBloc extends Bloc {
 
     final _mapsRepository = MapsRepository();
     final _locationPermission = PublishSubject<PermissionStatus>();

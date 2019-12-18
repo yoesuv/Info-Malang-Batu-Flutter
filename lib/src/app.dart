@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'blocs/bloc_provider.dart';
 import 'blocs/list_place_bloc.dart';
 import 'blocs/list_gallery_bloc.dart';
-import 'blocs/maps_provider.dart';
+import 'blocs/maps_bloc.dart';
 import 'blocs/about_provider.dart';
 import 'routes/routes.dart';
 
@@ -13,7 +13,8 @@ class App extends StatelessWidget {
             bloc: ListPlaceBloc(),
             child: BlocProvider (
                 bloc: ListGalleryBloc(),
-                child: MapsProvider (
+                child: BlocProvider (
+                    bloc: MapsBloc(),
                     child: AboutProvider (
                         child: MaterialApp (
                             title: 'Info Malang Batu',

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
-import '../blocs/maps_provider.dart';
+import '../blocs/maps_bloc.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
 import '../models/service_model.dart';
 import '../data/constants.dart';
@@ -10,7 +10,7 @@ class MapsPlace extends StatelessWidget {
 
     Widget build(BuildContext context) {
 
-        final MapsBloc bloc = MapsProvider.of(context);
+        final MapsBloc bloc = MapsBloc();
         bloc.checkLocationPermission();
 
         return Scaffold (
