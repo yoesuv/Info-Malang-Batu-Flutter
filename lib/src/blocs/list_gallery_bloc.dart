@@ -1,10 +1,11 @@
 import 'package:rxdart/rxdart.dart';
+import '../blocs/bloc.dart';
 import '../repositories/list_gallery_repository.dart';
 import '../models/service_model.dart';
 import '../models/gallery/list_item_gallery_model.dart';
 import '../services/app_exceptions.dart';
 
-class ListGalleryBloc {
+class ListGalleryBloc extends Bloc {
 
     final _listGalleryRepository = ListGalleryRepository();
     final _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();

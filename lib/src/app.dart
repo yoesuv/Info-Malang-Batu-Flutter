@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'blocs/bloc_provider.dart';
 import 'blocs/list_place_bloc.dart';
-import 'blocs/list_gallery_provider.dart';
+import 'blocs/list_gallery_bloc.dart';
 import 'blocs/maps_provider.dart';
 import 'blocs/about_provider.dart';
 import 'routes/routes.dart';
@@ -11,7 +11,8 @@ class App extends StatelessWidget {
     Widget build(BuildContext context) {
         return BlocProvider (
             bloc: ListPlaceBloc(),
-            child: ListGalleryProvider (
+            child: BlocProvider (
+                bloc: ListGalleryBloc(),
                 child: MapsProvider (
                     child: AboutProvider (
                         child: MaterialApp (
