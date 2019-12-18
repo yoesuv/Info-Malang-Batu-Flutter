@@ -1,10 +1,11 @@
 import 'package:rxdart/rxdart.dart';
+import '../blocs/bloc.dart';
 import '../repositories/list_place_repository.dart';
 import '../models/service_model.dart';
 import '../models/list_place/list_item_place_model.dart';
 import '../services/app_exceptions.dart';
 
-class ListPlaceBloc {
+class ListPlaceBloc implements Bloc {
 
     final _listPlaceRepository = ListPlaceRepository();
     final _listPlace = PublishSubject<ServiceModel<ListItemPlaceModel>>();

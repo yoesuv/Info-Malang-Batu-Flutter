@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../blocs/list_place_provider.dart';
+import '../blocs/list_place_bloc.dart';
 import '../models/list_place/list_item_place_model.dart';
 import '../models/list_place/item_place_model.dart';
 import '../models/service_model.dart';
@@ -9,7 +9,7 @@ class ListPlace extends StatelessWidget {
 
     Widget build(BuildContext context) {
 
-        final ListPlaceBloc bloc = ListPlaceProvider.of(context);
+        final ListPlaceBloc bloc = ListPlaceBloc();
         bloc.getListPlace();
 
         return Scaffold(
