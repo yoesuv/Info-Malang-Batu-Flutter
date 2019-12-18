@@ -2,17 +2,19 @@ import 'package:rxdart/rxdart.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../repositories/maps_repository.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
+import '../models/service_model.dart';
+import '../services/app_exceptions.dart';
 
 class MapsBloc {
 
     final _mapsRepository = MapsRepository();
     final _locationPermission = PublishSubject<PermissionStatus>();
     final _requestLocationResult = PublishSubject<PermissionStatus>();
-    final _listItemMapsPin = PublishSubject<ListItemMapsPinModel>();
+    final _listItemMapsPin = PublishSubject<ServiceModel<ListItemMapsPinModel>>();
 
     Observable<PermissionStatus> get permissionStatus => _locationPermission.stream;
     Observable<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
-    Observable<ListItemMapsPinModel> get listItemMapsPins => _listItemMapsPin.stream;
+    Observable<ServiceModel<ListItemMapsPinModel>> get listItemMapsPins => _listItemMapsPin.stream;
 
     checkLocationPermission() async {
         final permissionStatus = await PermissionHandler().checkPermissionStatus(PermissionGroup.location);
@@ -26,8 +28,17 @@ class MapsBloc {
     }
 
     getListMapsPin() async {
-        final listMapsPin = await _mapsRepository.getMapsPin();
-        _listItemMapsPin.sink.add(listMapsPin);
+        try {
+            final listMapsPin = await _mapsRepository.getMapsPin();
+            _listItemMapsPin.sink.add(ServiceModel.completed(listMapsPin));
+        } catch (e) {
+            if (e is AppException) {
+                _listItemMapsPin.sink.add(ServiceModel.dioError(e));
+            } else {
+                _listItemMapsPin.sink.add(ServiceModel.error('Unknown Exception'));
+            }
+        }
+
     }
 
     dispose() {
