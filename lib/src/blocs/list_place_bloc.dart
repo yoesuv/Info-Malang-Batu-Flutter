@@ -25,6 +25,7 @@ class ListPlaceBloc {
     }
 
     dispose() {
+        print('ListPlaceBloc # dispose');
         _listPlace.close();
     }
 
