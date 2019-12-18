@@ -1,8 +1,9 @@
 import '../models/about/item_library_model.dart';
 import '../models/about/item_changelog_model.dart';
 import '../data/libraries.dart';
+import '../blocs/bloc.dart';
 
-class AboutBloc {
+class AboutBloc extends Bloc {
 
     List<ItemChangelogModel> createListChangelog() {
         List<ItemChangelogModel> listChangelog = [];
@@ -20,6 +21,10 @@ class AboutBloc {
         listLib.add(ItemLibraryModel(name: Libraries.googleMapsFlutter, url: Libraries.googleMapsFlutterUrl, license: Libraries.googleMapsFlutterLicense));
         listLib.add(ItemLibraryModel(name: Libraries.permissionHandler, url: Libraries.permissionHandlerUrl, license: Libraries.permissionHandlerLicense));
         return listLib;
+    }
+
+    dispose() {
+
     }
 
 }
