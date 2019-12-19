@@ -6,6 +6,9 @@ import 'maps_place.dart';
 import 'about.dart';
 
 class Home extends StatefulWidget {
+
+    static const String routeHome = '/home';
+
     Home({Key key}) : super(key: key);
     HomeState createState() => HomeState();
 }

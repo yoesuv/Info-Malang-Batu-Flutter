@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../models/item_gallery_model.dart';
+import '../models/gallery/item_gallery_model.dart';
 import '../data/constants.dart';
 import '../data/dimens.dart';
 

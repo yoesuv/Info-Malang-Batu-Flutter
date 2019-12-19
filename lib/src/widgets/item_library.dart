@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../models/item_library_model.dart';
+import '../models/about/item_library_model.dart';
 import '../data/dimens.dart';
 
 

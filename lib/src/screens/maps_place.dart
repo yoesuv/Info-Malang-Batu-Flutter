@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
-import '../blocs/maps_provider.dart';
-import '../models/list_item_maps_pin_model.dart';
+import '../blocs/maps_bloc.dart';
+import '../models/maps/list_item_maps_pin_model.dart';
+import '../models/service_model.dart';
 import '../data/constants.dart';
 
 class MapsPlace extends StatelessWidget {
 
     Widget build(BuildContext context) {
 
-        final MapsBloc bloc = MapsProvider.of(context);
+        final MapsBloc bloc = MapsBloc();
         bloc.checkLocationPermission();
 
         return Scaffold (
@@ -76,34 +77,50 @@ class MapsPlace extends StatelessWidget {
     Widget buildMaps(MapsBloc bloc, BitmapDescriptor iconMarker) {
         return StreamBuilder (
             stream: bloc.listItemMapsPins,
-            builder: (BuildContext context, AsyncSnapshot<ListItemMapsPinModel> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
                 if (snapshot.hasData) {
-                    //generate marker
-                    List<Marker> listMarker = [];
-                    snapshot.data.listItemGalleryModel.forEach((pin) {
-                        listMarker.add(Marker(
-                            markerId: MarkerId(pin.name),
-                            position: LatLng(pin.latitude, pin.longitude),
-                            infoWindow: InfoWindow(title: pin.name),
-                            icon: iconMarker
-                        ));
-                    });
+                    switch (snapshot.data.status) {
+                        case Status.COMPLETED:
+                            //generate marker
+                            List<Marker> listMarker = [];
+                            snapshot.data.data.listItemGalleryModel.forEach((pin) {
+                                listMarker.add(Marker(
+                                    markerId: MarkerId(pin.name),
+                                    position: LatLng(pin.latitude, pin.longitude),
+                                    infoWindow: InfoWindow(title: pin.name),
+                                    icon: iconMarker
+                                ));
+                            });
 
-                    return GoogleMap (
-                        initialCameraPosition: CameraPosition(
-                            target: LatLng(-7.982914, 112.630875),
-                            zoom: 9.0
-                        ),
-                        compassEnabled: true,
-                        myLocationEnabled: true,
-                        myLocationButtonEnabled: true,
-                        markers: Set<Marker>.of(listMarker)
-                    );
-                } else {
-                    return Center(
-                        child: CircularProgressIndicator()
-                    );
+                            return GoogleMap (
+                                initialCameraPosition: CameraPosition(
+                                    target: LatLng(-7.982914, 112.630875),
+                                    zoom: 9.0
+                                ),
+                                compassEnabled: true,
+                                myLocationEnabled: true,
+                                myLocationButtonEnabled: true,
+                                markers: Set<Marker>.of(listMarker)
+                            );
+                        break;
+                        case Status.ERROR:
+                            return Center(
+                                child: Text(snapshot.data.message)
+                            );
+                        break;
+                        case Status.DIOERROR:
+                            return Center(
+                                child: Text(snapshot.data.error.dioError.message)
+                            );
+                        break;
+                    }
                 }
+                return Center(
+                    child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
+                    )
+                );
+
             }
         );
     }

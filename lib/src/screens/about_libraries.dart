@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../blocs/about_provider.dart';
-import '../models/item_library_model.dart';
+import '../blocs/about_bloc.dart';
+import '../models/about/item_library_model.dart';
 import '../widgets/item_library.dart';
 
 class AboutLibraries extends StatelessWidget {
 
     Widget build(BuildContext context) {
 
-        final AboutBloc bloc = AboutProvider.of(context);
+        final AboutBloc bloc = AboutBloc();
 
         return Scaffold(
             body: buildListLibrary(bloc)
