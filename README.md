@@ -18,7 +18,7 @@ download APK File [here](https://www.dropbox.com/s/5jhb0l445uc5lb2)
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/3gO2cR9.jpg) | ![List Place](https://i.imgur.com/6DHPgog.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
 | :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/NW8PPEn.jpg) | ![About Info](https://i.imgur.com/aJ37jVE.jpg) | ![About Changelog](https://imgur.com/od1Pzis) |
+| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/NW8PPEn.jpg) | ![About Info](https://i.imgur.com/aJ37jVE.jpg) | ![About Changelog](https://i.imgur.com/od1Pzis.jpg) |
 
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
