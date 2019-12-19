@@ -6,7 +6,7 @@ class AboutBloc {
 
     List<ItemChangelogModel> createListChangelog() {
         List<ItemChangelogModel> listChangelog = [];
-        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.1", changelog: "- add splash screen"));
+        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.1", changelog: "- add splash screen\n- improve performance"));
         listChangelog.add(ItemChangelogModel(version: "Versi 1.0.0", changelog: "- initial release"));
         return listChangelog;
     }
@@ -19,6 +19,7 @@ class AboutBloc {
         listLib.add(ItemLibraryModel(name: Libraries.flutterHtml, url: Libraries.flutterHtmlUrl, license: Libraries.flutterHtmlLicense));
         listLib.add(ItemLibraryModel(name: Libraries.googleMapsFlutter, url: Libraries.googleMapsFlutterUrl, license: Libraries.googleMapsFlutterLicense));
         listLib.add(ItemLibraryModel(name: Libraries.permissionHandler, url: Libraries.permissionHandlerUrl, license: Libraries.permissionHandlerLicense));
+        listLib.add(ItemLibraryModel(name: Libraries.provider, url: Libraries.providerUrl, license: Libraries.providerLicense));
         return listLib;
     }
 
