@@ -6,13 +6,19 @@ import '../models/maps/list_item_maps_pin_model.dart';
 import '../models/service_model.dart';
 import '../data/constants.dart';
 
-class MapsPlace extends StatelessWidget {
+class MapsPlace extends StatefulWidget {
+
+    MapsPlace({Key key}) : super(key: key);
+    MapsPlaceState createState() => MapsPlaceState();
+
+}
+
+class MapsPlaceState extends State<MapsPlace>{
+
+    MapsBloc bloc = MapsBloc();
 
     Widget build(BuildContext context) {
-
-        final MapsBloc bloc = MapsBloc();
         bloc.checkLocationPermission();
-
         return Scaffold (
             appBar: AppBar (
                 title: Text('Peta', style: TextStyle(
@@ -38,7 +44,6 @@ class MapsPlace extends StatelessWidget {
             )
         );
     }
-
 
     Widget requestLocationPermission(BuildContext context, MapsBloc bloc) {
         return StreamBuilder(
@@ -127,6 +132,11 @@ class MapsPlace extends StatelessWidget {
 
     Future<BitmapDescriptor> createIcons(BuildContext context) {
         return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: Size(64.0, 64.0)) , Constants.iconMarker);
+    }
+
+    dispose(){
+        bloc.dispose();
+        super.dispose();
     }
 
 }
