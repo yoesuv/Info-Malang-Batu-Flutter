@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
+import '../services/services.dart';
 import '../models/list_place/list_item_place_model.dart';
-import '../services/api_base.dart';
 
 class ListPlaceRepository {
 
-    ApiBase apiBase = ApiBase();
+    Service service = Service();
 
     Future<ListItemPlaceModel> getListPlace() async {
-        final Response response = await apiBase.get('/List_place_malang_batu.json');
+        final Response response = await service.getListPlace();
         return ListItemPlaceModel.fromJson(response.data);
     }
 

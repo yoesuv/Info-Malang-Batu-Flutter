@@ -5,13 +5,19 @@ import '../models/list_place/item_place_model.dart';
 import '../models/service_model.dart';
 import '../widgets/item_place.dart';
 
-class ListPlace extends StatelessWidget {
+class ListPlace extends StatefulWidget {
+
+    ListPlace({Key key}) : super(key: key);
+    ListPlaceState createState() => ListPlaceState();
+
+}
+
+class ListPlaceState extends State<ListPlace> {
+
+    ListPlaceBloc bloc = ListPlaceBloc();
 
     Widget build(BuildContext context) {
-
-        final ListPlaceBloc bloc = ListPlaceBloc();
         bloc.getListPlace();
-
         return Scaffold(
             appBar: AppBar(
                 title: Text('Lokasi', style: TextStyle(
@@ -60,6 +66,11 @@ class ListPlace extends StatelessWidget {
                 return ItemPlace(itemPlaceModel: itemPlaceModel);
             }
         );
+    }
+
+    dispose(){
+        bloc.dispose();
+        super.dispose();
     }
 
 }

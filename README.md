@@ -1,7 +1,6 @@
-## Info Malang Batu Flutter 1.0.1 ##
+## Info Malang Batu Flutter 1.0.2 ##
 
 #### Whats new? #####
-- :sparkles: add splash screen
 - :sparkles: improve performance
 
 #### Flutter Dependencies ####
@@ -13,12 +12,12 @@ Tools • Dart 2.7.0
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/5jhb0l445uc5lb2)
+download APK File [here](https://www.dropbox.com/s/2vaees3t9wahtti)
 
 ### Screenshot Android ###
-| ![Splash Screen](https://i.imgur.com/3gO2cR9.jpg) | ![List Place](https://i.imgur.com/6DHPgog.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
+| ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/6DHPgog.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
 | :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/NW8PPEn.jpg) | ![About Info](https://i.imgur.com/aJ37jVE.jpg) | ![About Changelog](https://i.imgur.com/od1Pzis.jpg) |
+| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/NW8PPEn.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/f3zzxCf.jpg) |
 
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
