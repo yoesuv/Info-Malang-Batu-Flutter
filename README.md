@@ -1,7 +1,6 @@
-## Info Malang Batu Flutter 1.0.1 ##
+## Info Malang Batu Flutter 1.0.2 ##
 
 #### Whats new? #####
-- :sparkles: add splash screen
 - :sparkles: improve performance
 
 #### Flutter Dependencies ####
