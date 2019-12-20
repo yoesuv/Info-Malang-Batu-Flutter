@@ -4,11 +4,20 @@ import '../models/service_model.dart';
 import '../models/gallery/list_item_gallery_model.dart';
 import '../widgets/item_gallery.dart';
 
-class Gallery extends StatelessWidget {
+class Gallery extends StatefulWidget {
+
+    Gallery({Key key}) : super(key: key);
+    GalleryState createState() => GalleryState();
+
+}
+
+class GalleryState extends State<Gallery> {
+
+    ListGalleryBloc bloc = ListGalleryBloc();
 
     Widget build(BuildContext context) {
 
-        final ListGalleryBloc bloc = ListGalleryBloc();
+
         bloc.getListGallery();
 
         return Scaffold(
@@ -59,6 +68,11 @@ class Gallery extends StatelessWidget {
                 return ItemGallery(itemGalleryModel: model.listItemGalleryModel[index]);
             }
         );
+    }
+
+    dispose(){
+        bloc.dispose();
+        super.dispose();
     }
 
 }
