@@ -9,7 +9,6 @@ class SentryHandler {
 
     Future<Event> getSentryEvent([dynamic exception, dynamic stackTrace]) async {
         final DeviceInfoPlugin  deviceInfo = DeviceInfoPlugin();
-
         if (Platform.isIOS) {
             final IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
             return Event(
@@ -63,6 +62,16 @@ class SentryHandler {
             exception: exception,
             stackTrace: stackTrace
         );
+    }
+
+    Future<void> reportError(Object error, StackTrace stackTrace) async {
+        try {
+            final Event event = await getSentryEvent(error, stackTrace);
+            print('SentryHandler # Report to Sentry $event');
+            await sentry.capture(event: event);
+        } catch (e) {
+            print('SentryHandler # Failed Sending Report to Sentry =====> $e');
+        }
     }
 
 }
