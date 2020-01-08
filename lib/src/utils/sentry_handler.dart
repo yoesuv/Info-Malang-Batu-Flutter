@@ -13,7 +13,7 @@ class SentryHandler {
             final IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
             return Event(
                 release: Constants.appVersion,
-                environment: 'debug',
+                environment: Constants.environment,
                 extra: <String, dynamic> {
                     'name': iosDeviceInfo.name,
                     'model': iosDeviceInfo.model,
@@ -33,7 +33,7 @@ class SentryHandler {
             final AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
             return Event(
                 release: Constants.appVersion,
-                environment: 'debug',
+                environment: Constants.environment,
                 extra: <String, dynamic> {
                     'type': androidDeviceInfo.type,
                     'model': androidDeviceInfo.model,
@@ -58,7 +58,7 @@ class SentryHandler {
 
         return Event(
             release: Constants.appVersion,
-            environment: 'debug',
+            environment: Constants.environment,
             exception: exception,
             stackTrace: stackTrace
         );
