@@ -1,7 +1,8 @@
-## Info Malang Batu Flutter 1.0.2 ##
+## Info Malang Batu Flutter 1.0.3 ##
 
 #### Whats new? #####
-- :sparkles: improve performance
+- :sparkles: add error reporting (Sentry)
+- :arrow_up: update libraries
 
 #### Flutter Dependencies ####
 ```
@@ -21,8 +22,10 @@ download APK File [here](https://www.dropbox.com/s/2vaees3t9wahtti)
 
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
+- [Device Info](https://pub.dev/packages/device_info)
 - [Dio](https://pub.dev/packages/dio)
 - [Flutter Html](https://pub.dev/packages/flutter_html)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Provider](https://pub.dev/packages/provider)
+- [Sentry](https://pub.dev/packages/sentry)
