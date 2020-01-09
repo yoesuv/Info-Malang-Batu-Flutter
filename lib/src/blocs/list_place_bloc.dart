@@ -9,7 +9,7 @@ class ListPlaceBloc {
     final _listPlaceRepository = ListPlaceRepository();
     final _listPlace = PublishSubject<ServiceModel<ListItemPlaceModel>>();
 
-    Observable<ServiceModel<ListItemPlaceModel>> get listPlace => _listPlace.stream;
+    Stream<ServiceModel<ListItemPlaceModel>> get listPlace => _listPlace.stream;
 
     getListPlace() async {
         try {

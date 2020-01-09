@@ -9,7 +9,7 @@ class ListGalleryBloc {
     final _listGalleryRepository = ListGalleryRepository();
     final _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();
 
-    Observable<ServiceModel<ListItemGalleryModel>> get listGallery => _listGallery.stream;
+    Stream<ServiceModel<ListItemGalleryModel>> get listGallery => _listGallery.stream;
 
     getListGallery() async {
         try {

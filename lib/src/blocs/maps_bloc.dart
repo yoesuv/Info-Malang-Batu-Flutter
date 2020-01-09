@@ -12,9 +12,9 @@ class MapsBloc {
     final _requestLocationResult = PublishSubject<PermissionStatus>();
     final _listItemMapsPin = PublishSubject<ServiceModel<ListItemMapsPinModel>>();
 
-    Observable<PermissionStatus> get permissionStatus => _locationPermission.stream;
-    Observable<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
-    Observable<ServiceModel<ListItemMapsPinModel>> get listItemMapsPins => _listItemMapsPin.stream;
+    Stream<PermissionStatus> get permissionStatus => _locationPermission.stream;
+    Stream<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
+    Stream<ServiceModel<ListItemMapsPinModel>> get listItemMapsPins => _listItemMapsPin.stream;
 
     checkLocationPermission() async {
         final permissionStatus = await PermissionHandler().checkPermissionStatus(PermissionGroup.location);
