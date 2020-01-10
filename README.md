@@ -2,6 +2,7 @@
 
 #### Whats new? #####
 - :sparkles: add error reporting (Sentry)
+- :sparkles: add options menu in list place & maps
 - :arrow_up: update libraries
 
 #### Flutter Dependencies ####
@@ -13,12 +14,12 @@ Tools • Dart 2.7.0
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/2vaees3t9wahtti)
+download APK File [here](https://www.dropbox.com/s/6jc90j0uuouqof4)
 
 ### Screenshot Android ###
-| ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/6DHPgog.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
+| ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/wCnFBZG.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
 | :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/NW8PPEn.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/f3zzxCf.jpg) |
+| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/ZccyjgA.jpg) |
 
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
