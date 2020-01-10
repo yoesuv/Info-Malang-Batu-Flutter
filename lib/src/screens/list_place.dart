@@ -18,8 +18,12 @@ class ListPlaceState extends State<ListPlace> {
     ListPlaceBloc bloc = ListPlaceBloc();
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
-    Widget build(BuildContext context) {
+    void initState(){
+        super.initState();
         bloc.getListPlace(_listPlaceType);
+    }
+
+    Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
                 title: Text('Lokasi', style: TextStyle(
