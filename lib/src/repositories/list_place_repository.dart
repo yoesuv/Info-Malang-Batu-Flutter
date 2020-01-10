@@ -11,4 +11,19 @@ class ListPlaceRepository {
         return ListItemPlaceModel.fromJson(response.data);
     }
 
+    Future<ListItemPlaceModel> getListPlaceKotaMalang() async {
+        final Response response = await service.getListPlaceKotaMalang();
+        return ListItemPlaceModel.fromJson(response.data);
+    }
+
+    Future<ListItemPlaceModel> getListPlaceKabMalang() async {
+        final Response response = await service.getListPlaceKabMalang();
+        return ListItemPlaceModel.fromJson(response.data);
+    }
+
+    Future<ListItemPlaceModel> getListPlaceKotaBatu() async {
+        final Response response = await service.getListPlaceKotaBatu();
+        return ListItemPlaceModel.fromJson(response.data);
+    }
+
 }
