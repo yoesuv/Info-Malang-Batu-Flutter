@@ -15,6 +15,7 @@ class MapsPlace extends StatefulWidget {
 
 class MapsPlaceState extends State<MapsPlace>{
 
+    GoogleMapController googleMapController;
     MapsBloc bloc = MapsBloc();
 
     Widget build(BuildContext context) {
@@ -23,7 +24,22 @@ class MapsPlaceState extends State<MapsPlace>{
             appBar: AppBar (
                 title: Text('Peta', style: TextStyle(
                     fontFamily: 'Pacifico'
-                ))
+                )),
+                actions: <Widget>[
+                    IconButton(
+                        icon: Icon(Icons.refresh),
+                        onPressed: () {
+                            googleMapController.animateCamera(
+                                CameraUpdate.newCameraPosition(
+                                    CameraPosition(
+                                        target: LatLng(Constants.defaultLatitude, Constants.defaultLongitude),
+                                        zoom: Constants.defaultZoom
+                                    )
+                                )
+                            );
+                        }
+                    )
+                ]
             ),
             body: StreamBuilder(
                 stream: bloc.permissionStatus,
@@ -98,9 +114,13 @@ class MapsPlaceState extends State<MapsPlace>{
                             });
 
                             return GoogleMap (
+                                onMapCreated: (GoogleMapController controller) {
+                                    print('MapsPlace # onMapCreated');
+                                    googleMapController = controller;
+                                },
                                 initialCameraPosition: CameraPosition(
-                                    target: LatLng(-7.982914, 112.630875),
-                                    zoom: 9.0
+                                    target: LatLng(Constants.defaultLatitude, Constants.defaultLongitude),
+                                    zoom: Constants.defaultZoom
                                 ),
                                 compassEnabled: true,
                                 myLocationEnabled: true,

@@ -7,5 +7,8 @@ class Constants {
     static String iconMarker = 'assets/images/ic_pin.png';
     static String thanks = 'terima kasih kepada blog-blog maupun perorangan yang fotonya dimuat dalam aplikasi ini, dan tidak bisa disebutkan satu persatu (kalian luar biasa...)';
     static String environment = 'Production';
+    static double defaultLatitude = -7.982914;
+    static double defaultLongitude = 112.630875;
+    static double defaultZoom = 9.0;
 
 }
