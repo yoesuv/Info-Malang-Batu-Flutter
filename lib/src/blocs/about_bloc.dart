@@ -6,7 +6,7 @@ class AboutBloc {
 
     List<ItemChangelogModel> createListChangelog() {
         List<ItemChangelogModel> listChangelog = [];
-        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.3", changelog: "- menu filter list place\n- update libraries"));
+        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.3", changelog: "- menu filter list place\n- add error reporting\n- update libraries"));
         listChangelog.add(ItemChangelogModel(version: "Versi 1.0.2", changelog: "- improve performance"));
         listChangelog.add(ItemChangelogModel(version: "Versi 1.0.1", changelog: "- add splash screen\n- improve performance"));
         listChangelog.add(ItemChangelogModel(version: "Versi 1.0.0", changelog: "- initial release"));
