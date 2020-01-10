@@ -1,13 +1,18 @@
 import 'package:dio/dio.dart';
-import 'network_client.dart';
 import 'app_exceptions.dart';
+import '../data/constants.dart';
 
 class ApiBase {
 
     Dio dio;
+    BaseOptions options = new BaseOptions(
+        baseUrl: Constants.baseUrl,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+    );
 
     ApiBase() {
-        dio = NetworkClient().dio;
+        dio = Dio(options);
     }
 
     //handle get request
