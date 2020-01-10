@@ -19,7 +19,7 @@ class ListPlaceState extends State<ListPlace> {
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
     Widget build(BuildContext context) {
-        bloc.getListPlace();
+        bloc.getListPlace(_listPlaceType);
         return Scaffold(
             appBar: AppBar(
                 title: Text('Lokasi', style: TextStyle(
@@ -31,7 +31,7 @@ class ListPlaceState extends State<ListPlace> {
                             setState(() {
                                 _listPlaceType = result;
                             });
-                            print('ListPlaceState # state ${_listPlaceType.toString()}');
+                            bloc.getListPlace(_listPlaceType);
                         },
                         itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
                             const PopupMenuItem(
