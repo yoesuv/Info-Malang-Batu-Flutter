@@ -4,6 +4,7 @@ import '../models/list_place/list_item_place_model.dart';
 import '../models/list_place/item_place_model.dart';
 import '../models/service_model.dart';
 import '../widgets/item_place.dart';
+import '../data/list_place_type.dart';
 
 class ListPlace extends StatefulWidget {
 
@@ -15,14 +16,47 @@ class ListPlace extends StatefulWidget {
 class ListPlaceState extends State<ListPlace> {
 
     ListPlaceBloc bloc = ListPlaceBloc();
+    ListPlaceType _listPlaceType = ListPlaceType.ALL;
+
+    void initState(){
+        super.initState();
+        bloc.getListPlace(_listPlaceType);
+    }
 
     Widget build(BuildContext context) {
-        bloc.getListPlace();
         return Scaffold(
             appBar: AppBar(
                 title: Text('Lokasi', style: TextStyle(
                     fontFamily: 'Pacifico'
                 )),
+                actions: <Widget>[
+                    PopupMenuButton<ListPlaceType>(
+                        onSelected: (ListPlaceType result) {
+                            setState(() {
+                                _listPlaceType = result;
+                            });
+                            bloc.getListPlace(_listPlaceType);
+                        },
+                        itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
+                            const PopupMenuItem(
+                                value: ListPlaceType.ALL,
+                                child: Text('Semua'),
+                            ),
+                            const PopupMenuItem(
+                                value: ListPlaceType.MALANG,
+                                child: Text('Kota Malang'),
+                            ),
+                            const PopupMenuItem(
+                                value: ListPlaceType.BATU,
+                                child: Text('Kota Batu'),
+                            ),
+                            const PopupMenuItem(
+                                value: ListPlaceType.KABMALANG,
+                                child: Text('Kab. Malang'),
+                            )
+                        ]
+                    )
+                ]
             ),
             body: buildBody(bloc)
         );

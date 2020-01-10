@@ -9,24 +9,32 @@ class ListGalleryBloc {
     final _listGalleryRepository = ListGalleryRepository();
     final _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();
 
-    Observable<ServiceModel<ListItemGalleryModel>> get listGallery => _listGallery.stream;
+    Stream<ServiceModel<ListItemGalleryModel>> get listGallery => _listGallery.stream;
 
     getListGallery() async {
         try {
             final listGallery = await _listGalleryRepository.getListGallery();
-            _listGallery.sink.add(ServiceModel.completed(listGallery));
+            if (!_listGallery.isClosed) {
+                _listGallery.sink.add(ServiceModel.completed(listGallery));
+            }
         } catch (e) {
             if (e is AppException) {
-                _listGallery.sink.add(ServiceModel.dioError(e));
+                if (!_listGallery.isClosed) {
+                    _listGallery.sink.add(ServiceModel.dioError(e));
+                }
             } else {
-                _listGallery.sink.add(ServiceModel.error('Unknown Exception'));
+                if (!_listGallery.isClosed) {
+                    _listGallery.sink.add(ServiceModel.error('Unknown Exception'));
+                }
             }
         }
 
     }
 
     dispose() {
-        _listGallery.close();
+        if (!_listGallery.isClosed) {
+            _listGallery.close();
+        }
     }
 
 }

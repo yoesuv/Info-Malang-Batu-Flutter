@@ -15,11 +15,12 @@ class GalleryState extends State<Gallery> {
 
     ListGalleryBloc bloc = ListGalleryBloc();
 
-    Widget build(BuildContext context) {
-
-
+    void initState() {
+        super.initState();
         bloc.getListGallery();
+    }
 
+    Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
                 title: Text('Galeri', style: TextStyle(

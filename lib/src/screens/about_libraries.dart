@@ -5,10 +5,9 @@ import '../widgets/item_library.dart';
 
 class AboutLibraries extends StatelessWidget {
 
+    final AboutBloc bloc = AboutBloc();
+
     Widget build(BuildContext context) {
-
-        final AboutBloc bloc = AboutBloc();
-
         return Scaffold(
             body: buildListLibrary(bloc)
         );

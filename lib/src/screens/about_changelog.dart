@@ -5,11 +5,9 @@ import '../widgets/item_changelog.dart';
 
 class AboutChangelog extends StatelessWidget {
 
+    final AboutBloc bloc = AboutBloc();
+
     Widget build(BuildContext context) {
-
-        final AboutBloc bloc = AboutBloc();
-        bloc.createListChangelog();
-
         return Scaffold(
             body: buildListChangelog(bloc)
         );
