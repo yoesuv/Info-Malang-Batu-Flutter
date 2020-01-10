@@ -29,18 +29,26 @@ class ListPlaceBloc {
                     listPlace = await _listPlaceRepository.getListPlaceKotaBatu();
                 break;
             }
-            _listPlace.sink.add(ServiceModel.completed(listPlace));
+            if (!_listPlace.isClosed){
+                _listPlace.sink.add(ServiceModel.completed(listPlace));
+            }
         } catch (e) {
             if (e is AppException) {
-                _listPlace.sink.add(ServiceModel.dioError(e));
+                if (!_listPlace.isClosed){
+                    _listPlace.sink.add(ServiceModel.dioError(e));
+                }
             } else {
-                _listPlace.sink.add(ServiceModel.error('Unknown Exception'));
+                if (!_listPlace.isClosed){
+                    _listPlace.sink.add(ServiceModel.error('Unknown Exception'));
+                }
             }
         }
     }
 
     dispose() {
-        _listPlace.close();
+        if (!_listPlace.isClosed) {
+            _listPlace.close();
+        }
     }
 
 }
