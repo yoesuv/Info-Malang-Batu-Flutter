@@ -7,7 +7,7 @@ class Splash extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
 
-        Future.delayed(const Duration(seconds: 2), (){
+        Future<void>.delayed(const Duration(seconds: 2), (){
             Navigator.pushNamedAndRemoveUntil(context, Home.routeHome, ModalRoute.withName('/'));
         });
 
