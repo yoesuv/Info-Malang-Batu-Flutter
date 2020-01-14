@@ -41,19 +41,19 @@ class ListPlaceState extends State<ListPlace> {
                             bloc.getListPlace(_listPlaceType);
                         },
                         itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.ALL,
                                 child: Text('Semua'),
                             ),
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.MALANG,
                                 child: Text('Kota Malang'),
                             ),
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.BATU,
                                 child: Text('Kota Batu'),
                             ),
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.KABMALANG,
                                 child: Text('Kab. Malang'),
                             )

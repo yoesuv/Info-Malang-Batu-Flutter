@@ -21,7 +21,7 @@ class HomeState extends State<Home> {
     final List<Widget> menu = <Widget>[
         const ListPlace(),
         const Gallery(),
-        MapsPlace(),
+        const MapsPlace(),
         About()
     ];
 

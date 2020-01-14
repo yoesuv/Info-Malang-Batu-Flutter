@@ -14,7 +14,6 @@ class ItemPlace extends StatelessWidget {
     Widget build(BuildContext context) {
         return InkWell(
             onTap: () {
-                print('go to detail place');
                 Navigator.pushNamed(context, '/detailPlace', arguments: itemPlaceModel);
             },
             child: Stack (

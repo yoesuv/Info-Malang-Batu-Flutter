@@ -8,38 +8,40 @@ import '../services/app_exceptions.dart';
 class ListPlaceBloc {
 
     final ListPlaceRepository _listPlaceRepository = ListPlaceRepository();
-    final _listPlace = PublishSubject<ServiceModel<ListItemPlaceModel>>();
+    final PublishSubject<ServiceModel<ListItemPlaceModel>> _listPlace = PublishSubject<ServiceModel<ListItemPlaceModel>>();
 
     Stream<ServiceModel<ListItemPlaceModel>> get listPlace => _listPlace.stream;
 
-    getListPlace(ListPlaceType listPlaceType) async {
-        var listPlace;
+    void getListPlace(ListPlaceType listPlaceType) {
+        Future<ListItemPlaceModel> listPlace;
         try {
             switch (listPlaceType) {
                 case ListPlaceType.ALL:
-                    listPlace = await _listPlaceRepository.getListPlace();
+                    listPlace = _listPlaceRepository.getListPlace();
                 break;
                 case ListPlaceType.MALANG:
-                    listPlace = await _listPlaceRepository.getListPlaceKotaMalang();
+                    listPlace = _listPlaceRepository.getListPlaceKotaMalang();
                 break;
                 case ListPlaceType.KABMALANG:
-                    listPlace = await _listPlaceRepository.getListPlaceKabMalang();
+                    listPlace = _listPlaceRepository.getListPlaceKabMalang();
                 break;
                 case ListPlaceType.BATU:
-                    listPlace = await _listPlaceRepository.getListPlaceKotaBatu();
+                    listPlace = _listPlaceRepository.getListPlaceKotaBatu();
                 break;
             }
             if (!_listPlace.isClosed){
-                _listPlace.sink.add(ServiceModel.completed(listPlace));
+                listPlace.then((ListItemPlaceModel result){
+                    _listPlace.sink.add(ServiceModel<ListItemPlaceModel>.completed(result));
+                });
             }
         } catch (e) {
             if (e is AppException) {
                 if (!_listPlace.isClosed){
-                    _listPlace.sink.add(ServiceModel.dioError(e));
+                    _listPlace.sink.add(ServiceModel<ListItemPlaceModel>.dioError(e));
                 }
             } else {
                 if (!_listPlace.isClosed){
-                    _listPlace.sink.add(ServiceModel.error('Unknown Exception'));
+                    _listPlace.sink.add(ServiceModel<ListItemPlaceModel>.error('Unknown Exception'));
                 }
             }
         }
