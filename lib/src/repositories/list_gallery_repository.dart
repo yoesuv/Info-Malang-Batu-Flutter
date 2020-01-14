@@ -7,8 +7,8 @@ class ListGalleryRepository {
     Service service = Service();
 
     Future<ListItemGalleryModel> getListGallery() async {
-        final Response response = await service.getListGallery();
-        return ListItemGalleryModel.fromJson(response.data);
+        final Response<dynamic> response = await service.getListGallery() as Response<dynamic>;
+        return ListItemGalleryModel.fromJson(response.data as List<dynamic>);
     }
 
 }
