@@ -1,5 +1,5 @@
 String sentryDSN = 'https://d03b913fe17c41cebb9a09dc53b10089@sentry.io/1874482';
-String appVersion = '1.0.3';
+String appVersion = '1.0.4';
 String baseUrl = 'https://info-malang-batu.firebaseapp.com';
 String placeHolderImage = 'assets/images/placeholder_image.png';
 String iconMarker = 'assets/images/ic_pin.png';
