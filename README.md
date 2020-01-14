@@ -1,9 +1,8 @@
-## Info Malang Batu Flutter 1.0.3 ##
+## Info Malang Batu Flutter 1.0.4 ##
 
 #### Whats new? #####
-- :sparkles: add error reporting (Sentry)
-- :sparkles: add options menu in list place & maps
-- :arrow_up: update libraries
+- :sparkles: add linter (analysis_options.yaml)
+- :hammer: big refactoring
 
 #### Flutter Dependencies ####
 ```
