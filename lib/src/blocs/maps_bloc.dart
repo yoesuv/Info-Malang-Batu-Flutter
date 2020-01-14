@@ -16,35 +16,41 @@ class MapsBloc {
     Stream<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
     Stream<ServiceModel<ListItemMapsPinModel>> get listItemMapsPins => _listItemMapsPin.stream;
 
-    checkLocationPermission() async {
-        final permissionStatus = await PermissionHandler().checkPermissionStatus(PermissionGroup.location);
+    void checkLocationPermission(){
+        final Future<PermissionStatus> permissionStatus = PermissionHandler().checkPermissionStatus(PermissionGroup.location);
         if (!_locationPermission.isClosed) {
-            _locationPermission.sink.add(permissionStatus);
+            permissionStatus.then((PermissionStatus result){
+                _locationPermission.sink.add(result);
+            });
         }
     }
 
     Future<void> requestLocationPermission() async {
-        final Map<PermissionGroup, PermissionStatus> permissionRequestResult = await PermissionHandler().requestPermissions([PermissionGroup.location]);
+        final Map<PermissionGroup, PermissionStatus> permissionRequestResult = await PermissionHandler().requestPermissions(
+            <PermissionGroup>[PermissionGroup.location]
+        );
         final PermissionStatus permissionStatusResult = permissionRequestResult[PermissionGroup.location];
         if (!_requestLocationResult.isClosed) {
             _requestLocationResult.sink.add(permissionStatusResult);
         }
     }
 
-    getListMapsPin() async {
+    void getListMapsPin(){
         try {
-            final listMapsPin = await _mapsRepository.getMapsPin();
+            final Future<ListItemMapsPinModel> listMapsPin = _mapsRepository.getMapsPin();
             if (!_listItemMapsPin.isClosed) {
-                _listItemMapsPin.sink.add(ServiceModel.completed(listMapsPin));
+                listMapsPin.then((ListItemMapsPinModel result) {
+                    _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.completed(result));
+                });
             }
         } catch (e) {
             if (e is AppException) {
                 if (!_listItemMapsPin.isClosed) {
-                    _listItemMapsPin.sink.add(ServiceModel.dioError(e));
+                    _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.dioError(e));
                 }
             } else {
                 if (!_listItemMapsPin.isClosed) {
-                    _listItemMapsPin.sink.add(ServiceModel.error('Unknown Exception'));
+                    _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.error('Unknown Exception'));
                 }
             }
         }
