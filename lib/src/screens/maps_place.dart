@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../blocs/maps_bloc.dart';
+import '../data/constants.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
 import '../models/service_model.dart';
-import '../data/constants.dart';
 
 class MapsPlace extends StatefulWidget {
 
-    MapsPlace({Key key}) : super(key: key);
+    const MapsPlace({Key key}) : super(key: key);
+    @override
     MapsPlaceState createState() => MapsPlaceState();
 
 }
@@ -18,11 +19,12 @@ class MapsPlaceState extends State<MapsPlace>{
     GoogleMapController googleMapController;
     MapsBloc bloc = MapsBloc();
 
+    @override
     Widget build(BuildContext context) {
         bloc.checkLocationPermission();
         return Scaffold (
             appBar: AppBar (
-                title: Text('Peta', style: TextStyle(
+                title: const Text('Peta', style: TextStyle(
                     fontFamily: 'Pacifico'
                 )),
                 actions: <Widget>[
@@ -32,8 +34,8 @@ class MapsPlaceState extends State<MapsPlace>{
                             googleMapController.animateCamera(
                                 CameraUpdate.newCameraPosition(
                                     CameraPosition(
-                                        target: LatLng(Constants.defaultLatitude, Constants.defaultLongitude),
-                                        zoom: Constants.defaultZoom
+                                        target: LatLng(defaultLatitude, defaultLongitude),
+                                        zoom: defaultZoom
                                     )
                                 )
                             );
@@ -41,7 +43,7 @@ class MapsPlaceState extends State<MapsPlace>{
                     )
                 ]
             ),
-            body: StreamBuilder(
+            body: StreamBuilder<PermissionStatus>(
                 stream: bloc.permissionStatus,
                 builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
                     if (snapshot.hasData) {
@@ -52,7 +54,7 @@ class MapsPlaceState extends State<MapsPlace>{
                             return createMarker(context, bloc);
                         }
                     } else {
-                        return Center (
+                        return const Center (
                             child: Text('Loading Maps...')
                         );
                     }
@@ -62,13 +64,13 @@ class MapsPlaceState extends State<MapsPlace>{
     }
 
     Widget requestLocationPermission(BuildContext context, MapsBloc bloc) {
-        return StreamBuilder(
+        return StreamBuilder<PermissionStatus>(
             stream: bloc.requestLocationPermissionResult,
             builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
                 if (snapshot.hasData) {
                     return createMarker(context, bloc);
                 } else {
-                    return Center(
+                    return const Center(
                         child: Text('Checking Location Permission')
                     );
                 }
@@ -78,25 +80,24 @@ class MapsPlaceState extends State<MapsPlace>{
 
     // create custom marker icon
     Widget createMarker(BuildContext context, MapsBloc bloc) {
-        return FutureBuilder(
+        return FutureBuilder<BitmapDescriptor>(
             future: createIcons(context),
-            builder: (context, AsyncSnapshot<BitmapDescriptor> snapshot) {
+            builder: (BuildContext context, AsyncSnapshot<BitmapDescriptor> snapshot) {
                 if (snapshot.hasData) {
-                    BitmapDescriptor ico = snapshot.data;
+                    final BitmapDescriptor ico = snapshot.data;
                     bloc.getListMapsPin();
                     return buildMaps(bloc, ico);
                 } else {
-                    return Center(
+                    return const Center(
                         child: Text('Loading Markers...')
                     );
                 }
-
             }
         );
     }
 
     Widget buildMaps(MapsBloc bloc, BitmapDescriptor iconMarker) {
-        return StreamBuilder (
+        return StreamBuilder<ServiceModel<ListItemMapsPinModel>> (
             stream: bloc.listItemMapsPins,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
                 if (snapshot.hasData) {
@@ -115,12 +116,11 @@ class MapsPlaceState extends State<MapsPlace>{
 
                             return GoogleMap (
                                 onMapCreated: (GoogleMapController controller) {
-                                    print('MapsPlace # onMapCreated');
                                     googleMapController = controller;
                                 },
                                 initialCameraPosition: CameraPosition(
-                                    target: LatLng(Constants.defaultLatitude, Constants.defaultLongitude),
-                                    zoom: Constants.defaultZoom
+                                    target: LatLng(defaultLatitude, defaultLongitude),
+                                    zoom: defaultZoom
                                 ),
                                 compassEnabled: true,
                                 myLocationEnabled: true,
@@ -151,10 +151,11 @@ class MapsPlaceState extends State<MapsPlace>{
     }
 
     Future<BitmapDescriptor> createIcons(BuildContext context) {
-        return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: Size(64.0, 64.0)) , Constants.iconMarker);
+        return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)) , iconMarker);
     }
 
-    dispose(){
+    @override
+    void dispose(){
         bloc.dispose();
         super.dispose();
     }

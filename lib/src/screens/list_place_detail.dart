@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../models/list_place/item_place_model.dart';
-import '../data/dimens.dart';
 import '../data/constants.dart';
+import '../data/dimens.dart';
+import '../models/list_place/item_place_model.dart';
 
 class ListPlaceDetail extends StatelessWidget {
+
+    const ListPlaceDetail({Key key, @required this.itemPlaceModel}): super(key: key);
 
     static const String routeListPlaceDetail = '/detailPlace';
     final ItemPlaceModel itemPlaceModel;
 
-    const ListPlaceDetail({Key key, @required this.itemPlaceModel}): super(key: key);
-
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text('Detail Lokasi', style: TextStyle(
+                title: const Text('Detail Lokasi', style: TextStyle(
                     fontFamily: 'Pacifico'
                 )),
             ),
@@ -23,16 +24,16 @@ class ListPlaceDetail extends StatelessWidget {
                 children: <Widget>[
                     SizedBox(
                         width: double.infinity,
-                        height: Dimens.imageDetailHeight,
+                        height: imageDetailHeight,
                         child: CachedNetworkImage(
                             imageUrl: itemPlaceModel.gambar,
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
-                            errorWidget: (context, url, error) => Icon(Icons.error)
+                            errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error),
+                            placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
                         )
                     ),
                     Container(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Text(
                             itemPlaceModel.nama,
                             style: TextStyle(
@@ -43,10 +44,10 @@ class ListPlaceDetail extends StatelessWidget {
                         )
                     ),
                     Container(
-                        padding: EdgeInsets.only(left: 8.0, right: 8.0),
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         child: Text(
                             itemPlaceModel.deskripsi,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 14.0
                             ),
                             textAlign: TextAlign.start

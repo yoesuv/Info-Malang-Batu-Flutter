@@ -7,6 +7,7 @@ class AboutLibraries extends StatelessWidget {
 
     final AboutBloc bloc = AboutBloc();
 
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             body: buildListLibrary(bloc)
@@ -14,10 +15,10 @@ class AboutLibraries extends StatelessWidget {
     }
 
     Widget buildListLibrary(AboutBloc bloc) {
-        List<ItemLibraryModel> listItemLibraryModel = bloc.createListLibrary();
+        final List<ItemLibraryModel> listItemLibraryModel = bloc.createListLibrary();
         return ListView.builder(
             itemCount: listItemLibraryModel.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (BuildContext context, int index) {
                 return ItemLibrary(itemLibraryModel: listItemLibraryModel[index]);
             }
         );

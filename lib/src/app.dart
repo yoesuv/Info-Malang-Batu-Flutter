@@ -5,9 +5,10 @@ import 'routes/routes.dart';
 
 class App extends StatelessWidget {
 
+    @override
     Widget build(BuildContext context) {
         return MultiProvider(
-            providers: AppProvider.listProvider,
+            providers: listProvider,
             child: MaterialApp (
                 title: 'Info Malang Batu',
                 theme: ThemeData(

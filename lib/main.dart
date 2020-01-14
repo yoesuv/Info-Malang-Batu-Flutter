@@ -1,9 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:async';
 import 'src/app.dart';
-import 'src/utils/sentry_handler.dart';
 import 'src/utils/app_helper.dart';
+import 'src/utils/sentry_handler.dart';
+
 
 void main() => runZoned<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();

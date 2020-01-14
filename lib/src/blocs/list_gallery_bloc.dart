@@ -1,12 +1,12 @@
 import 'package:rxdart/rxdart.dart';
-import '../repositories/list_gallery_repository.dart';
-import '../models/service_model.dart';
 import '../models/gallery/list_item_gallery_model.dart';
+import '../models/service_model.dart';
+import '../repositories/list_gallery_repository.dart';
 import '../services/app_exceptions.dart';
 
 class ListGalleryBloc {
 
-    final _listGalleryRepository = ListGalleryRepository();
+    final ListGalleryRepository _listGalleryRepository = ListGalleryRepository();
     final _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();
 
     Stream<ServiceModel<ListItemGalleryModel>> get listGallery => _listGallery.stream;
@@ -31,7 +31,7 @@ class ListGalleryBloc {
 
     }
 
-    dispose() {
+    void dispose() {
         if (!_listGallery.isClosed) {
             _listGallery.close();
         }

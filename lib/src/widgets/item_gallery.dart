@@ -5,10 +5,11 @@ import '../models/gallery/item_gallery_model.dart';
 
 class ItemGallery extends StatelessWidget {
 
+    const ItemGallery({this.itemGalleryModel});
+
     final ItemGalleryModel itemGalleryModel;
 
-    ItemGallery({this.itemGalleryModel});
-
+    @override
     Widget build(BuildContext context) {
         return InkWell (
             onTap: () {
@@ -17,8 +18,8 @@ class ItemGallery extends StatelessWidget {
             },
             child: CachedNetworkImage(
                 imageUrl: itemGalleryModel.thumbnail,
-                placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
-                errorWidget: (context, url, error) => Icon(Icons.error)
+                placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
+                errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
             )
         );
     }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'about_info.dart';
 import 'about_changelog.dart';
-import 'about_thanks.dart';
+import 'about_info.dart';
 import 'about_libraries.dart';
+import 'about_thanks.dart';
 
 class About extends StatefulWidget {
 
+    @override
     AboutState createState() => AboutState();
 
 }
@@ -14,10 +15,11 @@ class AboutState extends State<About> with TickerProviderStateMixin {
 
     TabController tabController;
 
+    @override
     Widget build(BuildContext context) {
         tabController = TabController(length: 4, vsync: this);
-        var tabBarItem = TabBar(
-            tabs: <Widget>[
+        final TabBar tabBarItem = TabBar(
+            tabs: const <Widget>[
                 Tab(text: 'Informasi'),
                 Tab(text: 'Versi Rilis'),
                 Tab(text: 'Terima Kasih'),
@@ -27,11 +29,11 @@ class AboutState extends State<About> with TickerProviderStateMixin {
             controller: tabController,
         );
 
-        return new DefaultTabController(
+        return DefaultTabController(
             length: 4,
             child: Scaffold(
                 appBar: AppBar(
-                        title: Text('Tentang', style: TextStyle(
+                        title: const Text('Tentang', style: TextStyle(
                             fontFamily: 'Pacifico'
                         )),
                     bottom: tabBarItem,

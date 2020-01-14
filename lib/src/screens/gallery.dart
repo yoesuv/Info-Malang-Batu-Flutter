@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import '../blocs/list_gallery_bloc.dart';
-import '../models/service_model.dart';
 import '../models/gallery/list_item_gallery_model.dart';
+import '../models/service_model.dart';
 import '../widgets/item_gallery.dart';
 
 class Gallery extends StatefulWidget {
 
-    Gallery({Key key}) : super(key: key);
+    const Gallery({Key key}) : super(key: key);
+    @override
     GalleryState createState() => GalleryState();
 
 }
@@ -15,15 +16,17 @@ class GalleryState extends State<Gallery> {
 
     ListGalleryBloc bloc = ListGalleryBloc();
 
+    @override
     void initState() {
         super.initState();
         bloc.getListGallery();
     }
 
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text('Galeri', style: TextStyle(
+                title: const Text('Galeri', style: TextStyle(
                     fontFamily: 'Pacifico'
                 )),
             ),
@@ -32,7 +35,7 @@ class GalleryState extends State<Gallery> {
     }
 
     Widget buildBody(ListGalleryBloc bloc) {
-        return StreamBuilder(
+        return StreamBuilder<ServiceModel<ListItemGalleryModel>>(
             stream: bloc.listGallery,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemGalleryModel>> snapshot) {
                 if (snapshot.hasData) {
@@ -64,14 +67,15 @@ class GalleryState extends State<Gallery> {
     Widget buildGallery(ListItemGalleryModel model) {
         return GridView.builder(
             itemCount: model.listItemGalleryModel.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-            itemBuilder: (context, index) {
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+            itemBuilder: (BuildContext context, int index) {
                 return ItemGallery(itemGalleryModel: model.listItemGalleryModel[index]);
             }
         );
     }
 
-    dispose(){
+    @override
+    void dispose(){
         bloc.dispose();
         super.dispose();
     }

@@ -7,6 +7,7 @@ class AboutChangelog extends StatelessWidget {
 
     final AboutBloc bloc = AboutBloc();
 
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             body: buildListChangelog(bloc)
@@ -14,10 +15,10 @@ class AboutChangelog extends StatelessWidget {
     }
 
     Widget buildListChangelog(AboutBloc bloc) {
-        List<ItemChangelogModel> listChangelog = bloc.createListChangelog();
+        final List<ItemChangelogModel> listChangelog = bloc.createListChangelog();
         return ListView.builder(
             itemCount: listChangelog.length,
-            itemBuilder: (context, index) {
+            itemBuilder: (BuildContext context, int index) {
                 return ItemChangelog(itemChangelogModel: listChangelog[index]);
             }
         );

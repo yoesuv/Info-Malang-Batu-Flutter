@@ -1,16 +1,16 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:permission_handler/permission_handler.dart';
-import '../repositories/maps_repository.dart';
 import '../models/maps/list_item_maps_pin_model.dart';
 import '../models/service_model.dart';
+import '../repositories/maps_repository.dart';
 import '../services/app_exceptions.dart';
 
 class MapsBloc {
 
-    final _mapsRepository = MapsRepository();
-    final _locationPermission = PublishSubject<PermissionStatus>();
-    final _requestLocationResult = PublishSubject<PermissionStatus>();
-    final _listItemMapsPin = PublishSubject<ServiceModel<ListItemMapsPinModel>>();
+    final MapsRepository _mapsRepository = MapsRepository();
+    final PublishSubject<PermissionStatus> _locationPermission = PublishSubject<PermissionStatus>();
+    final PublishSubject<PermissionStatus> _requestLocationResult = PublishSubject<PermissionStatus>();
+    final PublishSubject<ServiceModel<ListItemMapsPinModel>> _listItemMapsPin = PublishSubject<ServiceModel<ListItemMapsPinModel>>();
 
     Stream<PermissionStatus> get permissionStatus => _locationPermission.stream;
     Stream<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
@@ -51,7 +51,7 @@ class MapsBloc {
 
     }
 
-    dispose() {
+    void dispose() {
         if (!_locationPermission.isClosed) {
             _locationPermission.close();
         }

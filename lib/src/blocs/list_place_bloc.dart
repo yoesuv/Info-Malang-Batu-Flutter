@@ -1,13 +1,13 @@
 import 'package:rxdart/rxdart.dart';
-import '../repositories/list_place_repository.dart';
-import '../models/service_model.dart';
-import '../models/list_place/list_item_place_model.dart';
-import '../services/app_exceptions.dart';
 import '../data/list_place_type.dart';
+import '../models/list_place/list_item_place_model.dart';
+import '../models/service_model.dart';
+import '../repositories/list_place_repository.dart';
+import '../services/app_exceptions.dart';
 
 class ListPlaceBloc {
 
-    final _listPlaceRepository = ListPlaceRepository();
+    final ListPlaceRepository _listPlaceRepository = ListPlaceRepository();
     final _listPlace = PublishSubject<ServiceModel<ListItemPlaceModel>>();
 
     Stream<ServiceModel<ListItemPlaceModel>> get listPlace => _listPlace.stream;
@@ -45,7 +45,7 @@ class ListPlaceBloc {
         }
     }
 
-    dispose() {
+    void dispose() {
         if (!_listPlace.isClosed) {
             _listPlace.close();
         }

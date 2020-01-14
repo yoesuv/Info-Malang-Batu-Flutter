@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../services/services.dart';
 import '../models/list_place/list_item_place_model.dart';
+import '../services/services.dart';
 
 class ListPlaceRepository {
 
