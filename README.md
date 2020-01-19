@@ -20,6 +20,11 @@ download APK File [here](https://www.dropbox.com/s/6jc90j0uuouqof4)
 | :---: | :---: | :---: | :---: |
 | ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/ZccyjgA.jpg) |
 
+### Screenshot iOS ###
+| ![Splash Screen](https://i.imgur.com/ThVbCBN.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
+| :---: | :---: | :---: | :---: |
+| ![Detail Gallery](https://i.imgur.com/ItifByt.png) | ![Maps](https://i.imgur.com/H9xkXLJ.png) | ![About Info](https://i.imgur.com/ECGSiye.png) | ![About Changelog](https://i.imgur.com/aNsZIlX.png) |
+
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
 - [Device Info](https://pub.dev/packages/device_info)
