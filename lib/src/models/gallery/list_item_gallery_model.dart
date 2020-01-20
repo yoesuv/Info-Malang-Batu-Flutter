@@ -2,9 +2,9 @@ import 'item_gallery_model.dart';
 
 class ListItemGalleryModel {
 
-    final List<ItemGalleryModel> listItemGalleryModel;
-
     ListItemGalleryModel.fromJson(List<dynamic> parsedJson):
-        listItemGalleryModel = parsedJson.map((index) => ItemGalleryModel.fromJson(index)).toList();
+    listItemGalleryModel = parsedJson.map((dynamic e) => ItemGalleryModel.fromJson(e as Map<String, dynamic>)).toList();
+
+    final List<ItemGalleryModel> listItemGalleryModel;
 
 }

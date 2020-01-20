@@ -7,8 +7,8 @@ class MapsRepository {
     Service service = Service();
 
     Future<ListItemMapsPinModel> getMapsPin() async {
-        final Response response = await service.getMapsPin();
-        return ListItemMapsPinModel.fromJson(response.data);
+        final Response<dynamic> response = await service.getMapsPin() as Response<dynamic>;
+        return ListItemMapsPinModel.fromJson(response.data as List<dynamic>);
     }
 
 }

@@ -4,9 +4,10 @@ import 'home.dart';
 
 class Splash extends StatelessWidget {
 
+    @override
     Widget build(BuildContext context) {
 
-        Future.delayed(Duration(seconds: 2), (){
+        Future<void>.delayed(const Duration(seconds: 2), (){
             Navigator.pushNamedAndRemoveUntil(context, Home.routeHome, ModalRoute.withName('/'));
         });
 
@@ -25,8 +26,8 @@ class Splash extends StatelessWidget {
                         Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                                padding: EdgeInsets.only(bottom: 8.0),
-                                child: Text('versi ${Constants.appVersion}', style: TextStyle(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: Text('versi $appVersion', style: TextStyle(
                                     fontSize: 14.0,
                                     color: Colors.white
                                 ))

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../models/gallery/item_gallery_model.dart';
 import '../data/constants.dart';
 import '../data/dimens.dart';
+import '../models/gallery/item_gallery_model.dart';
 
 class GalleryDetail extends StatelessWidget {
 
-    final ItemGalleryModel itemGalleryModel;
-
     const GalleryDetail({Key key, @required this.itemGalleryModel}): super(key: key);
 
+    final ItemGalleryModel itemGalleryModel;
+
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text('Detail Galeri', style: TextStyle(
+                title: const Text('Detail Galeri', style: TextStyle(
                     fontFamily: 'Pacifico'
                 )),
             ),
@@ -22,18 +23,18 @@ class GalleryDetail extends StatelessWidget {
                 children: <Widget>[
                     SizedBox(
                         width: double.infinity,
-                        height: Dimens.imageDetailHeight,
+                        height: imageDetailHeight,
                         child: CachedNetworkImage(
                             imageUrl: itemGalleryModel.image,
                             fit: BoxFit.cover,
-                            placeholder: (context, url) => Image.asset(Constants.placeHolderImage, fit: BoxFit.cover),
-                            errorWidget: (context, url, error) => Icon(Icons.error)
+                            placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
+                            errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
                         )
                     ),
                     Container(
-                        padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                        padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                         child: Text(itemGalleryModel.caption,
-                            style: TextStyle(fontSize: 16.0,),
+                            style: const TextStyle(fontSize: 16.0,),
                             textAlign: TextAlign.start
                         )
                     )

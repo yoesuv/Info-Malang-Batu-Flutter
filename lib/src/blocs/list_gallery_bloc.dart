@@ -1,37 +1,39 @@
 import 'package:rxdart/rxdart.dart';
-import '../repositories/list_gallery_repository.dart';
-import '../models/service_model.dart';
 import '../models/gallery/list_item_gallery_model.dart';
+import '../models/service_model.dart';
+import '../repositories/list_gallery_repository.dart';
 import '../services/app_exceptions.dart';
 
 class ListGalleryBloc {
 
-    final _listGalleryRepository = ListGalleryRepository();
-    final _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();
+    final ListGalleryRepository _listGalleryRepository = ListGalleryRepository();
+    final PublishSubject<ServiceModel<ListItemGalleryModel>> _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();
 
     Stream<ServiceModel<ListItemGalleryModel>> get listGallery => _listGallery.stream;
 
-    getListGallery() async {
+    void getListGallery() {
         try {
-            final listGallery = await _listGalleryRepository.getListGallery();
+            final Future<ListItemGalleryModel> listGallery = _listGalleryRepository.getListGallery();
             if (!_listGallery.isClosed) {
-                _listGallery.sink.add(ServiceModel.completed(listGallery));
+                listGallery.then((ListItemGalleryModel result) {
+                    _listGallery.sink.add(ServiceModel<ListItemGalleryModel>.completed(result));
+                });
             }
         } catch (e) {
             if (e is AppException) {
                 if (!_listGallery.isClosed) {
-                    _listGallery.sink.add(ServiceModel.dioError(e));
+                    _listGallery.sink.add(ServiceModel<ListItemGalleryModel>.dioError(e));
                 }
             } else {
                 if (!_listGallery.isClosed) {
-                    _listGallery.sink.add(ServiceModel.error('Unknown Exception'));
+                    _listGallery.sink.add(ServiceModel<ListItemGalleryModel>.error('Unknown Exception'));
                 }
             }
         }
 
     }
 
-    dispose() {
+    void dispose() {
         if (!_listGallery.isClosed) {
             _listGallery.close();
         }

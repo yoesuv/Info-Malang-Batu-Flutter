@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-
-import 'list_place.dart';
-import 'gallery.dart';
-import 'maps_place.dart';
 import 'about.dart';
+import 'gallery.dart';
+import 'list_place.dart';
+import 'maps_place.dart';
+
 
 class Home extends StatefulWidget {
 
+    const Home({Key key}) : super(key: key);
+
     static const String routeHome = '/home';
 
-    Home({Key key}) : super(key: key);
+    @override
     HomeState createState() => HomeState();
 }
 
@@ -17,9 +19,9 @@ class HomeState extends State<Home> {
 
     int _selectedIndex = 0;
     final List<Widget> menu = <Widget>[
-        ListPlace(),
-        Gallery(),
-        MapsPlace(),
+        const ListPlace(),
+        const Gallery(),
+        const MapsPlace(),
         About()
     ];
 
@@ -29,6 +31,7 @@ class HomeState extends State<Home> {
         });
     }
 
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             body: Center(
@@ -43,19 +46,19 @@ class HomeState extends State<Home> {
             items: <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    title: Text('Lokasi')
+                    title: const Text('Lokasi')
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.image),
-                    title: Text('Galeri')
+                    title: const Text('Galeri')
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.map),
-                    title: Text('Peta')
+                    title: const Text('Peta')
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.info),
-                    title: Text('Tentang')
+                    title: const Text('Tentang')
                 )
             ],
             type: BottomNavigationBarType.fixed,

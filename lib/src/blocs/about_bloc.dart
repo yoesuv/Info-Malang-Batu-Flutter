@@ -1,29 +1,32 @@
-import '../models/about/item_library_model.dart';
-import '../models/about/item_changelog_model.dart';
 import '../data/libraries.dart';
+import '../models/about/item_changelog_model.dart';
+import '../models/about/item_library_model.dart';
 
 class AboutBloc {
 
     List<ItemChangelogModel> createListChangelog() {
-        List<ItemChangelogModel> listChangelog = [];
-        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.3", changelog: "- menu filter list place\n- add error reporting\n- update libraries"));
-        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.2", changelog: "- improve performance"));
-        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.1", changelog: "- add splash screen\n- improve performance"));
-        listChangelog.add(ItemChangelogModel(version: "Versi 1.0.0", changelog: "- initial release"));
+        final List<ItemChangelogModel> listChangelog = <ItemChangelogModel>[
+            ItemChangelogModel(version: 'Versi 1.0.4', changelog: '- improve performance'),
+            ItemChangelogModel(version: 'Versi 1.0.3', changelog: '- menu filter list place\n- add error reporting\n- update libraries'),
+            ItemChangelogModel(version: 'Versi 1.0.2', changelog: '- improve performance'),
+            ItemChangelogModel(version: 'Versi 1.0.1', changelog: '- add splash screen\n- improve performance'),
+            ItemChangelogModel(version: 'Versi 1.0.0', changelog: '- initial release')
+        ];
         return listChangelog;
     }
 
     List<ItemLibraryModel> createListLibrary() {
-        List<ItemLibraryModel> listLib = [];
-        listLib.add(ItemLibraryModel(name: Libraries.flutter, url: Libraries.flutterUrl, license: Libraries.flutterLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.cachedNetworkImage, url: Libraries.cachedNetworkImageUrl, license: Libraries.cachedNetworkImageLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.deviceInfo, url: Libraries.deviceInfoUrl, license: Libraries.deviceInfoLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.dio, url: Libraries.dioUrl, license: Libraries.dioLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.flutterHtml, url: Libraries.flutterHtmlUrl, license: Libraries.flutterHtmlLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.googleMapsFlutter, url: Libraries.googleMapsFlutterUrl, license: Libraries.googleMapsFlutterLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.permissionHandler, url: Libraries.permissionHandlerUrl, license: Libraries.permissionHandlerLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.provider, url: Libraries.providerUrl, license: Libraries.providerLicense));
-        listLib.add(ItemLibraryModel(name: Libraries.sentry, url: Libraries.sentryUrl, license: Libraries.sentryLicense));
+        final List<ItemLibraryModel> listLib = <ItemLibraryModel>[
+            ItemLibraryModel(flutter, flutterUrl, flutterLicense),
+            ItemLibraryModel(cachedNetworkImage,  cachedNetworkImageUrl,  cachedNetworkImageLicense),
+            ItemLibraryModel(deviceInfo, deviceInfoUrl, deviceInfoLicense),
+            ItemLibraryModel(dio, dioUrl, dioLicense),
+            ItemLibraryModel(flutterHtml, flutterHtmlUrl, flutterHtmlLicense),
+            ItemLibraryModel(googleMapsFlutter, googleMapsFlutterUrl, googleMapsFlutterLicense),
+            ItemLibraryModel(permissionHandler, permissionHandlerUrl, permissionHandlerLicense),
+            ItemLibraryModel(provider, providerUrl, providerLicense),
+            ItemLibraryModel(sentry, sentryUrl, sentryLicense)
+        ];
         return listLib;
     }
 

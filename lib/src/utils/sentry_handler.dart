@@ -1,9 +1,9 @@
+import 'dart:io';
 import 'package:sentry/sentry.dart';
 import 'package:device_info/device_info.dart';
-import 'dart:io';
 import '../data/constants.dart';
 
-final SentryClient sentry = SentryClient(dsn: Constants.sentryDSN);
+final SentryClient sentry = SentryClient(dsn: sentryDSN);
 
 class SentryHandler {
 
@@ -12,8 +12,8 @@ class SentryHandler {
         if (Platform.isIOS) {
             final IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
             return Event(
-                release: Constants.appVersion,
-                environment: Constants.environment,
+                release: appVersion,
+                environment: environment,
                 extra: <String, dynamic> {
                     'name': iosDeviceInfo.name,
                     'model': iosDeviceInfo.model,
@@ -32,8 +32,8 @@ class SentryHandler {
         if (Platform.isAndroid) {
             final AndroidDeviceInfo androidDeviceInfo = await deviceInfo.androidInfo;
             return Event(
-                release: Constants.appVersion,
-                environment: Constants.environment,
+                release: appVersion,
+                environment: environment,
                 extra: <String, dynamic> {
                     'type': androidDeviceInfo.type,
                     'model': androidDeviceInfo.model,
@@ -57,8 +57,8 @@ class SentryHandler {
         }
 
         return Event(
-            release: Constants.appVersion,
-            environment: Constants.environment,
+            release: appVersion,
+            environment: environment,
             exception: exception,
             stackTrace: stackTrace
         );

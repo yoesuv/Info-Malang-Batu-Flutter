@@ -1,20 +1,26 @@
 import 'package:dio/dio.dart';
-import 'network_client.dart';
+import '../data/constants.dart';
 import 'app_exceptions.dart';
+
 
 class ApiBase {
 
-    Dio dio;
-
     ApiBase() {
-        dio = NetworkClient().dio;
+        dio = Dio(options);
     }
 
+    Dio dio;
+    BaseOptions options = BaseOptions(
+        baseUrl: baseUrl,
+        connectTimeout: 30000,
+        receiveTimeout: 30000,
+    );
+
     //handle get request
-    Future<Response> get(String url) async {
-        var response;
+    Future<dynamic> get(String url) async {
+        dynamic response;
         try {
-            response = await dio.get(url);
+            response = await dio.get<dynamic>(url);
         } catch(e) {
             if (e is DioError) {
                 throw AppException(dioError: e);

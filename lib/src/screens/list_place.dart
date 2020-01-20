@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import '../blocs/list_place_bloc.dart';
-import '../models/list_place/list_item_place_model.dart';
+import '../data/list_place_type.dart';
 import '../models/list_place/item_place_model.dart';
+import '../models/list_place/list_item_place_model.dart';
 import '../models/service_model.dart';
 import '../widgets/item_place.dart';
-import '../data/list_place_type.dart';
 
 class ListPlace extends StatefulWidget {
 
-    ListPlace({Key key}) : super(key: key);
+    const ListPlace({Key key}) : super(key: key);
+    @override
     ListPlaceState createState() => ListPlaceState();
 
 }
@@ -18,15 +19,17 @@ class ListPlaceState extends State<ListPlace> {
     ListPlaceBloc bloc = ListPlaceBloc();
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
+    @override
     void initState(){
         super.initState();
         bloc.getListPlace(_listPlaceType);
     }
 
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: Text('Lokasi', style: TextStyle(
+                title: const Text('Lokasi', style: TextStyle(
                     fontFamily: 'Pacifico'
                 )),
                 actions: <Widget>[
@@ -38,19 +41,19 @@ class ListPlaceState extends State<ListPlace> {
                             bloc.getListPlace(_listPlaceType);
                         },
                         itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.ALL,
                                 child: Text('Semua'),
                             ),
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.MALANG,
                                 child: Text('Kota Malang'),
                             ),
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.BATU,
                                 child: Text('Kota Batu'),
                             ),
-                            const PopupMenuItem(
+                            const PopupMenuItem<ListPlaceType>(
                                 value: ListPlaceType.KABMALANG,
                                 child: Text('Kab. Malang'),
                             )
@@ -95,14 +98,15 @@ class ListPlaceState extends State<ListPlace> {
     Widget buildList(ListItemPlaceModel model) {
         return ListView.builder(
             itemCount: model.listItemPlaceModel.length,
-            itemBuilder: (context, index) {
-                ItemPlaceModel itemPlaceModel = model.listItemPlaceModel[index];
+            itemBuilder: (BuildContext context, int index) {
+                final ItemPlaceModel itemPlaceModel = model.listItemPlaceModel[index];
                 return ItemPlace(itemPlaceModel: itemPlaceModel);
             }
         );
     }
 
-    dispose(){
+    @override
+    void dispose(){
         bloc.dispose();
         super.dispose();
     }
