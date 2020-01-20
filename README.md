@@ -13,12 +13,12 @@ Tools • Dart 2.7.0
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/6jc90j0uuouqof4)
+download APK File [here](https://www.dropbox.com/s/wvjv1wswu0efp5l)
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/wCnFBZG.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
 | :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/ZccyjgA.jpg) |
+| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/uX2TLm6.jpg) |
 
 ### Screenshot iOS ###
 | ![Splash Screen](https://i.imgur.com/ThVbCBN.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
