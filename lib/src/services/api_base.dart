@@ -1,12 +1,13 @@
 import 'package:dio/dio.dart';
 import '../data/constants.dart';
 import 'app_exceptions.dart';
-
+import 'logging_interceptor.dart';
 
 class ApiBase {
 
     ApiBase() {
         dio = Dio(options);
+        dio.interceptors.add(LoggingInterceptor());
     }
 
     Dio dio;
