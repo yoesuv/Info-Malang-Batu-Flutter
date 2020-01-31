@@ -6,7 +6,7 @@ import '../models/list_place/item_place_model.dart';
 
 class ListPlaceDetail extends StatelessWidget {
 
-    const ListPlaceDetail({Key key, @required this.itemPlaceModel}): super(key: key);
+    const ListPlaceDetail({@required this.itemPlaceModel});
 
     static const String routeListPlaceDetail = '/detailPlace';
     final ItemPlaceModel itemPlaceModel;

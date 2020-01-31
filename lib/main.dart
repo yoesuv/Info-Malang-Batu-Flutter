@@ -5,7 +5,6 @@ import 'src/app.dart';
 import 'src/utils/app_helper.dart';
 import 'src/utils/sentry_handler.dart';
 
-
 void main() => runZoned<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     FlutterError.onError = (FlutterErrorDetails details, {bool forceReport = false}) {

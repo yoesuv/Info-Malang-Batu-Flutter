@@ -18,7 +18,7 @@ class Routes{
         } else if (settings.name == Home.routeHome) {
             return MaterialPageRoute<dynamic>(
                 builder: (BuildContext context) {
-                    return const Home();
+                    return Home();
                 }
             );
         } else if (settings.name == ListPlaceDetail.routeListPlaceDetail) {
