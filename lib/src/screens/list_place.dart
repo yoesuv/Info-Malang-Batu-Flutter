@@ -8,7 +8,6 @@ import '../widgets/item_place.dart';
 
 class ListPlace extends StatefulWidget {
 
-    const ListPlace({Key key}) : super(key: key);
     @override
     ListPlaceState createState() => ListPlaceState();
 

@@ -9,7 +9,6 @@ import '../models/service_model.dart';
 
 class MapsPlace extends StatefulWidget {
 
-    const MapsPlace({Key key}) : super(key: key);
     @override
     MapsPlaceState createState() => MapsPlaceState();
 

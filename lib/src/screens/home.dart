@@ -19,9 +19,9 @@ class HomeState extends State<Home> {
 
     int _selectedIndex = 0;
     final List<Widget> menu = <Widget>[
-        const ListPlace(),
-        const Gallery(),
-        const MapsPlace(),
+        ListPlace(),
+        Gallery(),
+        MapsPlace(),
         About()
     ];
 

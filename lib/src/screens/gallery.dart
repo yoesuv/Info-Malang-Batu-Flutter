@@ -6,7 +6,6 @@ import '../widgets/item_gallery.dart';
 
 class Gallery extends StatefulWidget {
 
-    const Gallery({Key key}) : super(key: key);
     @override
     GalleryState createState() => GalleryState();
 
