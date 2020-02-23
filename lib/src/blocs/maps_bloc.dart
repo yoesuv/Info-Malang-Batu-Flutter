@@ -9,6 +9,11 @@ class MapsBloc {
     Stream<PermissionStatus> get permissionStatus => _locationPermission.stream;
     Stream<PermissionStatus> get requestLocationPermissionResult => _requestLocationResult.stream;
 
+    Future<bool> checkLocationService() async{
+        final ServiceStatus status = await PermissionHandler().checkServiceStatus(PermissionGroup.location);
+        return status == ServiceStatus.enabled;
+    }
+
     void checkLocationPermission(){
         final Future<PermissionStatus> permissionStatus = PermissionHandler().checkPermissionStatus(PermissionGroup.location);
         if (!_locationPermission.isClosed) {

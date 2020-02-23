@@ -31,26 +31,35 @@ class MapsPlaceState extends State<MapsPlace>{
 
   @override
   Widget build(BuildContext context) {
-      //mapsBloc.checkLocationPermission();
-      return Scaffold (
-          appBar: AppBar (
-              title: const MyAppBarText(title: 'Peta'),
-              actions: <Widget>[
-                  iconRefresh()
-              ]
+    checkLocationService();
+    return Scaffold (
+        appBar: AppBar (
+          title: const MyAppBarText(title: 'Peta'),
+          actions: <Widget>[iconRefresh()]
+        ),
+        body: GoogleMap(
+          onMapCreated: (GoogleMapController controller) {
+            googleMapController = controller;
+          },
+          initialCameraPosition: CameraPosition(
+              target: LatLng(defaultLatitude, defaultLongitude),
+              zoom: defaultZoom
           ),
-          body: GoogleMap(
-              onMapCreated: (GoogleMapController controller) {
-                googleMapController = controller;
-              },
-              initialCameraPosition: CameraPosition(
-                  target: LatLng(defaultLatitude, defaultLongitude),
-                  zoom: defaultZoom
-              ),
-              compassEnabled: true,
-              markers: Set<Marker>.of(listMarker)
-          )
-      );
+          compassEnabled: true,
+          markers: Set<Marker>.of(listMarker)
+        )
+    );
+  }
+  
+  void checkLocationService() {
+    mapsBloc.checkLocationService().then((bool result) {
+      if (!result) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: const Text('Location Service is Disabled'),
+          backgroundColor: Colors.red[700],
+        ));
+      }
+    });
   }
 
   Widget iconRefresh() {
