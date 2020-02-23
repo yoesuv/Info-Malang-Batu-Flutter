@@ -5,7 +5,7 @@ import '../models/about/item_library_model.dart';
 
 class ItemLibrary extends StatelessWidget {
 
-    const ItemLibrary({this.itemLibraryModel});
+    const ItemLibrary(this.itemLibraryModel);
 
     final ItemLibraryModel itemLibraryModel;
 
