@@ -1,9 +1,11 @@
 import 'package:rxdart/rxdart.dart';
 import 'package:info_malang_batu_flutter/src/repositories/list_place_repository.dart';
 import 'package:info_malang_batu_flutter/src/repositories/list_gallery_repository.dart';
+import 'package:info_malang_batu_flutter/src/repositories/maps_repository.dart';
 import 'package:info_malang_batu_flutter/src/models/service_model.dart';
 import 'package:info_malang_batu_flutter/src/models/list_place/list_item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/models/gallery/list_item_gallery_model.dart';
+import 'package:info_malang_batu_flutter/src/models/maps/list_item_maps_pin_model.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 import 'package:info_malang_batu_flutter/src/services/app_exceptions.dart';
 
@@ -11,12 +13,15 @@ class HomeBloc {
 
   final ListPlaceRepository _listPlaceRepository = ListPlaceRepository();
   final ListGalleryRepository _listGalleryRepository = ListGalleryRepository();
+  final MapsRepository _mapsRepository = MapsRepository();
 
   final PublishSubject<ServiceModel<ListItemPlaceModel>> _listPlace = PublishSubject<ServiceModel<ListItemPlaceModel>>();
   final PublishSubject<ServiceModel<ListItemGalleryModel>> _listGallery = PublishSubject<ServiceModel<ListItemGalleryModel>>();
+  final PublishSubject<ServiceModel<ListItemMapsPinModel>> _listItemMapsPin = PublishSubject<ServiceModel<ListItemMapsPinModel>>();
 
   Stream<ServiceModel<ListItemPlaceModel>> get streamListPlace => _listPlace.stream;
   Stream<ServiceModel<ListItemGalleryModel>> get streamListGallery => _listGallery.stream;
+  Stream<ServiceModel<ListItemMapsPinModel>> get streamListItemMapsPins => _listItemMapsPin.stream;
 
   // request list place
   void getListPlace(ListPlaceType listPlaceType) {
@@ -49,7 +54,7 @@ class HomeBloc {
   }
 
 
-  //request list gallery
+  // request list gallery
   void getListGallery() {
     try {
       final Future<ListItemGalleryModel> listGallery = _listGalleryRepository.getListGallery();
@@ -66,10 +71,28 @@ class HomeBloc {
 
   }
 
+  // request list maps pin
+  void getListMapsPin() {
+    try {
+      final Future<ListItemMapsPinModel> listMapsPin = _mapsRepository.getMapsPin();
+      listMapsPin.then((ListItemMapsPinModel result) {
+        _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.completed(result));
+      });
+    } catch (e) {
+      if (e is AppException) {
+        _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.dioError(e));
+      } else {
+        _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.error('Unknown Exception'));
+      }
+    }
+
+  }
+
   void dispose() {
     print('Home Bloc # dispose');
-    //_listPlace.close();
-    //_listGallery.close();
+    _listPlace.close();
+    _listGallery.close();
+    _listItemMapsPin.close();
   }
 
 }

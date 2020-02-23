@@ -7,7 +7,7 @@ class ApiBase {
 
     ApiBase() {
         dio = Dio(options);
-        dio.interceptors.add(LoggingInterceptor());
+        //dio.interceptors.add(LoggingInterceptor());
     }
 
     Dio dio;

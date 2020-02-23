@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 import '../blocs/maps_bloc.dart';
 import '../data/constants.dart';
 import '../models/maps/item_maps_pin_model.dart';
@@ -17,7 +19,14 @@ class MapsPlace extends StatefulWidget {
 class MapsPlaceState extends State<MapsPlace>{
 
     GoogleMapController googleMapController;
+    HomeBloc homeBloc;
     MapsBloc bloc = MapsBloc();
+
+    @override
+  void initState() {
+    super.initState();
+    homeBloc = Provider.of<HomeBloc>(context, listen: false);
+  }
 
     @override
     Widget build(BuildContext context) {
@@ -51,7 +60,7 @@ class MapsPlaceState extends State<MapsPlace>{
                             bloc.requestLocationPermission();
                             return requestLocationPermission(context, bloc);
                         } else {
-                            return createMarker(context, bloc);
+                            return createMarker(context);
                         }
                     } else {
                         return const Center (
@@ -68,7 +77,7 @@ class MapsPlaceState extends State<MapsPlace>{
             stream: bloc.requestLocationPermissionResult,
             builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
                 if (snapshot.hasData) {
-                    return createMarker(context, bloc);
+                    return createMarker(context);
                 } else {
                     return const Center(
                         child: Text('Checking Location Permission')
@@ -79,14 +88,14 @@ class MapsPlaceState extends State<MapsPlace>{
     }
 
     // create custom marker icon
-    Widget createMarker(BuildContext context, MapsBloc bloc) {
+    Widget createMarker(BuildContext context) {
         return FutureBuilder<BitmapDescriptor>(
             future: createIcons(context),
             builder: (BuildContext context, AsyncSnapshot<BitmapDescriptor> snapshot) {
                 if (snapshot.hasData) {
                     final BitmapDescriptor ico = snapshot.data;
-                    bloc.getListMapsPin();
-                    return buildMaps(bloc, ico);
+                    homeBloc.getListMapsPin();
+                    return buildMaps(ico);
                 } else {
                     return const Center(
                         child: Text('Loading Markers...')
@@ -96,9 +105,9 @@ class MapsPlaceState extends State<MapsPlace>{
         );
     }
 
-    Widget buildMaps(MapsBloc bloc, BitmapDescriptor iconMarker) {
+    Widget buildMaps(BitmapDescriptor iconMarker) {
         return StreamBuilder<ServiceModel<ListItemMapsPinModel>> (
-            stream: bloc.listItemMapsPins,
+            stream: homeBloc.streamListItemMapsPins,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
                 if (snapshot.hasData) {
                     switch (snapshot.data.status) {
