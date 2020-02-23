@@ -5,11 +5,11 @@ import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
-import '../blocs/maps_bloc.dart';
-import '../data/constants.dart';
-import '../models/maps/item_maps_pin_model.dart';
-import '../models/maps/list_item_maps_pin_model.dart';
-import '../models/service_model.dart';
+import 'package:info_malang_batu_flutter/src/blocs/maps_bloc.dart';
+import 'package:info_malang_batu_flutter/src/data/constants.dart';
+import 'package:info_malang_batu_flutter/src/models/maps/item_maps_pin_model.dart';
+import 'package:info_malang_batu_flutter/src/models/maps/list_item_maps_pin_model.dart';
+import 'package:info_malang_batu_flutter/src/models/service_model.dart';
 
 class MapsPlace extends StatefulWidget {
 
@@ -40,7 +40,7 @@ class MapsPlaceState extends State<MapsPlace>{
           title: const MyAppBarText(title: 'Peta'),
           actions: <Widget>[iconRefresh()]
         ),
-        body: buildMaps()
+        body: createMarker()
     );
   }
 
@@ -87,7 +87,7 @@ class MapsPlaceState extends State<MapsPlace>{
     });
   }
 
-  Widget buildMaps() {
+  Widget buildMaps(BitmapDescriptor icon) {
     return StreamBuilder<ServiceModel<ListItemMapsPinModel>>(
       stream: homeBloc.streamListItemMapsPins,
       builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
@@ -101,6 +101,7 @@ class MapsPlaceState extends State<MapsPlace>{
                     markerId: MarkerId(pin.name),
                     position: LatLng(pin.latitude, pin.longitude),
                     infoWindow: InfoWindow(title: pin.name),
+                    icon: icon
                 ));
               });
 
@@ -139,6 +140,24 @@ class MapsPlaceState extends State<MapsPlace>{
         );
       },
     );
+  }
+
+  // create custom marker icon
+  Widget createMarker() {
+    return FutureBuilder<BitmapDescriptor>(
+        future: createIcons(),
+        builder: (BuildContext context, AsyncSnapshot<BitmapDescriptor> snapshot) {
+          if (snapshot.hasData) {
+            return buildMaps(snapshot.data);
+          } else {
+            return Container();
+          }
+        }
+    );
+  }
+
+  Future<BitmapDescriptor> createIcons() {
+    return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)) , iconMarker);
   }
 
 }
