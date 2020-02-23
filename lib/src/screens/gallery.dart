@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../blocs/list_gallery_bloc.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:provider/provider.dart';
 import '../models/gallery/list_item_gallery_model.dart';
 import '../models/service_model.dart';
 import '../widgets/item_gallery.dart';
@@ -13,11 +14,12 @@ class Gallery extends StatefulWidget {
 
 class GalleryState extends State<Gallery> {
 
-    ListGalleryBloc bloc = ListGalleryBloc();
+    HomeBloc bloc = HomeBloc();
 
     @override
     void initState() {
         super.initState();
+        bloc = Provider.of<HomeBloc>(context, listen: false);
         bloc.getListGallery();
     }
 
@@ -29,13 +31,13 @@ class GalleryState extends State<Gallery> {
                     fontFamily: 'Pacifico'
                 )),
             ),
-            body: buildBody(bloc)
+            body: buildBody()
         );
     }
 
-    Widget buildBody(ListGalleryBloc bloc) {
+    Widget buildBody() {
         return StreamBuilder<ServiceModel<ListItemGalleryModel>>(
-            stream: bloc.listGallery,
+            stream: bloc.streamListGallery,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemGalleryModel>> snapshot) {
                 if (snapshot.hasData) {
                     switch (snapshot.data.status) {
@@ -71,12 +73,6 @@ class GalleryState extends State<Gallery> {
                 return ItemGallery(itemGalleryModel: model.listItemGalleryModel[index]);
             }
         );
-    }
-
-    @override
-    void dispose(){
-        bloc.dispose();
-        super.dispose();
     }
 
 }

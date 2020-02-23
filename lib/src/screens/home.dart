@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:provider/provider.dart';
 import 'about.dart';
 import 'gallery.dart';
 import 'list_place.dart';
@@ -14,6 +16,7 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
 
+    HomeBloc bloc;
     int _selectedIndex = 0;
     final List<Widget> menu = <Widget>[
         ListPlace(),
@@ -29,6 +32,12 @@ class HomeState extends State<Home> {
     }
 
     @override
+  void initState() {
+    super.initState();
+    bloc = Provider.of<HomeBloc>(context, listen: false);
+  }
+
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             body: Center(
@@ -36,6 +45,12 @@ class HomeState extends State<Home> {
             ),
             bottomNavigationBar: buildBottomNavigationBar()
         );
+    }
+
+    @override
+    void dispose() {
+        bloc.dispose();
+        super.dispose();
     }
 
     Widget buildBottomNavigationBar() {

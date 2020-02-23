@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../blocs/list_place_bloc.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:provider/provider.dart';
 import '../data/list_place_type.dart';
 import '../models/list_place/item_place_model.dart';
 import '../models/list_place/list_item_place_model.dart';
@@ -15,12 +16,13 @@ class ListPlace extends StatefulWidget {
 
 class ListPlaceState extends State<ListPlace> {
 
-    ListPlaceBloc bloc = ListPlaceBloc();
+    HomeBloc bloc = HomeBloc();
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
     @override
     void initState(){
         super.initState();
+        bloc = Provider.of<HomeBloc>(context, listen: false);
         bloc.getListPlace(_listPlaceType);
     }
 
@@ -60,13 +62,13 @@ class ListPlaceState extends State<ListPlace> {
                     )
                 ]
             ),
-            body: buildBody(bloc)
+            body: buildBody()
         );
     }
 
-    Widget buildBody(ListPlaceBloc bloc) {
+    Widget buildBody() {
         return StreamBuilder<ServiceModel<ListItemPlaceModel>>(
-            stream: bloc.listPlace,
+            stream: bloc.streamListPlace,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemPlaceModel>> snapshot){
                 if (snapshot.hasData) {
                     switch (snapshot.data.status) {
@@ -102,12 +104,6 @@ class ListPlaceState extends State<ListPlace> {
                 return ItemPlace(itemPlaceModel: itemPlaceModel);
             }
         );
-    }
-
-    @override
-    void dispose(){
-        bloc.dispose();
-        super.dispose();
     }
 
 }
