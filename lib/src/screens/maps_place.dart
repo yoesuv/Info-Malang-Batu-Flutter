@@ -4,6 +4,7 @@ import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
 import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
 import '../blocs/maps_bloc.dart';
 import '../data/constants.dart';
 import '../models/maps/item_maps_pin_model.dart';
@@ -54,10 +55,26 @@ class MapsPlaceState extends State<MapsPlace>{
   void checkLocationService() {
     mapsBloc.checkLocationService().then((bool result) {
       if (!result) {
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: const Text('Location Service is Disabled'),
-          backgroundColor: Colors.red[700],
-        ));
+        showSnackBarError(context, 'Location Service is Disabled');
+      } else {
+        checkLocationPermission();
+      }
+    });
+  }
+
+  void checkLocationPermission() {
+    mapsBloc.checkLocationPermission().then((bool result) {
+      if (!result) {
+        mapsBloc.requestLocationPermission().then((PermissionStatus status) {
+          if (status == PermissionStatus.granted) {
+            showSnackBarSuccess(context, 'Location Permission Granted');
+          } else if (status == PermissionStatus.neverAskAgain) {
+            showSnackBarWarning(context, 'Open App Setting');
+            PermissionHandler().openAppSettings();
+          } else {
+            showSnackBarError(context, 'Location Permission Denied');
+          }
+        });
       }
     });
   }
@@ -76,21 +93,6 @@ class MapsPlaceState extends State<MapsPlace>{
           );
         }
     );
-  }
-
-  Widget requestLocationPermission(BuildContext context) {
-      return StreamBuilder<PermissionStatus>(
-          stream: mapsBloc.requestLocationPermissionResult,
-          builder: (BuildContext context, AsyncSnapshot<PermissionStatus> snapshot) {
-              if (snapshot.hasData) {
-                  return createMarker(context);
-              } else {
-                  return const Center(
-                      child: Text('Checking Location Permission')
-                  );
-              }
-          }
-      );
   }
 
   // create custom marker icon
@@ -167,12 +169,6 @@ class MapsPlaceState extends State<MapsPlace>{
 
     Future<BitmapDescriptor> createIcons(BuildContext context) {
         return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)) , iconMarker);
-    }
-
-    @override
-    void dispose(){
-      mapsBloc.dispose();
-      super.dispose();
     }
 
 }
