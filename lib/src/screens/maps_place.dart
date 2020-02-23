@@ -27,7 +27,9 @@ class MapsPlaceState extends State<MapsPlace>{
   @override
   void initState() {
     super.initState();
+    listMarker.clear();
     homeBloc = Provider.of<HomeBloc>(context, listen: false);
+    homeBloc.getListMapsPin();
   }
 
   @override
@@ -38,17 +40,23 @@ class MapsPlaceState extends State<MapsPlace>{
           title: const MyAppBarText(title: 'Peta'),
           actions: <Widget>[iconRefresh()]
         ),
-        body: GoogleMap(
-          onMapCreated: (GoogleMapController controller) {
-            googleMapController = controller;
-          },
-          initialCameraPosition: CameraPosition(
-              target: LatLng(defaultLatitude, defaultLongitude),
-              zoom: defaultZoom
-          ),
-          compassEnabled: true,
-          markers: Set<Marker>.of(listMarker)
-        )
+        body: buildMaps()
+    );
+  }
+
+  Widget iconRefresh() {
+    return IconButton(
+        icon: Icon(Icons.refresh),
+        onPressed: () {
+          googleMapController.animateCamera(
+              CameraUpdate.newCameraPosition(
+                  CameraPosition(
+                      target: LatLng(defaultLatitude, defaultLongitude),
+                      zoom: defaultZoom
+                  )
+              )
+          );
+        }
     );
   }
   
@@ -79,96 +87,58 @@ class MapsPlaceState extends State<MapsPlace>{
     });
   }
 
-  Widget iconRefresh() {
-    return IconButton(
-        icon: Icon(Icons.refresh),
-        onPressed: () {
-          googleMapController.animateCamera(
-              CameraUpdate.newCameraPosition(
-                  CameraPosition(
+  Widget buildMaps() {
+    return StreamBuilder<ServiceModel<ListItemMapsPinModel>>(
+      stream: homeBloc.streamListItemMapsPins,
+      builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
+        if (snapshot.hasData) {
+          switch (snapshot.data.status) {
+            case Status.COMPLETED:
+            //generate marker
+              final List<Marker> listMarker = <Marker>[];
+              snapshot.data.data.listItemGalleryModel.asMap().forEach((int index, ItemMapsPinModel pin){
+                listMarker.add(Marker(
+                    markerId: MarkerId(pin.name),
+                    position: LatLng(pin.latitude, pin.longitude),
+                    infoWindow: InfoWindow(title: pin.name),
+                ));
+              });
+
+              return GoogleMap (
+                  onMapCreated: (GoogleMapController controller) {
+                    googleMapController = controller;
+                  },
+                  initialCameraPosition: CameraPosition(
                       target: LatLng(defaultLatitude, defaultLongitude),
                       zoom: defaultZoom
-                  )
-              )
-          );
+                  ),
+                  compassEnabled: true,
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: true,
+                  markers: Set<Marker>.of(listMarker)
+              );
+              break;
+            case Status.DIOERROR:
+              return Center(
+                  child: Text(snapshot.data.error.dioError.message)
+              );
+              break;
+            case Status.ERROR:
+              return Center(
+                  child: Text(snapshot.data.message)
+              );
+              break;
+            default:
+              break;
+          }
         }
+        return const Center(
+            child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
+            )
+        );
+      },
     );
   }
-
-  // create custom marker icon
-  Widget createMarker(BuildContext context) {
-      return FutureBuilder<BitmapDescriptor>(
-          future: createIcons(context),
-          builder: (BuildContext context, AsyncSnapshot<BitmapDescriptor> snapshot) {
-              if (snapshot.hasData) {
-                  final BitmapDescriptor ico = snapshot.data;
-                  homeBloc.getListMapsPin();
-                  return buildMaps(ico);
-              } else {
-                  return const Center(
-                      child: Text('Loading Markers...')
-                  );
-              }
-          }
-      );
-  }
-
-  Widget buildMaps(BitmapDescriptor iconMarker) {
-      return StreamBuilder<ServiceModel<ListItemMapsPinModel>> (
-          stream: homeBloc.streamListItemMapsPins,
-          builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
-              if (snapshot.hasData) {
-                  switch (snapshot.data.status) {
-                      case Status.COMPLETED:
-                          //generate marker
-                          final List<Marker> listMarker = <Marker>[];
-                          snapshot.data.data.listItemGalleryModel.asMap().forEach((int index, ItemMapsPinModel pin){
-                              listMarker.add(Marker(
-                                  markerId: MarkerId(pin.name),
-                                  position: LatLng(pin.latitude, pin.longitude),
-                                  infoWindow: InfoWindow(title: pin.name),
-                                  icon: iconMarker
-                              ));
-                          });
-
-                          return GoogleMap (
-                              onMapCreated: (GoogleMapController controller) {
-                                  googleMapController = controller;
-                              },
-                              initialCameraPosition: CameraPosition(
-                                  target: LatLng(defaultLatitude, defaultLongitude),
-                                  zoom: defaultZoom
-                              ),
-                              compassEnabled: true,
-                              myLocationEnabled: true,
-                              myLocationButtonEnabled: true,
-                              markers: Set<Marker>.of(listMarker)
-                          );
-                      break;
-                      case Status.ERROR:
-                          return Center(
-                              child: Text(snapshot.data.message)
-                          );
-                      break;
-                      case Status.DIOERROR:
-                          return Center(
-                              child: Text(snapshot.data.error.dioError.message)
-                          );
-                      break;
-                  }
-              }
-              return Center(
-                  child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
-                  )
-              );
-
-          }
-      );
-  }
-
-    Future<BitmapDescriptor> createIcons(BuildContext context) {
-        return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)) , iconMarker);
-    }
 
 }
