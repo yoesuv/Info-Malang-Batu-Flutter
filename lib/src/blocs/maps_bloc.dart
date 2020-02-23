@@ -38,3 +38,5 @@ class MapsBloc {
     }
 
 }
+
+final MapsBloc mapsBloc = MapsBloc();
