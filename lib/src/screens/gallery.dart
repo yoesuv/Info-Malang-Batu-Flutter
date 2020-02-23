@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import 'package:provider/provider.dart';
 import '../models/gallery/list_item_gallery_model.dart';
 import '../models/service_model.dart';
@@ -27,9 +28,7 @@ class GalleryState extends State<Gallery> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Galeri', style: TextStyle(
-                    fontFamily: 'Pacifico'
-                )),
+                title: const MyAppBarText(title: 'Galeri'),
             ),
             body: buildBody()
         );

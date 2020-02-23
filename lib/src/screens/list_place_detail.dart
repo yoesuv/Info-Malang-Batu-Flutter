@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import '../data/constants.dart';
 import '../data/dimens.dart';
 import '../models/list_place/item_place_model.dart';
@@ -15,9 +16,7 @@ class ListPlaceDetail extends StatelessWidget {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Detail Lokasi', style: TextStyle(
-                    fontFamily: 'Pacifico'
-                )),
+                title: const MyAppBarText(title: 'Detail Lokasi'),
             ),
             body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

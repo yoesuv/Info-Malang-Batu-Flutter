@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import 'package:provider/provider.dart';
 import '../data/list_place_type.dart';
 import '../models/list_place/item_place_model.dart';
@@ -30,9 +31,7 @@ class ListPlaceState extends State<ListPlace> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Lokasi', style: TextStyle(
-                    fontFamily: 'Pacifico'
-                )),
+                title: const MyAppBarText(title: 'Lokasi'),
                 actions: <Widget>[
                     PopupMenuButton<ListPlaceType>(
                         onSelected: (ListPlaceType result) {

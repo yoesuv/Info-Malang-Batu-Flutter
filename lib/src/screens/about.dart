@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import 'about_changelog.dart';
 import 'about_info.dart';
 import 'about_libraries.dart';
@@ -33,9 +34,7 @@ class AboutState extends State<About> with TickerProviderStateMixin {
             length: 4,
             child: Scaffold(
                 appBar: AppBar(
-                        title: const Text('Tentang', style: TextStyle(
-                            fontFamily: 'Pacifico'
-                        )),
+                    title: const MyAppBarText(title: 'Tentang'),
                     bottom: tabBarItem,
                 ),
                 body: TabBarView(
