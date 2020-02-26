@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:info_malang_batu_flutter/src/blocs/about_bloc.dart';
 import 'package:info_malang_batu_flutter/src/models/about/item_library_model.dart';
 import 'package:info_malang_batu_flutter/src/widgets/item_library.dart';
 
 class AboutLibraries extends StatelessWidget {
 
+    const AboutLibraries(this.bloc);
+
+    final AboutBloc bloc;
+
     @override
     Widget build(BuildContext context) {
-        final AboutBloc bloc = Provider.of<AboutBloc>(context, listen: false);
         bloc.initListLibrary();
         return Scaffold(
             body: buildListLibrary(bloc)
@@ -16,8 +18,8 @@ class AboutLibraries extends StatelessWidget {
     }
 
     Widget buildListLibrary(AboutBloc bloc) {
-        return StreamBuilder<List<ItemLibraryModel>>(
-            stream: bloc.streamListLibrary,
+        return FutureBuilder<List<ItemLibraryModel>>(
+            future: bloc.initListLibrary(),
             builder: (BuildContext context, AsyncSnapshot<List<ItemLibraryModel>> snapshot) {
                 if (snapshot.hasData) {
                     return ListView.builder(
@@ -26,13 +28,13 @@ class AboutLibraries extends StatelessWidget {
                             return ItemLibrary(snapshot.data[index]);
                         }
                     );
-                } else {
-                    return Center(
-                        child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
-                        )
-                    );
                 }
+                return Center(
+                    child: Text('Memuat List Library...', style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
+                    )),
+                );
             },
         );
     }

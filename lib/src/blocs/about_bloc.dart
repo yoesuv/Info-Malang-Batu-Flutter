@@ -5,12 +5,8 @@ import 'package:info_malang_batu_flutter/src/models/about/item_library_model.dar
 
 class AboutBloc {
 
-    final PublishSubject<List<ItemLibraryModel>> _listLibrary = PublishSubject<List<ItemLibraryModel>>();
-
-    Stream<List<ItemLibraryModel>> get streamListLibrary => _listLibrary.stream;
-
-    void initListLibrary() {
-        final List<ItemLibraryModel> listLibrary = <ItemLibraryModel>[
+    Future<List<ItemLibraryModel>> initListLibrary() async{
+        return <ItemLibraryModel>[
             ItemLibraryModel(flutter, flutterUrl, flutterLicense),
             ItemLibraryModel(cachedNetworkImage,  cachedNetworkImageUrl,  cachedNetworkImageLicense),
             ItemLibraryModel(deviceInfo, deviceInfoUrl, deviceInfoLicense),
@@ -21,7 +17,6 @@ class AboutBloc {
             ItemLibraryModel(provider, providerUrl, providerLicense),
             ItemLibraryModel(sentry, sentryUrl, sentryLicense)
         ];
-        _listLibrary.sink.add(listLibrary);
     }
 
     List<ItemChangelogModel> createListChangelog() {
