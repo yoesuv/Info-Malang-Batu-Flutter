@@ -15,7 +15,7 @@ class Gallery extends StatefulWidget {
 
 class GalleryState extends State<Gallery> {
 
-    HomeBloc bloc = HomeBloc();
+    HomeBloc bloc;
 
     @override
     void initState() {

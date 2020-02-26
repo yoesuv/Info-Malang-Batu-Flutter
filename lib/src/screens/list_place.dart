@@ -17,7 +17,7 @@ class ListPlace extends StatefulWidget {
 
 class ListPlaceState extends State<ListPlace> {
 
-    HomeBloc bloc = HomeBloc();
+    HomeBloc bloc;
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
     @override
