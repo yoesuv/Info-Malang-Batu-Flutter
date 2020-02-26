@@ -50,7 +50,7 @@ class AboutState extends State<About> with TickerProviderStateMixin {
                     controller: tabController,
                     children: <Widget>[
                         AboutInfo(),
-                        AboutChangelog(),
+                        AboutChangelog(bloc),
                         AboutThanks(),
                         AboutLibraries(bloc)
                     ],

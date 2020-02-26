@@ -11,13 +11,12 @@ class AboutLibraries extends StatelessWidget {
 
     @override
     Widget build(BuildContext context) {
-        bloc.initListLibrary();
         return Scaffold(
-            body: buildListLibrary(bloc)
+            body: buildListLibrary()
         );
     }
 
-    Widget buildListLibrary(AboutBloc bloc) {
+    Widget buildListLibrary() {
         return FutureBuilder<List<ItemLibraryModel>>(
             future: bloc.initListLibrary(),
             builder: (BuildContext context, AsyncSnapshot<List<ItemLibraryModel>> snapshot) {

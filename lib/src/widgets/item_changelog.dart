@@ -4,7 +4,7 @@ import 'package:info_malang_batu_flutter/src/models/about/item_changelog_model.d
 
 class ItemChangelog extends StatelessWidget {
 
-    const ItemChangelog({this.itemChangelogModel});
+    const ItemChangelog(this.itemChangelogModel);
 
     final ItemChangelogModel itemChangelogModel;
 

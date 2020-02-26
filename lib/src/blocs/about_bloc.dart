@@ -1,4 +1,3 @@
-import 'package:rxdart/rxdart.dart';
 import 'package:info_malang_batu_flutter/src/data/libraries.dart';
 import 'package:info_malang_batu_flutter/src/models/about/item_changelog_model.dart';
 import 'package:info_malang_batu_flutter/src/models/about/item_library_model.dart';
@@ -19,7 +18,7 @@ class AboutBloc {
         ];
     }
 
-    List<ItemChangelogModel> createListChangelog() {
+    Future<List<ItemChangelogModel>> initListChangelog() async {
         return <ItemChangelogModel>[
             ItemChangelogModel(version: 'Versi 1.0.4', changelog: '- improve performance'),
             ItemChangelogModel(version: 'Versi 1.0.3', changelog: '- menu filter list place\n- add error reporting\n- update libraries'),
