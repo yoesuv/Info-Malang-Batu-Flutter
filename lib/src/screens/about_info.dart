@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/constants.dart';
-import '../data/dimens.dart';
+import 'package:info_malang_batu_flutter/src/data/constants.dart';
+import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class AboutInfo extends StatelessWidget {
 

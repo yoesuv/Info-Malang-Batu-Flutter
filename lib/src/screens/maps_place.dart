@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
 import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
 import 'package:info_malang_batu_flutter/src/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';

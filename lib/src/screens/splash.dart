@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/constants.dart';
-import 'home.dart';
+import 'package:info_malang_batu_flutter/src/data/constants.dart';
+import 'package:info_malang_batu_flutter/src/screens/home.dart';
 
 class Splash extends StatelessWidget {
 

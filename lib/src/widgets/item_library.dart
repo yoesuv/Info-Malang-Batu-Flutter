@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../data/dimens.dart';
-import '../models/about/item_library_model.dart';
+import 'package:info_malang_batu_flutter/src/data/dimens.dart';
+import 'package:info_malang_batu_flutter/src/models/about/item_library_model.dart';
 
 class ItemLibrary extends StatelessWidget {
 

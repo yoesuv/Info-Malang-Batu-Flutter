@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../models/maps/list_item_maps_pin_model.dart';
-import '../services/api_base.dart';
+import 'package:info_malang_batu_flutter/src/models/maps/list_item_maps_pin_model.dart';
+import 'package:info_malang_batu_flutter/src/services/api_base.dart';
 
 class MapsRepository {
 

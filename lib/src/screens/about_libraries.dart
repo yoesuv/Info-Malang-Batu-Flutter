@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../blocs/about_bloc.dart';
-import '../models/about/item_library_model.dart';
-import '../widgets/item_library.dart';
+import 'package:info_malang_batu_flutter/src/blocs/about_bloc.dart';
+import 'package:info_malang_batu_flutter/src/models/about/item_library_model.dart';
+import 'package:info_malang_batu_flutter/src/widgets/item_library.dart';
 
 class AboutLibraries extends StatelessWidget {
 

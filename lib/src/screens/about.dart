@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
-import 'about_changelog.dart';
-import 'about_info.dart';
-import 'about_libraries.dart';
-import 'about_thanks.dart';
+import 'package:info_malang_batu_flutter/src/screens/about_changelog.dart';
+import 'package:info_malang_batu_flutter/src/screens/about_info.dart';
+import 'package:info_malang_batu_flutter/src/screens/about_libraries.dart';
+import 'package:info_malang_batu_flutter/src/screens/about_thanks.dart';
 
 class About extends StatefulWidget {
 

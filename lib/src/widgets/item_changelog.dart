@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/dimens.dart';
-import '../models/about/item_changelog_model.dart';
+import 'package:info_malang_batu_flutter/src/data/dimens.dart';
+import 'package:info_malang_batu_flutter/src/models/about/item_changelog_model.dart';
 
 class ItemChangelog extends StatelessWidget {
 

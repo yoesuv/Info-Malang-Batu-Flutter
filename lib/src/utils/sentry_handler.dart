@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:sentry/sentry.dart';
 import 'package:device_info/device_info.dart';
-import '../data/constants.dart';
+import 'package:info_malang_batu_flutter/src/data/constants.dart';
 
 final SentryClient sentry = SentryClient(dsn: sentryDSN);
 

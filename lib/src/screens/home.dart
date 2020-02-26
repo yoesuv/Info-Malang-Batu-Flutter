@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
 import 'package:provider/provider.dart';
-import 'about.dart';
-import 'gallery.dart';
-import 'list_place.dart';
-import 'maps_place.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:info_malang_batu_flutter/src/screens/about.dart';
+import 'package:info_malang_batu_flutter/src/screens/gallery.dart';
+import 'package:info_malang_batu_flutter/src/screens/list_place.dart';
+import 'package:info_malang_batu_flutter/src/screens/maps_place.dart';
 
 class Home extends StatefulWidget {
 

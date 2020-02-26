@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
 import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
-import 'package:provider/provider.dart';
-import '../data/list_place_type.dart';
-import '../models/list_place/item_place_model.dart';
-import '../models/list_place/list_item_place_model.dart';
-import '../models/service_model.dart';
-import '../widgets/item_place.dart';
+import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
+import 'package:info_malang_batu_flutter/src/models/list_place/item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/models/list_place/list_item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/models/service_model.dart';
+import 'package:info_malang_batu_flutter/src/widgets/item_place.dart';
 
 class ListPlace extends StatefulWidget {
 

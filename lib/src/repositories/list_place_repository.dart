@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../models/list_place/list_item_place_model.dart';
-import '../services/api_base.dart';
+import 'package:info_malang_batu_flutter/src/models/list_place/list_item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/services/api_base.dart';
 
 class ListPlaceRepository {
 
