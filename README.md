@@ -1,14 +1,14 @@
-## Info Malang Batu Flutter 1.0.4 ##
+## Info Malang Batu Flutter 1.0.5 ##
 
 #### Whats new? #####
 - :sparkles: add linter (analysis_options.yaml)
-- :hammer: big refactoring
+- :hammer: very big refactoring
 
 #### Flutter Dependencies ####
 ```
-Flutter 1.12.13+hotfix.7 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 9f5ff2306b (3 days ago) • 2020-01-26 22:38:26 -0800
-Engine • revision a67792536c
+Flutter 1.12.13+hotfix.8 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 0b8abb4724 (2 weeks ago) • 2020-02-11 11:44:36 -0800
+Engine • revision e1e6ced81d
 Tools • Dart 2.7.0
 ```
 
@@ -33,6 +33,7 @@ download APK File [here](https://www.dropbox.com/s/wvjv1wswu0efp5l)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Provider](https://pub.dev/packages/provider)
+- [RxDart](https://pub.dev/packages/rxdart)
 - [Sentry](https://pub.dev/packages/sentry)
 
 ### License ###
