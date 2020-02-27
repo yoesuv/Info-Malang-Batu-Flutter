@@ -26,7 +26,7 @@ class Splash extends StatelessWidget {
                         Align(
                             alignment: Alignment.bottomCenter,
                             child: Container(
-                                padding: const EdgeInsets.only(bottom: 8.0),
+                                padding: const EdgeInsets.only(bottom: 16.0),
                                 child: Text('versi $appVersion', style: TextStyle(
                                     fontSize: 14.0,
                                     color: Colors.white
