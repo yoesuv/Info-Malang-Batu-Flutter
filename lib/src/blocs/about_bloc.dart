@@ -14,6 +14,7 @@ class AboutBloc {
             ItemLibraryModel(googleMapsFlutter, googleMapsFlutterUrl, googleMapsFlutterLicense),
             ItemLibraryModel(permissionHandler, permissionHandlerUrl, permissionHandlerLicense),
             ItemLibraryModel(provider, providerUrl, providerLicense),
+            ItemLibraryModel(rxDart, rxDartUrl, rxDartLicense),
             ItemLibraryModel(sentry, sentryUrl, sentryLicense)
         ];
     }
