@@ -1,7 +1,7 @@
 ## Info Malang Batu Flutter 1.0.5 ##
 
 #### Whats new? #####
-- :sparkles: add linter (analysis_options.yaml)
+- :hammer: improve logic
 - :hammer: very big refactoring
 
 #### Flutter Dependencies ####
@@ -13,12 +13,12 @@ Tools • Dart 2.7.0
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/wvjv1wswu0efp5l)
+download APK File [here](https://www.dropbox.com/s/k0hnswhgf6o3hn5)
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/wCnFBZG.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
 | :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/uX2TLm6.jpg) |
+| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/QX64xAJ.jpg) | ![About Changelog](https://i.imgur.com/EXT4sR3.jpg) |
 
 ### Screenshot iOS ###
 | ![Splash Screen](https://i.imgur.com/aNJF3JZ.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
