@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
-import '../blocs/about_bloc.dart';
-import '../models/about/item_library_model.dart';
-import '../widgets/item_library.dart';
+import 'package:info_malang_batu_flutter/src/blocs/about_bloc.dart';
+import 'package:info_malang_batu_flutter/src/models/about/item_library_model.dart';
+import 'package:info_malang_batu_flutter/src/widgets/item_library.dart';
 
 class AboutLibraries extends StatelessWidget {
 
-    final AboutBloc bloc = AboutBloc();
+    const AboutLibraries(this.bloc);
+
+    final AboutBloc bloc;
 
     @override
     Widget build(BuildContext context) {
         return Scaffold(
-            body: buildListLibrary(bloc)
+            body: buildListLibrary()
         );
     }
 
-    Widget buildListLibrary(AboutBloc bloc) {
-        final List<ItemLibraryModel> listItemLibraryModel = bloc.createListLibrary();
-        return ListView.builder(
-            itemCount: listItemLibraryModel.length,
-            itemBuilder: (BuildContext context, int index) {
-                return ItemLibrary(itemLibraryModel: listItemLibraryModel[index]);
-            }
+    Widget buildListLibrary() {
+        return FutureBuilder<List<ItemLibraryModel>>(
+            future: bloc.initListLibrary(),
+            builder: (BuildContext context, AsyncSnapshot<List<ItemLibraryModel>> snapshot) {
+                if (snapshot.hasData) {
+                    return ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (BuildContext context, int index) {
+                            return ItemLibrary(snapshot.data[index]);
+                        }
+                    );
+                }
+                return Center(
+                    child: Text('Memuat List Library...', style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold
+                    )),
+                );
+            },
         );
     }
 

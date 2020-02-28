@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'about.dart';
-import 'gallery.dart';
-import 'list_place.dart';
-import 'maps_place.dart';
-
+import 'package:provider/provider.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:info_malang_batu_flutter/src/screens/about.dart';
+import 'package:info_malang_batu_flutter/src/screens/gallery.dart';
+import 'package:info_malang_batu_flutter/src/screens/list_place.dart';
+import 'package:info_malang_batu_flutter/src/screens/maps_place.dart';
 
 class Home extends StatefulWidget {
-
-    const Home({Key key}) : super(key: key);
 
     static const String routeHome = '/home';
 
@@ -17,11 +16,12 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
 
+    HomeBloc bloc;
     int _selectedIndex = 0;
     final List<Widget> menu = <Widget>[
-        const ListPlace(),
-        const Gallery(),
-        const MapsPlace(),
+        ListPlace(),
+        Gallery(),
+        MapsPlace(),
         About()
     ];
 
@@ -32,6 +32,12 @@ class HomeState extends State<Home> {
     }
 
     @override
+  void initState() {
+    super.initState();
+    bloc = Provider.of<HomeBloc>(context, listen: false);
+  }
+
+    @override
     Widget build(BuildContext context) {
         return Scaffold(
             body: Center(
@@ -39,6 +45,12 @@ class HomeState extends State<Home> {
             ),
             bottomNavigationBar: buildBottomNavigationBar()
         );
+    }
+
+    @override
+    void dispose() {
+        bloc.dispose();
+        super.dispose();
     }
 
     Widget buildBottomNavigationBar() {

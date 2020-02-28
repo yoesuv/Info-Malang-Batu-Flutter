@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../data/constants.dart';
-import '../models/gallery/item_gallery_model.dart';
+import 'package:info_malang_batu_flutter/src/data/constants.dart';
+import 'package:info_malang_batu_flutter/src/models/gallery/item_gallery_model.dart';
 
 class ItemGallery extends StatelessWidget {
 

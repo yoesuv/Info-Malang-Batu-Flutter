@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import '../data/constants.dart';
-import '../data/dimens.dart';
-import '../models/gallery/item_gallery_model.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
+import 'package:info_malang_batu_flutter/src/data/constants.dart';
+import 'package:info_malang_batu_flutter/src/data/dimens.dart';
+import 'package:info_malang_batu_flutter/src/models/gallery/item_gallery_model.dart';
 
 class GalleryDetail extends StatelessWidget {
 
@@ -14,9 +15,7 @@ class GalleryDetail extends StatelessWidget {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Detail Galeri', style: TextStyle(
-                    fontFamily: 'Pacifico'
-                )),
+                title: const MyAppBarText(title: 'Detail Galeri'),
             ),
             body: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

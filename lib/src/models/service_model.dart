@@ -1,4 +1,4 @@
-import '../services/app_exceptions.dart';
+import 'package:info_malang_batu_flutter/src/services/app_exceptions.dart';
 
 class ServiceModel<T> {
 

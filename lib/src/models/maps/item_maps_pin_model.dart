@@ -11,5 +11,4 @@ class ItemMapsPinModel {
     final double latitude;
     final double longitude;
 
-
 }

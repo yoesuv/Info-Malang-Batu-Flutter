@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../blocs/list_gallery_bloc.dart';
-import '../models/gallery/list_item_gallery_model.dart';
-import '../models/service_model.dart';
-import '../widgets/item_gallery.dart';
+import 'package:provider/provider.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
+import 'package:info_malang_batu_flutter/src/models/gallery/list_item_gallery_model.dart';
+import 'package:info_malang_batu_flutter/src/models/service_model.dart';
+import 'package:info_malang_batu_flutter/src/widgets/item_gallery.dart';
 
 class Gallery extends StatefulWidget {
 
-    const Gallery({Key key}) : super(key: key);
     @override
     GalleryState createState() => GalleryState();
 
@@ -14,11 +15,12 @@ class Gallery extends StatefulWidget {
 
 class GalleryState extends State<Gallery> {
 
-    ListGalleryBloc bloc = ListGalleryBloc();
+    HomeBloc bloc;
 
     @override
     void initState() {
         super.initState();
+        bloc = Provider.of<HomeBloc>(context, listen: false);
         bloc.getListGallery();
     }
 
@@ -26,17 +28,15 @@ class GalleryState extends State<Gallery> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Galeri', style: TextStyle(
-                    fontFamily: 'Pacifico'
-                )),
+                title: const MyAppBarText(title: 'Galeri'),
             ),
-            body: buildBody(bloc)
+            body: buildBody()
         );
     }
 
-    Widget buildBody(ListGalleryBloc bloc) {
+    Widget buildBody() {
         return StreamBuilder<ServiceModel<ListItemGalleryModel>>(
-            stream: bloc.listGallery,
+            stream: bloc.streamListGallery,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemGalleryModel>> snapshot) {
                 if (snapshot.hasData) {
                     switch (snapshot.data.status) {
@@ -72,12 +72,6 @@ class GalleryState extends State<Gallery> {
                 return ItemGallery(itemGalleryModel: model.listItemGalleryModel[index]);
             }
         );
-    }
-
-    @override
-    void dispose(){
-        bloc.dispose();
-        super.dispose();
     }
 
 }

@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import '../blocs/list_place_bloc.dart';
-import '../data/list_place_type.dart';
-import '../models/list_place/item_place_model.dart';
-import '../models/list_place/list_item_place_model.dart';
-import '../models/service_model.dart';
-import '../widgets/item_place.dart';
+import 'package:provider/provider.dart';
+import 'package:info_malang_batu_flutter/src/blocs/home_bloc.dart';
+import 'package:info_malang_batu_flutter/src/widgets/my_app_bar_text.dart';
+import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
+import 'package:info_malang_batu_flutter/src/models/list_place/item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/models/list_place/list_item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/models/service_model.dart';
+import 'package:info_malang_batu_flutter/src/widgets/item_place.dart';
 
 class ListPlace extends StatefulWidget {
 
-    const ListPlace({Key key}) : super(key: key);
     @override
     ListPlaceState createState() => ListPlaceState();
 
@@ -16,12 +17,13 @@ class ListPlace extends StatefulWidget {
 
 class ListPlaceState extends State<ListPlace> {
 
-    ListPlaceBloc bloc = ListPlaceBloc();
+    HomeBloc bloc;
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
     @override
     void initState(){
         super.initState();
+        bloc = Provider.of<HomeBloc>(context, listen: false);
         bloc.getListPlace(_listPlaceType);
     }
 
@@ -29,9 +31,7 @@ class ListPlaceState extends State<ListPlace> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
-                title: const Text('Lokasi', style: TextStyle(
-                    fontFamily: 'Pacifico'
-                )),
+                title: const MyAppBarText(title: 'Lokasi'),
                 actions: <Widget>[
                     PopupMenuButton<ListPlaceType>(
                         onSelected: (ListPlaceType result) {
@@ -61,13 +61,13 @@ class ListPlaceState extends State<ListPlace> {
                     )
                 ]
             ),
-            body: buildBody(bloc)
+            body: buildBody()
         );
     }
 
-    Widget buildBody(ListPlaceBloc bloc) {
+    Widget buildBody() {
         return StreamBuilder<ServiceModel<ListItemPlaceModel>>(
-            stream: bloc.listPlace,
+            stream: bloc.streamListPlace,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemPlaceModel>> snapshot){
                 if (snapshot.hasData) {
                     switch (snapshot.data.status) {
@@ -103,12 +103,6 @@ class ListPlaceState extends State<ListPlace> {
                 return ItemPlace(itemPlaceModel: itemPlaceModel);
             }
         );
-    }
-
-    @override
-    void dispose(){
-        bloc.dispose();
-        super.dispose();
     }
 
 }
