@@ -21,9 +21,9 @@ download APK File [here](https://www.dropbox.com/s/wvjv1wswu0efp5l)
 | ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/tSrhur2.jpg) | ![About Changelog](https://i.imgur.com/uX2TLm6.jpg) |
 
 ### Screenshot iOS ###
-| ![Splash Screen](https://i.imgur.com/ThVbCBN.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
+| ![Splash Screen](https://i.imgur.com/aNJF3JZ.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
 | :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/ItifByt.png) | ![Maps](https://i.imgur.com/H9xkXLJ.png) | ![About Info](https://i.imgur.com/ECGSiye.png) | ![About Changelog](https://i.imgur.com/aNsZIlX.png) |
+| ![Detail Gallery](https://i.imgur.com/ItifByt.png) | ![Maps](https://i.imgur.com/H9xkXLJ.png) | ![About Info](https://i.imgur.com/i6wv0sh.png) | ![About Changelog](https://i.imgur.com/k9D3gni.png) |
 
 #### List Libraries used in this Project ####
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
