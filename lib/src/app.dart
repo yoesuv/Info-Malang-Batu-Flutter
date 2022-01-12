@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:info_malang_batu_flutter/src/core/providers/app_provider.dart';
+import 'package:info_malang_batu_flutter/src/core/routes/routes.dart';
 import 'package:provider/provider.dart';
-import 'providers/app_provider.dart';
-import 'routes/routes.dart';
 
 class App extends StatelessWidget {
 
