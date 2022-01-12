@@ -24,6 +24,6 @@ void main() => runZoned<Future<void>>(() async {
         print('Main # onError object -> ${error.toString()}');
         print('Main # onError stackTrace -> ${stackTrace.toString()}');
     } else {
-        SentryHandler().reportError(error, stackTrace);
+        //SentryHandler().reportError(error, stackTrace);
     }
 });

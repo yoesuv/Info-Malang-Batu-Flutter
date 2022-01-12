@@ -3,11 +3,11 @@ import 'package:sentry/sentry.dart';
 import 'package:device_info/device_info.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 
-final SentryClient sentry = SentryClient(dsn: sentryDSN);
+final SentryClient sentry = SentryClient(SentryOptions(dsn: sentryDSN));
 
 class SentryHandler {
 
-    Future<Event> getSentryEvent([dynamic exception, dynamic stackTrace]) async {
+    /*Future<Event> getSentryEvent([dynamic exception, dynamic stackTrace]) async {
         final DeviceInfoPlugin  deviceInfo = DeviceInfoPlugin();
         if (Platform.isIOS) {
             final IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
@@ -62,9 +62,9 @@ class SentryHandler {
             exception: exception,
             stackTrace: stackTrace
         );
-    }
+    }*/
 
-    Future<void> reportError(Object error, StackTrace stackTrace) async {
+    /*Future<void> reportError(Object error, StackTrace stackTrace) async {
         try {
             final Event event = await getSentryEvent(error, stackTrace);
             print('SentryHandler # Report to Sentry $event');
@@ -72,6 +72,6 @@ class SentryHandler {
         } catch (e) {
             print('SentryHandler # Failed Sending Report to Sentry =====> $e');
         }
-    }
+    }*/
 
 }
