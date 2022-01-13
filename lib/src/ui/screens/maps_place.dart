@@ -76,9 +76,8 @@ class MapsPlaceState extends State<MapsPlace>{
         mapsBloc.requestLocationPermission().then((PermissionStatus status) {
           if (status == PermissionStatus.granted) {
             showSnackBarSuccess(context, 'Location Permission Granted');
-          } else if (status == PermissionStatus.neverAskAgain) {
-            showSnackBarWarning(context, 'Open App Setting');
-            PermissionHandler().openAppSettings();
+          } else if (status == PermissionStatus.permanentlyDenied) {
+            openAppSettings();
           } else {
             showSnackBarError(context, 'Location Permission Denied');
           }

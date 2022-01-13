@@ -3,20 +3,16 @@ import 'package:permission_handler/permission_handler.dart';
 class MapsBloc {
 
     Future<bool> checkLocationService() async{
-        final ServiceStatus status = await PermissionHandler().checkServiceStatus(PermissionGroup.location);
+        final ServiceStatus status = await Permission.location.serviceStatus;
         return status == ServiceStatus.enabled;
     }
 
     Future<bool> checkLocationPermission() async{
-        final PermissionStatus status = await PermissionHandler().checkPermissionStatus(PermissionGroup.location);
-        return status == PermissionStatus.granted;
+        return await Permission.location.isGranted;
     }
 
     Future<PermissionStatus> requestLocationPermission() async {
-        final Map<PermissionGroup, PermissionStatus> permissionRequestResult = await PermissionHandler().requestPermissions(
-            <PermissionGroup>[PermissionGroup.location]
-        );
-        return permissionRequestResult[PermissionGroup.location];
+       return await Permission.location.request();
     }
 
 }
