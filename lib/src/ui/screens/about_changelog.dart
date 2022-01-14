@@ -22,9 +22,9 @@ class AboutChangelog extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<List<ItemChangelogModel>> snapshot) {
                 if (snapshot.hasData) {
                     return ListView.builder(
-                        itemCount: snapshot.data.length,
+                        itemCount: snapshot.data?.length,
                         itemBuilder: (BuildContext context, int index) {
-                            return ItemChangelog(snapshot.data[index]);
+                            return ItemChangelog(snapshot.data.[index]);
                         }
                     );
                 }
