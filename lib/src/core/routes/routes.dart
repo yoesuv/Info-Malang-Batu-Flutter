@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/blocs/splash_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/events/splash_event.dart';
 import 'package:info_malang_batu_flutter/src/core/models/gallery/item_gallery_model.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/gallery_detail.dart';
@@ -12,7 +15,10 @@ class Routes{
         if (settings.name == '/') {
             return MaterialPageRoute<dynamic>(
                 builder: (BuildContext context) {
-                    return Splash();
+                    return BlocProvider(
+                        create: (context) => SplashBloc()..add(SplashEventInit()),
+                        child: Splash(),
+                    );
                 }
             );
         } else if (settings.name == Home.routeHome) {
