@@ -12,7 +12,7 @@ void main() => runZoned<Future<void>>(() async {
             print('Main # Debug Mode No Sending Report to Sentry');
             FlutterError.dumpErrorToConsole(details);
         } else {
-            Zone.current.handleUncaughtError(details.exception, details.stack);
+            Zone.current.handleUncaughtError(details.exception, details.stack!);
         }
     };
     await SystemChrome.setPreferredOrientations(<DeviceOrientation>[DeviceOrientation.portraitUp]).then((_) {

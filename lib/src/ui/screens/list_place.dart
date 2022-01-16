@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 
 class ListPlace extends StatefulWidget {
 
+    const ListPlace({Key? key}) : super(key: key);
+
     @override
     ListPlaceState createState() => ListPlaceState();
 
@@ -17,7 +19,7 @@ class ListPlace extends StatefulWidget {
 
 class ListPlaceState extends State<ListPlace> {
 
-    HomeBloc bloc;
+    late HomeBloc bloc;
     ListPlaceType _listPlaceType = ListPlaceType.ALL;
 
     @override
@@ -70,23 +72,20 @@ class ListPlaceState extends State<ListPlace> {
             stream: bloc.streamListPlace,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemPlaceModel>> snapshot){
                 if (snapshot.hasData) {
-                    switch (snapshot.data.status) {
+                    switch (snapshot.data!.status!) {
                         case Status.COMPLETED:
-                            return buildList(snapshot.data.data);
-                        break;
+                            return buildList(snapshot.data!.data!);
                         case Status.ERROR:
                             return Center(
-                                child: Text(snapshot.data.message)
+                                child: Text(snapshot.data!.message!)
                             );
-                        break;
                         case Status.DIOERROR:
                             return Center(
-                                child: Text(snapshot.data.error.dioError.message)
+                                child: Text(snapshot.data?.error?.dioError?.message ?? '')
                             );
-                        break;
                     }
                 }
-                return Center(
+                return const Center(
                     child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
                     )

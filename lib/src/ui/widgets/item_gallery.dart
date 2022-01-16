@@ -7,7 +7,7 @@ class ItemGallery extends StatelessWidget {
 
     const ItemGallery({this.itemGalleryModel});
 
-    final ItemGalleryModel itemGalleryModel;
+    final ItemGalleryModel? itemGalleryModel;
 
     @override
     Widget build(BuildContext context) {
@@ -17,9 +17,9 @@ class ItemGallery extends StatelessWidget {
                 Navigator.pushNamed(context, '/detailGallery', arguments: itemGalleryModel);
             },
             child: CachedNetworkImage(
-                imageUrl: itemGalleryModel.thumbnail,
+                imageUrl: itemGalleryModel?.thumbnail ?? '',
                 placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
-                errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
+                //errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
             )
         );
     }

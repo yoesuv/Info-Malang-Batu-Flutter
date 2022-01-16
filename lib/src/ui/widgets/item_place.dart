@@ -8,7 +8,7 @@ class ItemPlace extends StatelessWidget {
 
     const ItemPlace({this.itemPlaceModel});
 
-    final ItemPlaceModel itemPlaceModel;
+    final ItemPlaceModel? itemPlaceModel;
 
     @override
     Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class ItemPlace extends StatelessWidget {
                         width: double.infinity,
                         height: itemListPlaceHeight,
                         child: CachedNetworkImage(
-                            imageUrl: itemPlaceModel.gambar,
+                            imageUrl: itemPlaceModel?.gambar ?? '',
                             fit: BoxFit.cover,
                             placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
-                            errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
+                            //errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
                         )
                     ),
                     Container(
@@ -48,7 +48,7 @@ class ItemPlace extends StatelessWidget {
 
     Widget textTitle() {
         return Text(
-            itemPlaceModel.nama,
+            itemPlaceModel?.nama ?? '',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class ItemPlace extends StatelessWidget {
 
     Widget textSubTitle() {
         return Text(
-            itemPlaceModel.lokasi,
+            itemPlaceModel?.lokasi ?? '',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 16.0,

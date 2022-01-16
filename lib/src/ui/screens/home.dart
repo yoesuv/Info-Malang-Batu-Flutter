@@ -16,7 +16,7 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
 
-    HomeBloc bloc;
+    late HomeBloc bloc;
     int _selectedIndex = 0;
     final List<Widget> menu = <Widget>[
         ListPlace(),
@@ -55,22 +55,22 @@ class HomeState extends State<Home> {
 
     Widget buildBottomNavigationBar() {
         return BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
+            items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                     icon: Icon(Icons.home),
-                    title: const Text('Lokasi')
+                    label: 'Lokasi'
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.image),
-                    title: const Text('Galeri')
+                    label: 'Galeri'
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.map),
-                    title: const Text('Peta')
+                    label: 'Peta'
                 ),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.info),
-                    title: const Text('Tentang')
+                    label: 'Tentang'
                 )
             ],
             type: BottomNavigationBarType.fixed,

@@ -10,7 +10,7 @@ class ListPlaceDetail extends StatelessWidget {
     const ListPlaceDetail({@required this.itemPlaceModel});
 
     static const String routeListPlaceDetail = '/detailPlace';
-    final ItemPlaceModel itemPlaceModel;
+    final ItemPlaceModel? itemPlaceModel;
 
     @override
     Widget build(BuildContext context) {
@@ -25,17 +25,17 @@ class ListPlaceDetail extends StatelessWidget {
                         width: double.infinity,
                         height: imageDetailHeight,
                         child: CachedNetworkImage(
-                            imageUrl: itemPlaceModel.gambar,
+                            imageUrl: itemPlaceModel?.gambar ?? '',
                             fit: BoxFit.cover,
-                            errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error),
+                            //errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error),
                             placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
                         )
                     ),
                     Container(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                            itemPlaceModel.nama,
-                            style: TextStyle(
+                            itemPlaceModel?.nama ?? '',
+                            style: const TextStyle(
                                 fontSize: 18.0,
                                 fontWeight: FontWeight.bold
                             ),
@@ -45,7 +45,7 @@ class ListPlaceDetail extends StatelessWidget {
                     Container(
                         padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                         child: Text(
-                            itemPlaceModel.deskripsi,
+                            itemPlaceModel?.deskripsi ?? '',
                             style: const TextStyle(
                                 fontSize: 14.0
                             ),

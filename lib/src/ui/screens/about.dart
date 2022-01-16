@@ -16,8 +16,8 @@ class About extends StatefulWidget {
 
 class AboutState extends State<About> with TickerProviderStateMixin {
 
-    TabController tabController;
-    AboutBloc bloc;
+    late TabController tabController;
+    late AboutBloc bloc;
 
     @override
     void initState() {

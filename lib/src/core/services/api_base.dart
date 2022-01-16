@@ -9,11 +9,11 @@ class ApiBase {
     ApiBase() {
         dio = Dio(options);
         if (isInDebugMode) {
-            dio.interceptors.add(LoggingInterceptor());
+            dio?.interceptors.add(LoggingInterceptor());
         }
     }
 
-    Dio dio;
+    Dio? dio;
     BaseOptions options = BaseOptions(
         baseUrl: baseUrl,
         connectTimeout: 30000,
@@ -24,7 +24,7 @@ class ApiBase {
     Future<dynamic> get(String url) async {
         dynamic response;
         try {
-            response = await dio.get<dynamic>(url);
+            response = await dio?.get<dynamic>(url);
         } catch(e) {
             if (e is DioError) {
                 throw AppException(dioError: e);

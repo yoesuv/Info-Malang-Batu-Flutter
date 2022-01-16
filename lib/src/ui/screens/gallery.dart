@@ -15,7 +15,7 @@ class Gallery extends StatefulWidget {
 
 class GalleryState extends State<Gallery> {
 
-    HomeBloc bloc;
+    late HomeBloc bloc;
 
     @override
     void initState() {
@@ -39,23 +39,21 @@ class GalleryState extends State<Gallery> {
             stream: bloc.streamListGallery,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemGalleryModel>> snapshot) {
                 if (snapshot.hasData) {
-                    switch (snapshot.data.status) {
+                    switch (snapshot.data?.status) {
                         case Status.COMPLETED:
-                            return buildGallery(snapshot.data.data);
-                        break;
+                            return buildGallery(snapshot.data?.data);
                         case Status.ERROR:
                             return Center(
-                                child: Text(snapshot.data.message)
+                                child: Text(snapshot.data?.message ?? '')
                             );
-                        break;
                         case Status.DIOERROR:
                             return Center(
-                                child: Text(snapshot.data.error.dioError.message)
+                                child: Text(snapshot.data?.error?.dioError?.message ?? '')
                             );
-                        break;
+
                     }
                 }
-                return Center(
+                return const Center(
                     child: CircularProgressIndicator(
                         valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
                     )
@@ -64,12 +62,12 @@ class GalleryState extends State<Gallery> {
         );
     }
 
-    Widget buildGallery(ListItemGalleryModel model) {
+    Widget buildGallery(ListItemGalleryModel? model) {
         return GridView.builder(
-            itemCount: model.listItemGalleryModel.length,
+            itemCount: model?.listItemGalleryModel.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
             itemBuilder: (BuildContext context, int index) {
-                return ItemGallery(itemGalleryModel: model.listItemGalleryModel[index]);
+                return ItemGallery(itemGalleryModel: model?.listItemGalleryModel[index]);
             }
         );
     }

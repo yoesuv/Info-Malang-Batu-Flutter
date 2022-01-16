@@ -22,9 +22,9 @@ class AboutLibraries extends StatelessWidget {
             builder: (BuildContext context, AsyncSnapshot<List<ItemLibraryModel>> snapshot) {
                 if (snapshot.hasData) {
                     return ListView.builder(
-                        itemCount: snapshot.data.length,
+                        itemCount: snapshot.data?.length,
                         itemBuilder: (BuildContext context, int index) {
-                            return ItemLibrary(snapshot.data[index]);
+                            return ItemLibrary(snapshot.data![index]);
                         }
                     );
                 }

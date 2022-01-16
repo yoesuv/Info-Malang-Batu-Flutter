@@ -13,6 +13,8 @@ import 'package:provider/provider.dart';
 
 class MapsPlace extends StatefulWidget {
 
+  const MapsPlace({Key? key}) : super(key: key);
+
   @override
   MapsPlaceState createState() => MapsPlaceState();
 
@@ -20,8 +22,8 @@ class MapsPlace extends StatefulWidget {
 
 class MapsPlaceState extends State<MapsPlace>{
 
-  GoogleMapController googleMapController;
-  HomeBloc homeBloc;
+  late GoogleMapController googleMapController;
+  late HomeBloc homeBloc;
   List<Marker> listMarker = <Marker>[];
 
   @override
@@ -91,11 +93,11 @@ class MapsPlaceState extends State<MapsPlace>{
       stream: homeBloc.streamListItemMapsPins,
       builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
         if (snapshot.hasData) {
-          switch (snapshot.data.status) {
+          switch (snapshot.data?.status) {
             case Status.COMPLETED:
             //generate marker
               final List<Marker> listMarker = <Marker>[];
-              snapshot.data.data.listItemGalleryModel.asMap().forEach((int index, ItemMapsPinModel pin){
+              snapshot.data?.data?.listItemGalleryModel.asMap().forEach((int index, ItemMapsPinModel pin){
                 listMarker.add(Marker(
                     markerId: MarkerId(pin.name),
                     position: LatLng(pin.latitude, pin.longitude),
@@ -117,17 +119,14 @@ class MapsPlaceState extends State<MapsPlace>{
                   myLocationButtonEnabled: true,
                   markers: Set<Marker>.of(listMarker)
               );
-              break;
             case Status.DIOERROR:
               return Center(
-                  child: Text(snapshot.data.error.dioError.message)
+                  child: Text(snapshot.data?.error?.dioError?.message ?? '')
               );
-              break;
             case Status.ERROR:
               return Center(
-                  child: Text(snapshot.data.message)
+                  child: Text(snapshot.data?.message ?? '')
               );
-              break;
             default:
               break;
           }
@@ -147,7 +146,7 @@ class MapsPlaceState extends State<MapsPlace>{
         future: createIcons(),
         builder: (BuildContext context, AsyncSnapshot<BitmapDescriptor> snapshot) {
           if (snapshot.hasData) {
-            return buildMaps(snapshot.data);
+            return buildMaps(snapshot.data!);
           } else {
             return Container();
           }

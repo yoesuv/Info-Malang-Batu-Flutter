@@ -2,14 +2,16 @@ import 'package:dio/dio.dart';
 
 class AppException {
 
+    final DioError? dioError;
+
     AppException({this.dioError});
-    final DioError dioError;
 
 }
 
 class UnknownException {
 
+    final String? message;
+
     UnknownException({this.message});
-    final String message;
 
 }

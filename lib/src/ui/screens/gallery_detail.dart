@@ -7,9 +7,9 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class GalleryDetail extends StatelessWidget {
 
-    const GalleryDetail({Key key, @required this.itemGalleryModel}): super(key: key);
+    const GalleryDetail({Key? key, @required this.itemGalleryModel}): super(key: key);
 
-    final ItemGalleryModel itemGalleryModel;
+    final ItemGalleryModel? itemGalleryModel;
 
     @override
     Widget build(BuildContext context) {
@@ -24,15 +24,15 @@ class GalleryDetail extends StatelessWidget {
                         width: double.infinity,
                         height: imageDetailHeight,
                         child: CachedNetworkImage(
-                            imageUrl: itemGalleryModel.image,
+                            imageUrl: itemGalleryModel?.image ?? '',
                             fit: BoxFit.cover,
                             placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
-                            errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
+                            //errorWidget: (BuildContext context, String url, Object error) => Icon(Icons.error)
                         )
                     ),
                     Container(
                         padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-                        child: Text(itemGalleryModel.caption,
+                        child: Text(itemGalleryModel?.caption ?? '',
                             style: const TextStyle(fontSize: 16.0,),
                             textAlign: TextAlign.start
                         )

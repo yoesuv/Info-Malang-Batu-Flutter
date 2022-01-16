@@ -6,10 +6,10 @@ class ServiceModel<T> {
     ServiceModel.error(this.message) : status = Status.ERROR;
     ServiceModel.dioError(this.error): status = Status.DIOERROR;
 
-    Status status;
-    T data;
-    String message;
-    AppException error;
+    Status? status;
+    T? data;
+    String? message;
+    AppException? error;
 
 }
 
