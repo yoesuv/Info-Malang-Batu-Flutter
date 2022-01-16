@@ -5,7 +5,7 @@ import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class ItemLibrary extends StatelessWidget {
 
-    const ItemLibrary(this.itemLibraryModel);
+    const ItemLibrary(this.itemLibraryModel, {Key? key}) : super(key: key);
 
     final ItemLibraryModel itemLibraryModel;
 
@@ -16,7 +16,7 @@ class ItemLibrary extends StatelessWidget {
             children: <Widget>[
                 Container(
                     padding: EdgeInsets.only(left: itemLibraryPadding, right: itemLibraryPadding, top: itemLibraryPadding),
-                    child: Text('${itemLibraryModel.name}', style: TextStyle(
+                    child: Text('${itemLibraryModel.name}', style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18.0,
                         fontWeight: FontWeight.bold
@@ -24,7 +24,7 @@ class ItemLibrary extends StatelessWidget {
                 ),
                 Container(
                     padding: EdgeInsets.only(left: itemLibraryPadding, right: itemLibraryPadding, top: itemLibraryPadding),
-                    child: Text('${itemLibraryModel.url}', style: TextStyle(
+                    child: Text('${itemLibraryModel.url}', style: const TextStyle(
                         color: Colors.teal,
                         fontSize: 14.0,
                     ))
@@ -33,11 +33,13 @@ class ItemLibrary extends StatelessWidget {
                     padding: EdgeInsets.all(itemLibraryPadding),
                     child: Html(
                         data: itemLibraryModel.license,
-                        defaultTextStyle: const TextStyle(
-                            fontSize: 11.0,
+                        style: {
+                          "body" : Style(
+                            fontSize: const FontSize(11),
                             fontFamily: 'Consola'
-                        ),
-                    )
+                          ),
+                        },
+                    ),
                 ),
                 const Divider()
             ]
