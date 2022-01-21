@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:info_malang_batu_flutter/src/core/blocs/home_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/models/gallery/list_item_gallery_model.dart';
-import 'package:info_malang_batu_flutter/src/core/models/service_model.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/item_gallery.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
-import 'package:provider/provider.dart';
 
 class Gallery extends StatefulWidget {
 
@@ -15,13 +12,9 @@ class Gallery extends StatefulWidget {
 
 class GalleryState extends State<Gallery> {
 
-    late HomeBloc bloc;
-
     @override
     void initState() {
         super.initState();
-        bloc = Provider.of<HomeBloc>(context, listen: false);
-        bloc.getListGallery();
     }
 
     @override
@@ -35,7 +28,8 @@ class GalleryState extends State<Gallery> {
     }
 
     Widget buildBody() {
-        return StreamBuilder<ServiceModel<ListItemGalleryModel>>(
+        return Container();
+        /*return StreamBuilder<ServiceModel<ListItemGalleryModel>>(
             stream: bloc.streamListGallery,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemGalleryModel>> snapshot) {
                 if (snapshot.hasData) {
@@ -59,7 +53,7 @@ class GalleryState extends State<Gallery> {
                     )
                 );
             }
-        );
+        );*/
     }
 
     Widget buildGallery(ListItemGalleryModel? model) {

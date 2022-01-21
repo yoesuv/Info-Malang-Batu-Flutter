@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:info_malang_batu_flutter/src/core/blocs/home_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/blocs/list_place_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/list_item_place_model.dart';
-import 'package:info_malang_batu_flutter/src/core/models/service_model.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/item_place.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
-import 'package:provider/provider.dart';
 
 class ListPlace extends StatefulWidget {
 
@@ -19,14 +19,12 @@ class ListPlace extends StatefulWidget {
 
 class ListPlaceState extends State<ListPlace> {
 
-    late HomeBloc bloc;
-    ListPlaceType _listPlaceType = ListPlaceType.ALL;
+    late ListPlaceBloc _bloc;
 
     @override
     void initState(){
         super.initState();
-        bloc = Provider.of<HomeBloc>(context, listen: false);
-        bloc.getListPlace(_listPlaceType);
+        _bloc = context.read<ListPlaceBloc>()..add(ListPlaceEventInit(ListPlaceType.ALL));
     }
 
     @override
@@ -37,10 +35,7 @@ class ListPlaceState extends State<ListPlace> {
                 actions: <Widget>[
                     PopupMenuButton<ListPlaceType>(
                         onSelected: (ListPlaceType result) {
-                            setState(() {
-                                _listPlaceType = result;
-                            });
-                            bloc.getListPlace(_listPlaceType);
+
                         },
                         itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
                             const PopupMenuItem<ListPlaceType>(
@@ -68,7 +63,13 @@ class ListPlaceState extends State<ListPlace> {
     }
 
     Widget buildBody() {
-        return StreamBuilder<ServiceModel<ListItemPlaceModel>>(
+        return BlocBuilder(
+            bloc: _bloc,
+            builder: (context, state) {
+                return Container();
+            },
+        );
+        /*return StreamBuilder<ServiceModel<ListItemPlaceModel>>(
             stream: bloc.streamListPlace,
             builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemPlaceModel>> snapshot){
                 if (snapshot.hasData) {
@@ -91,7 +92,7 @@ class ListPlaceState extends State<ListPlace> {
                     )
                 );
             }
-        );
+        );*/
     }
 
     Widget buildList(ListItemPlaceModel model) {

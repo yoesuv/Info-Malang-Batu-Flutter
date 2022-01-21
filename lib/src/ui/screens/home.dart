@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:info_malang_batu_flutter/src/core/blocs/home_bloc.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/about.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/gallery.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/list_place.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/maps_place.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
 
@@ -16,7 +14,6 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
 
-    late HomeBloc bloc;
     int _selectedIndex = 0;
     final List<Widget> menu = <Widget>[
         ListPlace(),
@@ -34,7 +31,6 @@ class HomeState extends State<Home> {
     @override
   void initState() {
     super.initState();
-    bloc = Provider.of<HomeBloc>(context, listen: false);
   }
 
     @override
@@ -45,12 +41,6 @@ class HomeState extends State<Home> {
             ),
             bottomNavigationBar: buildBottomNavigationBar()
         );
-    }
-
-    @override
-    void dispose() {
-        bloc.dispose();
-        super.dispose();
     }
 
     Widget buildBottomNavigationBar() {

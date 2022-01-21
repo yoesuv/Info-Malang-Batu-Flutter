@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:info_malang_batu_flutter/src/core/blocs/home_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/models/maps/item_maps_pin_model.dart';
 import 'package:info_malang_batu_flutter/src/core/models/maps/list_item_maps_pin_model.dart';
-import 'package:info_malang_batu_flutter/src/core/models/service_model.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/provider.dart';
 
 class MapsPlace extends StatefulWidget {
 
@@ -23,15 +20,12 @@ class MapsPlace extends StatefulWidget {
 class MapsPlaceState extends State<MapsPlace>{
 
   late GoogleMapController googleMapController;
-  late HomeBloc homeBloc;
   List<Marker> listMarker = <Marker>[];
 
   @override
   void initState() {
     super.initState();
     listMarker.clear();
-    homeBloc = Provider.of<HomeBloc>(context, listen: false);
-    homeBloc.getListMapsPin();
   }
 
   @override
@@ -89,7 +83,8 @@ class MapsPlaceState extends State<MapsPlace>{
   }
 
   Widget buildMaps(BitmapDescriptor icon) {
-    return StreamBuilder<ServiceModel<ListItemMapsPinModel>>(
+    return Container();
+    /*return StreamBuilder<ServiceModel<ListItemMapsPinModel>>(
       stream: homeBloc.streamListItemMapsPins,
       builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemMapsPinModel>> snapshot) {
         if (snapshot.hasData) {
@@ -137,7 +132,7 @@ class MapsPlaceState extends State<MapsPlace>{
             )
         );
       },
-    );
+    );*/
   }
 
   // create custom marker icon
