@@ -22,48 +22,51 @@ class _ListPlaceState extends State<ListPlace> {
   @override
   void initState() {
     super.initState();
-    _bloc = context.read<ListPlaceBloc>()..add(ListPlaceEventInit(ListPlaceType.ALL));
+    _bloc = context.read<ListPlaceBloc>()..add(ListPlaceEventInit());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const MyAppBarText(title: 'Lokasi'), actions: <Widget>[
-          PopupMenuButton<ListPlaceType>(
-              onSelected: (ListPlaceType result) {},
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
-                    const PopupMenuItem<ListPlaceType>(
-                      value: ListPlaceType.ALL,
-                      child: Text('Semua'),
-                    ),
-                    const PopupMenuItem<ListPlaceType>(
-                      value: ListPlaceType.MALANG,
-                      child: Text('Kota Malang'),
-                    ),
-                    const PopupMenuItem<ListPlaceType>(
-                      value: ListPlaceType.BATU,
-                      child: Text('Kota Batu'),
-                    ),
-                    const PopupMenuItem<ListPlaceType>(
-                      value: ListPlaceType.KABMALANG,
-                      child: Text('Kab. Malang'),
-                    )
-                  ])
-        ]),
-        body: _buildBody());
+      appBar: AppBar(title: const MyAppBarText(title: 'Lokasi'), actions: <Widget>[
+        PopupMenuButton<ListPlaceType>(
+          onSelected: (ListPlaceType result) {
+            _bloc.add(ListPlaceEventLocationChanged(result));
+          },
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<ListPlaceType>>[
+            const PopupMenuItem<ListPlaceType>(
+              value: ListPlaceType.ALL,
+              child: Text('Semua'),
+            ),
+            const PopupMenuItem<ListPlaceType>(
+              value: ListPlaceType.MALANG,
+              child: Text('Kota Malang'),
+            ),
+            const PopupMenuItem<ListPlaceType>(
+              value: ListPlaceType.BATU,
+              child: Text('Kota Batu'),
+            ),
+            const PopupMenuItem<ListPlaceType>(
+              value: ListPlaceType.KABMALANG,
+              child: Text('Kab. Malang'),
+            )
+          ],
+        ),
+      ]),
+      body: _buildBody(),
+    );
   }
 
   Widget _buildBody() {
     return BlocBuilder<ListPlaceBloc, ListPlaceState>(
       bloc: _bloc,
       builder: (context, state) {
-        if (state.isLoading == true) {
-          return const Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)));
+        if (state.isLoading == false && state.listItemPlaceModel != null) {
+          return _buildList(state.listItemPlaceModel!);
         }
-        if (state.listItemPlaceModel != null) {
-          return buildList(state.listItemPlaceModel!);
-        }
-        return Container();
+        return const Center(
+            child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+        ));
       },
     );
     /*return StreamBuilder<ServiceModel<ListItemPlaceModel>>(
@@ -92,7 +95,7 @@ class _ListPlaceState extends State<ListPlace> {
         );*/
   }
 
-  Widget buildList(ListItemPlaceModel model) {
+  Widget _buildList(ListItemPlaceModel model) {
     return ListView.builder(
         itemCount: model.listItemPlaceModel.length,
         itemBuilder: (BuildContext context, int index) {
