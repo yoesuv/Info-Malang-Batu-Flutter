@@ -5,7 +5,9 @@ abstract class ListPlaceEvent extends Equatable {}
 
 class ListPlaceEventInit extends ListPlaceEvent {
   final ListPlaceType listPlaceType;
+
   ListPlaceEventInit(this.listPlaceType);
+
   @override
   List<Object> get props => [listPlaceType];
 }

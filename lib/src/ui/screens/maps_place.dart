@@ -9,16 +9,13 @@ import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class MapsPlace extends StatefulWidget {
-
   const MapsPlace({Key? key}) : super(key: key);
 
   @override
   MapsPlaceState createState() => MapsPlaceState();
-
 }
 
-class MapsPlaceState extends State<MapsPlace>{
-
+class MapsPlaceState extends State<MapsPlace> {
   late GoogleMapController googleMapController;
   List<Marker> listMarker = <Marker>[];
 
@@ -31,31 +28,18 @@ class MapsPlaceState extends State<MapsPlace>{
   @override
   Widget build(BuildContext context) {
     checkLocationService();
-    return Scaffold (
-        appBar: AppBar (
-          title: const MyAppBarText(title: 'Peta'),
-          actions: <Widget>[iconRefresh()]
-        ),
-        body: createMarker()
-    );
+    return Scaffold(appBar: AppBar(title: const MyAppBarText(title: 'Peta'), actions: <Widget>[iconRefresh()]), body: createMarker());
   }
 
   Widget iconRefresh() {
     return IconButton(
         icon: Icon(Icons.refresh),
         onPressed: () {
-          googleMapController.animateCamera(
-              CameraUpdate.newCameraPosition(
-                  CameraPosition(
-                      target: LatLng(defaultLatitude, defaultLongitude),
-                      zoom: defaultZoom
-                  )
-              )
-          );
-        }
-    );
+          googleMapController
+              .animateCamera(CameraUpdate.newCameraPosition(CameraPosition(target: LatLng(defaultLatitude, defaultLongitude), zoom: defaultZoom)));
+        });
   }
-  
+
   void checkLocationService() {
     mapsBloc.checkLocationService().then((bool result) {
       if (!result) {
@@ -145,12 +129,10 @@ class MapsPlaceState extends State<MapsPlace>{
           } else {
             return Container();
           }
-        }
-    );
+        });
   }
 
   Future<BitmapDescriptor> createIcons() {
-    return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)) , iconMarker);
+    return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)), iconMarker);
   }
-
 }

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
 class SplashState extends Equatable {
-
   final String? version;
 
   const SplashState({this.version});
@@ -14,5 +13,4 @@ class SplashState extends Equatable {
 
   @override
   List<Object?> get props => [];
-
 }

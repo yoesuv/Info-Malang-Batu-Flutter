@@ -10,7 +10,6 @@ import 'package:info_malang_batu_flutter/src/core/models/gallery/list_item_galle
 import 'package:info_malang_batu_flutter/src/core/models/maps/list_item_maps_pin_model.dart';
 
 class HomeBloc {
-
   final ListPlaceRepository _listPlaceRepository = ListPlaceRepository();
   final ListGalleryRepository _listGalleryRepository = ListGalleryRepository();
   final MapsRepository _mapsRepository = MapsRepository();
@@ -20,7 +19,9 @@ class HomeBloc {
   final PublishSubject<ServiceModel<ListItemMapsPinModel>> _listItemMapsPin = PublishSubject<ServiceModel<ListItemMapsPinModel>>();
 
   Stream<ServiceModel<ListItemPlaceModel>> get streamListPlace => _listPlace.stream;
+
   Stream<ServiceModel<ListItemGalleryModel>> get streamListGallery => _listGallery.stream;
+
   Stream<ServiceModel<ListItemMapsPinModel>> get streamListItemMapsPins => _listItemMapsPin.stream;
 
   // request list place
@@ -41,7 +42,7 @@ class HomeBloc {
           listPlace = _listPlaceRepository.getListPlaceKotaBatu();
           break;
       }
-      listPlace.then((ListItemPlaceModel result){
+      listPlace.then((ListItemPlaceModel result) {
         _listPlace.sink.add(ServiceModel<ListItemPlaceModel>.completed(result));
       });
     } catch (e) {
@@ -52,7 +53,6 @@ class HomeBloc {
       }
     }
   }
-
 
   // request list gallery
   void getListGallery() {
@@ -68,7 +68,6 @@ class HomeBloc {
         _listGallery.sink.add(ServiceModel<ListItemGalleryModel>.error('Unknown Exception'));
       }
     }
-
   }
 
   // request list maps pin
@@ -85,7 +84,6 @@ class HomeBloc {
         _listItemMapsPin.sink.add(ServiceModel<ListItemMapsPinModel>.error('Unknown Exception'));
       }
     }
-
   }
 
   void dispose() {
@@ -94,5 +92,4 @@ class HomeBloc {
     _listGallery.close();
     _listItemMapsPin.close();
   }
-
 }
