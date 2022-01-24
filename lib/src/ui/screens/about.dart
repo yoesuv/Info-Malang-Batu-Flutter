@@ -25,17 +25,17 @@ class AboutState extends State<About> with TickerProviderStateMixin {
     );
 
     return DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const MyAppBarText(title: 'Tentang'),
-            bottom: tabBarItem,
-          ),
-          body: TabBarView(
-            controller: tabController,
-            //children: <Widget>[AboutInfo(), AboutChangelog(), AboutThanks(), AboutLibraries(bloc)],
-            children: <Widget>[AboutInfo(), AboutChangelog(), AboutThanks(), AboutThanks()],
-          ),
-        ));
+      length: 4,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const MyAppBarText(title: 'Tentang'),
+          bottom: tabBarItem,
+        ),
+        body: TabBarView(
+          controller: tabController,
+          children: <Widget>[AboutInfo(), const AboutChangelog(), AboutThanks(), const AboutLibraries()],
+        ),
+      ),
+    );
   }
 }

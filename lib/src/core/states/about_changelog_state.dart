@@ -13,5 +13,5 @@ class AboutChangelogState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [ItemChangelogModel];
+  List<Object?> get props => [listChangelog];
 }
