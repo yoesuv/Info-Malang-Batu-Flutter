@@ -61,46 +61,24 @@ class _ListPlaceState extends State<ListPlace> {
     return BlocBuilder<ListPlaceBloc, ListPlaceState>(
       bloc: _bloc,
       builder: (context, state) {
-        if (state.isLoading == false && state.listItemPlaceModel != null) {
+        if (state.listItemPlaceModel != null) {
           return _buildList(state.listItemPlaceModel!);
         }
         return const Center(
-            child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+            child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
         ));
       },
     );
-    /*return StreamBuilder<ServiceModel<ListItemPlaceModel>>(
-            stream: bloc.streamListPlace,
-            builder: (BuildContext context, AsyncSnapshot<ServiceModel<ListItemPlaceModel>> snapshot){
-                if (snapshot.hasData) {
-                    switch (snapshot.data!.status!) {
-                        case Status.COMPLETED:
-                            return buildList(snapshot.data!.data!);
-                        case Status.ERROR:
-                            return Center(
-                                child: Text(snapshot.data!.message!)
-                            );
-                        case Status.DIOERROR:
-                            return Center(
-                                child: Text(snapshot.data?.error?.dioError?.message ?? '')
-                            );
-                    }
-                }
-                return const Center(
-                    child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)
-                    )
-                );
-            }
-        );*/
   }
 
   Widget _buildList(ListItemPlaceModel model) {
     return ListView.builder(
-        itemCount: model.listItemPlaceModel.length,
-        itemBuilder: (BuildContext context, int index) {
-          final ItemPlaceModel itemPlaceModel = model.listItemPlaceModel[index];
-          return ItemPlace(itemPlaceModel: itemPlaceModel);
-        });
+      itemCount: model.listItemPlaceModel.length,
+      itemBuilder: (BuildContext context, int index) {
+        final ItemPlaceModel itemPlaceModel = model.listItemPlaceModel[index];
+        return ItemPlace(itemPlaceModel: itemPlaceModel);
+      },
+    );
   }
 }
