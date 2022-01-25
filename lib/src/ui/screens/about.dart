@@ -33,7 +33,7 @@ class AboutState extends State<About> with TickerProviderStateMixin {
         ),
         body: TabBarView(
           controller: tabController,
-          children: <Widget>[AboutInfo(), const AboutChangelog(), AboutThanks(), const AboutLibraries()],
+          children: const <Widget>[AboutInfo(), AboutChangelog(), AboutThanks(), AboutLibraries()],
         ),
       ),
     );
