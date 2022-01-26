@@ -4,14 +4,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/new_maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/maps_event.dart';
-import 'package:info_malang_batu_flutter/src/core/models/maps/item_maps_pin_model.dart';
-import 'package:info_malang_batu_flutter/src/core/models/maps/list_item_maps_pin_model.dart';
 import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provider/src/provider.dart';
 
 class MapsPlace extends StatefulWidget {
   const MapsPlace({Key? key}) : super(key: key);
@@ -32,7 +29,6 @@ class _MapsPlaceState extends State<MapsPlace> {
 
   @override
   Widget build(BuildContext context) {
-    //checkLocationService();
     return Scaffold(
       appBar: AppBar(title: const MyAppBarText(title: 'Peta'), actions: <Widget>[_iconRefresh()]),
       body: _buildMaps(),
@@ -56,6 +52,13 @@ class _MapsPlaceState extends State<MapsPlace> {
     return BlocBuilder<NewMapsBloc, MapsState>(
       bloc: _bloc,
       builder: (context, MapsState state) {
+        if (state.isLocationServiceEnabled == false) {
+          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+            showSnackBarError(context, 'Location Service is Disabled');
+          });
+        } else {
+          // check location permission
+        }
         return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
@@ -68,16 +71,6 @@ class _MapsPlaceState extends State<MapsPlace> {
         );
       },
     );
-  }
-
-  void checkLocationService() {
-    mapsBloc.checkLocationService().then((bool result) {
-      if (!result) {
-        showSnackBarError(context, 'Location Service is Disabled');
-      } else {
-        checkLocationPermission();
-      }
-    });
   }
 
   void checkLocationPermission() {
@@ -149,20 +142,4 @@ class _MapsPlaceState extends State<MapsPlace> {
     );*/
   }
 
-  // create custom marker icon
-  Widget createMarker() {
-    return FutureBuilder<BitmapDescriptor>(
-        future: createIcons(),
-        builder: (BuildContext context, AsyncSnapshot<BitmapDescriptor> snapshot) {
-          if (snapshot.hasData) {
-            return buildMaps(snapshot.data!);
-          } else {
-            return Container();
-          }
-        });
-  }
-
-  Future<BitmapDescriptor> createIcons() {
-    return BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(context, size: const Size(64.0, 64.0)), iconMarker);
-  }
 }

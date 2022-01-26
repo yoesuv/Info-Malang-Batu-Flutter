@@ -7,13 +7,15 @@ import 'package:info_malang_batu_flutter/src/ui/screens/maps_place.dart';
 class Home extends StatefulWidget {
   static const String routeHome = '/home';
 
+  const Home({Key? key}) : super(key: key);
+
   @override
   HomeState createState() => HomeState();
 }
 
 class HomeState extends State<Home> {
   int _selectedIndex = 0;
-  final List<Widget> menu = <Widget>[ListPlace(), Gallery(), MapsPlace(), About()];
+  final List<Widget> menu = const <Widget>[ListPlace(), Gallery(), MapsPlace(), About()];
 
   void _onItemTapped(int index) {
     setState(() {

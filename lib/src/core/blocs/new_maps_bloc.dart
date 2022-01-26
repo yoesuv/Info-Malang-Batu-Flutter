@@ -6,6 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/models/maps/item_maps_pin_mode
 import 'package:info_malang_batu_flutter/src/core/repositories/maps_repository.dart';
 import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   final MapsRepository _mapsRepository = MapsRepository();
@@ -29,7 +30,11 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
           ),
         );
       });
-      emit(state.copyWith(listMarker: listMarker));
+      final serviceStatus = await Permission.location.serviceStatus;
+      emit(state.copyWith(
+        isLocationServiceEnabled: serviceStatus == ServiceStatus.enabled,
+        listMarker: listMarker,
+      ));
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
     }
