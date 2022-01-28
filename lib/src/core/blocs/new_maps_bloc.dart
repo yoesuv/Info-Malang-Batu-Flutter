@@ -11,7 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   final MapsRepository _mapsRepository = MapsRepository();
 
-  NewMapsBloc() : super(const MapsState()) {
+  NewMapsBloc() : super(const MapsState()){
     on<MapsEventInit>(_mapEventInit);
   }
 
@@ -31,8 +31,10 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
         );
       });
       final serviceStatus = await Permission.location.serviceStatus;
+      final checkPermission = await Permission.location.isGranted;
       emit(state.copyWith(
         isLocationServiceEnabled: serviceStatus == ServiceStatus.enabled,
+        isLocationPermissionGranted: checkPermission,
         listMarker: listMarker,
       ));
     } catch (e) {
