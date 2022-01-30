@@ -11,11 +11,18 @@ import 'package:permission_handler/permission_handler.dart';
 class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   final MapsRepository _mapsRepository = MapsRepository();
 
-  NewMapsBloc() : super(const MapsState()){
+  NewMapsBloc() : super(const MapsState()) {
     on<MapsEventInit>(_mapEventInit);
   }
 
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
+    final serviceStatus = await Permission.location.serviceStatus;
+    final checkPermission = await Permission.location.isGranted;
+    emit(state.copyWith(
+      isChecking: true,
+      isLocationServiceEnabled: serviceStatus == ServiceStatus.enabled,
+      isLocationPermissionGranted: checkPermission,
+    ));
     try {
       final List<Marker> listMarker = <Marker>[];
       final icon = await BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(event.context, size: const Size(64, 64)), iconMarker);
@@ -30,11 +37,8 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
           ),
         );
       });
-      final serviceStatus = await Permission.location.serviceStatus;
-      final checkPermission = await Permission.location.isGranted;
       emit(state.copyWith(
-        isLocationServiceEnabled: serviceStatus == ServiceStatus.enabled,
-        isLocationPermissionGranted: checkPermission,
+        isChecking: false,
         listMarker: listMarker,
       ));
     } catch (e) {

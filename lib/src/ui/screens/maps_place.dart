@@ -22,7 +22,7 @@ class _MapsPlaceState extends State<MapsPlace> {
   @override
   void initState() {
     super.initState();
-    _bloc = NewMapsBloc()..add(MapsEventInit(context: context));
+    _bloc = context.read<NewMapsBloc>()..add(MapsEventInit(context: context));
   }
 
   @override
@@ -51,18 +51,27 @@ class _MapsPlaceState extends State<MapsPlace> {
       bloc: _bloc,
       builder: (context, MapsState state) {
         debugPrint('MapsPlace # location service ${state.isLocationServiceEnabled}');
-        debugPrint('MapsPlace # location permission ${state.isLocationPermissionGranted}');
-        if (state.isLocationServiceEnabled == false) {
-          WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-            showSnackBarError(context, 'Location Service is Disabled');
-          });
-        } else {
-          // check location permission
-          if (state.isLocationPermissionGranted == false) {
+        if (state.isChecking != null) {
+          if (state.isChecking == true) {
+            if (state.isLocationServiceEnabled != null) {
+              if (state.isLocationServiceEnabled == false) {
+                WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+                  showSnackBarError(context, 'Location Service is Disabled');
+                });
+              } else {
+                // check location permission
+                if (state.isLocationPermissionGranted == false) {
 
+                }
+              }
+            }
           }
         }
-        return GoogleMap(
+
+        return const Center(
+          child: Text('This is Maps'),
+        );
+        /*return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
           },
@@ -71,7 +80,7 @@ class _MapsPlaceState extends State<MapsPlace> {
           myLocationEnabled: true,
           myLocationButtonEnabled: true,
           markers: Set<Marker>.of(state.listMarker ?? []),
-        );
+        );*/
       },
     );
   }
