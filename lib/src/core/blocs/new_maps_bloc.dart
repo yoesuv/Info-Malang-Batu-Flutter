@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -16,14 +18,19 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   }
 
   Future<bool> checkLocationService() async {
-    final ServiceStatus status = await Permission.location.serviceStatus;
-    return status == ServiceStatus.enabled;
+    if (Platform.isIOS) {
+      return true;
+    } else {
+      final ServiceStatus status = await Permission.location.serviceStatus;
+      return status == ServiceStatus.enabled;
+    }
   }
 
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
+    var iconSize = 64.0;
     try {
       final List<Marker> listMarker = <Marker>[];
-      final icon = await BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(event.context, size: const Size(64, 64)), iconMarker);
+      final icon = await BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(event.context, size: Size(iconSize, iconSize)), iconMarker);
       final response = await _mapsRepository.getMapsPin();
       response.listItemGalleryModel.asMap().forEach((int index, ItemMapsPinModel pin) {
         listMarker.add(
