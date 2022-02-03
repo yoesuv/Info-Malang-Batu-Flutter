@@ -15,14 +15,12 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
     on<MapsEventInit>(_mapEventInit);
   }
 
+  Future<bool> checkLocationService() async {
+    final ServiceStatus status = await Permission.location.serviceStatus;
+    return status == ServiceStatus.enabled;
+  }
+
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
-    final serviceStatus = await Permission.location.serviceStatus;
-    final checkPermission = await Permission.location.isGranted;
-    emit(state.copyWith(
-      isChecking: true,
-      isLocationServiceEnabled: serviceStatus == ServiceStatus.enabled,
-      isLocationPermissionGranted: checkPermission,
-    ));
     try {
       final List<Marker> listMarker = <Marker>[];
       final icon = await BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(event.context, size: const Size(64, 64)), iconMarker);
@@ -37,12 +35,10 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
           ),
         );
       });
-      emit(state.copyWith(
-        isChecking: false,
-        listMarker: listMarker,
-      ));
+      emit(state.copyWith(listMarker: listMarker));
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
     }
   }
+
 }

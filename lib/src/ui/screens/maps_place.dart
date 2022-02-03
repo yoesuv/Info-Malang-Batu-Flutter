@@ -23,6 +23,7 @@ class _MapsPlaceState extends State<MapsPlace> {
   void initState() {
     super.initState();
     _bloc = context.read<NewMapsBloc>()..add(MapsEventInit(context: context));
+    _checkLocationService();
   }
 
   @override
@@ -50,28 +51,7 @@ class _MapsPlaceState extends State<MapsPlace> {
     return BlocBuilder<NewMapsBloc, MapsState>(
       bloc: _bloc,
       builder: (context, MapsState state) {
-        debugPrint('MapsPlace # location service ${state.isLocationServiceEnabled}');
-        if (state.isChecking != null) {
-          if (state.isChecking == true) {
-            if (state.isLocationServiceEnabled != null) {
-              if (state.isLocationServiceEnabled == false) {
-                WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-                  showSnackBarError(context, 'Location Service is Disabled');
-                });
-              } else {
-                // check location permission
-                if (state.isLocationPermissionGranted == false) {
-
-                }
-              }
-            }
-          }
-        }
-
-        return const Center(
-          child: Text('This is Maps'),
-        );
-        /*return GoogleMap(
+        return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
           },
@@ -80,9 +60,21 @@ class _MapsPlaceState extends State<MapsPlace> {
           myLocationEnabled: true,
           myLocationButtonEnabled: true,
           markers: Set<Marker>.of(state.listMarker ?? []),
-        );*/
+        );
       },
     );
+  }
+
+  void _checkLocationService() {
+    _bloc.checkLocationService().then((result) => {
+      if (result) {
+        debugPrint('Maps Place # request permission location')
+      } else {
+        WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          showSnackBarError(context, 'Location Service is Disabled');
+        })
+      }
+    });
   }
 
 }
