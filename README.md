@@ -12,29 +12,28 @@ Tools • Dart 2.15.1
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/k0hnswhgf6o3hn5)
+download APK File [here](https://www.dropbox.com/s/7yccizmuwfwqv5e)
 
 ### Screenshot Android ###
-|  ![Splash Screen](https://i.imgur.com/WUN61PM.jpg)  | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
-|:--------------------:| :---: | :---: | :---: |
+| ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
+| :---:| :---: | :---: | :---: |
 | ![Detail Gallery](https://i.imgur.com/mhsiOwS.jpg) | ![Maps](https://i.imgur.com/TR37NrI.jpg) | ![About Info](https://i.imgur.com/HKFLJIB.jpg) | ![About Changelog](https://i.imgur.com/qyw6P8L.jpg) |
 
 ### Screenshot iOS ###
-| ![Splash Screen](https://i.imgur.com/aNJF3JZ.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
-| :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/ItifByt.png) | ![Maps](https://i.imgur.com/H9xkXLJ.png) | ![About Info](https://i.imgur.com/i6wv0sh.png) | ![About Changelog](https://i.imgur.com/k9D3gni.png) |
+| ![Splash Screen](https://i.imgur.com/RxJyXIJ.png) | ![List Place](https://i.imgur.com/U9xVi0q.png) | ![Detail List Place](https://i.imgur.com/cRYPljA.png) | ![Gallery](https://i.imgur.com/LcBqS36.png) |
+| :---:| :---: | :---: | :---: |
+| ![Detail Gallery](https://i.imgur.com/YSX4pdr.png) | ![Maps](https://i.imgur.com/HkiGbwU.png) | ![About Info](https://i.imgur.com/XBcoeHF.png) | ![About Changelog](https://i.imgur.com/wk2bjVS.png) |
 
 #### List Libraries used in this Project ####
+- [Bloc Library](https://github.com/felangel/bloc)
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
-- [Device Info](https://pub.dev/packages/device_info)
 - [Dio](https://pub.dev/packages/dio)
+- [Equatable](https://pub.dev/packages/equatable)
 - [Flutter Html](https://pub.dev/packages/flutter_html)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Provider](https://pub.dev/packages/provider)
-- [RxDart](https://pub.dev/packages/rxdart)
-- [Sentry](https://pub.dev/packages/sentry)
 
 ### License ###
 
