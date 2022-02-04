@@ -10,6 +10,7 @@ class AboutChangelogBloc extends Bloc<AboutChangelogEvent, AboutChangelogState> 
 
   void _initListChangelog(AboutChangelogEventInit event, Emitter<AboutChangelogState> emit) {
     final listChangelog = [
+      ItemChangelogModel(version: 'Versi 2.0.0', changelog: '• refactor code'),
       ItemChangelogModel(version: 'Versi 1.1.0', changelog: '• improve performance\n• improve logic\n• refactor code'),
       ItemChangelogModel(version: 'Versi 1.0.5', changelog: '• improve performance\n• improve logic'),
       ItemChangelogModel(version: 'Versi 1.0.4', changelog: '• improve performance'),
