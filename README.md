@@ -12,7 +12,7 @@ Tools • Dart 2.15.1
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/7yccizmuwfwqv5e)
+download APK File [here](https://www.dropbox.com/s/jhycjeejg2oa1c8)
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |

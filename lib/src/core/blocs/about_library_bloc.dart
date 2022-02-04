@@ -12,15 +12,15 @@ class AboutLibraryBloc extends Bloc<AboutLibraryEvent, AboutLibraryState> {
   void _initListLibrary(AboutLibraryEventInit event, Emitter<AboutLibraryState> emit) {
     final listLibrary = [
       ItemLibraryModel(flutter, flutterUrl, flutterLicense),
+      ItemLibraryModel(blocLibrary, blocLibraryUrl, blocLibraryLicense),
       ItemLibraryModel(cachedNetworkImage, cachedNetworkImageUrl, cachedNetworkImageLicense),
-      ItemLibraryModel(deviceInfo, deviceInfoUrl, deviceInfoLicense),
       ItemLibraryModel(dio, dioUrl, dioLicense),
+      ItemLibraryModel(equatable, equatableUrl, equatableLicense),
       ItemLibraryModel(flutterHtml, flutterHtmlUrl, flutterHtmlLicense),
       ItemLibraryModel(googleMapsFlutter, googleMapsFlutterUrl, googleMapsFlutterLicense),
+      ItemLibraryModel(packageInfoPlus, packageInfoPlusUrl, packageInfoPlusLicense),
       ItemLibraryModel(permissionHandler, permissionHandlerUrl, permissionHandlerLicense),
       ItemLibraryModel(provider, providerUrl, providerLicense),
-      ItemLibraryModel(rxDart, rxDartUrl, rxDartLicense),
-      ItemLibraryModel(sentry, sentryUrl, sentryLicense)
     ];
     emit(state.copyWith(listItemLibrary: listLibrary));
   }
