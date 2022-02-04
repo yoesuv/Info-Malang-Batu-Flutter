@@ -1,24 +1,23 @@
-## Info Malang Batu Flutter 1.0.5 ##
+## Info Malang Batu Flutter 2.0.0 ##
 
 #### Whats new? #####
-- :hammer: improve logic
-- :hammer: very big refactoring
+- :hammer: bloc pattern refactoring
 
 #### Flutter Dependencies ####
 ```
-Flutter 1.12.13+hotfix.8 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 0b8abb4724 (2 weeks ago) • 2020-02-11 11:44:36 -0800
-Engine • revision e1e6ced81d
-Tools • Dart 2.7.0
+Flutter 2.8.1 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 77d935af4d (7 weeks ago) • 2021-12-16 08:37:33 -0800
+Engine • revision 890a5fca2e
+Tools • Dart 2.15.1
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
 download APK File [here](https://www.dropbox.com/s/k0hnswhgf6o3hn5)
 
 ### Screenshot Android ###
-| ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/wCnFBZG.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
-| :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/QX64xAJ.jpg) | ![About Changelog](https://i.imgur.com/EXT4sR3.jpg) |
+|  ![Splash Screen](https://i.imgur.com/WUN61PM.jpg)  | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
+|:--------------------:| :---: | :---: | :---: |
+| ![Detail Gallery](https://i.imgur.com/mhsiOwS.jpg) | ![Maps](https://i.imgur.com/TR37NrI.jpg) | ![About Info](https://i.imgur.com/HKFLJIB.jpg) | ![About Changelog](https://i.imgur.com/qyw6P8L.jpg) |
 
 ### Screenshot iOS ###
 | ![Splash Screen](https://i.imgur.com/aNJF3JZ.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
