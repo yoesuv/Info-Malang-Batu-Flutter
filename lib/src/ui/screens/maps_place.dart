@@ -7,6 +7,7 @@ import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MapsPlace extends StatefulWidget {
   const MapsPlace({Key? key}) : super(key: key);
@@ -68,7 +69,40 @@ class _MapsPlaceState extends State<MapsPlace> {
   void _checkLocationService() {
     _bloc.checkLocationService().then((result) => {
       if (result) {
-        debugPrint('Maps Place # request permission location')
+        _bloc.requestLocationPermission().then((PermissionStatus status) => {
+          if (status == PermissionStatus.granted) {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+              showSnackBarSuccess(context, 'Location Permission Granted');
+            })
+          } else if (status == PermissionStatus.permanentlyDenied) {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+              showSnackBarWarning(context, 'Open App Setting');
+              showDialog(context: context, builder: (context) {
+                return AlertDialog(
+                  title: const Text('Permission', style: TextStyle(fontSize: 16)),
+                  content: const Text('Open app settings to allow permission', style: TextStyle(fontSize: 14)),
+                  actions: [
+                    TextButton(onPressed: (){
+                      Navigator.pop(context);
+                      }, child: const Text('Cancel', style: TextStyle(fontSize: 14))),
+                    TextButton(onPressed: (){
+                      Navigator.pop(context);
+                      openAppSettings();
+                    }, child: const Text('OK', style: TextStyle(fontSize: 14))),
+                  ],
+                );
+              });
+            })
+          } else if (status == PermissionStatus.denied) {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+              showSnackBarError(context, 'Location Permission Denied');
+            })
+          } else {
+            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+              showSnackBarError(context, 'Location Permission Denied');
+            })
+          }
+        })
       } else {
         WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
           showSnackBarError(context, 'Location Service is Disabled');

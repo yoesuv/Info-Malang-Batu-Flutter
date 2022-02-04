@@ -26,6 +26,10 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
     }
   }
 
+  Future<PermissionStatus> requestLocationPermission() async {
+    return await Permission.location.request();
+  }
+
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
     var iconSize = 64.0;
     try {
