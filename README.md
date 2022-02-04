@@ -1,40 +1,39 @@
-## Info Malang Batu Flutter 1.0.5 ##
+## Info Malang Batu Flutter 2.0.0 ##
 
 #### Whats new? #####
-- :hammer: improve logic
-- :hammer: very big refactoring
+- :hammer: bloc pattern refactoring
 
 #### Flutter Dependencies ####
 ```
-Flutter 1.12.13+hotfix.8 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 0b8abb4724 (2 weeks ago) • 2020-02-11 11:44:36 -0800
-Engine • revision e1e6ced81d
-Tools • Dart 2.7.0
+Flutter 2.8.1 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 77d935af4d (7 weeks ago) • 2021-12-16 08:37:33 -0800
+Engine • revision 890a5fca2e
+Tools • Dart 2.15.1
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/k0hnswhgf6o3hn5)
+download APK File [here](https://www.dropbox.com/s/jhycjeejg2oa1c8)
 
 ### Screenshot Android ###
-| ![Splash Screen](https://i.imgur.com/M6ffjS5.jpg) | ![List Place](https://i.imgur.com/wCnFBZG.jpg) | ![Detail List Place](https://i.imgur.com/PnIr1DR.jpg) | ![Gallery](https://i.imgur.com/OmmP6dH.jpg) |
-| :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/DTnIrQW.jpg) | ![Maps](https://i.imgur.com/ozQiLnJ.jpg) | ![About Info](https://i.imgur.com/QX64xAJ.jpg) | ![About Changelog](https://i.imgur.com/EXT4sR3.jpg) |
+| ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
+| :---:| :---: | :---: | :---: |
+| ![Detail Gallery](https://i.imgur.com/mhsiOwS.jpg) | ![Maps](https://i.imgur.com/TR37NrI.jpg) | ![About Info](https://i.imgur.com/HKFLJIB.jpg) | ![About Changelog](https://i.imgur.com/qyw6P8L.jpg) |
 
 ### Screenshot iOS ###
-| ![Splash Screen](https://i.imgur.com/aNJF3JZ.png) | ![List Place](https://i.imgur.com/axy2My3.png) | ![Detail List Place](https://i.imgur.com/diDgGQ6.png) | ![Gallery](https://i.imgur.com/IAG0V9y.png) |
-| :---: | :---: | :---: | :---: |
-| ![Detail Gallery](https://i.imgur.com/ItifByt.png) | ![Maps](https://i.imgur.com/H9xkXLJ.png) | ![About Info](https://i.imgur.com/i6wv0sh.png) | ![About Changelog](https://i.imgur.com/k9D3gni.png) |
+| ![Splash Screen](https://i.imgur.com/RxJyXIJ.png) | ![List Place](https://i.imgur.com/U9xVi0q.png) | ![Detail List Place](https://i.imgur.com/cRYPljA.png) | ![Gallery](https://i.imgur.com/LcBqS36.png) |
+| :---:| :---: | :---: | :---: |
+| ![Detail Gallery](https://i.imgur.com/YSX4pdr.png) | ![Maps](https://i.imgur.com/HkiGbwU.png) | ![About Info](https://i.imgur.com/XBcoeHF.png) | ![About Changelog](https://i.imgur.com/wk2bjVS.png) |
 
 #### List Libraries used in this Project ####
+- [Bloc Library](https://github.com/felangel/bloc)
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
-- [Device Info](https://pub.dev/packages/device_info)
 - [Dio](https://pub.dev/packages/dio)
+- [Equatable](https://pub.dev/packages/equatable)
 - [Flutter Html](https://pub.dev/packages/flutter_html)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
+- [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Provider](https://pub.dev/packages/provider)
-- [RxDart](https://pub.dev/packages/rxdart)
-- [Sentry](https://pub.dev/packages/sentry)
 
 ### License ###
 

@@ -1,6 +1,1 @@
-enum ListPlaceType {
-    ALL,
-    MALANG,
-    BATU,
-    KABMALANG
-}
+enum ListPlaceType { ALL, MALANG, BATU, KABMALANG }
