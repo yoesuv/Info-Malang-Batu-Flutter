@@ -11,3 +11,8 @@ class MapsEventInit extends MapsEvent {
   @override
   List<Object?> get props => [context];
 }
+
+class MapsEventPermissionLocation extends MapsEvent {
+  @override
+  List<Object?> get props => [];
+}

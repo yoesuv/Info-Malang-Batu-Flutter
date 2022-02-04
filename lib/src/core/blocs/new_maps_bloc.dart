@@ -15,6 +15,7 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
 
   NewMapsBloc() : super(const MapsState()) {
     on<MapsEventInit>(_mapEventInit);
+    on<MapsEventPermissionLocation>(_mapPermissionLocation);
   }
 
   Future<bool> checkLocationService() async {
@@ -55,6 +56,13 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
     }
+  }
+
+  void _mapPermissionLocation(MapsEventPermissionLocation event, Emitter<MapsState> emit) async{
+    final enable = await Permission.location.status == PermissionStatus.granted;
+    emit(state.copyWith(
+      isPermissionLocationEnabled: enable,
+    ));
   }
 
 }

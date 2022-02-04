@@ -67,25 +67,26 @@ class _MapsPlaceState extends State<MapsPlace> {
   }
 
   void _checkLocationService() {
-    _bloc.checkLocationService().then((result) => {
+    _bloc.checkLocationService().then((result){
       if (result) {
-        _checkPermissionLocation()
+        _checkPermissionLocation();
       } else {
         WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
           showSnackBarError(context, 'Location Service is Disabled');
-        })
+        });
       }
     });
   }
 
   void _checkPermissionLocation() {
-    _bloc.isPermissionLocationGranted().then((granted) => {
+    _bloc.isPermissionLocationGranted().then((granted){
       if (!granted) {
-        _bloc.requestLocationPermission().then((PermissionStatus status) => {
+        _bloc.requestLocationPermission().then((PermissionStatus status) {
           if (status == PermissionStatus.granted) {
+            _bloc.add(MapsEventPermissionLocation());
             WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
               showSnackBarSuccess(context, 'Location Permission Granted');
-            })
+            });
           } else if (status == PermissionStatus.permanentlyDenied) {
             WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
               showSnackBarWarning(context, 'Open App Setting');
@@ -104,17 +105,17 @@ class _MapsPlaceState extends State<MapsPlace> {
                   ],
                 );
               });
-            })
+            });
           } else if (status == PermissionStatus.denied) {
             WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
               showSnackBarError(context, 'Location Permission Denied');
-            })
+            });
           } else {
             WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
               showSnackBarError(context, 'Location Permission Denied');
-            })
+            });
           }
-        })
+        });
       }
     });
   }
