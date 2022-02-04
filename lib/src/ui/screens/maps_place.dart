@@ -58,8 +58,8 @@ class _MapsPlaceState extends State<MapsPlace> {
           },
           initialCameraPosition: CameraPosition(target: LatLng(defaultLatitude, defaultLongitude), zoom: defaultZoom),
           compassEnabled: true,
-          myLocationEnabled: true,
-          myLocationButtonEnabled: true,
+          myLocationEnabled: state.isPermissionLocationEnabled ?? false,
+          myLocationButtonEnabled: state.isPermissionLocationEnabled ?? false,
           markers: Set<Marker>.of(state.listMarker ?? []),
         );
       },
@@ -69,6 +69,18 @@ class _MapsPlaceState extends State<MapsPlace> {
   void _checkLocationService() {
     _bloc.checkLocationService().then((result) => {
       if (result) {
+        _checkPermissionLocation()
+      } else {
+        WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+          showSnackBarError(context, 'Location Service is Disabled');
+        })
+      }
+    });
+  }
+
+  void _checkPermissionLocation() {
+    _bloc.isPermissionLocationGranted().then((granted) => {
+      if (!granted) {
         _bloc.requestLocationPermission().then((PermissionStatus status) => {
           if (status == PermissionStatus.granted) {
             WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
@@ -84,7 +96,7 @@ class _MapsPlaceState extends State<MapsPlace> {
                   actions: [
                     TextButton(onPressed: (){
                       Navigator.pop(context);
-                      }, child: const Text('Cancel', style: TextStyle(fontSize: 14))),
+                    }, child: const Text('Cancel', style: TextStyle(fontSize: 14))),
                     TextButton(onPressed: (){
                       Navigator.pop(context);
                       openAppSettings();
@@ -102,10 +114,6 @@ class _MapsPlaceState extends State<MapsPlace> {
               showSnackBarError(context, 'Location Permission Denied');
             })
           }
-        })
-      } else {
-        WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-          showSnackBarError(context, 'Location Service is Disabled');
         })
       }
     });
