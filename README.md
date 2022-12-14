@@ -1,14 +1,15 @@
 ## Info Malang Batu Flutter 2.0.0 ##
 
 #### Whats new? #####
-- :hammer: bloc pattern refactoring
+- :arrow_up: update libraries
+- :arrow_up: upgrade android gradle
 
 #### Flutter Dependencies ####
 ```
-Flutter 2.8.1 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 77d935af4d (7 weeks ago) • 2021-12-16 08:37:33 -0800
-Engine • revision 890a5fca2e
-Tools • Dart 2.15.1
+Flutter 3.3.9 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision b8f7f1f986 (3 weeks ago) • 2022-11-23 06:43:51 +0900
+Engine • revision 8f2221fbef
+Tools • Dart 2.18.5 • DevTools 2.15.0
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
@@ -33,7 +34,6 @@ download APK File [here](https://www.dropbox.com/s/jhycjeejg2oa1c8)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
-- [Provider](https://pub.dev/packages/provider)
 
 ### License ###
 
