@@ -20,7 +20,6 @@ class AboutLibraryBloc extends Bloc<AboutLibraryEvent, AboutLibraryState> {
       ItemLibraryModel(googleMapsFlutter, googleMapsFlutterUrl, googleMapsFlutterLicense),
       ItemLibraryModel(packageInfoPlus, packageInfoPlusUrl, packageInfoPlusLicense),
       ItemLibraryModel(permissionHandler, permissionHandlerUrl, permissionHandlerLicense),
-      ItemLibraryModel(provider, providerUrl, providerLicense),
     ];
     emit(state.copyWith(listItemLibrary: listLibrary));
   }
