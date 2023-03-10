@@ -12,26 +12,50 @@ import 'package:info_malang_batu_flutter/src/ui/screens/splash.dart';
 class Routes {
   static Route<dynamic> routes(RouteSettings settings) {
     if (settings.name == '/') {
-      return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
-        return BlocProvider(
-          create: (context) => SplashBloc()..add(SplashEventInit()),
-          child: Splash(),
-        );
-      });
+      return MaterialPageRoute(
+        builder: (BuildContext context) {
+          return BlocProvider(
+            create: (context) => SplashBloc()..add(SplashEventInit()),
+            child: Splash(),
+          );
+        },
+      );
     } else if (settings.name == Home.routeHome) {
-      return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
-        return Home();
-      });
+      return MaterialPageRoute(
+        builder: (BuildContext context) {
+          return const Home();
+        },
+      );
     } else if (settings.name == ListPlaceDetail.routeListPlaceDetail) {
       final ItemPlaceModel model = settings.arguments as ItemPlaceModel;
-      return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
-        return ListPlaceDetail(itemPlaceModel: model);
-      });
+      return MaterialPageRoute(
+        builder: (BuildContext context) {
+          return ListPlaceDetail(itemPlaceModel: model);
+        },
+      );
+    } else if (settings.name == GalleryDetail.routeName) {
+      final model = settings.arguments as ItemGalleryModel;
+      return MaterialPageRoute(
+        builder: (BuildContext context) {
+          return GalleryDetail(itemGalleryModel: model);
+        },
+      );
     } else {
-      final ItemGalleryModel model = settings.arguments as ItemGalleryModel;
-      return MaterialPageRoute<dynamic>(builder: (BuildContext context) {
-        return GalleryDetail(itemGalleryModel: model);
-      });
+      return MaterialPageRoute(
+        builder: (context) {
+          return const Scaffold(
+            body: Center(
+              child: Text(
+                'Screen Not Found',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          );
+        },
+      );
     }
   }
 }
