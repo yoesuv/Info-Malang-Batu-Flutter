@@ -23,8 +23,9 @@ class _MapsPlaceState extends State<MapsPlace> {
   @override
   void initState() {
     super.initState();
-    _bloc = context.read<NewMapsBloc>()..add(MapsEventInit(context: context));
-    _checkLocationService();
+    _bloc = context.read<NewMapsBloc>();
+    _bloc.add(MapsCheckServiceLocation());
+    _bloc.add(MapsEventInit(context: context));
   }
 
   @override

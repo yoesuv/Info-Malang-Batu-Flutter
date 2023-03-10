@@ -14,8 +14,26 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   final MapsRepository _mapsRepository = MapsRepository();
 
   NewMapsBloc() : super(const MapsState()) {
+    on<MapsCheckServiceLocation>(_checkLocationService);
     on<MapsEventInit>(_mapEventInit);
     on<MapsEventPermissionLocation>(_mapPermissionLocation);
+  }
+
+  void _checkLocationService(
+    MapsCheckServiceLocation event,
+    Emitter<MapsState> emit,
+  ) async {
+    if (Platform.isIOS) {
+      emit(state.copyWith(
+        locationService: true,
+      ));
+    } else {
+      final status = await Permission.location.serviceStatus;
+      final check = status == ServiceStatus.enabled;
+      emit(state.copyWith(
+        locationService: check,
+      ));
+    }
   }
 
   Future<bool> checkLocationService() async {
@@ -38,11 +56,17 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
     var iconSize = 64.0;
     try {
-      final enable = await Permission.location.status == PermissionStatus.granted;
+      final enable =
+          await Permission.location.status == PermissionStatus.granted;
       final List<Marker> listMarker = <Marker>[];
-      final icon = await BitmapDescriptor.fromAssetImage(createLocalImageConfiguration(event.context, size: Size(iconSize, iconSize)), iconMarker);
+      final icon = await BitmapDescriptor.fromAssetImage(
+          createLocalImageConfiguration(event.context,
+              size: Size(iconSize, iconSize)),
+          iconMarker);
       final response = await _mapsRepository.getMapsPin();
-      response.listItemGalleryModel.asMap().forEach((int index, ItemMapsPinModel pin) {
+      response.listItemGalleryModel
+          .asMap()
+          .forEach((int index, ItemMapsPinModel pin) {
         listMarker.add(
           Marker(
             markerId: MarkerId(pin.name),
@@ -52,17 +76,22 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
           ),
         );
       });
-      emit(state.copyWith(listMarker: listMarker, isPermissionLocationEnabled: enable));
+      emit(state.copyWith(
+        listMarker: listMarker,
+        isPermissionLocationEnabled: enable,
+      ));
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
     }
   }
 
-  void _mapPermissionLocation(MapsEventPermissionLocation event, Emitter<MapsState> emit) async{
+  void _mapPermissionLocation(
+    MapsEventPermissionLocation event,
+    Emitter<MapsState> emit,
+  ) async {
     final enable = await Permission.location.status == PermissionStatus.granted;
     emit(state.copyWith(
       isPermissionLocationEnabled: enable,
     ));
   }
-
 }
