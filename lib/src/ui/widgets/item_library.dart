@@ -10,27 +10,52 @@ class ItemLibrary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
-      Container(
-          padding: EdgeInsets.only(left: itemLibraryPadding, right: itemLibraryPadding, top: itemLibraryPadding),
-          child: Text('${itemLibraryModel.name}', style: const TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.bold))),
-      Container(
-          padding: EdgeInsets.only(left: itemLibraryPadding, right: itemLibraryPadding, top: itemLibraryPadding),
-          child: Text('${itemLibraryModel.url}',
-              style: const TextStyle(
-                color: Colors.teal,
-                fontSize: 14.0,
-              ))),
-      Container(
-        padding: EdgeInsets.all(itemLibraryPadding),
-        child: Html(
-          data: itemLibraryModel.license,
-          style: {
-            "body": Style(fontSize: const FontSize(11), fontFamily: 'Consola'),
-          },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Container(
+          padding: EdgeInsets.only(
+            left: itemLibraryPadding,
+            right: itemLibraryPadding,
+            top: itemLibraryPadding,
+          ),
+          child: Text(
+            '${itemLibraryModel.name}',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
-      ),
-      const Divider()
-    ]);
+        Container(
+          padding: EdgeInsets.only(
+            left: itemLibraryPadding,
+            right: itemLibraryPadding,
+            top: itemLibraryPadding,
+          ),
+          child: Text(
+            '${itemLibraryModel.url}',
+            style: const TextStyle(
+              color: Colors.teal,
+              fontSize: 14.0,
+            ),
+          ),
+        ),
+        Container(
+          padding: EdgeInsets.all(itemLibraryPadding),
+          child: Html(
+            data: itemLibraryModel.license,
+            style: {
+              "body": Style(
+                fontSize: const FontSize(11),
+                fontFamily: 'Consola',
+              ),
+            },
+          ),
+        ),
+        const Divider()
+      ],
+    );
   }
 }

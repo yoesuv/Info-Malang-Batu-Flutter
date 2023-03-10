@@ -6,6 +6,8 @@ import 'package:info_malang_batu_flutter/src/core/blocs/new_maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/routes/routes.dart';
 
 class App extends StatelessWidget {
+  const App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -17,9 +19,15 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Info Malang Batu',
         theme: ThemeData(
-          primaryColor: Colors.teal,
-          accentColor: Colors.white,
-          primarySwatch: Colors.teal,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: Colors.teal,
+            secondary: Colors.teal,
+          ),
+          tabBarTheme: const TabBarTheme(
+            indicator: UnderlineTabIndicator(
+              borderSide: BorderSide(color: Colors.white, width: 2),
+            )
+          ),
         ),
         onGenerateRoute: Routes.routes,
       ),

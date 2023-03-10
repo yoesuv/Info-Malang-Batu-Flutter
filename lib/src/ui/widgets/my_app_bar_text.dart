@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyAppBarText extends StatelessWidget {
-  const MyAppBarText({@required this.title});
+  const MyAppBarText({super.key, required this.title});
 
   final String? title;
 

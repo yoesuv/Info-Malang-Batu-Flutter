@@ -14,12 +14,23 @@ class About extends StatefulWidget {
 
 class AboutState extends State<About> with TickerProviderStateMixin {
   late TabController tabController;
+  final tabs = const<Widget>[
+    AboutInfo(),
+    AboutChangelog(),
+    AboutThanks(),
+    AboutLibraries(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     tabController = TabController(length: 4, vsync: this);
     final TabBar tabBarItem = TabBar(
-      tabs: const <Widget>[Tab(text: 'Informasi'), Tab(text: 'Versi Rilis'), Tab(text: 'Terima Kasih'), Tab(text: 'Pustaka')],
+      tabs: const <Widget>[
+        Tab(text: 'Informasi'),
+        Tab(text: 'Versi Rilis'),
+        Tab(text: 'Terima Kasih'),
+        Tab(text: 'Pustaka'),
+      ],
       isScrollable: true,
       controller: tabController,
     );
@@ -33,7 +44,7 @@ class AboutState extends State<About> with TickerProviderStateMixin {
         ),
         body: TabBarView(
           controller: tabController,
-          children: const <Widget>[AboutInfo(), AboutChangelog(), AboutThanks(), AboutLibraries()],
+          children: tabs,
         ),
       ),
     );

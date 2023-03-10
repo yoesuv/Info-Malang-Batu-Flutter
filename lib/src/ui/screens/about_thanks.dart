@@ -10,7 +10,7 @@ class AboutThanks extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(itemChangelogPadding),
-        child: Text(thanks, style: const TextStyle(fontSize: 14.0)),
+        child: Text(thanks, style: const TextStyle(fontSize: 14)),
       ),
     );
   }
