@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/list_item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_place_repository.dart';
-import 'package:info_malang_batu_flutter/src/core/services/app_exceptions.dart';
 import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 
@@ -15,23 +15,27 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     on<ListPlaceEventLocationChanged>(_loadListPlace);
   }
 
-  void _initListPlace(ListPlaceEventInit event, Emitter<ListPlaceState> emit) async {
-    emit(state.copyWith(isLoading: true));
+  void _initListPlace(
+    ListPlaceEventInit event,
+    Emitter<ListPlaceState> emit,
+  ) async {
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
       final response = await _listPlaceRepository.getListPlace();
       _showData(emit, response);
     } catch (e) {
       debugPrint('ListPlaceBloc # error $e');
-      if (e is AppException) {
-
-      } else {
-
-      }
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.failure,
+      ));
     }
   }
 
-  void _loadListPlace(ListPlaceEventLocationChanged event, Emitter<ListPlaceState> emit) async {
-    emit(state.copyWith(isLoading: true));
+  void _loadListPlace(
+    ListPlaceEventLocationChanged event,
+    Emitter<ListPlaceState> emit,
+  ) async {
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
     try {
       switch (event.listPlaceType) {
         case ListPlaceType.ALL:
@@ -53,18 +57,14 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
       }
     } catch (e) {
       debugPrint('ListPlaceBloc # error $e');
-      if (e is AppException) {
-
-      } else {
-
-      }
-
+      emit(state.copyWith(status: FormzSubmissionStatus.failure));
     }
   }
 
   void _showData(Emitter<ListPlaceState> emit, ListItemPlaceModel response) {
-    emit(state.copyWith(isLoading: false, listItemPlaceModel: response));
+    emit(state.copyWith(
+      status: FormzSubmissionStatus.success,
+      listItemPlaceModel: response,
+    ));
   }
 }
-
-

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/list_place_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/list_item_place_model.dart';
@@ -64,7 +65,7 @@ class _ListPlaceState extends State<ListPlace> {
     return BlocBuilder<ListPlaceBloc, ListPlaceState>(
       bloc: _bloc,
       builder: (context, state) {
-        if (state.listItemPlaceModel != null) {
+        if (state.status == FormzSubmissionStatus.success) {
           return _buildList(state.listItemPlaceModel);
         }
         return const Center(
