@@ -26,7 +26,7 @@ class Routes {
           return const Home();
         },
       );
-    } else if (settings.name == ListPlaceDetail.routeListPlaceDetail) {
+    } else if (settings.name == ListPlaceDetail.routeName) {
       final ItemPlaceModel model = settings.arguments as ItemPlaceModel;
       return MaterialPageRoute(
         builder: (BuildContext context) {

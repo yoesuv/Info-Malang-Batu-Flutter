@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
+import 'package:info_malang_batu_flutter/src/ui/screens/list_place_detail.dart';
 
 class ItemPlace extends StatelessWidget {
   const ItemPlace({Key? key, this.itemPlaceModel}) : super(key: key);
@@ -13,53 +14,71 @@ class ItemPlace extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/detailPlace', arguments: itemPlaceModel);
+        Navigator.pushNamed(
+          context,
+          ListPlaceDetail.routeName,
+          arguments: itemPlaceModel,
+        );
       },
-      child: Stack(children: <Widget>[
-        SizedBox(
-          width: double.infinity,
-          height: itemListPlaceHeight,
-          child: CachedNetworkImage(
-            imageUrl: itemPlaceModel?.gambar ?? '',
-            fit: BoxFit.cover,
-            placeholder: (BuildContext context, String url) => Image.asset(placeHolderImage, fit: BoxFit.cover),
-            errorWidget: (BuildContext context, String url, Object? error) => const Icon(Icons.error)
+      child: Stack(
+        children: <Widget>[
+          SizedBox(
+            width: double.infinity,
+            height: itemListPlaceHeight,
+            child: CachedNetworkImage(
+                imageUrl: itemPlaceModel?.gambar ?? '',
+                fit: BoxFit.cover,
+                placeholder: (BuildContext context, String url) =>
+                    Image.asset(placeHolderImage, fit: BoxFit.cover),
+                errorWidget:
+                    (BuildContext context, String url, Object? error) =>
+                        const Icon(Icons.error)),
           ),
-        ),
-        Container(
-          width: double.infinity,
-          height: itemListPlaceHeight,
-          padding: EdgeInsets.only(left: itemListPlaceTextPadding, bottom: itemListPlaceTextPadding),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              textTitle(),
-              textSubTitle(),
-            ],
+          Container(
+            width: double.infinity,
+            height: itemListPlaceHeight,
+            padding: EdgeInsets.only(
+              left: itemListPlaceTextPadding,
+              bottom: itemListPlaceTextPadding,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                textTitle(),
+                textSubTitle(),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
       ),
     );
   }
 
   Widget textTitle() {
-    return Text(itemPlaceModel?.nama ?? '',
+    return Text(
+      itemPlaceModel?.nama ?? '',
       style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: 18.0,
-          shadows: <Shadow>[Shadow(color: Colors.black, offset: Offset(1.0, 1.0), blurRadius: 2.0)]),
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        fontSize: 18,
+        shadows: <Shadow>[
+          Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)
+        ],
+      ),
     );
   }
 
   Widget textSubTitle() {
-    return Text(itemPlaceModel?.lokasi ?? '',
+    return Text(
+      itemPlaceModel?.lokasi ?? '',
       style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-          shadows: <Shadow>[Shadow(color: Colors.black, offset: Offset(1.0, 1.0), blurRadius: 2.0)]),
+        color: Colors.white,
+        fontSize: 16,
+        shadows: <Shadow>[
+          Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)
+        ],
+      ),
     );
   }
 }
