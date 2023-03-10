@@ -15,8 +15,8 @@ class ApiBase {
   Dio? dio;
   BaseOptions options = BaseOptions(
     baseUrl: baseUrl,
-    connectTimeout: 30000,
-    receiveTimeout: 30000,
+    connectTimeout: const Duration(seconds: 30),
+    receiveTimeout: const Duration(seconds: 30),
   );
 
   //handle get request
