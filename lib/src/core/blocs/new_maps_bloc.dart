@@ -28,20 +28,14 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
         locationService: true,
       ));
     } else {
+      emit(state.copyWith(
+        locationService: true,
+      ));
       final status = await Permission.location.serviceStatus;
       final check = status == ServiceStatus.enabled;
       emit(state.copyWith(
         locationService: check,
       ));
-    }
-  }
-
-  Future<bool> checkLocationService() async {
-    if (Platform.isIOS) {
-      return true;
-    } else {
-      final ServiceStatus status = await Permission.location.serviceStatus;
-      return status == ServiceStatus.enabled;
     }
   }
 
