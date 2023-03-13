@@ -83,16 +83,9 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
     MapsEventPermissionLocation event,
     Emitter<MapsState> emit,
   ) async {
-    final status = await Permission.location.status;
-    debugPrint('NewMapsBloc # permission location $status');
+    final request = await Permission.location.request();
     emit(state.copyWith(
-      permissionStatus: status,
+      permissionStatus: request,
     ));
-    if (status != PermissionStatus.granted) {
-      final request = await Permission.location.request();
-      emit(state.copyWith(
-        permissionStatus: request,
-      ));
-    }
   }
 }

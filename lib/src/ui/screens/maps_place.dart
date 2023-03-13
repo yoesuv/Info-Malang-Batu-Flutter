@@ -38,13 +38,22 @@ class _MapsPlaceState extends State<MapsPlace> {
       body: BlocListener<NewMapsBloc, MapsState>(
         bloc: _bloc,
         listenWhen: (prev, current) {
-          return prev.locationService != current.locationService;
+          return prev.locationService != current.locationService ||
+              prev.permissionStatus != current.permissionStatus;
         },
         listener: (context, state) {
           if (state.locationService == false) {
             showSnackBarError(context, 'Location Service is Disabled');
           } else {
             _bloc.add(MapsEventPermissionLocation());
+          }
+          if (state.permissionStatus == PermissionStatus.granted) {
+            showSnackBarSuccess(context, 'Location Permission Granted');
+          } else if (state.permissionStatus == PermissionStatus.denied) {
+            showSnackBarError(context, 'Location Permission Denied');
+          } else if (state.permissionStatus ==
+              PermissionStatus.permanentlyDenied) {
+            showSnackBarWarning(context, 'Open App Setting');
           }
         },
         child: _buildMaps(),
