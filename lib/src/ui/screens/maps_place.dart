@@ -36,12 +36,15 @@ class _MapsPlaceState extends State<MapsPlace> {
         actions: <Widget>[_iconRefresh()],
       ),
       body: BlocListener<NewMapsBloc, MapsState>(
+        bloc: _bloc,
         listenWhen: (prev, current) {
           return prev.locationService != current.locationService;
         },
         listener: (context, state) {
-          if (!state.locationService) {
+          if (state.locationService == false) {
             showSnackBarError(context, 'Location Service is Disabled');
+          } else {
+            _bloc.add(MapsEventPermissionLocation());
           }
         },
         child: _buildMaps(),
@@ -68,7 +71,13 @@ class _MapsPlaceState extends State<MapsPlace> {
   Widget _buildMaps() {
     return BlocBuilder<NewMapsBloc, MapsState>(
       bloc: _bloc,
+      buildWhen: (previous, current) {
+        return previous.listMarker != current.listMarker ||
+            previous.permissionStatus != previous.permissionStatus ||
+            previous.locationService != current.locationService;
+      },
       builder: (context, MapsState state) {
+        final status = state.permissionStatus == PermissionStatus.granted;
         return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
@@ -78,74 +87,11 @@ class _MapsPlaceState extends State<MapsPlace> {
             zoom: defaultZoom,
           ),
           compassEnabled: true,
-          myLocationEnabled: state.isPermissionLocationEnabled ?? false,
-          myLocationButtonEnabled: state.isPermissionLocationEnabled ?? false,
+          myLocationEnabled: status,
+          myLocationButtonEnabled: status,
           markers: Set<Marker>.of(state.listMarker ?? []),
         );
       },
     );
-  }
-
-  void _checkPermissionLocation() {
-    _bloc.isPermissionLocationGranted().then((granted) {
-      if (!granted) {
-        _bloc.requestLocationPermission().then((PermissionStatus status) {
-          if (status == PermissionStatus.granted) {
-            _bloc.add(MapsEventPermissionLocation());
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              showSnackBarSuccess(context, 'Location Permission Granted');
-            });
-          } else if (status == PermissionStatus.permanentlyDenied) {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              showSnackBarWarning(context, 'Open App Setting');
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text(
-                      'Permission',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    content: const Text(
-                      'Open app settings to allow permission',
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text(
-                          'Cancel',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          openAppSettings();
-                        },
-                        child: const Text(
-                          'OK',
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ),
-                    ],
-                  );
-                },
-              );
-            });
-          } else if (status == PermissionStatus.denied) {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              showSnackBarError(context, 'Location Permission Denied');
-            });
-          } else {
-            WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-              showSnackBarError(context, 'Location Permission Denied');
-            });
-          }
-        });
-      }
-    });
   }
 }

@@ -50,13 +50,14 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
     var iconSize = 64.0;
     try {
-      final enable =
-          await Permission.location.status == PermissionStatus.granted;
       final List<Marker> listMarker = <Marker>[];
       final icon = await BitmapDescriptor.fromAssetImage(
-          createLocalImageConfiguration(event.context,
-              size: Size(iconSize, iconSize)),
-          iconMarker);
+        createLocalImageConfiguration(
+          event.context,
+          size: Size(iconSize, iconSize),
+        ),
+        iconMarker,
+      );
       final response = await _mapsRepository.getMapsPin();
       response.listItemGalleryModel
           .asMap()
@@ -72,7 +73,6 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
       });
       emit(state.copyWith(
         listMarker: listMarker,
-        isPermissionLocationEnabled: enable,
       ));
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
@@ -83,9 +83,16 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
     MapsEventPermissionLocation event,
     Emitter<MapsState> emit,
   ) async {
-    final enable = await Permission.location.status == PermissionStatus.granted;
+    final status = await Permission.location.status;
+    debugPrint('NewMapsBloc # permission location $status');
     emit(state.copyWith(
-      isPermissionLocationEnabled: enable,
+      permissionStatus: status,
     ));
+    if (status != PermissionStatus.granted) {
+      final request = await Permission.location.request();
+      emit(state.copyWith(
+        permissionStatus: request,
+      ));
+    }
   }
 }

@@ -1,27 +1,27 @@
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MapsState extends Equatable {
-  final bool locationService;
+  final bool? locationService;
   final List<Marker>? listMarker;
-  final bool? isPermissionLocationEnabled;
+  final PermissionStatus? permissionStatus;
 
   const MapsState({
-    this.locationService = true,
+    this.locationService,
     this.listMarker,
-    this.isPermissionLocationEnabled,
+    this.permissionStatus,
   });
 
   MapsState copyWith({
     bool? locationService,
     List<Marker>? listMarker,
-    bool? isPermissionLocationEnabled,
+    PermissionStatus? permissionStatus,
   }) {
     return MapsState(
       locationService: locationService ?? this.locationService,
       listMarker: listMarker ?? this.listMarker,
-      isPermissionLocationEnabled:
-          isPermissionLocationEnabled ?? this.isPermissionLocationEnabled,
+      permissionStatus: permissionStatus ?? this.permissionStatus,
     );
   }
 
@@ -29,6 +29,6 @@ class MapsState extends Equatable {
   List<Object?> get props => [
         locationService,
         listMarker,
-        isPermissionLocationEnabled,
+        permissionStatus,
       ];
 }
