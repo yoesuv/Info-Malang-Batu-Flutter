@@ -56,7 +56,23 @@ class _MapsPlaceState extends State<MapsPlace> {
             showSnackBarWarning(context, 'Open App Setting');
           }
         },
-        child: _buildMaps(),
+        child: FutureBuilder<BitmapDescriptor>(
+          future: BitmapDescriptor.fromAssetImage(
+            createLocalImageConfiguration(
+              context,
+              size: const Size(64, 64),
+            ),
+            iconMarker,
+          ),
+          builder: (context, snapshot) {
+            if (snapshot.data != null) {
+              final icon = snapshot.data!;
+              return _buildMaps(icon);
+            } else {
+              return Container();
+            }
+          },
+        ),
       ),
     );
   }
@@ -77,19 +93,27 @@ class _MapsPlaceState extends State<MapsPlace> {
     );
   }
 
-  Widget _buildMaps() {
+  Widget _buildMaps(BitmapDescriptor icon) {
     return BlocBuilder<MapsBloc, MapsState>(
       bloc: _bloc,
       buildWhen: (previous, current) {
-        return previous.listMarker != current.listMarker ||
-            previous.permissionStatus != previous.permissionStatus ||
+        return previous.permissionStatus != previous.permissionStatus ||
             previous.locationService != current.locationService ||
             previous.listPin != current.listPin;
       },
-      builder: (context, MapsState state) {
+      builder: (context, state) {
         final status = state.permissionStatus == PermissionStatus.granted;
-        debugPrint("Maps Place # permission granted $status");
-        debugPrint("Maps Place # list pin size : ${state.listPin?.length}");
+        final List<Marker> listMarker = <Marker>[];
+        state.listPin?.forEach((pin) {
+          listMarker.add(
+            Marker(
+              markerId: MarkerId(pin.name),
+              position: LatLng(pin.latitude, pin.longitude),
+              infoWindow: InfoWindow(title: pin.name),
+              icon: icon,
+            ),
+          );
+        });
         return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
@@ -101,7 +125,7 @@ class _MapsPlaceState extends State<MapsPlace> {
           compassEnabled: true,
           myLocationEnabled: status,
           myLocationButtonEnabled: status,
-          markers: Set<Marker>.of(state.listMarker ?? []),
+          markers: Set<Marker>.of(listMarker),
         );
       },
     );
