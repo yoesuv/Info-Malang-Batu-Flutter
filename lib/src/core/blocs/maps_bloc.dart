@@ -18,15 +18,17 @@ class MapsBloc extends Bloc<MapsEvent, MapsState> {
 
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
     try {
+      final isEmpty = (state.listPin ?? []).isEmpty;
       final check = await Permission.location.request();
       emit(state.copyWith(
-        listPin: [],
         permissionStatus: check,
       ));
-      final response = await _mapsRepository.getMapsPin();
-      emit(state.copyWith(
-        listPin: response.listItemGalleryModel,
-      ));
+      if (isEmpty) {
+        final response = await _mapsRepository.getMapsPin();
+        emit(state.copyWith(
+          listPin: response.listItemGalleryModel,
+        ));
+      }
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
       emit(state.copyWith(
