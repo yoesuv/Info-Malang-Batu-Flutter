@@ -1,0 +1,28 @@
+name: Info Malang Batu Flutter
+run-name: ${{ github.actor }} is building Explore Madiun 🚀
+on:
+  push:
+    branches:
+      - master
+      - develop
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: List files in the repository initial
+        run: ls ${{ github.workspace }}
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.10.0
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Verify Java Version
+        run: java --version
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - run: flutter --version
+      - run: echo "🍏 This job's status is ${{ job.status }}."
