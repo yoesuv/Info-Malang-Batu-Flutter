@@ -22,7 +22,8 @@ class _ListPlaceState extends State<ListPlace> {
   @override
   void initState() {
     super.initState();
-    _bloc = context.read<ListPlaceBloc>()..add(ListPlaceEventInit());
+    _bloc = context.read<ListPlaceBloc>();
+    _bloc.add(ListPlaceEventInit(ListPlaceType.ALL));
   }
 
   @override

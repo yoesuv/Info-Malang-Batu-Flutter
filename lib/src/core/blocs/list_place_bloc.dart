@@ -19,15 +19,22 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     ListPlaceEventInit event,
     Emitter<ListPlaceState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-    try {
-      final response = await _listPlaceRepository.getListPlace();
-      _showData(emit, response);
-    } catch (e) {
-      debugPrint('ListPlaceBloc # error $e');
+    final check1 = state.listPlaceType != event.listPlaceType;
+    final check2 = state.listItemPlaceModel?.listItemPlaceModel.isEmpty == true;
+    if (check1 || check2) {
       emit(state.copyWith(
-        status: FormzSubmissionStatus.failure,
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: event.listPlaceType,
       ));
+      try {
+        final response = await _listPlaceRepository.getListPlace();
+        _showData(emit, response);
+      } catch (e) {
+        debugPrint('ListPlaceBloc # error $e');
+        emit(state.copyWith(
+          status: FormzSubmissionStatus.failure,
+        ));
+      }
     }
   }
 
@@ -35,7 +42,10 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     ListPlaceEventLocationChanged event,
     Emitter<ListPlaceState> emit,
   ) async {
-    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    emit(state.copyWith(
+      status: FormzSubmissionStatus.inProgress,
+      listPlaceType: event.listPlaceType,
+    ));
     try {
       switch (event.listPlaceType) {
         case ListPlaceType.ALL:
