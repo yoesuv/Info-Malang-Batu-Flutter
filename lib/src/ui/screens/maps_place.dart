@@ -24,7 +24,7 @@ class _MapsPlaceState extends State<MapsPlace> {
   void initState() {
     super.initState();
     _bloc = context.read<MapsBloc>();
-    _bloc.add(MapsEventInit(context: context));
+    _bloc.add(MapsEventInit());
     _bloc.add(MapsCheckServiceLocation());
   }
 
@@ -83,10 +83,13 @@ class _MapsPlaceState extends State<MapsPlace> {
       buildWhen: (previous, current) {
         return previous.listMarker != current.listMarker ||
             previous.permissionStatus != previous.permissionStatus ||
-            previous.locationService != current.locationService;
+            previous.locationService != current.locationService ||
+            previous.listPin != current.listPin;
       },
       builder: (context, MapsState state) {
         final status = state.permissionStatus == PermissionStatus.granted;
+        debugPrint("Maps Place # permission granted $status");
+        debugPrint("Maps Place # list pin size : ${state.listPin?.length}");
         return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
