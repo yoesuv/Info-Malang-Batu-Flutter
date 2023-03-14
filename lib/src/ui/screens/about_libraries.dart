@@ -42,7 +42,10 @@ class _AboutLibrariesState extends State<AboutLibraries> {
           );
         }
         return const Center(
-          child: Text('Memuat List Library...', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          child: Text(
+            'Memuat List Library...',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         );
       },
     );

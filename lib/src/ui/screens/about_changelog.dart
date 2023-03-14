@@ -15,7 +15,6 @@ class AboutChangelog extends StatefulWidget {
 }
 
 class _AboutChangelogState extends State<AboutChangelog> {
-
   late AboutChangelogBloc _bloc;
 
   @override
@@ -38,12 +37,15 @@ class _AboutChangelogState extends State<AboutChangelog> {
             itemCount: state.listChangelog?.length ?? 0,
             itemBuilder: (context, int index) {
               final item = state.listChangelog![index];
-              return ItemChangelog(item);
+              return ItemChangelog(itemChangelogModel: item);
             },
           );
         }
         return const Center(
-          child: Text('Memuat Changelog...', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          child: Text(
+            'Memuat Changelog...',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         );
       },
     );

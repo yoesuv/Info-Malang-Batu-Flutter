@@ -1,19 +1,34 @@
 import 'package:equatable/equatable.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:info_malang_batu_flutter/src/core/models/maps/item_maps_pin_model.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MapsState extends Equatable {
-  final List<Marker>? listMarker;
-  final bool? isPermissionLocationEnabled;
+  final bool? locationService;
+  final PermissionStatus? permissionStatus;
+  final List<ItemMapsPinModel>? listPin;
 
-  const MapsState({this.listMarker, this.isPermissionLocationEnabled});
+  const MapsState({
+    this.locationService,
+    this.permissionStatus,
+    this.listPin,
+  });
 
-  MapsState copyWith({List<Marker>? listMarker, bool? isPermissionLocationEnabled}) {
+  MapsState copyWith({
+    bool? locationService,
+    PermissionStatus? permissionStatus,
+    List<ItemMapsPinModel>? listPin,
+  }) {
     return MapsState(
-      listMarker: listMarker ?? this.listMarker,
-      isPermissionLocationEnabled: isPermissionLocationEnabled ?? this.isPermissionLocationEnabled,
+      locationService: locationService ?? this.locationService,
+      permissionStatus: permissionStatus ?? this.permissionStatus,
+      listPin: listPin ?? this.listPin,
     );
   }
 
   @override
-  List<Object?> get props => [listMarker, isPermissionLocationEnabled];
+  List<Object?> get props => [
+        locationService,
+        permissionStatus,
+        listPin,
+      ];
 }

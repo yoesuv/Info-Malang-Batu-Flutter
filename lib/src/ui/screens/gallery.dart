@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/gallery_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/gallery_event.dart';
 import 'package:info_malang_batu_flutter/src/core/models/gallery/list_item_gallery_model.dart';
@@ -36,13 +37,20 @@ class _GalleryState extends State<Gallery> {
   Widget buildBody() {
     return BlocBuilder<GalleryBloc, GalleryState>(
       bloc: _bloc,
-      builder: (context, GalleryState state) {
-        if (state.listItemGalleryModel != null) {
+      buildWhen: (previous, current) =>
+          previous.status != current.status ||
+          previous.listItemGalleryModel != current.listItemGalleryModel,
+      builder: (context, state) {
+        if (state.status == FormzSubmissionStatus.inProgress) {
+          return const Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+            ),
+          );
+        } else if (state.status == FormzSubmissionStatus.success) {
           return _buildGallery(state.listItemGalleryModel);
         }
-        return const Center(
-          child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Colors.teal)),
-        );
+        return Container();
       },
     );
   }
@@ -50,9 +58,13 @@ class _GalleryState extends State<Gallery> {
   Widget _buildGallery(ListItemGalleryModel? model) {
     return GridView.builder(
       itemCount: model?.listItemGalleryModel.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+      ),
       itemBuilder: (BuildContext context, int index) {
-        return ItemGallery(itemGalleryModel: model?.listItemGalleryModel[index]);
+        return ItemGallery(
+          itemGalleryModel: model?.listItemGalleryModel[index],
+        );
       },
     );
   }

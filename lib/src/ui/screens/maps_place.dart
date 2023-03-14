@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:info_malang_batu_flutter/src/core/blocs/new_maps_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/maps_event.dart';
 import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
@@ -17,21 +17,63 @@ class MapsPlace extends StatefulWidget {
 }
 
 class _MapsPlaceState extends State<MapsPlace> {
-  late NewMapsBloc _bloc;
+  late MapsBloc _bloc;
   late GoogleMapController googleMapController;
 
   @override
   void initState() {
     super.initState();
-    _bloc = context.read<NewMapsBloc>()..add(MapsEventInit(context: context));
-    _checkLocationService();
+    _bloc = context.read<MapsBloc>();
+    _bloc.add(MapsEventInit());
+    _bloc.add(MapsCheckServiceLocation());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const MyAppBarText(title: 'Peta'), actions: <Widget>[_iconRefresh()]),
-      body: _buildMaps(),
+      appBar: AppBar(
+        title: const MyAppBarText(title: 'Peta'),
+        actions: <Widget>[_iconRefresh()],
+      ),
+      body: BlocListener<MapsBloc, MapsState>(
+        bloc: _bloc,
+        listenWhen: (prev, current) {
+          return prev.locationService != current.locationService ||
+              prev.permissionStatus != current.permissionStatus;
+        },
+        listener: (context, state) {
+          if (state.locationService == false) {
+            showSnackBarError(context, 'Location Service is Disabled');
+          } else {
+            _bloc.add(MapsEventPermissionLocation());
+          }
+          if (state.permissionStatus == PermissionStatus.granted) {
+            showSnackBarSuccess(context, 'Location Permission Granted');
+          } else if (state.permissionStatus == PermissionStatus.denied) {
+            showSnackBarError(context, 'Location Permission Denied');
+          } else if (state.permissionStatus ==
+              PermissionStatus.permanentlyDenied) {
+            showSnackBarWarning(context, 'Open App Setting');
+          }
+        },
+        child: FutureBuilder<BitmapDescriptor>(
+          future: BitmapDescriptor.fromAssetImage(
+            createLocalImageConfiguration(
+              context,
+              size: const Size(64, 64),
+            ),
+            iconMarker,
+          ),
+          builder: (context, snapshot) {
+            if (snapshot.data != null) {
+              final icon = snapshot.data!;
+              return _buildMaps(icon);
+            } else {
+              return Container();
+            }
+          },
+        ),
+      ),
     );
   }
 
@@ -41,83 +83,51 @@ class _MapsPlaceState extends State<MapsPlace> {
       onPressed: () {
         googleMapController.animateCamera(
           CameraUpdate.newCameraPosition(
-            CameraPosition(target: LatLng(defaultLatitude, defaultLongitude), zoom: defaultZoom),
+            CameraPosition(
+              target: LatLng(defaultLatitude, defaultLongitude),
+              zoom: defaultZoom,
+            ),
           ),
         );
       },
     );
   }
 
-  Widget _buildMaps() {
-    return BlocBuilder<NewMapsBloc, MapsState>(
+  Widget _buildMaps(BitmapDescriptor icon) {
+    return BlocBuilder<MapsBloc, MapsState>(
       bloc: _bloc,
-      builder: (context, MapsState state) {
+      buildWhen: (previous, current) {
+        return previous.permissionStatus != previous.permissionStatus ||
+            previous.locationService != current.locationService ||
+            previous.listPin != current.listPin;
+      },
+      builder: (context, state) {
+        final status = state.permissionStatus == PermissionStatus.granted;
+        final List<Marker> listMarker = <Marker>[];
+        state.listPin?.forEach((pin) {
+          listMarker.add(
+            Marker(
+              markerId: MarkerId(pin.name),
+              position: LatLng(pin.latitude, pin.longitude),
+              infoWindow: InfoWindow(title: pin.name),
+              icon: icon,
+            ),
+          );
+        });
         return GoogleMap(
           onMapCreated: (GoogleMapController controller) {
             googleMapController = controller;
           },
-          initialCameraPosition: CameraPosition(target: LatLng(defaultLatitude, defaultLongitude), zoom: defaultZoom),
+          initialCameraPosition: CameraPosition(
+            target: LatLng(defaultLatitude, defaultLongitude),
+            zoom: defaultZoom,
+          ),
           compassEnabled: true,
-          myLocationEnabled: state.isPermissionLocationEnabled ?? false,
-          myLocationButtonEnabled: state.isPermissionLocationEnabled ?? false,
-          markers: Set<Marker>.of(state.listMarker ?? []),
+          myLocationEnabled: status,
+          myLocationButtonEnabled: status,
+          markers: Set<Marker>.of(listMarker),
         );
       },
     );
   }
-
-  void _checkLocationService() {
-    _bloc.checkLocationService().then((result){
-      if (result) {
-        _checkPermissionLocation();
-      } else {
-        WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-          showSnackBarError(context, 'Location Service is Disabled');
-        });
-      }
-    });
-  }
-
-  void _checkPermissionLocation() {
-    _bloc.isPermissionLocationGranted().then((granted){
-      if (!granted) {
-        _bloc.requestLocationPermission().then((PermissionStatus status) {
-          if (status == PermissionStatus.granted) {
-            _bloc.add(MapsEventPermissionLocation());
-            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-              showSnackBarSuccess(context, 'Location Permission Granted');
-            });
-          } else if (status == PermissionStatus.permanentlyDenied) {
-            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-              showSnackBarWarning(context, 'Open App Setting');
-              showDialog(context: context, builder: (context) {
-                return AlertDialog(
-                  title: const Text('Permission', style: TextStyle(fontSize: 16)),
-                  content: const Text('Open app settings to allow permission', style: TextStyle(fontSize: 14)),
-                  actions: [
-                    TextButton(onPressed: (){
-                      Navigator.pop(context);
-                    }, child: const Text('Cancel', style: TextStyle(fontSize: 14))),
-                    TextButton(onPressed: (){
-                      Navigator.pop(context);
-                      openAppSettings();
-                    }, child: const Text('OK', style: TextStyle(fontSize: 14))),
-                  ],
-                );
-              });
-            });
-          } else if (status == PermissionStatus.denied) {
-            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-              showSnackBarError(context, 'Location Permission Denied');
-            });
-          } else {
-            WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
-              showSnackBarError(context, 'Location Permission Denied');
-            });
-          }
-        });
-      }
-    });
-  }
-
 }

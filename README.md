@@ -1,19 +1,19 @@
 ## Info Malang Batu Flutter ##
+![Build Status](https://github.com/yoesuv/Info-Malang-Batu-Flutter/actions/workflows/github-action.yml/badge.svg)
 
-#### Whats new? #####
+#### What's new? #####
 - :arrow_up: update libraries
-- :arrow_up: upgrade android gradle
 
 #### Flutter Dependencies ####
 ```
-Flutter 3.3.9 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision b8f7f1f986 (3 weeks ago) • 2022-11-23 06:43:51 +0900
-Engine • revision 8f2221fbef
-Tools • Dart 2.18.5 • DevTools 2.15.0
+Flutter 3.7.7 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 2ad6cd72c0 (15 hours ago) • 2023-03-08 09:41:59 -0800
+Engine • revision 1837b5be5f
+Tools • Dart 2.19.4 • DevTools 2.20.1
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://www.dropbox.com/s/3cxda39599wqxkb)
+download APK File [here](https://www.dropbox.com/s/inywxlhapew8la1)
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
@@ -31,6 +31,7 @@ download APK File [here](https://www.dropbox.com/s/3cxda39599wqxkb)
 - [Dio](https://pub.dev/packages/dio)
 - [Equatable](https://pub.dev/packages/equatable)
 - [Flutter Html](https://pub.dev/packages/flutter_html)
+- [Formz](https://pub.dev/packages/formz)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)

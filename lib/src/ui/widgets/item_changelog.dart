@@ -3,7 +3,7 @@ import 'package:info_malang_batu_flutter/src/core/models/about/item_changelog_mo
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class ItemChangelog extends StatelessWidget {
-  const ItemChangelog(this.itemChangelogModel);
+  const ItemChangelog({super.key, this.itemChangelogModel});
 
   final ItemChangelogModel? itemChangelogModel;
 
@@ -13,12 +13,25 @@ class ItemChangelog extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          padding: EdgeInsets.only(left: itemChangelogPadding, right: itemChangelogPadding, top: itemChangelogPadding),
-          child: Text(itemChangelogModel?.version ?? '', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+          padding: EdgeInsets.only(
+            left: itemChangelogPadding,
+            right: itemChangelogPadding,
+            top: itemChangelogPadding,
+          ),
+          child: Text(
+            itemChangelogModel?.version ?? '',
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
         Container(
           padding: EdgeInsets.all(itemChangelogPadding),
-          child: Text(itemChangelogModel?.changelog ?? '', style: const TextStyle(fontSize: 14.0)),
+          child: Text(
+            itemChangelogModel?.changelog ?? '',
+            style: const TextStyle(fontSize: 14),
+          ),
         ),
         const Divider()
       ],

@@ -28,18 +28,31 @@ class _AboutInfoState extends State<AboutInfo> {
     return Scaffold(
       body: Column(children: <Widget>[
         Container(
-          padding: EdgeInsets.only(top: itemChangelogPadding, bottom: itemChangelogPadding),
-          child: const Text('Info Malang Batu', style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold, fontFamily: 'Pacifico')),
+          padding: EdgeInsets.symmetric(vertical: itemChangelogPadding),
+          child: const Text(
+            'Info Malang Batu',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Pacifico',
+            ),
+          ),
         ),
         _buildAppVersion(),
         Container(
-          padding: EdgeInsets.only(top: itemChangelogPadding, bottom: itemChangelogPadding),
-          child: const Text('Flutter Version', style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.bold)),
+          padding: EdgeInsets.symmetric(vertical: itemChangelogPadding),
+          child: const Text(
+            'Flutter Version',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          ),
         ),
         const Divider(),
         Container(
           padding: EdgeInsets.all(itemChangelogPadding),
-          child: const Text('https://github.com/yoesuv/Info-Malang-Batu-Flutter', style: TextStyle(fontSize: 14.0)),
+          child: const Text(
+            'https://github.com/yoesuv/Info-Malang-Batu-Flutter',
+            style: TextStyle(fontSize: 14),
+          ),
         )
       ]),
     );
@@ -49,7 +62,10 @@ class _AboutInfoState extends State<AboutInfo> {
     return BlocBuilder(
       bloc: _bloc,
       builder: (context, AboutInfoState state) {
-        return Text('Versi ${state.version}', style: const TextStyle(fontSize: 14.0));
+        return Text(
+          'Versi ${state.version}',
+          style: const TextStyle(fontSize: 14),
+        );
       },
     );
   }

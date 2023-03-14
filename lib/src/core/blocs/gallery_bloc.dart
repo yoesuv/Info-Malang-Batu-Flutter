@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/events/gallery_event.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_gallery_repository.dart';
 import 'package:info_malang_batu_flutter/src/core/states/gallery_state.dart';
@@ -12,12 +13,21 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
   }
 
   void _initGallery(GalleryEventInit event, Emitter<GalleryState> emit) async {
-    emit(state.copyWith(isLoading: true));
-    try {
-      final response = await _listGalleryRepository.getListGallery();
-      emit(state.copyWith(isLoading: false, listItemGalleryModel: response));
-    } catch (e) {
-      debugPrint('GalleryBloc # error $e');
+    final list = state.listItemGalleryModel?.listItemGalleryModel ?? [];
+    if (list.isEmpty) {
+      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      try {
+        final response = await _listGalleryRepository.getListGallery();
+        emit(state.copyWith(
+          status: FormzSubmissionStatus.success,
+          listItemGalleryModel: response,
+        ));
+      } catch (e) {
+        debugPrint('GalleryBloc # error $e');
+        emit(state.copyWith(
+          status: FormzSubmissionStatus.failure,
+        ));
+      }
     }
   }
 }
