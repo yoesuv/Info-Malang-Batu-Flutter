@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:info_malang_batu_flutter/src/core/blocs/new_maps_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/maps_event.dart';
 import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
@@ -17,15 +17,15 @@ class MapsPlace extends StatefulWidget {
 }
 
 class _MapsPlaceState extends State<MapsPlace> {
-  late NewMapsBloc _bloc;
+  late MapsBloc _bloc;
   late GoogleMapController googleMapController;
 
   @override
   void initState() {
     super.initState();
-    _bloc = context.read<NewMapsBloc>();
-    _bloc.add(MapsCheckServiceLocation());
+    _bloc = context.read<MapsBloc>();
     _bloc.add(MapsEventInit(context: context));
+    _bloc.add(MapsCheckServiceLocation());
   }
 
   @override
@@ -35,7 +35,7 @@ class _MapsPlaceState extends State<MapsPlace> {
         title: const MyAppBarText(title: 'Peta'),
         actions: <Widget>[_iconRefresh()],
       ),
-      body: BlocListener<NewMapsBloc, MapsState>(
+      body: BlocListener<MapsBloc, MapsState>(
         bloc: _bloc,
         listenWhen: (prev, current) {
           return prev.locationService != current.locationService ||
@@ -78,7 +78,7 @@ class _MapsPlaceState extends State<MapsPlace> {
   }
 
   Widget _buildMaps() {
-    return BlocBuilder<NewMapsBloc, MapsState>(
+    return BlocBuilder<MapsBloc, MapsState>(
       bloc: _bloc,
       buildWhen: (previous, current) {
         return previous.listMarker != current.listMarker ||

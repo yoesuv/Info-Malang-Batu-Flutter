@@ -10,47 +10,22 @@ import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
+class MapsBloc extends Bloc<MapsEvent, MapsState> {
   final MapsRepository _mapsRepository = MapsRepository();
 
-  NewMapsBloc() : super(const MapsState()) {
-    on<MapsCheckServiceLocation>(_checkLocationService);
+  MapsBloc() : super(const MapsState()) {
     on<MapsEventInit>(_mapEventInit);
+    on<MapsCheckServiceLocation>(_checkLocationService);
     on<MapsEventPermissionLocation>(_mapPermissionLocation);
-  }
-
-  void _checkLocationService(
-    MapsCheckServiceLocation event,
-    Emitter<MapsState> emit,
-  ) async {
-    if (Platform.isIOS) {
-      emit(state.copyWith(
-        locationService: true,
-      ));
-    } else {
-      emit(state.copyWith(
-        locationService: true,
-      ));
-      final status = await Permission.location.serviceStatus;
-      final check = status == ServiceStatus.enabled;
-      emit(state.copyWith(
-        locationService: check,
-      ));
-    }
-  }
-
-  Future<PermissionStatus> requestLocationPermission() async {
-    return await Permission.location.request();
-  }
-
-  Future<bool> isPermissionLocationGranted() async {
-    return await Permission.location.status == PermissionStatus.granted;
   }
 
   void _mapEventInit(MapsEventInit event, Emitter<MapsState> emit) async {
     var iconSize = 64.0;
     try {
       final List<Marker> listMarker = <Marker>[];
+      emit(state.copyWith(
+        listMarker: [],
+      ));
       final icon = await BitmapDescriptor.fromAssetImage(
         createLocalImageConfiguration(
           event.context,
@@ -76,6 +51,26 @@ class NewMapsBloc extends Bloc<MapsEvent, MapsState> {
       ));
     } catch (e) {
       debugPrint('NewMapsBloc # error $e');
+    }
+  }
+
+  void _checkLocationService(
+    MapsCheckServiceLocation event,
+    Emitter<MapsState> emit,
+  ) async {
+    if (Platform.isIOS) {
+      emit(state.copyWith(
+        locationService: true,
+      ));
+    } else {
+      emit(state.copyWith(
+        locationService: true,
+      ));
+      final status = await Permission.location.serviceStatus;
+      final check = status == ServiceStatus.enabled;
+      emit(state.copyWith(
+        locationService: check,
+      ));
     }
   }
 
