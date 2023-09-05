@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:info_malang_batu_flutter/src/core/models/about/item_library_model.dart';
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
@@ -44,14 +43,12 @@ class ItemLibrary extends StatelessWidget {
         ),
         Container(
           padding: EdgeInsets.all(itemLibraryPadding),
-          child: Html(
-            data: itemLibraryModel.license,
-            style: {
-              "body": Style(
-                fontSize: const FontSize(11),
-                fontFamily: 'Consola',
-              ),
-            },
+          child: Text(
+            '${itemLibraryModel.license}',
+            style: const TextStyle(
+              fontSize: 11,
+              fontFamily: 'Consola',
+            ),
           ),
         ),
         const Divider()
