@@ -15,7 +15,12 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   int _selectedIndex = 0;
-  final List<Widget> menu = const <Widget>[ListPlace(), Gallery(), MapsPlace(), About()];
+  final List<Widget> menu = const <Widget>[
+    ListPlace(),
+    Gallery(),
+    MapsPlace(),
+    About(),
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -24,17 +29,13 @@ class HomeState extends State<Home> {
   }
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-          child: menu.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: buildBottomNavigationBar());
+      body: Center(
+        child: menu.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: buildBottomNavigationBar(),
+    );
   }
 
   Widget buildBottomNavigationBar() {
