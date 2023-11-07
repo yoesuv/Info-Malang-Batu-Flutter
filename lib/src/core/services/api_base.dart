@@ -1,14 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:info_malang_batu_flutter/src/core/services/app_exceptions.dart';
-import 'package:info_malang_batu_flutter/src/core/services/logging_interceptor.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class ApiBase {
   ApiBase() {
     dio = Dio(options);
     if (isInDebugMode) {
-      dio?.interceptors.add(LoggingInterceptor());
+      dio?.interceptors.add(PrettyDioLogger(
+        requestHeader: true,
+      ));
     }
   }
 

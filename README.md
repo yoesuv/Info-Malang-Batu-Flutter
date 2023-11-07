@@ -6,10 +6,10 @@
 
 #### Flutter Dependencies ####
 ```
-Flutter 3.13.2 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision ff5b5b5fa6 (12 days ago) • 2023-08-24 08:12:28 -0500
-Engine • revision b20183e040
-Tools • Dart 3.1.0 • DevTools 2.25.0
+Flutter 3.13.9 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision d211f42860 (13 days ago) • 2023-10-25 13:42:25 -0700
+Engine • revision 0545f8705d
+Tools • Dart 3.1.5 • DevTools 2.25.0
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
@@ -35,6 +35,7 @@ download APK File [here](https://www.dropbox.com/s/inywxlhapew8la1)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
+- [Pretty Dio Logger](https://pub.dev/packages/pretty_dio_logger)
 
 ### License ###
 
