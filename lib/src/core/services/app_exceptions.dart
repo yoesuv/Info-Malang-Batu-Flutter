@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
 class AppException {
-  final DioError? dioError;
+  final DioException? dioException;
 
-  AppException({this.dioError});
+  AppException({this.dioException});
 }
 
 class UnknownException {

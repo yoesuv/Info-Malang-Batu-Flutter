@@ -15,7 +15,9 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
   void _initGallery(GalleryEventInit event, Emitter<GalleryState> emit) async {
     final list = state.listItemGalleryModel?.listItemGalleryModel ?? [];
     if (list.isEmpty) {
-      emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+      ));
       try {
         final response = await _listGalleryRepository.getListGallery();
         emit(state.copyWith(

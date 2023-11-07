@@ -15,8 +15,9 @@ class ApiBase {
   Dio? dio;
   BaseOptions options = BaseOptions(
     baseUrl: baseUrl,
-    connectTimeout: const Duration(seconds: 30),
-    receiveTimeout: const Duration(seconds: 30),
+    connectTimeout: timeOut,
+    receiveTimeout: timeOut,
+    sendTimeout: timeOut,
   );
 
   //handle get request
@@ -25,8 +26,8 @@ class ApiBase {
     try {
       response = await dio?.get<dynamic>(url);
     } catch (e) {
-      if (e is DioError) {
-        throw AppException(dioError: e);
+      if (e is DioException) {
+        throw AppException(dioException: e);
       } else {
         throw UnknownException(message: 'Unknown Exception');
       }
