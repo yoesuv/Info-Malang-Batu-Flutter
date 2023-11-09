@@ -13,7 +13,7 @@ class MapsPlace extends StatefulWidget {
   const MapsPlace({Key? key}) : super(key: key);
 
   @override
-  _MapsPlaceState createState() => _MapsPlaceState();
+  State createState() => _MapsPlaceState();
 }
 
 class _MapsPlaceState extends State<MapsPlace> {
@@ -33,7 +33,9 @@ class _MapsPlaceState extends State<MapsPlace> {
     return Scaffold(
       appBar: AppBar(
         title: const MyAppBarText(title: 'Peta'),
-        actions: <Widget>[_iconRefresh()],
+        actions: <Widget>[
+          _iconRefresh(),
+        ],
       ),
       body: BlocListener<MapsBloc, MapsState>(
         bloc: _bloc,
@@ -42,17 +44,17 @@ class _MapsPlaceState extends State<MapsPlace> {
               prev.permissionStatus != current.permissionStatus;
         },
         listener: (context, state) {
+          final stsPermission = state.permissionStatus;
           if (state.locationService == false) {
             showSnackBarError(context, 'Location Service is Disabled');
           } else {
             _bloc.add(MapsEventPermissionLocation());
           }
-          if (state.permissionStatus == PermissionStatus.granted) {
+          if (stsPermission == PermissionStatus.granted) {
             showSnackBarSuccess(context, 'Location Permission Granted');
-          } else if (state.permissionStatus == PermissionStatus.denied) {
+          } else if (stsPermission == PermissionStatus.denied) {
             showSnackBarError(context, 'Location Permission Denied');
-          } else if (state.permissionStatus ==
-              PermissionStatus.permanentlyDenied) {
+          } else if (stsPermission == PermissionStatus.permanentlyDenied) {
             showSnackBarWarning(context, 'Open App Setting');
           }
         },
