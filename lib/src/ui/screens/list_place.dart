@@ -13,7 +13,9 @@ class ListPlace extends StatefulWidget {
   const ListPlace({Key? key}) : super(key: key);
 
   @override
-  _ListPlaceState createState() => _ListPlaceState();
+  State<StatefulWidget> createState() {
+    return _ListPlaceState();
+  }
 }
 
 class _ListPlaceState extends State<ListPlace> {

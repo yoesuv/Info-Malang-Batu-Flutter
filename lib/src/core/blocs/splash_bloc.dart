@@ -13,6 +13,8 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     Emitter<SplashState> emit,
   ) async {
     final packageInfo = await PackageInfo.fromPlatform();
-    emit(state.copyWith(version: packageInfo.version));
+    emit(state.copyWith(
+      version: packageInfo.version,
+    ));
   }
 }
