@@ -6,6 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/list_item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
+import 'package:info_malang_batu_flutter/src/ui/widgets/error_container.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/item_place.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
@@ -68,14 +69,21 @@ class _ListPlaceState extends State<ListPlace> {
     return BlocBuilder<ListPlaceBloc, ListPlaceState>(
       bloc: _bloc,
       builder: (context, state) {
-        if (state.status == FormzSubmissionStatus.success) {
-          return _buildList(state.listItemPlaceModel);
+        if (state.status == FormzSubmissionStatus.inProgress) {
+          return const Center(
+            child: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+            ),
+          );
+        } else if (state.status == FormzSubmissionStatus.failure) {
+          return ErrorContainer(
+            title: 'Failed Load List Place',
+            onPress: () {
+              _bloc.add(ListPlaceEventInit(ListPlaceType.ALL));
+            },
+          );
         }
-        return const Center(
-          child: CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
-          ),
-        );
+        return _buildList(state.listItemPlaceModel);
       },
     );
   }
