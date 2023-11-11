@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/list_place_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
-import 'package:info_malang_batu_flutter/src/core/models/list_place/list_item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/error_container.dart';
@@ -83,16 +83,16 @@ class _ListPlaceState extends State<ListPlace> {
             },
           );
         }
-        return _buildList(state.listItemPlaceModel);
+        return _buildList(state.listPlace);
       },
     );
   }
 
-  Widget _buildList(ListItemPlaceModel? model) {
+  Widget _buildList(List<ItemPlaceModel>? places) {
     return ListView.builder(
-      itemCount: model?.listItemPlaceModel.length,
+      itemCount: places?.length,
       itemBuilder: (BuildContext context, int index) {
-        final itemPlaceModel = model?.listItemPlaceModel[index];
+        final itemPlaceModel = places?[index];
         return ItemPlace(itemPlaceModel: itemPlaceModel);
       },
     );
