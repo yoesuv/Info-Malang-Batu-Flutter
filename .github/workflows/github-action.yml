@@ -16,10 +16,10 @@ jobs:
       - name: List files in the repository initial
         run: ls ${{ github.workspace }}
       - name: Setup Java JDK
-        uses: actions/setup-java@v3.10.0
+        uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
-          java-version: '11'
+          distribution: 'oracle'
+          java-version: '17'
           cache: 'gradle'
       - name: Verify Java Version
         run: java --version
@@ -31,5 +31,5 @@ jobs:
       - run: flutter --version
       - run: flutter clean
       - run: flutter pub get
-      - run: flutter build apk
+      - run: flutter build apk -v
       - run: echo "🍏 This job's status is ${{ job.status }}."
