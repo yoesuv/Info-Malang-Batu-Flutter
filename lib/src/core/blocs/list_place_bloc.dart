@@ -33,6 +33,8 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
         debugPrint('ListPlaceBloc # error $e');
         emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
+          listPlace: [],
+          listPlaceType: ListPlaceType.ALL,
         ));
       }
     }
@@ -67,7 +69,11 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
       }
     } catch (e) {
       debugPrint('ListPlaceBloc # error $e');
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.failure,
+        listPlace: [],
+        listPlaceType: ListPlaceType.ALL,
+      ));
     }
   }
 

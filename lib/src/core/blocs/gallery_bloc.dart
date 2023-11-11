@@ -13,7 +13,7 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
   }
 
   void _initGallery(GalleryEventInit event, Emitter<GalleryState> emit) async {
-    final list = state.listItemGalleryModel?.listItemGalleryModel ?? [];
+    final list = state.listGallery ?? [];
     if (list.isEmpty) {
       emit(state.copyWith(
         status: FormzSubmissionStatus.inProgress,
@@ -22,12 +22,13 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
         final response = await _listGalleryRepository.getListGallery();
         emit(state.copyWith(
           status: FormzSubmissionStatus.success,
-          listItemGalleryModel: response,
+          listGallery: response.listItemGalleryModel,
         ));
       } catch (e) {
         debugPrint('GalleryBloc # error $e');
         emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
+          listGallery: [],
         ));
       }
     }

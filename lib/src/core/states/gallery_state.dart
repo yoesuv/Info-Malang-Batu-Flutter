@@ -1,29 +1,29 @@
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:info_malang_batu_flutter/src/core/models/gallery/list_item_gallery_model.dart';
+import 'package:info_malang_batu_flutter/src/core/models/gallery/item_gallery_model.dart';
 
 class GalleryState extends Equatable {
   final FormzSubmissionStatus status;
-  final ListItemGalleryModel? listItemGalleryModel;
+  final List<ItemGalleryModel>? listGallery;
 
   const GalleryState({
     this.status = FormzSubmissionStatus.initial,
-    this.listItemGalleryModel,
+    this.listGallery,
   });
 
   GalleryState copyWith({
     FormzSubmissionStatus? status,
-    ListItemGalleryModel? listItemGalleryModel,
+    List<ItemGalleryModel>? listGallery,
   }) {
     return GalleryState(
       status: status ?? this.status,
-      listItemGalleryModel: listItemGalleryModel ?? this.listItemGalleryModel,
+      listGallery: listGallery ?? this.listGallery,
     );
   }
 
   @override
   List<Object?> get props => [
         status,
-        listItemGalleryModel,
+        listGallery,
       ];
 }
