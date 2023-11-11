@@ -15,8 +15,8 @@ class Routes {
       return MaterialPageRoute(
         builder: (BuildContext context) {
           return BlocProvider(
-            create: (context) => SplashBloc()..add(SplashEventInit()),
-            child: Splash(),
+            create: (context) => SplashBloc()..add(SplashInitEvent()),
+            child: const Splash(),
           );
         },
       );

@@ -5,11 +5,16 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(const SplashState()) {
-    on<SplashEventInit>(_initSplash);
+    on<SplashInitEvent>(_initSplash);
   }
 
-  Future<void> _initSplash(SplashEventInit event, Emitter<SplashState> emit) async {
+  Future<void> _initSplash(
+    SplashInitEvent event,
+    Emitter<SplashState> emit,
+  ) async {
     final packageInfo = await PackageInfo.fromPlatform();
-    emit(state.copyWith(version: packageInfo.version));
+    emit(state.copyWith(
+      version: packageInfo.version,
+    ));
   }
 }

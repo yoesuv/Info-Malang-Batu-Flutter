@@ -6,7 +6,10 @@ class ListGalleryRepository {
   ApiBase apiBase = ApiBase();
 
   Future<ListItemGalleryModel> getListGallery() async {
-    final Response<dynamic> response = await apiBase.get('/Gallery_Malang_Batu.json') as Response<dynamic>;
-    return ListItemGalleryModel.fromJson(response.data as List<dynamic>);
+    final Response<dynamic> response = await apiBase.get(
+      '/Gallery_Malang_Batu.json',
+    ) as Response<dynamic>;
+    final data = response.data as List<dynamic>;
+    return ListItemGalleryModel.fromJson(data);
   }
 }

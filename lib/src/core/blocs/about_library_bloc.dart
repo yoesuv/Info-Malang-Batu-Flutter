@@ -16,7 +16,6 @@ class AboutLibraryBloc extends Bloc<AboutLibraryEvent, AboutLibraryState> {
       ItemLibraryModel(cachedNetworkImage, cachedNetworkImageUrl, cachedNetworkImageLicense),
       ItemLibraryModel(dio, dioUrl, dioLicense),
       ItemLibraryModel(equatable, equatableUrl, equatableLicense),
-      ItemLibraryModel(flutterHtml, flutterHtmlUrl, flutterHtmlLicense),
       ItemLibraryModel(googleMapsFlutter, googleMapsFlutterUrl, googleMapsFlutterLicense),
       ItemLibraryModel(packageInfoPlus, packageInfoPlusUrl, packageInfoPlusLicense),
       ItemLibraryModel(permissionHandler, permissionHandlerUrl, permissionHandlerLicense),

@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/gallery_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/gallery_event.dart';
-import 'package:info_malang_batu_flutter/src/core/models/gallery/list_item_gallery_model.dart';
+import 'package:info_malang_batu_flutter/src/core/models/gallery/item_gallery_model.dart';
 import 'package:info_malang_batu_flutter/src/core/states/gallery_state.dart';
+import 'package:info_malang_batu_flutter/src/ui/widgets/error_container.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/item_gallery.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
@@ -12,7 +13,9 @@ class Gallery extends StatefulWidget {
   const Gallery({Key? key}) : super(key: key);
 
   @override
-  _GalleryState createState() => _GalleryState();
+  State<StatefulWidget> createState() {
+    return _GalleryState();
+  }
 }
 
 class _GalleryState extends State<Gallery> {
@@ -39,7 +42,7 @@ class _GalleryState extends State<Gallery> {
       bloc: _bloc,
       buildWhen: (previous, current) =>
           previous.status != current.status ||
-          previous.listItemGalleryModel != current.listItemGalleryModel,
+          previous.listGallery != current.listGallery,
       builder: (context, state) {
         if (state.status == FormzSubmissionStatus.inProgress) {
           return const Center(
@@ -47,23 +50,28 @@ class _GalleryState extends State<Gallery> {
               valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
             ),
           );
-        } else if (state.status == FormzSubmissionStatus.success) {
-          return _buildGallery(state.listItemGalleryModel);
+        } else if (state.status == FormzSubmissionStatus.failure) {
+          return ErrorContainer(
+            title: 'Failed Load Galleries',
+            onPress: () {
+              _bloc.add(GalleryEventInit());
+            },
+          );
         }
-        return Container();
+        return _buildGallery(state.listGallery);
       },
     );
   }
 
-  Widget _buildGallery(ListItemGalleryModel? model) {
+  Widget _buildGallery(List<ItemGalleryModel>? listGallery) {
     return GridView.builder(
-      itemCount: model?.listItemGalleryModel.length,
+      itemCount: listGallery?.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
       ),
       itemBuilder: (BuildContext context, int index) {
         return ItemGallery(
-          itemGalleryModel: model?.listItemGalleryModel[index],
+          itemGalleryModel: listGallery?[index],
         );
       },
     );

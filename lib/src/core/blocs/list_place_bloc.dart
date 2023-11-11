@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
-import 'package:info_malang_batu_flutter/src/core/models/list_place/list_item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_place_repository.dart';
 import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
@@ -20,7 +20,7 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     Emitter<ListPlaceState> emit,
   ) async {
     final check1 = state.listPlaceType != event.listPlaceType;
-    final check2 = state.listItemPlaceModel?.listItemPlaceModel.isEmpty == true;
+    final check2 = state.listPlace?.isEmpty == true;
     if (check1 || check2) {
       emit(state.copyWith(
         status: FormzSubmissionStatus.inProgress,
@@ -28,11 +28,13 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
       ));
       try {
         final response = await _listPlaceRepository.getListPlace();
-        _showData(emit, response);
+        _showData(emit, response.listItemPlaceModel);
       } catch (e) {
         debugPrint('ListPlaceBloc # error $e');
         emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
+          listPlace: [],
+          listPlaceType: ListPlaceType.ALL,
         ));
       }
     }
@@ -50,31 +52,35 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
       switch (event.listPlaceType) {
         case ListPlaceType.ALL:
           final response = await _listPlaceRepository.getListPlace();
-          _showData(emit, response);
+          _showData(emit, response.listItemPlaceModel);
           break;
         case ListPlaceType.MALANG:
           final response = await _listPlaceRepository.getListPlaceKotaMalang();
-          _showData(emit, response);
+          _showData(emit, response.listItemPlaceModel);
           break;
         case ListPlaceType.KABMALANG:
           final response = await _listPlaceRepository.getListPlaceKabMalang();
-          _showData(emit, response);
+          _showData(emit, response.listItemPlaceModel);
           break;
         case ListPlaceType.BATU:
           final response = await _listPlaceRepository.getListPlaceKotaBatu();
-          _showData(emit, response);
+          _showData(emit, response.listItemPlaceModel);
           break;
       }
     } catch (e) {
       debugPrint('ListPlaceBloc # error $e');
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.failure,
+        listPlace: [],
+        listPlaceType: ListPlaceType.ALL,
+      ));
     }
   }
 
-  void _showData(Emitter<ListPlaceState> emit, ListItemPlaceModel response) {
+  void _showData(Emitter<ListPlaceState> emit, List<ItemPlaceModel>? places) {
     emit(state.copyWith(
       status: FormzSubmissionStatus.success,
-      listItemPlaceModel: response,
+      listPlace: places,
     ));
   }
 }
