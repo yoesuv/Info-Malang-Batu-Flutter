@@ -44,13 +44,13 @@ class _GalleryState extends State<Gallery> {
           previous.status != current.status ||
           previous.listGallery != current.listGallery,
       builder: (context, state) {
-        if (state.status == FormzSubmissionStatus.inProgress) {
+        if (state.status.isInProgress) {
           return const Center(
             child: CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
             ),
           );
-        } else if (state.status == FormzSubmissionStatus.failure) {
+        } else if (state.status.isFailure) {
           return ErrorContainer(
             title: 'Failed Load Galleries',
             onPress: () {
