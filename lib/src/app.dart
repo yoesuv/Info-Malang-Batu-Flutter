@@ -19,15 +19,30 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Info Malang Batu',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: Colors.teal,
-            secondary: Colors.teal,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.teal,
+            onSecondary: Colors.teal,
+            surface: Colors.white,
+          ),
+          appBarTheme: const AppBarTheme(
+            centerTitle: false,
+            backgroundColor: Colors.teal,
+            titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 22,
+            ),
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            ),
           ),
           tabBarTheme: const TabBarTheme(
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white70,
             indicator: UnderlineTabIndicator(
-              borderSide: BorderSide(color: Colors.white, width: 2),
-            )
+              borderSide: BorderSide(color: Colors.white, width: 3),
+            ),
           ),
+          useMaterial3: true,
         ),
         onGenerateRoute: Routes.routes,
       ),
