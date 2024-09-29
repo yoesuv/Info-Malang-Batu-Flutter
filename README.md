@@ -1,9 +1,6 @@
 ## Info Malang Batu Flutter ##
 ![Build Status](https://github.com/yoesuv/Info-Malang-Batu-Flutter/actions/workflows/github-action.yml/badge.svg)
 
-#### What's new? #####
-- :arrow_up: update libraries
-
 #### Flutter Dependencies ####
 ```
 Flutter 3.24.3 • channel stable • https://github.com/flutter/flutter.git
@@ -13,7 +10,7 @@ Tools • Dart 3.5.3 • DevTools 2.37.3
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://e.pcloud.link/publink/show?code=XZ4BcsZiHP5dBoGAQf0U5wRHfJoFpvEcjEX)
+download APK File [here](https://e.pcloud.link/publink/show?code=XZ6K0CZdcqeCTz1I1u8iMHNeDVMsY1IoDXX)
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
