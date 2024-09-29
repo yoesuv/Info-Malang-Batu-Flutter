@@ -6,10 +6,10 @@
 
 #### Flutter Dependencies ####
 ```
-Flutter 3.19.6 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 54e66469a9 (3 weeks ago) • 2024-04-17 13:08:03 -0700
-Engine • revision c4cd48e186
-Tools • Dart 3.3.4 • DevTools 2.31.1
+Flutter 3.24.3 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision 2663184aa7 (2 weeks ago) • 2024-09-11 16:27:48 -0500
+Engine • revision 36335019a8
+Tools • Dart 3.5.3 • DevTools 2.37.3
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
