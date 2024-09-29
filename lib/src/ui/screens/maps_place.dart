@@ -62,7 +62,7 @@ class _MapsPlaceState extends State<MapsPlace> {
           future: BitmapDescriptor.asset(
             createLocalImageConfiguration(
               context,
-              size: const Size(64, 64),
+              size: const Size(36, 36),
             ),
             iconMarker,
           ),
