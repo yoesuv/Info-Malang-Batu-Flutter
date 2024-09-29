@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/events/gallery_event.dart';
@@ -25,7 +24,6 @@ class GalleryBloc extends Bloc<GalleryEvent, GalleryState> {
           listGallery: response.listItemGalleryModel,
         ));
       } catch (e) {
-        debugPrint('GalleryBloc # error $e');
         emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
           listGallery: [],

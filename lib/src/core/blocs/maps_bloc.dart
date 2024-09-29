@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/maps_event.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/maps_repository.dart';
@@ -30,7 +29,6 @@ class MapsBloc extends Bloc<MapsEvent, MapsState> {
         ));
       }
     } catch (e) {
-      debugPrint('NewMapsBloc # error $e');
       emit(state.copyWith(
         listPin: [],
       ));

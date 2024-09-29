@@ -28,7 +28,7 @@ dependencies:
   equatable: ^2.0.5
   flutter_bloc: ^8.1.5
   formz: ^0.7.0
-  google_maps_flutter: ^2.5.0
+  google_maps_flutter: ^2.9.0
   package_info_plus: ^8.0.2
   permission_handler: ^11.3.1
   pretty_dio_logger: ^1.4.0

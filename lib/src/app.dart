@@ -22,7 +22,7 @@ class App extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.teal,
             onSecondary: Colors.teal,
-            background: Colors.white,
+            surface: Colors.white,
           ),
           appBarTheme: const AppBarTheme(
             centerTitle: false,

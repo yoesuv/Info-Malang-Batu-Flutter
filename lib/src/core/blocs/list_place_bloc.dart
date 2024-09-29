@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
@@ -30,7 +29,6 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
         final response = await _listPlaceRepository.getListPlace();
         _showData(emit, response.listItemPlaceModel);
       } catch (e) {
-        debugPrint('ListPlaceBloc # error $e');
         emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
           listPlace: [],
@@ -68,7 +66,6 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
           break;
       }
     } catch (e) {
-      debugPrint('ListPlaceBloc # error $e');
       emit(state.copyWith(
         status: FormzSubmissionStatus.failure,
         listPlace: [],
