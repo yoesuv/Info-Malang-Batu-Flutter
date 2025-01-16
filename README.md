@@ -10,7 +10,7 @@ Tools • Dart 3.6.0 • DevTools 2.40.2
 ```
 
 Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://e.pcloud.link/publink/show?code=XZ6K0CZdcqeCTz1I1u8iMHNeDVMsY1IoDXX)
+download APK File [here](https://e.pcloud.link/publink/show?code=XZ42VKZfEsKIMIndduujhzvXqAPtmip5tcy)
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
