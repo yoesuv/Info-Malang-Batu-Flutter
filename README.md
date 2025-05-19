@@ -3,14 +3,13 @@
 
 #### Flutter Dependencies ####
 ```
-Flutter 3.27.1 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 17025dd882 (3 weeks ago) • 2024-12-17 03:23:09 +0900
-Engine • revision cb4b5fff73
-Tools • Dart 3.6.0 • DevTools 2.40.2
+Flutter 3.29.3 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision ea121f8859 (5 weeks ago) • 2025-04-11 19:10:07 +0000
+Engine • revision cf56914b32
+Tools • Dart 3.7.2 • DevTools 2.42.3
 ```
 
-Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://e.pcloud.link/publink/show?code=XZ42VKZfEsKIMIndduujhzvXqAPtmip5tcy)
+Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.  
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
