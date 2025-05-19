@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/gallery_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/list_place_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/repositories/list_place_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/routes/routes.dart';
 
 class App extends StatelessWidget {
@@ -12,7 +13,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ListPlaceBloc>(create: (context) => ListPlaceBloc()),
+        BlocProvider<ListPlaceBloc>(create: (context) => ListPlaceBloc(ListPlaceRepositoryImpl())),
         BlocProvider<GalleryBloc>(create: (context) => GalleryBloc()),
         BlocProvider<MapsBloc>(create: (context) => MapsBloc()),
       ],
