@@ -23,6 +23,7 @@ Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for An
 
 #### List Libraries used in this Project ####
 - [Bloc Library](https://github.com/felangel/bloc)
+- [Bloc Test](https://pub.dev/packages/bloc_test)
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
 - [Dio](https://pub.dev/packages/dio)
 - [Equatable](https://pub.dev/packages/equatable)
@@ -31,6 +32,7 @@ Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for An
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Pretty Dio Logger](https://pub.dev/packages/pretty_dio_logger)
+- [Test](https://pub.dev/packages/test)
 
 ### License ###
 
