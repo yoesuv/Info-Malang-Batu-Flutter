@@ -29,6 +29,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   formz: ^0.8.0
   google_maps_flutter: ^2.12.2
+  mocktail: ^1.0.4
   package_info_plus: ^8.3.0
   permission_handler: ^12.0.0+1
   pretty_dio_logger: ^1.4.0
@@ -37,6 +38,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
   test: ^1.25.15
   bloc_test: ^10.0.0
 
@@ -87,3 +89,4 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
       - assets/images/
+      - test/json/list_place_all.json
