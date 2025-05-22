@@ -29,10 +29,10 @@ Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for An
 - [Equatable](https://pub.dev/packages/equatable)
 - [Formz](https://pub.dev/packages/formz)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
+- [Mocktail](https://pub.dev/packages/mocktail)
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Pretty Dio Logger](https://pub.dev/packages/pretty_dio_logger)
-- [Test](https://pub.dev/packages/test)
 
 ### License ###
 
