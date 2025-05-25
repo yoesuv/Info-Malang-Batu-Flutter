@@ -35,7 +35,7 @@ void main() {
   });
 
   blocTest<ListPlaceBloc, ListPlaceState>(
-    "init bloc success",
+    "init location bloc success all",
     build: () => listPlaceBloc,
     act: (bloc) => bloc.add(ListPlaceEventInit(ListPlaceType.ALL)),
     expect:
@@ -51,5 +51,24 @@ void main() {
             listPlace: responseSuccessListPlaceAll,
           ),
         ],
+  );
+
+  blocTest<ListPlaceBloc, ListPlaceState>(
+    "change location kota malang bloc success",
+    build: () => listPlaceBloc,
+    act: (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.MALANG)),
+    expect:
+        () => [
+      ListPlaceState(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: ListPlaceType.MALANG,
+        listPlace: null,
+      ),
+      ListPlaceState(
+        status: FormzSubmissionStatus.success,
+        listPlaceType: ListPlaceType.MALANG,
+        listPlace: responseSuccessListPlaceKotaMalang,
+      ),
+    ],
   );
 }
