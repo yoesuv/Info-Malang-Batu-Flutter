@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/list_place_bloc.dart';
-import 'package:info_malang_batu_flutter/src/core/events/list_place_event.dart';
 import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/list_place.dart';
@@ -14,11 +13,6 @@ import 'response/list_place_all.dart';
 
 void main() {
   late ListPlaceBlocMock listPlaceBlocMock;
-
-  setUpAll(() {
-    registerFallbackValue(ListPlaceEventInit(ListPlaceType.ALL));
-    registerFallbackValue(ListPlaceEventLocationChanged(ListPlaceType.ALL));
-  });
 
   setUp(() {
     listPlaceBlocMock = ListPlaceBlocMock();
