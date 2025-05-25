@@ -89,3 +89,5 @@ flutter:
       - assets/images/
       - test/json/list_place_all.json
       - test/json/list_place_kota_malang.json
+      - test/json/list_place_batu.json
+      - test/json/list_place_kab_malang.json

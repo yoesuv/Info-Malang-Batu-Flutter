@@ -1,0 +1,14 @@
+import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
+
+const responseSuccessListPlaceBatu = [
+  ItemPlaceModel(
+    nama: "Alun Alun Batu",
+    lokasi: "Kota Batu",
+    deskripsi:
+        "Alun-alun Kota Batu menjadi destinasi wisata keluarga murah meriah. Alun-alun yang buka 24 jam ini punya konsep ramah anak. Lampion dan lampu berderet, patung-patung hewan tersebar di area taman. juga terdapat komidi putar bila ingin menikmati pemandangan dari ketinggian.",
+    thumbnail:
+        "https://lh3.googleusercontent.com/-R0ipuAxdPus/VpgqL1YRyRI/AAAAAAAACdI/XWkGUZpTegE/s250-Ic42/thumbnail_alun_alun_batu.jpg",
+    gambar:
+        "https://lh3.googleusercontent.com/-bFfINcFXjFM/VpgkzblyBhI/AAAAAAAACbg/r6z0tBnCBMY/s800-Ic42/alun_alun_batu.jpg",
+  ),
+];

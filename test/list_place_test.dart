@@ -11,6 +11,9 @@ import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 
 import 'response/list_place_all.dart';
+import 'response/list_place_batu.dart';
+import 'response/list_place_kab_malang.dart';
+import 'response/list_place_kota_malang.dart';
 import 'utils/json_helper.dart';
 
 void main() {
@@ -27,7 +30,7 @@ void main() {
     listPlaceBloc.close();
   });
 
-  test("JSON valid data", () async {
+  test("JSON valid data all", () async {
     var strJson = await loadJsonFromAsset('test/json/list_place_all.json');
     final List<dynamic> jsonList = jsonDecode(strJson);
     var places = ListItemPlaceModel.fromJson(jsonList);
@@ -56,19 +59,60 @@ void main() {
   blocTest<ListPlaceBloc, ListPlaceState>(
     "change location kota malang bloc success",
     build: () => listPlaceBloc,
-    act: (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.MALANG)),
+    act:
+        (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.MALANG)),
     expect:
         () => [
-      ListPlaceState(
-        status: FormzSubmissionStatus.inProgress,
-        listPlaceType: ListPlaceType.MALANG,
-        listPlace: null,
-      ),
-      ListPlaceState(
-        status: FormzSubmissionStatus.success,
-        listPlaceType: ListPlaceType.MALANG,
-        listPlace: responseSuccessListPlaceKotaMalang,
-      ),
-    ],
+          ListPlaceState(
+            status: FormzSubmissionStatus.inProgress,
+            listPlaceType: ListPlaceType.MALANG,
+            listPlace: null,
+          ),
+          ListPlaceState(
+            status: FormzSubmissionStatus.success,
+            listPlaceType: ListPlaceType.MALANG,
+            listPlace: responseSuccessListPlaceKotaMalang,
+          ),
+        ],
+  );
+
+  blocTest<ListPlaceBloc, ListPlaceState>(
+    "change location kota batu bloc success",
+    build: () => listPlaceBloc,
+    act: (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.BATU)),
+    expect:
+        () => [
+          ListPlaceState(
+            status: FormzSubmissionStatus.inProgress,
+            listPlaceType: ListPlaceType.BATU,
+            listPlace: null,
+          ),
+          ListPlaceState(
+            status: FormzSubmissionStatus.success,
+            listPlaceType: ListPlaceType.BATU,
+            listPlace: responseSuccessListPlaceBatu,
+          ),
+        ],
+  );
+
+  blocTest<ListPlaceBloc, ListPlaceState>(
+    "change location kabupaten malang bloc success",
+    build: () => listPlaceBloc,
+    act:
+        (bloc) =>
+            bloc.add(ListPlaceEventLocationChanged(ListPlaceType.KABMALANG)),
+    expect:
+        () => [
+          ListPlaceState(
+            status: FormzSubmissionStatus.inProgress,
+            listPlaceType: ListPlaceType.KABMALANG,
+            listPlace: null,
+          ),
+          ListPlaceState(
+            status: FormzSubmissionStatus.success,
+            listPlaceType: ListPlaceType.KABMALANG,
+            listPlace: responseSuccessListPlaceKabMalang,
+          ),
+        ],
   );
 }
