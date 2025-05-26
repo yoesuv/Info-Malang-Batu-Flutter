@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'oracle'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
       - name: Verify Java Version
         run: java --version
@@ -27,6 +27,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: 3.29.3
           cache: true
       - run: flutter --version
       - run: flutter clean
