@@ -11,8 +11,8 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
+      - name: Check out repository code first
+        uses: actions/checkout@v4
       - name: Print working directory
         run: pwd
       - name: List files in the repository initial
@@ -35,6 +35,8 @@ jobs:
       - run: flutter clean
       - run: flutter pub get
       - run: flutter test
+      - name: List files in the repository after test
+        run: ls ${{ github.workspace }}
       - name : Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
