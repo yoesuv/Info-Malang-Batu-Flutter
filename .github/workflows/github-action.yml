@@ -36,7 +36,7 @@ jobs:
       - name : Run codacy-coverage-reporter
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}@b2c7c1eff498370b99a11362226e891b4f90bef2
           coverage-reports: coverage/lcov.info
       - run: flutter build apk -v
       - run: echo "🍏 This job's status is ${{ job.status }}."
