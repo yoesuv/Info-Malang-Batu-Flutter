@@ -3,14 +3,13 @@
 
 #### Flutter Dependencies ####
 ```
-Flutter 3.27.1 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 17025dd882 (3 weeks ago) • 2024-12-17 03:23:09 +0900
-Engine • revision cb4b5fff73
-Tools • Dart 3.6.0 • DevTools 2.40.2
+Flutter 3.29.3 • channel stable • https://github.com/flutter/flutter.git
+Framework • revision ea121f8859 (5 weeks ago) • 2025-04-11 19:10:07 +0000
+Engine • revision cf56914b32
+Tools • Dart 3.7.2 • DevTools 2.42.3
 ```
 
-Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.<br/>
-download APK File [here](https://e.pcloud.link/publink/show?code=XZ42VKZfEsKIMIndduujhzvXqAPtmip5tcy)
+Flutter Version, click [here](https://github.com/yoesuv/Info-Malang-Batu) for Android Native version.  
 
 ### Screenshot Android ###
 | ![Splash Screen](https://i.imgur.com/WUN61PM.jpg) | ![List Place](https://i.imgur.com/8eNr2aC.jpg) | ![Detail List Place](https://i.imgur.com/DZgX2fc.jpg) | ![Gallery](https://i.imgur.com/SalEUez.jpg) |
@@ -24,11 +23,13 @@ download APK File [here](https://e.pcloud.link/publink/show?code=XZ42VKZfEsKIMIn
 
 #### List Libraries used in this Project ####
 - [Bloc Library](https://github.com/felangel/bloc)
+- [Bloc Test](https://pub.dev/packages/bloc_test)
 - [Cached Network Image](https://pub.dev/packages/cached_network_image)
 - [Dio](https://pub.dev/packages/dio)
 - [Equatable](https://pub.dev/packages/equatable)
 - [Formz](https://pub.dev/packages/formz)
 - [Google Maps for Flutter](https://pub.dev/packages/google_maps_flutter)
+- [Mocktail](https://pub.dev/packages/mocktail)
 - [Package Info Plus](https://pub.dev/packages/package_info_plus)
 - [Permission Handler](https://pub.dev/packages/permission_handler)
 - [Pretty Dio Logger](https://pub.dev/packages/pretty_dio_logger)

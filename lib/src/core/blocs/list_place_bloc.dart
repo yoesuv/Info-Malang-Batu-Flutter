@@ -7,9 +7,9 @@ import 'package:info_malang_batu_flutter/src/core/states/list_place_state.dart';
 import 'package:info_malang_batu_flutter/src/data/list_place_type.dart';
 
 class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
-  final ListPlaceRepository _listPlaceRepository = ListPlaceRepository();
+  final ListPlaceRepository _listPlaceRepository;
 
-  ListPlaceBloc() : super(const ListPlaceState()) {
+  ListPlaceBloc(this._listPlaceRepository) : super(const ListPlaceState()) {
     on<ListPlaceEventInit>(_initListPlace);
     on<ListPlaceEventLocationChanged>(_loadListPlace);
   }

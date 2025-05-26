@@ -11,15 +11,15 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      - name: List files in the repository initial
-        run: ls ${{ github.workspace }}
+      - name: Check out repository code first
+        uses: actions/checkout@v4
+      - name: Print working directory
+        run: pwd
       - name: Setup Java JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'oracle'
-          java-version: '17'
+          java-version: '21'
           cache: 'gradle'
       - name: Verify Java Version
         run: java --version
@@ -27,9 +27,16 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: 3.29.3
           cache: true
       - run: flutter --version
       - run: flutter clean
       - run: flutter pub get
+      - run: flutter test --coverage
+      - name : Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/lcov.info
       - run: flutter build apk -v
       - run: echo "🍏 This job's status is ${{ job.status }}."

@@ -13,3 +13,5 @@ key.properties
 **/*.jks
 
 !**/-yusuf.keystore
+
+app/.cxx/
