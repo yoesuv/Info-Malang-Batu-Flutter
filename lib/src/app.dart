@@ -5,6 +5,7 @@ import 'package:info_malang_batu_flutter/src/core/blocs/list_place_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_gallery_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_place_repository_impl.dart';
+import 'package:info_malang_batu_flutter/src/core/repositories/maps_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/routes/routes.dart';
 
 class App extends StatelessWidget {
@@ -16,7 +17,7 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<ListPlaceBloc>(create: (context) => ListPlaceBloc(ListPlaceRepositoryImpl())),
         BlocProvider<GalleryBloc>(create: (context) => GalleryBloc(ListGalleryRepositoryImpl())),
-        BlocProvider<MapsBloc>(create: (context) => MapsBloc()),
+        BlocProvider<MapsBloc>(create: (context) => MapsBloc(MapsRepositoryImpl())),
       ],
       child: MaterialApp(
         title: 'Info Malang Batu',
