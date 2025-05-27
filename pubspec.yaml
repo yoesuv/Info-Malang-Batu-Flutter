@@ -91,3 +91,4 @@ flutter:
       - test/json/list_place_kota_malang.json
       - test/json/list_place_batu.json
       - test/json/list_place_kab_malang.json
+      - test/json/gallery.json
