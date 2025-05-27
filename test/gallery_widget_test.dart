@@ -9,7 +9,7 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/item_gallery.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'mock/gallery_bloc_mock.dart';
-import 'response/list_gallery_response.dart';
+import 'response/list_gallery.dart';
 
 void main() {
   late GalleryBlocMock galleryBlocMock;

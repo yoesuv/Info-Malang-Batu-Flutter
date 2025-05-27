@@ -5,13 +5,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:formz/formz.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/gallery_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/gallery_event.dart';
-import 'package:info_malang_batu_flutter/src/core/models/gallery/item_gallery_model.dart';
 import 'package:info_malang_batu_flutter/src/core/models/gallery/list_item_gallery_model.dart';
 import 'package:info_malang_batu_flutter/src/core/states/gallery_state.dart';
-import 'package:mocktail/mocktail.dart';
 
 import 'mock/list_gallery_repository_mock.dart';
-import 'response/list_gallery_response.dart';
+import 'response/list_gallery.dart';
 import 'utils/json_helper.dart';
 
 void main() {
