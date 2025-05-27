@@ -10,7 +10,7 @@ import 'package:info_malang_batu_flutter/src/utils/app_helper.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class MapsPlace extends StatefulWidget {
-  const MapsPlace({Key? key}) : super(key: key);
+  const MapsPlace({super.key});
 
   @override
   State createState() => _MapsPlaceState();
@@ -50,12 +50,14 @@ class _MapsPlaceState extends State<MapsPlace> {
           } else {
             _bloc.add(MapsEventPermissionLocation());
           }
-          if (stsPermission == PermissionStatus.granted) {
-            showSnackBarSuccess(context, 'Location Permission Granted');
-          } else if (stsPermission == PermissionStatus.denied) {
-            showSnackBarError(context, 'Location Permission Denied');
-          } else if (stsPermission == PermissionStatus.permanentlyDenied) {
-            showSnackBarWarning(context, 'Open App Setting');
+          if (stsPermission != null) {
+            if (stsPermission.isGranted) {
+              showSnackBarSuccess(context, 'Location Permission Granted');
+            } else if (stsPermission.isDenied) {
+              showSnackBarError(context, 'Location Permission Denied');
+            } else if (stsPermission.isPermanentlyDenied) {
+              showSnackBarWarning(context, 'Open App Setting');
+            }
           }
         },
         child: FutureBuilder<BitmapDescriptor>(
