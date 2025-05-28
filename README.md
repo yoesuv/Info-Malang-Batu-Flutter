@@ -1,5 +1,7 @@
 ## Info Malang Batu Flutter ##
 ![Build Status](https://github.com/yoesuv/Info-Malang-Batu-Flutter/actions/workflows/github-action.yml/badge.svg)
+![Codacy Badge](https://app.codacy.com/project/badge/Grade/63c88752debe4add8df39a8a40f3d18a)
+![Codacy Badge](https://app.codacy.com/project/badge/Coverage/63c88752debe4add8df39a8a40f3d18a)
 
 #### Flutter Dependencies ####
 ```
