@@ -1,0 +1,19 @@
+import 'package:info_malang_batu_flutter/src/core/models/gallery/item_gallery_model.dart';
+
+final responseSuccessListGallery = [
+  ItemGalleryModel(
+    caption: "Zona Infinite World di Jatim Park 3",
+    thumbnail: "https://images2.imgbox.com/52/1b/PMfvPUxo_o.jpg",
+    image: "https://images2.imgbox.com/0a/e7/G421oy0Q_o.jpg",
+  ),
+  ItemGalleryModel(
+    caption: "Landscape pantai Gatra",
+    thumbnail: "https://images2.imgbox.com/03/d7/dzXrbOuf_o.jpg",
+    image: "https://images2.imgbox.com/f1/c5/Tv1L7t9B_o.jpg",
+  ),
+  ItemGalleryModel(
+    caption: "Batu karang di pantai Batu Bengkung",
+    thumbnail: "https://images2.imgbox.com/3e/4d/p4ip6r31_o.jpg",
+    image: "https://images2.imgbox.com/59/62/SXRaJdoU_o.jpg",
+  ),
+];
