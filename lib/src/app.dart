@@ -38,7 +38,7 @@ class App extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          tabBarTheme: const TabBarTheme(
+          tabBarTheme: const TabBarThemeData(
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
             indicator: UnderlineTabIndicator(
