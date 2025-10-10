@@ -20,18 +20,18 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     _bloc = context.read<SplashBloc>();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     Future<void>.delayed(const Duration(seconds: 2), () {
+      if (!mounted) return;
       Navigator.pushNamedAndRemoveUntil(
         context,
         Home.routeHome,
         ModalRoute.withName('/'),
       );
     });
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         color: Colors.teal,
@@ -75,3 +75,4 @@ class _SplashState extends State<Splash> {
     );
   }
 }
+
