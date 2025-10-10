@@ -58,15 +58,20 @@ class _SplashState extends State<Splash> {
     return BlocBuilder<SplashBloc, SplashState>(
       bloc: _bloc,
       builder: (context, state) {
-        return Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            padding: const EdgeInsets.only(bottom: 16.0),
-            child: Text(
-              'versi ${state.version}',
-              style: const TextStyle(
-                fontSize: 14.0,
-                color: Colors.white,
+        return SafeArea(
+          top: false,
+          left: false,
+          right: false,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 16.0),
+              child: Text(
+                'versi ${state.version}',
+                style: const TextStyle(
+                  fontSize: 14.0,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
