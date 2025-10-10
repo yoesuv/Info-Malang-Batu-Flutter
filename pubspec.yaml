@@ -11,11 +11,10 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.6+1
+version: 2.0.7+1
 
 environment:
-  sdk: ^3.7.2
-
+  sdk: ^3.9.2
 dependencies:
   flutter:
     sdk: flutter
@@ -24,14 +23,14 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   cached_network_image: ^3.4.1
-  dio: ^5.8.0+1
+  dio: ^5.9.0
   equatable: ^2.0.7
   flutter_bloc: ^9.1.1
   formz: ^0.8.0
-  google_maps_flutter: ^2.12.2
+  google_maps_flutter: ^2.13.1
   mocktail: ^1.0.4
-  package_info_plus: ^8.3.0
-  permission_handler: ^12.0.0+1
+  package_info_plus: ^9.0.0
+  permission_handler: ^12.0.1
   pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
@@ -39,12 +38,6 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   bloc_test: ^10.0.0
-
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
   # The following line ensures that the Material Icons font is
