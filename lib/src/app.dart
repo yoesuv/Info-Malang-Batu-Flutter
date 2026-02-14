@@ -15,9 +15,15 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<ListPlaceBloc>(create: (context) => ListPlaceBloc(ListPlaceRepositoryImpl())),
-        BlocProvider<GalleryBloc>(create: (context) => GalleryBloc(ListGalleryRepositoryImpl())),
-        BlocProvider<MapsBloc>(create: (context) => MapsBloc(MapsRepositoryImpl())),
+        BlocProvider<ListPlaceBloc>(
+          create: (context) => ListPlaceBloc(ListPlaceRepositoryImpl()),
+        ),
+        BlocProvider<GalleryBloc>(
+          create: (context) => GalleryBloc(ListGalleryRepositoryImpl()),
+        ),
+        BlocProvider<MapsBloc>(
+          create: (context) => MapsBloc(MapsRepositoryImpl()),
+        ),
       ],
       child: MaterialApp(
         title: 'Info Malang Batu',
@@ -30,13 +36,8 @@ class App extends StatelessWidget {
           appBarTheme: const AppBarTheme(
             centerTitle: false,
             backgroundColor: Colors.teal,
-            titleTextStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-            ),
-            iconTheme: IconThemeData(
-              color: Colors.white,
-            ),
+            titleTextStyle: TextStyle(color: Colors.white, fontSize: 22),
+            iconTheme: IconThemeData(color: Colors.white),
           ),
           tabBarTheme: const TabBarThemeData(
             labelColor: Colors.white,

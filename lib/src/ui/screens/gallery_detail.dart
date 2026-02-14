@@ -14,9 +14,7 @@ class GalleryDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const MyAppBarText(title: 'Detail Galeri'),
-      ),
+      appBar: AppBar(title: const MyAppBarText(title: 'Detail Galeri')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -34,12 +32,10 @@ class GalleryDetail extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
             child: Text(
               itemGalleryModel?.caption ?? '',
-              style: const TextStyle(
-                fontSize: 16,
-              ),
+              style: const TextStyle(fontSize: 16),
               textAlign: TextAlign.start,
             ),
-          )
+          ),
         ],
       ),
     );

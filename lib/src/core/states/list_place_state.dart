@@ -27,9 +27,5 @@ class ListPlaceState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        status,
-        listPlace,
-        listPlaceType,
-      ];
+  List<Object?> get props => [status, listPlace, listPlaceType];
 }

@@ -6,9 +6,7 @@ class SplashState extends Equatable {
   const SplashState({this.version});
 
   SplashState copyWith({String? version}) {
-    return SplashState(
-      version: version ?? this.version,
-    );
+    return SplashState(version: version ?? this.version);
   }
 
   @override

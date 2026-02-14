@@ -41,23 +41,23 @@ class _ListPlaceState extends State<ListPlace> {
             },
             itemBuilder: (BuildContext context) =>
                 <PopupMenuEntry<ListPlaceType>>[
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.ALL,
-                child: Text('Semua'),
-              ),
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.MALANG,
-                child: Text('Kota Malang'),
-              ),
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.BATU,
-                child: Text('Kota Batu'),
-              ),
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.KABMALANG,
-                child: Text('Kab. Malang'),
-              ),
-            ],
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.ALL,
+                    child: Text('Semua'),
+                  ),
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.MALANG,
+                    child: Text('Kota Malang'),
+                  ),
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.BATU,
+                    child: Text('Kota Batu'),
+                  ),
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.KABMALANG,
+                    child: Text('Kab. Malang'),
+                  ),
+                ],
           ),
         ],
       ),

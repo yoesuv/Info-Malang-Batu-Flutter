@@ -7,11 +7,7 @@ class MapsState extends Equatable {
   final PermissionStatus? permissionStatus;
   final List<ItemMapsPinModel>? listPin;
 
-  const MapsState({
-    this.locationService,
-    this.permissionStatus,
-    this.listPin,
-  });
+  const MapsState({this.locationService, this.permissionStatus, this.listPin});
 
   MapsState copyWith({
     bool? locationService,
@@ -26,9 +22,5 @@ class MapsState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        locationService,
-        permissionStatus,
-        listPin,
-      ];
+  List<Object?> get props => [locationService, permissionStatus, listPin];
 }

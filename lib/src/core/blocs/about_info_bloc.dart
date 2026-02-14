@@ -8,7 +8,10 @@ class AboutInfoBloc extends Bloc<AboutInfoEvent, AboutInfoState> {
     on<AboutInfoEventInit>(_initAboutInfo);
   }
 
-  void _initAboutInfo(AboutInfoEventInit event, Emitter<AboutInfoState> emit) async {
+  void _initAboutInfo(
+    AboutInfoEventInit event,
+    Emitter<AboutInfoState> emit,
+  ) async {
     final packageInfo = await PackageInfo.fromPlatform();
     emit(state.copyWith(version: packageInfo.version));
   }

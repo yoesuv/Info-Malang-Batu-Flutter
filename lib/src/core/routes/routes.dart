@@ -47,10 +47,7 @@ class Routes {
             body: Center(
               child: Text(
                 'Screen Not Found',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: Colors.black, fontSize: 16),
               ),
             ),
           );

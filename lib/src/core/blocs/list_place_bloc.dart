@@ -21,19 +21,23 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     final check1 = state.listPlaceType != event.listPlaceType;
     final check2 = state.listPlace?.isEmpty == true;
     if (check1 || check2) {
-      emit(state.copyWith(
-        status: FormzSubmissionStatus.inProgress,
-        listPlaceType: event.listPlaceType,
-      ));
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.inProgress,
+          listPlaceType: event.listPlaceType,
+        ),
+      );
       try {
         final response = await _listPlaceRepository.getListPlace();
         _showData(emit, response.listItemPlaceModel);
       } catch (e) {
-        emit(state.copyWith(
-          status: FormzSubmissionStatus.failure,
-          listPlace: [],
-          listPlaceType: ListPlaceType.ALL,
-        ));
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            listPlace: [],
+            listPlaceType: ListPlaceType.ALL,
+          ),
+        );
       }
     }
   }
@@ -42,10 +46,12 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     ListPlaceEventLocationChanged event,
     Emitter<ListPlaceState> emit,
   ) async {
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.inProgress,
-      listPlaceType: event.listPlaceType,
-    ));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: event.listPlaceType,
+      ),
+    );
     try {
       switch (event.listPlaceType) {
         case ListPlaceType.ALL:
@@ -66,18 +72,19 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
           break;
       }
     } catch (e) {
-      emit(state.copyWith(
-        status: FormzSubmissionStatus.failure,
-        listPlace: [],
-        listPlaceType: ListPlaceType.ALL,
-      ));
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          listPlace: [],
+          listPlaceType: ListPlaceType.ALL,
+        ),
+      );
     }
   }
 
   void _showData(Emitter<ListPlaceState> emit, List<ItemPlaceModel>? places) {
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.success,
-      listPlace: places,
-    ));
+    emit(
+      state.copyWith(status: FormzSubmissionStatus.success, listPlace: places),
+    );
   }
 }

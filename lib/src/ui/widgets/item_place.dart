@@ -26,13 +26,13 @@ class ItemPlace extends StatelessWidget {
             width: double.infinity,
             height: itemListPlaceHeight,
             child: CachedNetworkImage(
-                imageUrl: itemPlaceModel?.gambar ?? '',
-                fit: BoxFit.cover,
-                placeholder: (BuildContext context, String url) =>
-                    Image.asset(placeHolderImage, fit: BoxFit.cover),
-                errorWidget:
-                    (BuildContext context, String url, Object? error) =>
-                        const Icon(Icons.error)),
+              imageUrl: itemPlaceModel?.gambar ?? '',
+              fit: BoxFit.cover,
+              placeholder: (BuildContext context, String url) =>
+                  Image.asset(placeHolderImage, fit: BoxFit.cover),
+              errorWidget: (BuildContext context, String url, Object? error) =>
+                  const Icon(Icons.error),
+            ),
           ),
           Container(
             width: double.infinity,
@@ -44,10 +44,7 @@ class ItemPlace extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                textTitle(),
-                textSubTitle(),
-              ],
+              children: <Widget>[textTitle(), textSubTitle()],
             ),
           ),
         ],
@@ -63,7 +60,7 @@ class ItemPlace extends StatelessWidget {
         fontWeight: FontWeight.bold,
         fontSize: 18,
         shadows: <Shadow>[
-          Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)
+          Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2),
         ],
       ),
     );
@@ -76,7 +73,7 @@ class ItemPlace extends StatelessWidget {
         color: Colors.white,
         fontSize: 16,
         shadows: <Shadow>[
-          Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2)
+          Shadow(color: Colors.black, offset: Offset(1, 1), blurRadius: 2),
         ],
       ),
     );

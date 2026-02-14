@@ -26,35 +26,37 @@ class _AboutInfoState extends State<AboutInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: <Widget>[
-        Container(
-          padding: EdgeInsets.symmetric(vertical: itemChangelogPadding),
-          child: const Text(
-            'Info Malang Batu',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Pacifico',
+      body: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(vertical: itemChangelogPadding),
+            child: const Text(
+              'Info Malang Batu',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Pacifico',
+              ),
             ),
           ),
-        ),
-        _buildAppVersion(),
-        Container(
-          padding: EdgeInsets.symmetric(vertical: itemChangelogPadding),
-          child: const Text(
-            'Flutter Version',
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          _buildAppVersion(),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: itemChangelogPadding),
+            child: const Text(
+              'Flutter Version',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        const Divider(),
-        Container(
-          padding: EdgeInsets.all(itemChangelogPadding),
-          child: const Text(
-            'https://github.com/yoesuv/Info-Malang-Batu-Flutter',
-            style: TextStyle(fontSize: 14),
+          const Divider(),
+          Container(
+            padding: EdgeInsets.all(itemChangelogPadding),
+            child: const Text(
+              'https://github.com/yoesuv/Info-Malang-Batu-Flutter',
+              style: TextStyle(fontSize: 14),
+            ),
           ),
-        )
-      ]),
+        ],
+      ),
     );
   }
 

@@ -30,9 +30,7 @@ class _GalleryState extends State<Gallery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const MyAppBarText(title: 'Galeri'),
-      ),
+      appBar: AppBar(title: const MyAppBarText(title: 'Galeri')),
       body: buildBody(),
     );
   }
@@ -70,9 +68,7 @@ class _GalleryState extends State<Gallery> {
         crossAxisCount: 3,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return ItemGallery(
-          itemGalleryModel: listGallery?[index],
-        );
+        return ItemGallery(itemGalleryModel: listGallery?[index]);
       },
     );
   }

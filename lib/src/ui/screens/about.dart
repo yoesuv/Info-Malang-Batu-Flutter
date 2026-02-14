@@ -14,7 +14,7 @@ class About extends StatefulWidget {
 
 class AboutState extends State<About> with TickerProviderStateMixin {
   late TabController tabController;
-  final tabs = const<Widget>[
+  final tabs = const <Widget>[
     AboutInfo(),
     AboutChangelog(),
     AboutThanks(),
@@ -42,10 +42,7 @@ class AboutState extends State<About> with TickerProviderStateMixin {
           title: const MyAppBarText(title: 'Tentang'),
           bottom: tabBarItem,
         ),
-        body: TabBarView(
-          controller: tabController,
-          children: tabs,
-        ),
+        body: TabBarView(controller: tabController, children: tabs),
       ),
     );
   }

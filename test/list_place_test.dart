@@ -41,78 +41,73 @@ void main() {
     "init location bloc success all",
     build: () => listPlaceBloc,
     act: (bloc) => bloc.add(ListPlaceEventInit(ListPlaceType.ALL)),
-    expect:
-        () => [
-          ListPlaceState(
-            status: FormzSubmissionStatus.inProgress,
-            listPlaceType: ListPlaceType.ALL,
-            listPlace: null,
-          ),
-          ListPlaceState(
-            status: FormzSubmissionStatus.success,
-            listPlaceType: ListPlaceType.ALL,
-            listPlace: responseSuccessListPlaceAll,
-          ),
-        ],
+    expect: () => [
+      ListPlaceState(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: ListPlaceType.ALL,
+        listPlace: null,
+      ),
+      ListPlaceState(
+        status: FormzSubmissionStatus.success,
+        listPlaceType: ListPlaceType.ALL,
+        listPlace: responseSuccessListPlaceAll,
+      ),
+    ],
   );
 
   blocTest<ListPlaceBloc, ListPlaceState>(
     "change location kota malang bloc success",
     build: () => listPlaceBloc,
-    act:
-        (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.MALANG)),
-    expect:
-        () => [
-          ListPlaceState(
-            status: FormzSubmissionStatus.inProgress,
-            listPlaceType: ListPlaceType.MALANG,
-            listPlace: null,
-          ),
-          ListPlaceState(
-            status: FormzSubmissionStatus.success,
-            listPlaceType: ListPlaceType.MALANG,
-            listPlace: responseSuccessListPlaceKotaMalang,
-          ),
-        ],
+    act: (bloc) =>
+        bloc.add(ListPlaceEventLocationChanged(ListPlaceType.MALANG)),
+    expect: () => [
+      ListPlaceState(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: ListPlaceType.MALANG,
+        listPlace: null,
+      ),
+      ListPlaceState(
+        status: FormzSubmissionStatus.success,
+        listPlaceType: ListPlaceType.MALANG,
+        listPlace: responseSuccessListPlaceKotaMalang,
+      ),
+    ],
   );
 
   blocTest<ListPlaceBloc, ListPlaceState>(
     "change location kota batu bloc success",
     build: () => listPlaceBloc,
     act: (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.BATU)),
-    expect:
-        () => [
-          ListPlaceState(
-            status: FormzSubmissionStatus.inProgress,
-            listPlaceType: ListPlaceType.BATU,
-            listPlace: null,
-          ),
-          ListPlaceState(
-            status: FormzSubmissionStatus.success,
-            listPlaceType: ListPlaceType.BATU,
-            listPlace: responseSuccessListPlaceBatu,
-          ),
-        ],
+    expect: () => [
+      ListPlaceState(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: ListPlaceType.BATU,
+        listPlace: null,
+      ),
+      ListPlaceState(
+        status: FormzSubmissionStatus.success,
+        listPlaceType: ListPlaceType.BATU,
+        listPlace: responseSuccessListPlaceBatu,
+      ),
+    ],
   );
 
   blocTest<ListPlaceBloc, ListPlaceState>(
     "change location kabupaten malang bloc success",
     build: () => listPlaceBloc,
-    act:
-        (bloc) =>
-            bloc.add(ListPlaceEventLocationChanged(ListPlaceType.KABMALANG)),
-    expect:
-        () => [
-          ListPlaceState(
-            status: FormzSubmissionStatus.inProgress,
-            listPlaceType: ListPlaceType.KABMALANG,
-            listPlace: null,
-          ),
-          ListPlaceState(
-            status: FormzSubmissionStatus.success,
-            listPlaceType: ListPlaceType.KABMALANG,
-            listPlace: responseSuccessListPlaceKabMalang,
-          ),
-        ],
+    act: (bloc) =>
+        bloc.add(ListPlaceEventLocationChanged(ListPlaceType.KABMALANG)),
+    expect: () => [
+      ListPlaceState(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: ListPlaceType.KABMALANG,
+        listPlace: null,
+      ),
+      ListPlaceState(
+        status: FormzSubmissionStatus.success,
+        listPlaceType: ListPlaceType.KABMALANG,
+        listPlace: responseSuccessListPlaceKabMalang,
+      ),
+    ],
   );
 }

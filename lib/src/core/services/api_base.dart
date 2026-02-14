@@ -8,9 +8,7 @@ class ApiBase {
   ApiBase() {
     dio = Dio(options);
     if (isInDebugMode) {
-      dio?.interceptors.add(PrettyDioLogger(
-        requestHeader: true,
-      ));
+      dio?.interceptors.add(PrettyDioLogger(requestHeader: true));
     }
   }
 

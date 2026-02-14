@@ -6,9 +6,7 @@ class AboutInfoState extends Equatable {
   const AboutInfoState({this.version});
 
   AboutInfoState copyWith({String? version}) {
-    return AboutInfoState(
-      version: version ?? this.version,
-    );
+    return AboutInfoState(version: version ?? this.version);
   }
 
   @override

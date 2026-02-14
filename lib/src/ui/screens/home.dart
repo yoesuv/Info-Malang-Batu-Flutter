@@ -31,9 +31,7 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: menu.elementAt(_selectedIndex),
-      ),
+      body: Center(child: menu.elementAt(_selectedIndex)),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
@@ -44,7 +42,7 @@ class HomeState extends State<Home> {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Lokasi'),
         BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Galeri'),
         BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Peta'),
-        BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Tentang')
+        BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Tentang'),
       ],
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.grey[700],

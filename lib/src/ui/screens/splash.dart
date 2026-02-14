@@ -68,10 +68,7 @@ class _SplashState extends State<Splash> {
               padding: const EdgeInsets.only(bottom: 16.0),
               child: Text(
                 'versi ${state.version}',
-                style: const TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.white,
-                ),
+                style: const TextStyle(fontSize: 14.0, color: Colors.white),
               ),
             ),
           ),
@@ -80,4 +77,3 @@ class _SplashState extends State<Splash> {
     );
   }
 }
-
