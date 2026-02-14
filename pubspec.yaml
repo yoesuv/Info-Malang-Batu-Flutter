@@ -11,10 +11,10 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.7+1
+version: 2.0.8+1
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^3.11.0
 dependencies:
   flutter:
     sdk: flutter
@@ -39,7 +39,6 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   bloc_test: ^10.0.0
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -62,12 +61,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Pacifico
-       fonts:
-         - asset: assets/fonts/pacifico.ttf
-     - family: Consola
-       fonts:
-         - asset: assets/fonts/consola.ttf
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/pacifico.ttf
+    - family: Consola
+      fonts:
+        - asset: assets/fonts/consola.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -79,5 +78,5 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
-      - assets/images/
-      - test/json/
+    - assets/images/
+    - test/json/
