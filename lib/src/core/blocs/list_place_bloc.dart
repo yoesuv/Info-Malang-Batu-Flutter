@@ -35,7 +35,7 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
           state.copyWith(
             status: FormzSubmissionStatus.failure,
             listPlace: [],
-            listPlaceType: ListPlaceType.ALL,
+            listPlaceType: ListPlaceType.all,
           ),
         );
       }
@@ -54,19 +54,19 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     );
     try {
       switch (event.listPlaceType) {
-        case ListPlaceType.ALL:
+        case ListPlaceType.all:
           final response = await _listPlaceRepository.getListPlace();
           _showData(emit, response.listItemPlaceModel);
           break;
-        case ListPlaceType.MALANG:
+        case ListPlaceType.malang:
           final response = await _listPlaceRepository.getListPlaceKotaMalang();
           _showData(emit, response.listItemPlaceModel);
           break;
-        case ListPlaceType.KABMALANG:
+        case ListPlaceType.kabMalang:
           final response = await _listPlaceRepository.getListPlaceKabMalang();
           _showData(emit, response.listItemPlaceModel);
           break;
-        case ListPlaceType.BATU:
+        case ListPlaceType.batu:
           final response = await _listPlaceRepository.getListPlaceKotaBatu();
           _showData(emit, response.listItemPlaceModel);
           break;
@@ -76,7 +76,7 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
         state.copyWith(
           status: FormzSubmissionStatus.failure,
           listPlace: [],
-          listPlaceType: ListPlaceType.ALL,
+          listPlaceType: ListPlaceType.all,
         ),
       );
     }

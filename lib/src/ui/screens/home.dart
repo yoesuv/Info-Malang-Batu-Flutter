@@ -7,7 +7,7 @@ import 'package:info_malang_batu_flutter/src/ui/screens/maps_place.dart';
 class Home extends StatefulWidget {
   static const String routeHome = '/home';
 
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   HomeState createState() => HomeState();

@@ -7,7 +7,7 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class GalleryDetail extends StatelessWidget {
   static const String routeName = '/detailGallery';
-  const GalleryDetail({Key? key, this.itemGalleryModel}) : super(key: key);
+  const GalleryDetail({super.key, this.itemGalleryModel});
 
   final ItemGalleryModel? itemGalleryModel;
 

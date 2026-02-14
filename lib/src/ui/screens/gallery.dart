@@ -10,7 +10,7 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/item_gallery.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class Gallery extends StatefulWidget {
-  const Gallery({Key? key}) : super(key: key);
+  const Gallery({super.key});
 
   @override
   State<StatefulWidget> createState() {

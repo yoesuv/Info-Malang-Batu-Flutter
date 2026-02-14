@@ -6,7 +6,7 @@ import 'package:info_malang_batu_flutter/src/ui/screens/about_thanks.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class About extends StatefulWidget {
-  const About({Key? key}) : super(key: key);
+  const About({super.key});
 
   @override
   AboutState createState() => AboutState();

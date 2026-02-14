@@ -6,7 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/states/about_library_state.dar
 import 'package:info_malang_batu_flutter/src/ui/widgets/item_library.dart';
 
 class AboutLibraries extends StatefulWidget {
-  const AboutLibraries({Key? key}) : super(key: key);
+  const AboutLibraries({super.key});
 
   @override
   State<StatefulWidget> createState() {

@@ -40,16 +40,16 @@ void main() {
   blocTest<ListPlaceBloc, ListPlaceState>(
     "init location bloc success all",
     build: () => listPlaceBloc,
-    act: (bloc) => bloc.add(ListPlaceEventInit(ListPlaceType.ALL)),
+    act: (bloc) => bloc.add(ListPlaceEventInit(ListPlaceType.all)),
     expect: () => [
       ListPlaceState(
         status: FormzSubmissionStatus.inProgress,
-        listPlaceType: ListPlaceType.ALL,
+        listPlaceType: ListPlaceType.all,
         listPlace: null,
       ),
       ListPlaceState(
         status: FormzSubmissionStatus.success,
-        listPlaceType: ListPlaceType.ALL,
+        listPlaceType: ListPlaceType.all,
         listPlace: responseSuccessListPlaceAll,
       ),
     ],
@@ -59,16 +59,16 @@ void main() {
     "change location kota malang bloc success",
     build: () => listPlaceBloc,
     act: (bloc) =>
-        bloc.add(ListPlaceEventLocationChanged(ListPlaceType.MALANG)),
+        bloc.add(ListPlaceEventLocationChanged(ListPlaceType.malang)),
     expect: () => [
       ListPlaceState(
         status: FormzSubmissionStatus.inProgress,
-        listPlaceType: ListPlaceType.MALANG,
+        listPlaceType: ListPlaceType.malang,
         listPlace: null,
       ),
       ListPlaceState(
         status: FormzSubmissionStatus.success,
-        listPlaceType: ListPlaceType.MALANG,
+        listPlaceType: ListPlaceType.malang,
         listPlace: responseSuccessListPlaceKotaMalang,
       ),
     ],
@@ -77,16 +77,16 @@ void main() {
   blocTest<ListPlaceBloc, ListPlaceState>(
     "change location kota batu bloc success",
     build: () => listPlaceBloc,
-    act: (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.BATU)),
+    act: (bloc) => bloc.add(ListPlaceEventLocationChanged(ListPlaceType.batu)),
     expect: () => [
       ListPlaceState(
         status: FormzSubmissionStatus.inProgress,
-        listPlaceType: ListPlaceType.BATU,
+        listPlaceType: ListPlaceType.batu,
         listPlace: null,
       ),
       ListPlaceState(
         status: FormzSubmissionStatus.success,
-        listPlaceType: ListPlaceType.BATU,
+        listPlaceType: ListPlaceType.batu,
         listPlace: responseSuccessListPlaceBatu,
       ),
     ],
@@ -96,16 +96,16 @@ void main() {
     "change location kabupaten malang bloc success",
     build: () => listPlaceBloc,
     act: (bloc) =>
-        bloc.add(ListPlaceEventLocationChanged(ListPlaceType.KABMALANG)),
+        bloc.add(ListPlaceEventLocationChanged(ListPlaceType.kabMalang)),
     expect: () => [
       ListPlaceState(
         status: FormzSubmissionStatus.inProgress,
-        listPlaceType: ListPlaceType.KABMALANG,
+        listPlaceType: ListPlaceType.kabMalang,
         listPlace: null,
       ),
       ListPlaceState(
         status: FormzSubmissionStatus.success,
-        listPlaceType: ListPlaceType.KABMALANG,
+        listPlaceType: ListPlaceType.kabMalang,
         listPlace: responseSuccessListPlaceKabMalang,
       ),
     ],

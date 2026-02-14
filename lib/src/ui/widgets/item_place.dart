@@ -6,7 +6,7 @@ import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 import 'package:info_malang_batu_flutter/src/ui/screens/list_place_detail.dart';
 
 class ItemPlace extends StatelessWidget {
-  const ItemPlace({Key? key, this.itemPlaceModel}) : super(key: key);
+  const ItemPlace({super.key, this.itemPlaceModel});
 
   final ItemPlaceModel? itemPlaceModel;
 

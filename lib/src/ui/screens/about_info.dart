@@ -6,7 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/states/about_info_state.dart';
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class AboutInfo extends StatefulWidget {
-  const AboutInfo({Key? key}) : super(key: key);
+  const AboutInfo({super.key});
 
   @override
   State<StatefulWidget> createState() {

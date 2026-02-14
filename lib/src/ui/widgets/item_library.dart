@@ -3,7 +3,7 @@ import 'package:info_malang_batu_flutter/src/core/models/about/item_library_mode
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class ItemLibrary extends StatelessWidget {
-  const ItemLibrary(this.itemLibraryModel, {Key? key}) : super(key: key);
+  const ItemLibrary(this.itemLibraryModel, {super.key});
 
   final ItemLibraryModel itemLibraryModel;
 

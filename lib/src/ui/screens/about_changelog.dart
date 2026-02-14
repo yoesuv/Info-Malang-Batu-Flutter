@@ -6,7 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/states/about_changelog_state.d
 import 'package:info_malang_batu_flutter/src/ui/widgets/item_changelog.dart';
 
 class AboutChangelog extends StatefulWidget {
-  const AboutChangelog({Key? key}) : super(key: key);
+  const AboutChangelog({super.key});
 
   @override
   State<StatefulWidget> createState() {
