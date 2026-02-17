@@ -23,8 +23,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
   cached_network_image: ^3.4.1
-  dio: ^5.9.0
-  equatable: ^2.0.7
+  dio: ^5.9.1
+  equatable: ^2.0.8
   flutter_bloc: ^9.1.1
   formz: ^0.8.0
   google_maps_flutter: ^2.14.2
@@ -36,7 +36,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   bloc_test: ^10.0.0
 flutter:
   # The following line ensures that the Material Icons font is
