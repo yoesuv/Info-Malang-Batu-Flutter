@@ -15,6 +15,10 @@ class AboutChangelogBloc
   ) {
     final listChangelog = [
       ItemChangelogModel(
+        version: 'Versi 2.0.8',
+        changelog: '• update libraries',
+      ),
+      ItemChangelogModel(
         version: 'Versi 2.0.7',
         changelog: '• update libraries',
       ),
