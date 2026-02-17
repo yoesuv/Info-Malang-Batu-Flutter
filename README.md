@@ -1,7 +1,7 @@
 ## Info Malang Batu Flutter ##
-![Build Status](https://github.com/yoesuv/Info-Malang-Batu-Flutter/actions/workflows/github-action.yml/badge.svg)
-![Codacy Badge](https://app.codacy.com/project/badge/Grade/63c88752debe4add8df39a8a40f3d18a)
-![Codacy Badge](https://app.codacy.com/project/badge/Coverage/63c88752debe4add8df39a8a40f3d18a)
+[![Build Status](https://github.com/yoesuv/Info-Malang-Batu-Flutter/actions/workflows/github-action.yml/badge.svg)](https://github.com/yoesuv/Info-Malang-Batu-Flutter/actions)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/63c88752debe4add8df39a8a40f3d18a)](https://app.codacy.com/gh/yoesuv/Info-Malang-Batu-Flutter/)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/63c88752debe4add8df39a8a40f3d18a)](https://app.codacy.com/gh/yoesuv/Info-Malang-Batu-Flutter/)
 
 #### Flutter Dependencies ####
 ```
