@@ -22,8 +22,19 @@ class AboutState extends State<About> with TickerProviderStateMixin {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final TabBar tabBarItem = TabBar(
       tabs: const <Widget>[
         Tab(text: 'Informasi'),
