@@ -96,7 +96,7 @@ class _MapsPlaceState extends State<MapsPlace> {
     return BlocBuilder<MapsBloc, MapsState>(
       bloc: _bloc,
       buildWhen: (previous, current) {
-        return previous.permissionStatus != previous.permissionStatus ||
+        return previous.permissionStatus != current.permissionStatus ||
             previous.locationService != current.locationService ||
             previous.listPin != current.listPin;
       },
