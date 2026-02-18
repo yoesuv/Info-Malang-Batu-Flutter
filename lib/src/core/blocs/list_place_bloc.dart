@@ -14,7 +14,7 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     on<ListPlaceEventLocationChanged>(_loadListPlace);
   }
 
-  void _initListPlace(
+  Future<void> _initListPlace(
     ListPlaceEventInit event,
     Emitter<ListPlaceState> emit,
   ) async {
@@ -42,7 +42,7 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     }
   }
 
-  void _loadListPlace(
+  Future<void> _loadListPlace(
     ListPlaceEventLocationChanged event,
     Emitter<ListPlaceState> emit,
   ) async {

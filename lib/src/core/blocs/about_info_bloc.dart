@@ -8,7 +8,7 @@ class AboutInfoBloc extends Bloc<AboutInfoEvent, AboutInfoState> {
     on<AboutInfoEventInit>(_initAboutInfo);
   }
 
-  void _initAboutInfo(
+  Future<void> _initAboutInfo(
     AboutInfoEventInit event,
     Emitter<AboutInfoState> emit,
   ) async {
