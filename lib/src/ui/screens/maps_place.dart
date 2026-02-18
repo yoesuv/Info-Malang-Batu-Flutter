@@ -33,9 +33,7 @@ class _MapsPlaceState extends State<MapsPlace> {
     return Scaffold(
       appBar: AppBar(
         title: const MyAppBarText(title: 'Peta'),
-        actions: <Widget>[
-          _iconRefresh(),
-        ],
+        actions: <Widget>[_iconRefresh()],
       ),
       body: BlocListener<MapsBloc, MapsState>(
         bloc: _bloc,
@@ -62,10 +60,7 @@ class _MapsPlaceState extends State<MapsPlace> {
         },
         child: FutureBuilder<BitmapDescriptor>(
           future: BitmapDescriptor.asset(
-            createLocalImageConfiguration(
-              context,
-              size: const Size(36, 36),
-            ),
+            createLocalImageConfiguration(context, size: const Size(36, 36)),
             iconMarker,
           ),
           builder: (context, snapshot) {
@@ -101,7 +96,7 @@ class _MapsPlaceState extends State<MapsPlace> {
     return BlocBuilder<MapsBloc, MapsState>(
       bloc: _bloc,
       buildWhen: (previous, current) {
-        return previous.permissionStatus != previous.permissionStatus ||
+        return previous.permissionStatus != current.permissionStatus ||
             previous.locationService != current.locationService ||
             previous.listPin != current.listPin;
       },

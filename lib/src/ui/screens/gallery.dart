@@ -10,7 +10,7 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/item_gallery.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class Gallery extends StatefulWidget {
-  const Gallery({Key? key}) : super(key: key);
+  const Gallery({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -30,9 +30,7 @@ class _GalleryState extends State<Gallery> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const MyAppBarText(title: 'Galeri'),
-      ),
+      appBar: AppBar(title: const MyAppBarText(title: 'Galeri')),
       body: buildBody(),
     );
   }
@@ -70,9 +68,7 @@ class _GalleryState extends State<Gallery> {
         crossAxisCount: 3,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return ItemGallery(
-          itemGalleryModel: listGallery?[index],
-        );
+        return ItemGallery(itemGalleryModel: listGallery?[index]);
       },
     );
   }

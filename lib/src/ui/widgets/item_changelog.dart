@@ -20,10 +20,7 @@ class ItemChangelog extends StatelessWidget {
           ),
           child: Text(
             itemChangelogModel?.version ?? '',
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
         Container(
@@ -33,7 +30,7 @@ class ItemChangelog extends StatelessWidget {
             style: const TextStyle(fontSize: 14),
           ),
         ),
-        const Divider()
+        const Divider(),
       ],
     );
   }

@@ -11,7 +11,7 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/item_place.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class ListPlace extends StatefulWidget {
-  const ListPlace({Key? key}) : super(key: key);
+  const ListPlace({super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -26,7 +26,7 @@ class _ListPlaceState extends State<ListPlace> {
   void initState() {
     super.initState();
     _bloc = context.read<ListPlaceBloc>();
-    _bloc.add(ListPlaceEventInit(ListPlaceType.ALL));
+    _bloc.add(ListPlaceEventInit(ListPlaceType.all));
   }
 
   @override
@@ -41,23 +41,23 @@ class _ListPlaceState extends State<ListPlace> {
             },
             itemBuilder: (BuildContext context) =>
                 <PopupMenuEntry<ListPlaceType>>[
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.ALL,
-                child: Text('Semua'),
-              ),
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.MALANG,
-                child: Text('Kota Malang'),
-              ),
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.BATU,
-                child: Text('Kota Batu'),
-              ),
-              const PopupMenuItem<ListPlaceType>(
-                value: ListPlaceType.KABMALANG,
-                child: Text('Kab. Malang'),
-              ),
-            ],
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.all,
+                    child: Text('Semua'),
+                  ),
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.malang,
+                    child: Text('Kota Malang'),
+                  ),
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.batu,
+                    child: Text('Kota Batu'),
+                  ),
+                  const PopupMenuItem<ListPlaceType>(
+                    value: ListPlaceType.kabMalang,
+                    child: Text('Kab. Malang'),
+                  ),
+                ],
           ),
         ],
       ),
@@ -79,7 +79,7 @@ class _ListPlaceState extends State<ListPlace> {
           return ErrorContainer(
             title: 'Failed Load List Place',
             onPress: () {
-              _bloc.add(ListPlaceEventInit(ListPlaceType.ALL));
+              _bloc.add(ListPlaceEventInit(ListPlaceType.all));
             },
           );
         }

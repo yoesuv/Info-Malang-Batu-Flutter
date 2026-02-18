@@ -14,70 +14,77 @@ class ListPlaceBloc extends Bloc<ListPlaceEvent, ListPlaceState> {
     on<ListPlaceEventLocationChanged>(_loadListPlace);
   }
 
-  void _initListPlace(
+  Future<void> _initListPlace(
     ListPlaceEventInit event,
     Emitter<ListPlaceState> emit,
   ) async {
     final check1 = state.listPlaceType != event.listPlaceType;
     final check2 = state.listPlace?.isEmpty == true;
     if (check1 || check2) {
-      emit(state.copyWith(
-        status: FormzSubmissionStatus.inProgress,
-        listPlaceType: event.listPlaceType,
-      ));
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.inProgress,
+          listPlaceType: event.listPlaceType,
+        ),
+      );
       try {
         final response = await _listPlaceRepository.getListPlace();
         _showData(emit, response.listItemPlaceModel);
       } catch (e) {
-        emit(state.copyWith(
-          status: FormzSubmissionStatus.failure,
-          listPlace: [],
-          listPlaceType: ListPlaceType.ALL,
-        ));
+        emit(
+          state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            listPlace: [],
+            listPlaceType: ListPlaceType.all,
+          ),
+        );
       }
     }
   }
 
-  void _loadListPlace(
+  Future<void> _loadListPlace(
     ListPlaceEventLocationChanged event,
     Emitter<ListPlaceState> emit,
   ) async {
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.inProgress,
-      listPlaceType: event.listPlaceType,
-    ));
+    emit(
+      state.copyWith(
+        status: FormzSubmissionStatus.inProgress,
+        listPlaceType: event.listPlaceType,
+      ),
+    );
     try {
       switch (event.listPlaceType) {
-        case ListPlaceType.ALL:
+        case ListPlaceType.all:
           final response = await _listPlaceRepository.getListPlace();
           _showData(emit, response.listItemPlaceModel);
           break;
-        case ListPlaceType.MALANG:
+        case ListPlaceType.malang:
           final response = await _listPlaceRepository.getListPlaceKotaMalang();
           _showData(emit, response.listItemPlaceModel);
           break;
-        case ListPlaceType.KABMALANG:
+        case ListPlaceType.kabMalang:
           final response = await _listPlaceRepository.getListPlaceKabMalang();
           _showData(emit, response.listItemPlaceModel);
           break;
-        case ListPlaceType.BATU:
+        case ListPlaceType.batu:
           final response = await _listPlaceRepository.getListPlaceKotaBatu();
           _showData(emit, response.listItemPlaceModel);
           break;
       }
     } catch (e) {
-      emit(state.copyWith(
-        status: FormzSubmissionStatus.failure,
-        listPlace: [],
-        listPlaceType: ListPlaceType.ALL,
-      ));
+      emit(
+        state.copyWith(
+          status: FormzSubmissionStatus.failure,
+          listPlace: [],
+          listPlaceType: ListPlaceType.all,
+        ),
+      );
     }
   }
 
   void _showData(Emitter<ListPlaceState> emit, List<ItemPlaceModel>? places) {
-    emit(state.copyWith(
-      status: FormzSubmissionStatus.success,
-      listPlace: places,
-    ));
+    emit(
+      state.copyWith(status: FormzSubmissionStatus.success, listPlace: places),
+    );
   }
 }

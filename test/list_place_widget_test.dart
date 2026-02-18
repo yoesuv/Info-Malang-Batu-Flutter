@@ -20,7 +20,7 @@ void main() {
     when(() => listPlaceBlocMock.state).thenReturn(
       const ListPlaceState(
         status: FormzSubmissionStatus.initial,
-        listPlaceType: ListPlaceType.ALL,
+        listPlaceType: ListPlaceType.all,
       ),
     );
   });
@@ -40,7 +40,7 @@ void main() {
     ) async {
       final loadingState = ListPlaceState(
         status: FormzSubmissionStatus.inProgress,
-        listPlaceType: ListPlaceType.ALL,
+        listPlaceType: ListPlaceType.all,
       );
       // Set up stream behavior
       when(
@@ -58,7 +58,7 @@ void main() {
     testWidgets('should show list when success', (tester) async {
       final successState = ListPlaceState(
         status: FormzSubmissionStatus.success,
-        listPlaceType: ListPlaceType.ALL,
+        listPlaceType: ListPlaceType.all,
         listPlace: responseSuccessListPlaceAll,
       );
       // Set up stream behavior

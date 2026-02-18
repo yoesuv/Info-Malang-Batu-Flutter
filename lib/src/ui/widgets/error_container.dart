@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ErrorContainer extends StatelessWidget {
-  const ErrorContainer({
-    super.key,
-    this.title,
-    this.onPress,
-  });
+  const ErrorContainer({super.key, this.title, this.onPress});
 
   final String? title;
   final Function()? onPress;
@@ -16,11 +12,7 @@ class ErrorContainer extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(
-            Icons.error_outline,
-            color: Colors.red,
-            size: 64,
-          ),
+          const Icon(Icons.error_outline, color: Colors.red, size: 64),
           const SizedBox(height: 8),
           Text(
             title ?? '',
@@ -33,12 +25,7 @@ class ErrorContainer extends StatelessWidget {
           const SizedBox(height: 8),
           ElevatedButton(
             onPressed: onPress,
-            child: const Text(
-              'Try Again',
-              style: TextStyle(
-                fontSize: 14,
-              ),
-            ),
+            child: const Text('Try Again', style: TextStyle(fontSize: 14)),
           ),
         ],
       ),

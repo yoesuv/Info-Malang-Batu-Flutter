@@ -7,7 +7,7 @@ import 'package:info_malang_batu_flutter/src/ui/screens/maps_place.dart';
 class Home extends StatefulWidget {
   static const String routeHome = '/home';
 
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   HomeState createState() => HomeState();
@@ -31,9 +31,7 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: menu.elementAt(_selectedIndex),
-      ),
+      body: Center(child: menu.elementAt(_selectedIndex)),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
@@ -44,7 +42,7 @@ class HomeState extends State<Home> {
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Lokasi'),
         BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Galeri'),
         BottomNavigationBarItem(icon: Icon(Icons.map), label: 'Peta'),
-        BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Tentang')
+        BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Tentang'),
       ],
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.grey[700],

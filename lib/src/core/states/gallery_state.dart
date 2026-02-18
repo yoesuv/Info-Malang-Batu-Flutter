@@ -22,8 +22,5 @@ class GalleryState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-        status,
-        listGallery,
-      ];
+  List<Object?> get props => [status, listGallery];
 }

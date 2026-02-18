@@ -37,13 +37,12 @@ void main() {
     'emits [loading, loaded] when GalleryEventInit is added and data is fetched successfully',
     build: () => galleryBloc,
     act: (bloc) => bloc.add(GalleryEventInit()),
-    expect:
-        () => [
-          GalleryState(status: FormzSubmissionStatus.inProgress),
-          GalleryState(
-            status: FormzSubmissionStatus.success,
-            listGallery: responseSuccessListGallery,
-          ),
-        ],
+    expect: () => [
+      GalleryState(status: FormzSubmissionStatus.inProgress),
+      GalleryState(
+        status: FormzSubmissionStatus.success,
+        listGallery: responseSuccessListGallery,
+      ),
+    ],
   );
 }

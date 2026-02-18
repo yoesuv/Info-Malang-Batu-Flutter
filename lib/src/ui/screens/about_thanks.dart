@@ -3,7 +3,7 @@ import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class AboutThanks extends StatelessWidget {
-  const AboutThanks({Key? key}) : super(key: key);
+  const AboutThanks({super.key});
 
   @override
   Widget build(BuildContext context) {

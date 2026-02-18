@@ -3,7 +3,7 @@ import 'package:info_malang_batu_flutter/src/core/models/about/item_library_mode
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 
 class ItemLibrary extends StatelessWidget {
-  const ItemLibrary(this.itemLibraryModel, {Key? key}) : super(key: key);
+  const ItemLibrary(this.itemLibraryModel, {super.key});
 
   final ItemLibraryModel itemLibraryModel;
 
@@ -35,23 +35,17 @@ class ItemLibrary extends StatelessWidget {
           ),
           child: Text(
             '${itemLibraryModel.url}',
-            style: const TextStyle(
-              color: Colors.teal,
-              fontSize: 14.0,
-            ),
+            style: const TextStyle(color: Colors.teal, fontSize: 14.0),
           ),
         ),
         Container(
           padding: EdgeInsets.all(itemLibraryPadding),
           child: Text(
             '${itemLibraryModel.license}',
-            style: const TextStyle(
-              fontSize: 11,
-              fontFamily: 'Consola',
-            ),
+            style: const TextStyle(fontSize: 11, fontFamily: 'Consola'),
           ),
         ),
-        const Divider()
+        const Divider(),
       ],
     );
   }

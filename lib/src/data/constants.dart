@@ -8,4 +8,5 @@ double defaultLatitude = -7.982914;
 double defaultLongitude = 112.630875;
 double defaultZoom = 9.0;
 Duration timeOut = const Duration(seconds: 30);
-String longEmDash = "————————————————————————————————————————————————————————————";
+String longEmDash =
+    "————————————————————————————————————————————————————————————";

@@ -14,9 +14,7 @@ class ListPlaceDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const MyAppBarText(title: 'Detail Lokasi'),
-      ),
+      appBar: AppBar(title: const MyAppBarText(title: 'Detail Lokasi')),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -34,10 +32,7 @@ class ListPlaceDetail extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Text(
               itemPlaceModel?.nama ?? '',
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               textAlign: TextAlign.start,
             ),
           ),
