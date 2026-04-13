@@ -29,10 +29,10 @@ packages:
     dependency: transitive
     description:
       name: async
-      sha256: "758e6d74e971c3e5aceb4110bfd6698efc7f501675bcfe0c775459a8140750eb"
+      sha256: e2eb0491ba5ddb6177742d2da23904574082139b07c1e33b8503b9f46f3e1a37
       url: "https://pub.dev"
     source: hosted
-    version: "2.13.0"
+    version: "2.13.1"
   bloc:
     dependency: transitive
     description:
@@ -157,10 +157,10 @@ packages:
     dependency: "direct main"
     description:
       name: cupertino_icons
-      sha256: ba631d1c7f7bef6b729a622b7b752645a2d076dba9976925b8f25725a30e1ee6
+      sha256: "41e005c33bd814be4d3096aff55b1908d419fde52ca656c8c47719ec745873cd"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.8"
+    version: "1.0.9"
   diff_match_patch:
     dependency: transitive
     description:
@@ -173,18 +173,18 @@ packages:
     dependency: "direct main"
     description:
       name: dio
-      sha256: b9d46faecab38fc8cc286f80bc4d61a3bb5d4ac49e51ed877b4d6706efe57b25
+      sha256: aff32c08f92787a557dd5c0145ac91536481831a01b4648136373cddb0e64f8c
       url: "https://pub.dev"
     source: hosted
-    version: "5.9.1"
+    version: "5.9.2"
   dio_web_adapter:
     dependency: transitive
     description:
       name: dio_web_adapter
-      sha256: "7586e476d70caecaf1686d21eee7247ea43ef5c345eab9e0cc3583ff13378d78"
+      sha256: "2f9e64323a7c3c7ef69567d5c800424a11f8337b8b228bad02524c9fb3c1f340"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   equatable:
     dependency: "direct main"
     description:
@@ -266,10 +266,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_plugin_android_lifecycle
-      sha256: ee8068e0e1cd16c4a82714119918efdeed33b3ba7772c54b5d094ab53f9b7fd1
+      sha256: "38d1c268de9097ff59cf0e844ac38759fc78f76836d37edad06fa21e182055a0"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.33"
+    version: "2.0.34"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -316,50 +316,50 @@ packages:
     dependency: "direct main"
     description:
       name: google_maps_flutter
-      sha256: "9b0d6dab3de6955837575dc371dd772fcb5d0a90f6a4954e8c066472f9938550"
+      sha256: fc714bf8072e2c121d4277cb6dca23bbfae954b6c7b5d6dd73f1bc8d09762921
       url: "https://pub.dev"
     source: hosted
-    version: "2.14.2"
+    version: "2.17.0"
   google_maps_flutter_android:
     dependency: transitive
     description:
       name: google_maps_flutter_android
-      sha256: "98d7f5354f770f3e993db09fc798d40aeb6a254f04c1c468a94818ec2086e83e"
+      sha256: "843e217deba8c2ca5ca9eee17e17c2f350b1dd24f64ec6a068d21573c7a1e755"
       url: "https://pub.dev"
     source: hosted
-    version: "2.18.12"
+    version: "2.19.6"
   google_maps_flutter_ios:
     dependency: transitive
     description:
       name: google_maps_flutter_ios
-      sha256: "38f0a9ee858b0de3a5105e7efe200f154eea8397eb0c36bea6b3810429fbc0e4"
+      sha256: "5ed8d8d0f93dfa7f5039c409c500948e98e59068f8f6fcf9105bfd07e3709d7f"
       url: "https://pub.dev"
     source: hosted
-    version: "2.17.3"
+    version: "2.18.1"
   google_maps_flutter_platform_interface:
     dependency: transitive
     description:
       name: google_maps_flutter_platform_interface
-      sha256: e8b1232419fcdd35c1fdafff96843f5a40238480365599d8ca661dde96d283dd
+      sha256: ddbe34435dfb34e83fca295c6a8dcc53c3b51487e9eec3c737ce4ae605574347
       url: "https://pub.dev"
     source: hosted
-    version: "2.14.1"
+    version: "2.15.0"
   google_maps_flutter_web:
     dependency: transitive
     description:
       name: google_maps_flutter_web
-      sha256: d416602944e1859f3cbbaa53e34785c223fa0a11eddb34a913c964c5cbb5d8cf
+      sha256: "6cefe4ef4cc61dc0dfba4c413dec4bd105cb6b9461bfbe1465ddd09f80af377d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.14+3"
+    version: "0.6.2"
   hooks:
     dependency: transitive
     description:
       name: hooks
-      sha256: "7a08a0d684cb3b8fb604b78455d5d352f502b68079f7b80b831c62220ab0a4f6"
+      sha256: e79ed1e8e1929bc6ecb6ec85f0cb519c887aa5b423705ded0d0f2d9226def388
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   html:
     dependency: transitive
     description:
@@ -400,6 +400,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  jni:
+    dependency: transitive
+    description:
+      name: jni
+      sha256: c2230682d5bc2362c1c9e8d3c7f406d9cbba23ab3f2e203a025dd47e0fb2e68f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
+  jni_flutter:
+    dependency: transitive
+    description:
+      name: jni_flutter
+      sha256: "8b59e590786050b1cd866677dddaf76b1ade5e7bc751abe04b86e84d379d3ba6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -484,10 +500,10 @@ packages:
     dependency: transitive
     description:
       name: native_toolchain_c
-      sha256: "89e83885ba09da5fdf2cdacc8002a712ca238c28b7f717910b34bcd27b0d03ac"
+      sha256: "6ba77bb18063eebe9de401f5e6437e95e1438af0a87a3a39084fbd37c90df572"
       url: "https://pub.dev"
     source: hosted
-    version: "0.17.4"
+    version: "0.17.6"
   nested:
     dependency: transitive
     description:
@@ -564,10 +580,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_android
-      sha256: f2c65e21139ce2c3dad46922be8272bb5963516045659e71bb16e151c93b580e
+      sha256: "69cbd515a62b94d32a7944f086b2f82b4ac40a1d45bebfc00813a430ab2dabcd"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.22"
+    version: "2.3.1"
   path_provider_foundation:
     dependency: transitive
     description:
@@ -785,10 +801,10 @@ packages:
     dependency: transitive
     description:
       name: sqflite_android
-      sha256: ecd684501ebc2ae9a83536e8b15731642b9570dc8623e0073d227d0ee2bfea88
+      sha256: "881e28efdcc9950fd8e9bb42713dcf1103e62a2e7168f23c9338d82db13dec40"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2+2"
+    version: "2.4.2+3"
   sqflite_common:
     dependency: transitive
     description:
@@ -897,10 +913,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: a11b666489b1954e01d992f3d601b1804a33937b5a8fe677bd26b8a9f96f96e8
+      sha256: "1fef9e8e11e2991bb773070d4656b7bd5d850967a2456cfc83cf47925ba79489"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.2"
+    version: "4.5.3"
   vector_math:
     dependency: transitive
     description:
@@ -982,5 +998,5 @@ packages:
     source: hosted
     version: "3.1.3"
 sdks:
-  dart: ">=3.11.0 <4.0.0"
+  dart: ">=3.11.4 <4.0.0"
   flutter: ">=3.41.0"
