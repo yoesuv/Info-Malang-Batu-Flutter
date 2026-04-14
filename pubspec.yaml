@@ -11,10 +11,10 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.8+1
+version: 2.0.9+1
 
 environment:
-  sdk: ^3.11.0
+  sdk: ^3.11.4
 dependencies:
   flutter:
     sdk: flutter
@@ -27,9 +27,9 @@ dependencies:
   equatable: ^2.0.8
   flutter_bloc: ^9.1.1
   formz: ^0.8.0
-  google_maps_flutter: ^2.14.2
-  mocktail: ^1.0.4
-  package_info_plus: ^9.0.0
+  google_maps_flutter: ^2.17.0
+  mocktail: ^1.0.5
+  package_info_plus: ^10.0.0
   permission_handler: ^12.0.1
   pretty_dio_logger: ^1.4.0
 
