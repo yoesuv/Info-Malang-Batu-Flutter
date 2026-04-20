@@ -36,10 +36,7 @@ GoRouter createRouter() {
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return Home(
-            navigationShell: navigationShell,
-            child: navigationShell,
-          );
+          return Home(navigationShell: navigationShell, child: navigationShell);
         },
         branches: [
           StatefulShellBranch(
@@ -68,7 +65,10 @@ GoRouter createRouter() {
           ),
           StatefulShellBranch(
             routes: [
-              GoRoute(path: '/about', builder: (context, state) => const About()),
+              GoRoute(
+                path: '/about',
+                builder: (context, state) => const About(),
+              ),
             ],
           ),
         ],
