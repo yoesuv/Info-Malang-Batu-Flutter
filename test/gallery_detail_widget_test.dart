@@ -21,8 +21,9 @@ void main() {
       expect(find.text('Detail Galeri'), findsOneWidget);
     });
 
-    testWidgets('should display caption text when model has caption',
-        (tester) async {
+    testWidgets('should display caption text when model has caption', (
+      tester,
+    ) async {
       const itemGalleryModel = ItemGalleryModel(
         caption: 'Test Caption',
         thumbnail: 'https://example.com/thumbnail.jpg',
@@ -38,8 +39,9 @@ void main() {
       expect(find.text('Test Caption'), findsOneWidget);
     });
 
-    testWidgets('should display empty caption when model has empty caption',
-        (tester) async {
+    testWidgets('should display empty caption when model has empty caption', (
+      tester,
+    ) async {
       const itemGalleryModel = ItemGalleryModel(
         caption: '',
         thumbnail: 'https://example.com/thumbnail.jpg',
@@ -56,12 +58,11 @@ void main() {
       expect(find.byType(Text), findsWidgets);
     });
 
-    testWidgets('should display empty caption when model is null',
-        (tester) async {
+    testWidgets('should display empty caption when model is null', (
+      tester,
+    ) async {
       await tester.pumpWidget(
-        const MaterialApp(
-          home: GalleryDetail(itemGalleryModel: null),
-        ),
+        const MaterialApp(home: GalleryDetail(itemGalleryModel: null)),
       );
 
       // Should still render without errors
@@ -86,8 +87,9 @@ void main() {
       expect(find.byType(Image), findsWidgets);
     });
 
-    testWidgets('should display placeholder when image is loading',
-        (tester) async {
+    testWidgets('should display placeholder when image is loading', (
+      tester,
+    ) async {
       const itemGalleryModel = ItemGalleryModel(
         caption: 'Test Caption',
         thumbnail: 'https://example.com/thumbnail.jpg',

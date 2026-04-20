@@ -6,22 +6,14 @@ import 'package:info_malang_batu_flutter/src/ui/widgets/item_library.dart';
 void main() {
   group('AboutLibraries Widget Tests', () {
     testWidgets('should show loading text initially', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       // Initially should show loading text
       expect(find.text('Memuat List Library...'), findsOneWidget);
     });
 
     testWidgets('should show library list after loading', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       // Wait for the bloc to emit the loaded state
       await tester.pumpAndSettle();
@@ -33,11 +25,7 @@ void main() {
     });
 
     testWidgets('should display library names', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       await tester.pumpAndSettle();
 
@@ -47,11 +35,7 @@ void main() {
     });
 
     testWidgets('should display library URLs', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       await tester.pumpAndSettle();
 
@@ -61,11 +45,7 @@ void main() {
     });
 
     testWidgets('should display ListView when data is loaded', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       await tester.pumpAndSettle();
 
@@ -73,13 +53,10 @@ void main() {
       expect(find.byType(ListView), findsOneWidget);
     });
 
-    testWidgets('should not show loading text when data is loaded',
-        (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+    testWidgets('should not show loading text when data is loaded', (
+      tester,
+    ) async {
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       await tester.pumpAndSettle();
 
@@ -88,11 +65,7 @@ void main() {
     });
 
     testWidgets('should display Scaffold', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       await tester.pumpAndSettle();
 
@@ -101,11 +74,7 @@ void main() {
     });
 
     testWidgets('should scroll to show more items', (tester) async {
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: AboutLibraries(),
-        ),
-      );
+      await tester.pumpWidget(const MaterialApp(home: AboutLibraries()));
 
       await tester.pumpAndSettle();
 
