@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/blocs/splash_bloc.dart';
+import 'package:info_malang_batu_flutter/src/core/routes/app_router.dart';
 import 'package:info_malang_batu_flutter/src/core/states/splash_state.dart';
-import 'package:info_malang_batu_flutter/src/ui/screens/home.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -22,11 +22,7 @@ class _SplashState extends State<Splash> {
     _bloc = context.read<SplashBloc>();
     Future<void>.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        Home.routeHome,
-        ModalRoute.withName('/'),
-      );
+      isSplashComplete.value = true;
     });
   }
 

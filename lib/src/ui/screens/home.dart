@@ -1,37 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:info_malang_batu_flutter/src/ui/screens/about.dart';
-import 'package:info_malang_batu_flutter/src/ui/screens/gallery.dart';
-import 'package:info_malang_batu_flutter/src/ui/screens/list_place.dart';
-import 'package:info_malang_batu_flutter/src/ui/screens/maps_place.dart';
+import 'package:go_router/go_router.dart';
 
-class Home extends StatefulWidget {
-  static const String routeHome = '/home';
+class Home extends StatelessWidget {
+  const Home({super.key, required this.navigationShell, required this.child});
 
-  const Home({super.key});
-
-  @override
-  HomeState createState() => HomeState();
-}
-
-class HomeState extends State<Home> {
-  int _selectedIndex = 0;
-  final List<Widget> menu = const <Widget>[
-    ListPlace(),
-    Gallery(),
-    MapsPlace(),
-    About(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  final StatefulNavigationShell navigationShell;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: menu.elementAt(_selectedIndex)),
+      body: child,
       bottomNavigationBar: buildBottomNavigationBar(),
     );
   }
@@ -47,8 +26,8 @@ class HomeState extends State<Home> {
       type: BottomNavigationBarType.fixed,
       unselectedItemColor: Colors.grey[700],
       selectedItemColor: Colors.teal,
-      currentIndex: _selectedIndex,
-      onTap: _onItemTapped,
+      currentIndex: navigationShell.currentIndex,
+      onTap: (index) => navigationShell.goBranch(index),
     );
   }
 }

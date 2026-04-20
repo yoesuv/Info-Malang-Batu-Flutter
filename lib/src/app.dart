@@ -6,7 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_gallery_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_place_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/maps_repository_impl.dart';
-import 'package:info_malang_batu_flutter/src/core/routes/routes.dart';
+import 'package:info_malang_batu_flutter/src/core/routes/app_router.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -25,7 +25,7 @@ class App extends StatelessWidget {
           create: (context) => MapsBloc(MapsRepositoryImpl()),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         title: 'Info Malang Batu',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
@@ -48,7 +48,7 @@ class App extends StatelessWidget {
           ),
           useMaterial3: true,
         ),
-        onGenerateRoute: Routes.routes,
+        routerConfig: createRouter(),
       ),
     );
   }
