@@ -5,6 +5,10 @@ import 'package:info_malang_batu_flutter/src/core/models/gallery/item_gallery_mo
 import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
 import 'package:info_malang_batu_flutter/src/core/routes/app_router.dart';
 import 'package:info_malang_batu_flutter/src/core/routes/app_routes.dart';
+import 'package:info_malang_batu_flutter/src/ui/screens/gallery_detail.dart';
+import 'package:info_malang_batu_flutter/src/ui/screens/list_place_detail.dart';
+import 'package:info_malang_batu_flutter/src/ui/widgets/item_gallery.dart';
+import 'package:info_malang_batu_flutter/src/ui/widgets/item_place.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -463,6 +467,239 @@ void main() {
         expect(router, isA<GoRouter>());
         router.dispose();
       }
+    });
+  });
+
+  group('Navigation to Detail Routes', () {
+    testWidgets('navigating to /place-detail renders ListPlaceDetail with data', (
+      tester,
+    ) async {
+      final router = createRouter();
+      addTearDown(router.dispose);
+
+      const model = ItemPlaceModel(
+        nama: 'Test Place',
+        lokasi: 'Test Location',
+        deskripsi: 'Test Description',
+        thumbnail: 'thumb.jpg',
+        gambar: 'img.jpg',
+      );
+
+      router.go('/place-detail', extra: PlaceDetailRoute(model));
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Test Place'), findsOneWidget);
+      expect(find.text('Test Description'), findsOneWidget);
+      expect(find.text('Detail Lokasi'), findsOneWidget);
+      expect(find.byType(Scaffold), findsOneWidget);
+    });
+
+    testWidgets('navigating to /place-detail displays the correct model data', (
+      tester,
+    ) async {
+      final router = createRouter();
+      addTearDown(router.dispose);
+
+      const model = ItemPlaceModel(
+        nama: 'Bromo Mountain',
+        lokasi: 'East Java',
+        deskripsi: 'Beautiful mountain',
+        thumbnail: 'bromo_thumb.jpg',
+        gambar: 'bromo.jpg',
+      );
+
+      router.go('/place-detail', extra: PlaceDetailRoute(model));
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Bromo Mountain'), findsOneWidget);
+      expect(find.text('Beautiful mountain'), findsOneWidget);
+    });
+
+    testWidgets('navigating to /gallery-detail renders GalleryDetail with data', (
+      tester,
+    ) async {
+      final router = createRouter();
+      addTearDown(router.dispose);
+
+      const model = ItemGalleryModel(
+        caption: 'Test Caption',
+        thumbnail: 'thumb.jpg',
+        image: 'img.jpg',
+      );
+
+      router.go('/gallery-detail', extra: GalleryDetailRoute(model));
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Test Caption'), findsOneWidget);
+      expect(find.text('Detail Galeri'), findsOneWidget);
+      expect(find.byType(Scaffold), findsOneWidget);
+    });
+
+    testWidgets('navigating to /gallery-detail displays the correct model data', (
+      tester,
+    ) async {
+      final router = createRouter();
+      addTearDown(router.dispose);
+
+      const model = ItemGalleryModel(
+        caption: 'Sunset at Beach',
+        thumbnail: 'sunset_thumb.jpg',
+        image: 'sunset.jpg',
+      );
+
+      router.go('/gallery-detail', extra: GalleryDetailRoute(model));
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Sunset at Beach'), findsOneWidget);
+    });
+  });
+
+  group('Navigation from Widget Tap Tests', () {
+    testWidgets('ItemPlace tap navigates to /place-detail', (tester) async {
+      const model = ItemPlaceModel(
+        nama: 'Alun Alun Malang',
+        lokasi: 'Kota Malang',
+        deskripsi: 'A beautiful place',
+        thumbnail: 'thumb.jpg',
+        gambar: 'img.jpg',
+      );
+
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: ItemPlace(itemPlaceModel: model),
+            ),
+          ),
+          GoRoute(
+            path: '/place-detail',
+            builder: (context, state) {
+              final route = state.extra as PlaceDetailRoute;
+              return ListPlaceDetail(itemPlaceModel: route.model);
+            },
+          ),
+        ],
+      );
+      addTearDown(router.dispose);
+
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Alun Alun Malang'), findsOneWidget);
+
+      await tester.tap(find.byType(InkWell));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Detail Lokasi'), findsOneWidget);
+      expect(find.text('Alun Alun Malang'), findsOneWidget);
+    });
+
+    testWidgets('ItemGallery tap navigates to /gallery-detail', (tester) async {
+      const model = ItemGalleryModel(
+        caption: 'Test Gallery',
+        thumbnail: 'thumb.jpg',
+        image: 'img.jpg',
+      );
+
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: ItemGallery(itemGalleryModel: model),
+            ),
+          ),
+          GoRoute(
+            path: '/gallery-detail',
+            builder: (context, state) {
+              final route = state.extra as GalleryDetailRoute;
+              return GalleryDetail(itemGalleryModel: route.model);
+            },
+          ),
+        ],
+      );
+      addTearDown(router.dispose);
+
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(InkWell));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Detail Galeri'), findsOneWidget);
+    });
+
+    testWidgets('ItemPlace with null model does not navigate on tap', (
+      tester,
+    ) async {
+      int pushCount = 0;
+
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: ItemPlace(itemPlaceModel: null),
+            ),
+          ),
+          GoRoute(
+            path: '/place-detail',
+            builder: (context, state) {
+              pushCount++;
+              return const Scaffold(body: Text('Place Detail'));
+            },
+          ),
+        ],
+      );
+      addTearDown(router.dispose);
+
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(InkWell));
+      await tester.pumpAndSettle();
+
+      expect(pushCount, 0);
+      expect(find.text('Place Detail'), findsNothing);
+    });
+
+    testWidgets('ItemGallery with null model does not navigate on tap', (
+      tester,
+    ) async {
+      int pushCount = 0;
+
+      final router = GoRouter(
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: ItemGallery(itemGalleryModel: null),
+            ),
+          ),
+          GoRoute(
+            path: '/gallery-detail',
+            builder: (context, state) {
+              pushCount++;
+              return const Scaffold(body: Text('Gallery Detail'));
+            },
+          ),
+        ],
+      );
+      addTearDown(router.dispose);
+
+      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byType(InkWell));
+      await tester.pumpAndSettle();
+
+      expect(pushCount, 0);
+      expect(find.text('Gallery Detail'), findsNothing);
     });
   });
 }
