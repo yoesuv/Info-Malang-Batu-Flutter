@@ -6,6 +6,7 @@ import 'package:info_malang_batu_flutter/src/core/blocs/maps_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_gallery_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/list_place_repository_impl.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/maps_repository_impl.dart';
+import 'package:info_malang_batu_flutter/src/core/services/location_service.dart';
 import 'package:info_malang_batu_flutter/src/core/routes/app_router.dart';
 
 class App extends StatelessWidget {
@@ -22,7 +23,8 @@ class App extends StatelessWidget {
           create: (context) => GalleryBloc(ListGalleryRepositoryImpl()),
         ),
         BlocProvider<MapsBloc>(
-          create: (context) => MapsBloc(MapsRepositoryImpl()),
+          create: (context) =>
+              MapsBloc(MapsRepositoryImpl(), LocationService()),
         ),
       ],
       child: MaterialApp.router(
