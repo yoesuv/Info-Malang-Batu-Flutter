@@ -13,8 +13,7 @@ class FakeGoogleMapsFlutterPlatform extends GoogleMapsFlutterPlatform {
   Map<int, PlatformMapStateRecorder> mapInstances =
       <int, PlatformMapStateRecorder>{};
 
-  PlatformMapStateRecorder get lastCreatedMap =>
-      mapInstances[createdIds.last]!;
+  PlatformMapStateRecorder get lastCreatedMap => mapInstances[createdIds.last]!;
 
   bool simulatePlatformDelay = false;
   bool disposed = false;
@@ -121,9 +120,9 @@ class FakeGoogleMapsFlutterPlatform extends GoogleMapsFlutterPlatform {
   }) async {
     mapInstances[mapId]?.animateCameraConfiguration =
         CameraUpdateWithConfiguration(
-      cameraUpdate: cameraUpdate,
-      configuration: null,
-    );
+          cameraUpdate: cameraUpdate,
+          configuration: null,
+        );
     await _fakeDelay();
   }
 
@@ -135,9 +134,9 @@ class FakeGoogleMapsFlutterPlatform extends GoogleMapsFlutterPlatform {
   }) async {
     mapInstances[mapId]?.animateCameraConfiguration =
         CameraUpdateWithConfiguration(
-      cameraUpdate: cameraUpdate,
-      configuration: configuration,
-    );
+          cameraUpdate: cameraUpdate,
+          configuration: configuration,
+        );
     await _fakeDelay();
   }
 

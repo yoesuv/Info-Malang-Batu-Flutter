@@ -186,11 +186,7 @@ void main() {
           ),
         ),
         GalleryDetailRoute(
-          ItemGalleryModel(
-            caption: 'C1',
-            thumbnail: 't1',
-            image: 'i1',
-          ),
+          ItemGalleryModel(caption: 'C1', thumbnail: 't1', image: 'i1'),
         ),
         PlaceDetailRoute(
           ItemPlaceModel(

@@ -81,7 +81,10 @@ void main() {
       router = createRouter();
       final routes = router!.configuration.routes;
       expect(routes, isNotEmpty);
-      expect(routes.length, greaterThanOrEqualTo(2)); // Splash + StatefulShellRoute
+      expect(
+        routes.length,
+        greaterThanOrEqualTo(2),
+      ); // Splash + StatefulShellRoute
     });
 
     test('uses isSplashComplete as refreshListenable', () {
@@ -134,7 +137,7 @@ void main() {
 
       final routes = router.configuration.routes;
       final goRoutes = routes.whereType<GoRoute>();
-      
+
       // Check for place-detail route
       final detailRoutes = goRoutes.where((r) => r.path == '/place-detail');
       expect(detailRoutes.length, 1);
@@ -146,7 +149,7 @@ void main() {
 
       final routes = router.configuration.routes;
       final goRoutes = routes.whereType<GoRoute>();
-      
+
       // Check for gallery-detail route
       final detailRoutes = goRoutes.where((r) => r.path == '/gallery-detail');
       expect(detailRoutes.length, 1);
@@ -266,7 +269,9 @@ void main() {
       expect(textWidget.style?.fontSize, 16);
     });
 
-    testWidgets('error screen is wrapped in Scaffold and Center', (tester) async {
+    testWidgets('error screen is wrapped in Scaffold and Center', (
+      tester,
+    ) async {
       final router = createRouter();
       addTearDown(router.dispose);
 
@@ -421,7 +426,15 @@ void main() {
 
   group('Route Path Constants', () {
     test('all expected paths are valid', () {
-      const paths = ['/', '/places', '/gallery', '/maps', '/about', '/place-detail', '/gallery-detail'];
+      const paths = [
+        '/',
+        '/places',
+        '/gallery',
+        '/maps',
+        '/about',
+        '/place-detail',
+        '/gallery-detail',
+      ];
       for (final path in paths) {
         expect(path, isA<String>());
         expect(path.startsWith('/'), isTrue);
@@ -471,29 +484,30 @@ void main() {
   });
 
   group('Navigation to Detail Routes', () {
-    testWidgets('navigating to /place-detail renders ListPlaceDetail with data', (
-      tester,
-    ) async {
-      final router = createRouter();
-      addTearDown(router.dispose);
+    testWidgets(
+      'navigating to /place-detail renders ListPlaceDetail with data',
+      (tester) async {
+        final router = createRouter();
+        addTearDown(router.dispose);
 
-      const model = ItemPlaceModel(
-        nama: 'Test Place',
-        lokasi: 'Test Location',
-        deskripsi: 'Test Description',
-        thumbnail: 'thumb.jpg',
-        gambar: 'img.jpg',
-      );
+        const model = ItemPlaceModel(
+          nama: 'Test Place',
+          lokasi: 'Test Location',
+          deskripsi: 'Test Description',
+          thumbnail: 'thumb.jpg',
+          gambar: 'img.jpg',
+        );
 
-      router.go('/place-detail', extra: PlaceDetailRoute(model));
-      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
-      await tester.pumpAndSettle();
+        router.go('/place-detail', extra: PlaceDetailRoute(model));
+        await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+        await tester.pumpAndSettle();
 
-      expect(find.text('Test Place'), findsOneWidget);
-      expect(find.text('Test Description'), findsOneWidget);
-      expect(find.text('Detail Lokasi'), findsOneWidget);
-      expect(find.byType(Scaffold), findsOneWidget);
-    });
+        expect(find.text('Test Place'), findsOneWidget);
+        expect(find.text('Test Description'), findsOneWidget);
+        expect(find.text('Detail Lokasi'), findsOneWidget);
+        expect(find.byType(Scaffold), findsOneWidget);
+      },
+    );
 
     testWidgets('navigating to /place-detail displays the correct model data', (
       tester,
@@ -517,45 +531,47 @@ void main() {
       expect(find.text('Beautiful mountain'), findsOneWidget);
     });
 
-    testWidgets('navigating to /gallery-detail renders GalleryDetail with data', (
-      tester,
-    ) async {
-      final router = createRouter();
-      addTearDown(router.dispose);
+    testWidgets(
+      'navigating to /gallery-detail renders GalleryDetail with data',
+      (tester) async {
+        final router = createRouter();
+        addTearDown(router.dispose);
 
-      const model = ItemGalleryModel(
-        caption: 'Test Caption',
-        thumbnail: 'thumb.jpg',
-        image: 'img.jpg',
-      );
+        const model = ItemGalleryModel(
+          caption: 'Test Caption',
+          thumbnail: 'thumb.jpg',
+          image: 'img.jpg',
+        );
 
-      router.go('/gallery-detail', extra: GalleryDetailRoute(model));
-      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
-      await tester.pumpAndSettle();
+        router.go('/gallery-detail', extra: GalleryDetailRoute(model));
+        await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+        await tester.pumpAndSettle();
 
-      expect(find.text('Test Caption'), findsOneWidget);
-      expect(find.text('Detail Galeri'), findsOneWidget);
-      expect(find.byType(Scaffold), findsOneWidget);
-    });
+        expect(find.text('Test Caption'), findsOneWidget);
+        expect(find.text('Detail Galeri'), findsOneWidget);
+        expect(find.byType(Scaffold), findsOneWidget);
+      },
+    );
 
-    testWidgets('navigating to /gallery-detail displays the correct model data', (
-      tester,
-    ) async {
-      final router = createRouter();
-      addTearDown(router.dispose);
+    testWidgets(
+      'navigating to /gallery-detail displays the correct model data',
+      (tester) async {
+        final router = createRouter();
+        addTearDown(router.dispose);
 
-      const model = ItemGalleryModel(
-        caption: 'Sunset at Beach',
-        thumbnail: 'sunset_thumb.jpg',
-        image: 'sunset.jpg',
-      );
+        const model = ItemGalleryModel(
+          caption: 'Sunset at Beach',
+          thumbnail: 'sunset_thumb.jpg',
+          image: 'sunset.jpg',
+        );
 
-      router.go('/gallery-detail', extra: GalleryDetailRoute(model));
-      await tester.pumpWidget(MaterialApp.router(routerConfig: router));
-      await tester.pumpAndSettle();
+        router.go('/gallery-detail', extra: GalleryDetailRoute(model));
+        await tester.pumpWidget(MaterialApp.router(routerConfig: router));
+        await tester.pumpAndSettle();
 
-      expect(find.text('Sunset at Beach'), findsOneWidget);
-    });
+        expect(find.text('Sunset at Beach'), findsOneWidget);
+      },
+    );
   });
 
   group('Navigation from Widget Tap Tests', () {
@@ -572,9 +588,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => Scaffold(
-              body: ItemPlace(itemPlaceModel: model),
-            ),
+            builder: (context, state) =>
+                Scaffold(body: ItemPlace(itemPlaceModel: model)),
           ),
           GoRoute(
             path: '/place-detail',
@@ -610,9 +625,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => Scaffold(
-              body: ItemGallery(itemGalleryModel: model),
-            ),
+            builder: (context, state) =>
+                Scaffold(body: ItemGallery(itemGalleryModel: model)),
           ),
           GoRoute(
             path: '/gallery-detail',
@@ -643,9 +657,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => Scaffold(
-              body: ItemPlace(itemPlaceModel: null),
-            ),
+            builder: (context, state) =>
+                Scaffold(body: ItemPlace(itemPlaceModel: null)),
           ),
           GoRoute(
             path: '/place-detail',
@@ -677,9 +690,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => Scaffold(
-              body: ItemGallery(itemGalleryModel: null),
-            ),
+            builder: (context, state) =>
+                Scaffold(body: ItemGallery(itemGalleryModel: null)),
           ),
           GoRoute(
             path: '/gallery-detail',

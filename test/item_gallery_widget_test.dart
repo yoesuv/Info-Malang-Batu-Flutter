@@ -90,9 +90,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const Scaffold(
-              body: ItemGallery(itemGalleryModel: null),
-            ),
+            builder: (context, state) =>
+                const Scaffold(body: ItemGallery(itemGalleryModel: null)),
           ),
           GoRoute(
             path: '/gallery-detail',
@@ -128,9 +127,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const Scaffold(
-              body: ItemGallery(itemGalleryModel: model),
-            ),
+            builder: (context, state) =>
+                const Scaffold(body: ItemGallery(itemGalleryModel: model)),
           ),
           GoRoute(
             path: '/gallery-detail',

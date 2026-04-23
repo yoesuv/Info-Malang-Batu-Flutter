@@ -59,8 +59,9 @@ void main() {
       expect(text.style?.fontSize, 14);
     });
 
-    testWidgets('should trigger callback when Try Again button is pressed',
-        (tester) async {
+    testWidgets('should trigger callback when Try Again button is pressed', (
+      tester,
+    ) async {
       bool pressed = false;
       await tester.pumpWidget(
         createWidgetUnderTest(

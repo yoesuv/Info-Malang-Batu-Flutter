@@ -22,9 +22,9 @@ void main() {
     splashBlocMock = SplashBlocMock();
     isSplashComplete.value = false;
 
-    when(() => splashBlocMock.state).thenReturn(
-      const SplashState(version: '2.0.8'),
-    );
+    when(
+      () => splashBlocMock.state,
+    ).thenReturn(const SplashState(version: '2.0.8'));
     when(() => splashBlocMock.stream).thenAnswer(
       (_) => Stream.fromIterable([const SplashState(version: '2.0.8')]),
     );

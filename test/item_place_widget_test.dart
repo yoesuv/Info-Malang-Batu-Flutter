@@ -38,7 +38,9 @@ void main() {
       expect(find.text('Kota Malang'), findsOneWidget);
     });
 
-    testWidgets('should display empty strings when model is null', (tester) async {
+    testWidgets('should display empty strings when model is null', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(body: ItemPlace(itemPlaceModel: null)),
@@ -67,9 +69,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const Scaffold(
-              body: ItemPlace(itemPlaceModel: testPlaceModel),
-            ),
+            builder: (context, state) =>
+                const Scaffold(body: ItemPlace(itemPlaceModel: testPlaceModel)),
           ),
           GoRoute(
             path: '/place-detail',
@@ -104,9 +105,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const Scaffold(
-              body: ItemPlace(itemPlaceModel: null),
-            ),
+            builder: (context, state) =>
+                const Scaffold(body: ItemPlace(itemPlaceModel: null)),
           ),
           GoRoute(
             path: '/place-detail',
@@ -144,9 +144,8 @@ void main() {
         routes: [
           GoRoute(
             path: '/',
-            builder: (context, state) => const Scaffold(
-              body: ItemPlace(itemPlaceModel: model),
-            ),
+            builder: (context, state) =>
+                const Scaffold(body: ItemPlace(itemPlaceModel: model)),
           ),
           GoRoute(
             path: '/place-detail',

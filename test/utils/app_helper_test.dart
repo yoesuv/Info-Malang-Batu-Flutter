@@ -11,11 +11,13 @@ void main() {
 
   group('showSnackBarSuccess', () {
     testWidgets('shows SnackBar with provided title', (tester) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: _TestWidget(fn: showSnackBarSuccess, title: 'Success!'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: _TestWidget(fn: showSnackBarSuccess, title: 'Success!'),
+          ),
         ),
-      ));
+      );
 
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -26,11 +28,13 @@ void main() {
     });
 
     testWidgets('shows SnackBar with green background', (tester) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: _TestWidget(fn: showSnackBarSuccess, title: 'OK'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: _TestWidget(fn: showSnackBarSuccess, title: 'OK'),
+          ),
         ),
-      ));
+      );
 
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -40,11 +44,13 @@ void main() {
     });
 
     testWidgets('shows SnackBar with white text style', (tester) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: _TestWidget(fn: showSnackBarSuccess, title: 'OK'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: _TestWidget(fn: showSnackBarSuccess, title: 'OK'),
+          ),
         ),
-      ));
+      );
 
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -59,11 +65,13 @@ void main() {
     testWidgets('shows SnackBar with yellow background and black text', (
       tester,
     ) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: _TestWidget(fn: showSnackBarWarning, title: 'Warning!'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: _TestWidget(fn: showSnackBarWarning, title: 'Warning!'),
+          ),
         ),
-      ));
+      );
 
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -79,11 +87,13 @@ void main() {
 
   group('showSnackBarError', () {
     testWidgets('shows SnackBar with red background', (tester) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: _TestWidget(fn: showSnackBarError, title: 'Error!'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: _TestWidget(fn: showSnackBarError, title: 'Error!'),
+          ),
         ),
-      ));
+      );
 
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -93,11 +103,13 @@ void main() {
     });
 
     testWidgets('shows SnackBar with provided error title', (tester) async {
-      await tester.pumpWidget(const MaterialApp(
-        home: Scaffold(
-          body: _TestWidget(fn: showSnackBarError, title: 'Something failed'),
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+            body: _TestWidget(fn: showSnackBarError, title: 'Something failed'),
+          ),
         ),
-      ));
+      );
 
       await tester.tap(find.byType(TextButton));
       await tester.pumpAndSettle();
@@ -110,30 +122,32 @@ void main() {
 
   group('All SnackBars', () {
     testWidgets('each function produces exactly one SnackBar', (tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: Builder(
-            builder: (context) {
-              return Column(
-                children: [
-                  TextButton(
-                    onPressed: () => showSnackBarSuccess(context, 'Success'),
-                    child: const Text('btn1'),
-                  ),
-                  TextButton(
-                    onPressed: () => showSnackBarWarning(context, 'Warning'),
-                    child: const Text('btn2'),
-                  ),
-                  TextButton(
-                    onPressed: () => showSnackBarError(context, 'Error'),
-                    child: const Text('btn3'),
-                  ),
-                ],
-              );
-            },
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: Builder(
+              builder: (context) {
+                return Column(
+                  children: [
+                    TextButton(
+                      onPressed: () => showSnackBarSuccess(context, 'Success'),
+                      child: const Text('btn1'),
+                    ),
+                    TextButton(
+                      onPressed: () => showSnackBarWarning(context, 'Warning'),
+                      child: const Text('btn2'),
+                    ),
+                    TextButton(
+                      onPressed: () => showSnackBarError(context, 'Error'),
+                      child: const Text('btn3'),
+                    ),
+                  ],
+                );
+              },
+            ),
           ),
         ),
-      ));
+      );
 
       await tester.tap(find.text('btn1'));
       await tester.pumpAndSettle();

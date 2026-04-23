@@ -33,11 +33,7 @@ void main() {
     build: () => splashBloc,
     act: (bloc) => bloc.add(SplashInitEvent()),
     expect: () => [
-      isA<SplashState>().having(
-        (state) => state.version,
-        'version',
-        isNotNull,
-      ),
+      isA<SplashState>().having((state) => state.version, 'version', isNotNull),
     ],
   );
 
@@ -46,11 +42,7 @@ void main() {
     build: () => splashBloc,
     act: (bloc) => bloc.add(SplashInitEvent()),
     expect: () => [
-      isA<SplashState>().having(
-        (state) => state.version,
-        'version',
-        '2.0.8',
-      ),
+      isA<SplashState>().having((state) => state.version, 'version', '2.0.8'),
     ],
   );
 }
