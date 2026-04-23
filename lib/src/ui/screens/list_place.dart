@@ -93,7 +93,10 @@ class _ListPlaceState extends State<ListPlace> {
       itemCount: places?.length,
       itemBuilder: (BuildContext context, int index) {
         final itemPlaceModel = places?[index];
-        return ItemPlace(itemPlaceModel: itemPlaceModel);
+        return ItemPlace(
+          key: ValueKey('${itemPlaceModel?.nama}_${itemPlaceModel?.gambar}'),
+          itemPlaceModel: itemPlaceModel,
+        );
       },
     );
   }

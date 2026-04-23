@@ -37,7 +37,7 @@ class _AboutLibrariesState extends State<AboutLibraries> {
             itemCount: state.listItemLibrary?.length ?? 0,
             itemBuilder: (BuildContext context, int index) {
               final item = state.listItemLibrary![index];
-              return ItemLibrary(item);
+              return ItemLibrary(item, key: ValueKey(item.name));
             },
           );
         }
