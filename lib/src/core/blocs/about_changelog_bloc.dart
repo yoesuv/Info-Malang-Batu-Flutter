@@ -15,6 +15,11 @@ class AboutChangelogBloc
   ) {
     final listChangelog = [
       ItemChangelogModel(
+        version: 'Versi 2.0.9',
+        changelog:
+            '• migrate to go_router\n• add location service\n• add test coverage',
+      ),
+      ItemChangelogModel(
         version: 'Versi 2.0.8',
         changelog: '• update libraries',
       ),

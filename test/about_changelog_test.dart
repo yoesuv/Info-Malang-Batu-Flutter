@@ -34,14 +34,14 @@ void main() {
   );
 
   blocTest<AboutChangelogBloc, AboutChangelogState>(
-    'emits state with 16 changelog items when AboutChangelogEventInit is added',
+    'emits state with 17 changelog items when AboutChangelogEventInit is added',
     build: () => aboutChangelogBloc,
     act: (bloc) => bloc.add(AboutChangelogEventInit()),
     expect: () => [
       isA<AboutChangelogState>().having(
         (state) => state.listChangelog?.length,
         'listChangelog length',
-        16,
+        17,
       ),
     ],
   );
@@ -55,6 +55,7 @@ void main() {
         (state) => state.listChangelog?.map((item) => item.version).toList(),
         'version names',
         containsAll([
+          'Versi 2.0.9',
           'Versi 2.0.8',
           'Versi 2.0.7',
           'Versi 2.0.6',
@@ -84,7 +85,7 @@ void main() {
       isA<AboutChangelogState>().having(
         (state) => state.listChangelog?.first.changelog,
         'first changelog',
-        '• update libraries',
+        '• migrate to go_router\n• add location service\n• add test coverage',
       ),
     ],
   );
