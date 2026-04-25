@@ -6,7 +6,6 @@ import 'package:info_malang_batu_flutter/src/data/dimens.dart';
 import 'package:info_malang_batu_flutter/src/ui/widgets/my_app_bar_text.dart';
 
 class ListPlaceDetail extends StatelessWidget {
-  static const String routeName = '/detailPlace';
   const ListPlaceDetail({super.key, this.itemPlaceModel});
 
   final ItemPlaceModel? itemPlaceModel;

@@ -23,6 +23,7 @@ class AboutLibraryBloc extends Bloc<AboutLibraryEvent, AboutLibraryState> {
       ),
       ItemLibraryModel(dio, dioUrl, dioLicense),
       ItemLibraryModel(equatable, equatableUrl, equatableLicense),
+      ItemLibraryModel(goRouter, goRouterUrl, goRouterLicense),
       ItemLibraryModel(
         googleMapsFlutter,
         googleMapsFlutterUrl,

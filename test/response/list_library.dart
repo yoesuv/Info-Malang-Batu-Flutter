@@ -16,11 +16,7 @@ final responseSuccessListLibrary = [
     googleMapsFlutterUrl,
     googleMapsFlutterLicense,
   ),
-  ItemLibraryModel(
-    packageInfoPlus,
-    packageInfoPlusUrl,
-    packageInfoPlusLicense,
-  ),
+  ItemLibraryModel(packageInfoPlus, packageInfoPlusUrl, packageInfoPlusLicense),
   ItemLibraryModel(
     permissionHandler,
     permissionHandlerUrl,

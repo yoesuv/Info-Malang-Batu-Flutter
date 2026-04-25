@@ -42,3 +42,8 @@ String packageInfoPlus = 'Package Info Plus';
 String packageInfoPlusUrl = 'https://pub.dev/packages/package_info_plus';
 String packageInfoPlusLicense =
     "Licensed under  BSD 3 Clause \"New\" or \"Revised\" License\n\nCopyright 2017 The Chromium Authors. All rights reserved.\n\n$bsdLicense";
+
+String goRouter = 'Go Router';
+String goRouterUrl = 'https://pub.dev/packages/go_router';
+String goRouterLicense =
+    "Licensed under  BSD 3 Clause \"New\" or \"Revised\" License\n\nCopyright 2021 The Flutter Authors. All rights reserved.\n\n$bsdLicense";

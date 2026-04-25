@@ -37,7 +37,10 @@ class _AboutChangelogState extends State<AboutChangelog> {
             itemCount: state.listChangelog?.length ?? 0,
             itemBuilder: (context, int index) {
               final item = state.listChangelog![index];
-              return ItemChangelog(itemChangelogModel: item);
+              return ItemChangelog(
+                key: ValueKey(item.version),
+                itemChangelogModel: item,
+              );
             },
           );
         }

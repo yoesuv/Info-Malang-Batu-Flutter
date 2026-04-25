@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:info_malang_batu_flutter/src/core/models/list_place/item_place_model.dart';
+import 'package:info_malang_batu_flutter/src/core/routes/app_routes.dart';
 import 'package:info_malang_batu_flutter/src/data/constants.dart';
 import 'package:info_malang_batu_flutter/src/data/dimens.dart';
-import 'package:info_malang_batu_flutter/src/ui/screens/list_place_detail.dart';
 
 class ItemPlace extends StatelessWidget {
   const ItemPlace({super.key, this.itemPlaceModel});
@@ -14,11 +15,12 @@ class ItemPlace extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(
-          context,
-          ListPlaceDetail.routeName,
-          arguments: itemPlaceModel,
-        );
+        if (itemPlaceModel != null) {
+          context.push(
+            '/place-detail',
+            extra: PlaceDetailRoute(itemPlaceModel!),
+          );
+        }
       },
       child: Stack(
         children: <Widget>[

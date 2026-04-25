@@ -26,6 +26,7 @@ android {
 
     namespace "com.yoesuv.infomalangbatuflutter"
     compileSdkVersion flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
     signingConfigs {
         release {

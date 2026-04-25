@@ -35,14 +35,14 @@ void main() {
   );
 
   blocTest<AboutLibraryBloc, AboutLibraryState>(
-    'emits state with 8 library items when AboutLibraryEventInit is added',
+    'emits state with 9 library items when AboutLibraryEventInit is added',
     build: () => aboutLibraryBloc,
     act: (bloc) => bloc.add(AboutLibraryEventInit()),
     expect: () => [
       isA<AboutLibraryState>().having(
         (state) => state.listItemLibrary?.length,
         'listItemLibrary length',
-        8,
+        9,
       ),
     ],
   );
@@ -61,6 +61,7 @@ void main() {
           cachedNetworkImage,
           dio,
           equatable,
+          goRouter,
           googleMapsFlutter,
           packageInfoPlus,
           permissionHandler,
@@ -83,6 +84,7 @@ void main() {
           cachedNetworkImageUrl,
           dioUrl,
           equatableUrl,
+          goRouterUrl,
           googleMapsFlutterUrl,
           packageInfoPlusUrl,
           permissionHandlerUrl,

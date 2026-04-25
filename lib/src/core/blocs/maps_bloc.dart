@@ -1,15 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:info_malang_batu_flutter/src/core/events/maps_event.dart';
 import 'package:info_malang_batu_flutter/src/core/repositories/maps_repository.dart';
+import 'package:info_malang_batu_flutter/src/core/services/location_service.dart';
 import 'package:info_malang_batu_flutter/src/core/states/maps_state.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class MapsBloc extends Bloc<MapsEvent, MapsState> {
   final MapsRepository _mapsRepository;
+  final LocationService _locationService;
 
-  MapsBloc(this._mapsRepository) : super(const MapsState()) {
+  MapsBloc(this._mapsRepository, this._locationService)
+    : super(const MapsState()) {
     on<MapsEventInit>(_mapEventInit);
     on<MapsCheckServiceLocation>(_checkLocationService);
     on<MapsEventPermissionLocation>(_mapPermissionLocation);
@@ -31,11 +32,11 @@ class MapsBloc extends Bloc<MapsEvent, MapsState> {
     MapsCheckServiceLocation event,
     Emitter<MapsState> emit,
   ) async {
-    if (Platform.isIOS) {
+    if (_locationService.isIOS) {
       emit(state.copyWith(locationService: true));
     } else {
       emit(state.copyWith(locationService: true));
-      final status = await Permission.location.serviceStatus;
+      final status = await _locationService.locationServiceStatus;
       final check = status == ServiceStatus.enabled;
       emit(state.copyWith(locationService: check));
     }
@@ -45,7 +46,7 @@ class MapsBloc extends Bloc<MapsEvent, MapsState> {
     MapsEventPermissionLocation event,
     Emitter<MapsState> emit,
   ) async {
-    final request = await Permission.location.request();
+    final request = await _locationService.requestLocationPermission();
     emit(state.copyWith(permissionStatus: request));
   }
 }

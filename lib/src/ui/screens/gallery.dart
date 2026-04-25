@@ -68,7 +68,8 @@ class _GalleryState extends State<Gallery> {
         crossAxisCount: 3,
       ),
       itemBuilder: (BuildContext context, int index) {
-        return ItemGallery(itemGalleryModel: listGallery?[index]);
+        final item = listGallery?[index];
+        return ItemGallery(key: ValueKey(item?.image), itemGalleryModel: item);
       },
     );
   }
